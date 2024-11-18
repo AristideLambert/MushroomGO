@@ -23,11 +23,10 @@ class _MainPageState extends State<MainPage> {
   List<NavigationModel> menuTabs = [];
 
   @override
-  void initState() {
-    super.initState();
+  Widget build(BuildContext context) {
     menuTabs = [
       NavigationModel(
-          tab: const HomeTab(),
+          tab: HomeTab(mainPageContext: context),
           key: homeKey
       ),
       NavigationModel(
@@ -43,10 +42,6 @@ class _MainPageState extends State<MainPage> {
           key: profileKey
       ),
     ];
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: IndexedStack(
