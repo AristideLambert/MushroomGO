@@ -9,7 +9,7 @@ class ColorConstant{
   static const Color lightUnselectedNavigationTabBottom = CupertinoColors.label;
   static const Color darkUnselectedNavigationTabBottom = CupertinoColors.white;
 
-  // NavigationTabBottom
+  // NavigationTabTop
   static const Color lightUnselectedNavigationTabTop = CupertinoColors.label;
   static const Color darkUnselectedNavigationTabTop = CupertinoColors.white;
 

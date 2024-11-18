@@ -1,0 +1,62 @@
+{
+  "menuHome": "Home",
+  "@menuHome": {
+    "description": "Menu (Home)"
+  },
+  "menuMap": "Map",
+  "@menuMap": {
+    "description": "Menu (Map)"
+  },
+  "menuChallenge": "Challenge",
+  "@menuChallenge": {
+    "description": "Menu (Challenge)"
+  },
+  "menuProfile": "Profile",
+  "@menuProfile": {
+    "description": "Menu (Profile)"
+  },
+  "homeForYou": "For you",
+  "@homeForYou": {
+    "description": "Tab home (For you)"
+  },
+  "homeNews": "News",
+  "@homeNews": {
+    "description": "Tab home (News)"
+  },
+  "challengeMushrooms": "Mushrooms",
+    "@challengeMushrooms": {
+      "description": "Tab challenge (Mushrooms)"
+    },
+    "challengeMissions": "Missions",
+    "@challengeMissions": {
+      "description": "Tab challenge (Missions)"
+    },
+  "settingLanguage": "Language",
+    "@settingLanguage": {
+    "description": "Language (Setting)"
+  },
+  "settingLanguageEN": "English",
+    "@settingEN": {
+    "description": "English language (Setting)"
+  },
+  "settingLanguageFR": "French",
+    "@settingFR": {
+    "description": "French language (Setting)"
+  },
+  "settingDisplay": "Display",
+    "@settingDisplay": {
+    "description": "Display (Setting)"
+  },
+  "settingDisplaySystem": "System",
+    "@settingSystem": {
+    "description": "System theme (Setting)"
+  },
+  "settingDisplayLight": "Light",
+    "@settingLight": {
+    "description": "Light theme (Setting)"
+  },
+  "settingDisplayDark": "Dark",
+    "@settingDark": {
+    "description": "Dark theme (Setting)"
+  }
+}

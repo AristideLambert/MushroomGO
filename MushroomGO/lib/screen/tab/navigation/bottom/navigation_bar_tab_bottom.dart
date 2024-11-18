@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mushroom_go/screen/tab/navigation/bottom/navigation_item_tab_bottom.dart';
 import 'package:mushroom_go/theme/navigation_tab_bottom_theme.dart';
 import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NavigationBarTabBottom extends StatefulWidget {
   final int tabIndex;
@@ -30,7 +31,7 @@ class _NavigationBarTabBottomState extends State<NavigationBarTabBottom> {
         child: Row(
           children: [
             NavigationItemTabBottom(
-              title: "Acceuil",
+              title: AppLocalizations.of(context)!.menuHome,
               icon: MushroomGOFontUtils.home,
               sizeIcon: _theme.sizeIcon,
               selectedColor: _theme.selectedColor,
@@ -41,7 +42,7 @@ class _NavigationBarTabBottomState extends State<NavigationBarTabBottom> {
               isSelected: widget.tabIndex == 0
             ),
             NavigationItemTabBottom(
-                title: "Carte",
+                title: AppLocalizations.of(context)!.menuMap,
                 icon: MushroomGOFontUtils.map,
                 sizeIcon: _theme.sizeIcon,
                 selectedColor: _theme.selectedColor,
@@ -55,7 +56,7 @@ class _NavigationBarTabBottomState extends State<NavigationBarTabBottom> {
               width: _theme.buttonSize,
             ),
             NavigationItemTabBottom(
-                title: "Défi",
+                title: AppLocalizations.of(context)!.menuChallenge,
                 icon: MushroomGOFontUtils.trophy,
                 sizeIcon: _theme.sizeIcon,
                 selectedColor: _theme.selectedColor,
@@ -66,7 +67,7 @@ class _NavigationBarTabBottomState extends State<NavigationBarTabBottom> {
                 isSelected: widget.tabIndex == 2
             ),
             NavigationItemTabBottom(
-                title: "Profil",
+                title: AppLocalizations.of(context)!.menuProfile,
                 icon: MushroomGOFontUtils.profile,
                 sizeIcon: _theme.sizeIcon,
                 selectedColor: _theme.selectedColor,

@@ -1,0 +1,17 @@
+{
+  "menuHome": "Accueil",
+  "menuMap": "Carte",
+  "menuChallenge": "Défi",
+  "menuProfile": "Profil",
+  "homeForYou": "Pour toi",
+  "homeNews": "Actualités",
+  "challengeMushrooms": "Champignons",
+  "challengeMissions": "Missions",
+  "settingLanguage": "Langue",
+  "settingLanguageEN": "Anglais",
+  "settingLanguageFR": "Français",
+  "settingDisplay": "Affichage",
+  "settingDisplaySystem": "Système",
+  "settingDisplayLight": "Clair",
+  "settingDisplayDark": "Sombre"
+}

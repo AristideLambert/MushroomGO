@@ -14,5 +14,5 @@ class MushroomGOFontUtils {
   static const IconData history = IconData(0xe006, fontFamily: _mushroomGOFont);
   static const IconData clear = IconData(0xe007, fontFamily: _mushroomGOFont);
   static const IconData close = IconData(0xe008, fontFamily: _mushroomGOFont);
-  static const IconData chevron_right = IconData(0xe009, fontFamily: _mushroomGOFont);
+  static const IconData chevronRight = IconData(0xe009, fontFamily: _mushroomGOFont);
 }

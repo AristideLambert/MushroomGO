@@ -4,6 +4,7 @@ import 'package:mushroom_go/screen/tab/home_for_you_tab.dart';
 import 'package:mushroom_go/screen/tab/home_news_tab.dart';
 import 'package:mushroom_go/screen/tab/navigation/top/navigation_bar_tab_top.dart';
 import 'package:mushroom_go/screen/tab/navigation/top/navigation_view_tab_top.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeTab extends StatefulWidget {
   final BuildContext mainPageContext;
@@ -17,12 +18,13 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
   late List<Widget> _tabTitle;
   late List<Widget> _tabChildren;
   late TabController _tabController;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     _tabTitle = [
-      const Text("Pour toi"),
-      const Text("Actualité")
+      Text(AppLocalizations.of(context)!.homeForYou),
+      Text(AppLocalizations.of(context)!.homeNews)
     ];
     _tabChildren = [
       const HomeForYouTab(),
@@ -30,6 +32,7 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
     ];
     _tabController = TabController(length: _tabChildren.length, vsync: this);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,8 +47,7 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
       body: NavigationViewTabTop(
         tabController: _tabController,
         tabs: _tabChildren,
-          ),
-      backgroundColor: Colors.blue,
+      ),
     );
   }
 }
