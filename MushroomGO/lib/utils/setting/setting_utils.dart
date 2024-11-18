@@ -1,12 +1,12 @@
-/*import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:mushroomgo/constant/setting_constant.dart';
+import 'package:flutter/material.dart';
+import 'package:mushroom_go/constant/setting_constant.dart';
+//import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingUtils{
   SettingUtils._();
 
-  static Future<Locale> getLanguageSharedPreferences() async {
+  /*static Future<Locale> getLanguageSharedPreferences() async {
     final prefs = await SharedPreferences.getInstance();
     return stringToLocale(prefs.getString("language") ?? SettingConstant.languages.first);
   }
@@ -35,7 +35,7 @@ class SettingUtils{
       }
     }
     return 0;
-  }
+  } */
   static Future<ThemeMode> getDisplaySharedPreferences() async {
     final prefs = await SharedPreferences.getInstance();
     return stringToThemeMode(prefs.getString("display") ?? SettingConstant.displays.first);
@@ -46,10 +46,10 @@ class SettingUtils{
   }
   static String getDisplay(BuildContext context, String display){
     switch(display){
-      case "system": return AppLocalizations.of(context)!.settingDisplaySystem;
-      case "light": return AppLocalizations.of(context)!.settingDisplayLight;
-      case "dark": return AppLocalizations.of(context)!.settingDisplayDark;
-      default: return AppLocalizations.of(context)!.settingDisplaySystem;
+      case "system": return "todo";//AppLocalizations.of(context)!.settingDisplaySystem;
+      case "light": return "todo"; //AppLocalizations.of(context)!.settingDisplayLight;
+      case "dark": return "todo"; //AppLocalizations.of(context)!.settingDisplayDark;
+      default: return "todo"; //AppLocalizations.of(context)!.settingDisplaySystem;
     }
   }
   static ThemeMode stringToThemeMode(String display){
@@ -76,4 +76,4 @@ class SettingUtils{
     }
     return 0;
   }
-}*/
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mushroom_go/provider/theme_provider.dart';
 import 'package:mushroom_go/screen/tab/challenge_tab.dart';
 import 'package:mushroom_go/screen/tab/home_tab.dart';
 import 'package:mushroom_go/screen/tab/map_tab.dart';
@@ -6,6 +7,7 @@ import 'package:mushroom_go/screen/tab/navigation/bottom/navigation_bar_tab_bott
 import 'package:mushroom_go/screen/tab/navigation/bottom/navigation_item_camera_tab_bottom.dart';
 import 'package:mushroom_go/screen/tab/navigation/bottom/navigation_model.dart';
 import 'package:mushroom_go/screen/tab/profile_tab.dart';
+import 'package:provider/provider.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -68,6 +70,7 @@ class _MainPageState extends State<MainPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: NavigationItemCameraTabBottom(onTap: (){
         print("Camera");
+        Provider.of<ThemeProvider>(context, listen: false).setTheme(ThemeMode.dark);
       }),
     );
   }
