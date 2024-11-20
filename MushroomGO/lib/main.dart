@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/constant/theme_constant.dart';
 import 'package:mushroom_go/provider/locale_provider.dart';
 import 'package:mushroom_go/provider/theme_provider.dart';
-import 'package:mushroom_go/screen/page/main_page.dart';
 import 'package:mushroom_go/utils/setting/setting_utils.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: localeProvider.locale,
-      home: const MainPage(),
+      onGenerateRoute: NavigationConstant.onGenerateRoute,
     );
   }
 }
