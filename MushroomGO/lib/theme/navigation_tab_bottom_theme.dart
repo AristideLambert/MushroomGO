@@ -16,7 +16,7 @@ class NavigationTabBottomTheme extends ThemeExtension<NavigationTabBottomTheme> 
     this.unselectedColor = ColorConstant.lightUnselectedNavigationTabBottom,
     this.selectedColor = ColorConstant.primaryColor,
     this.height = DimensionConstant.heightNavigationTabBottom,
-    this.buttonSize = DimensionConstant.buttonSizeNavigationTabBottom,
+    this.buttonSize = DimensionConstant.sizeNavigationItemCameraTabBottom,
     this.sizeIcon = DimensionConstant.iconSizeNavigationTabBottom,
     this.titleUnselectedStyle = TextStyleConstant.lightTitleUnselectedNavigationTabBottom,
     this.titleSelectedStyle = TextStyleConstant.lightTitleSelectedNavigationTabBottom,

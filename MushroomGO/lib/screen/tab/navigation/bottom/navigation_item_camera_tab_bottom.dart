@@ -11,21 +11,24 @@ class NavigationItemCameraTabBottom extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.only(top: 20),
-        height: DimensionConstant.buttonSizeNavigationTabBottom,
-        width: DimensionConstant.buttonSizeNavigationTabBottom,
+        margin: const EdgeInsets.only(top: DimensionConstant.marginNavigationItemCameraTabBottom),
+        height: DimensionConstant.sizeNavigationItemCameraTabBottom,
+        width: DimensionConstant.sizeNavigationItemCameraTabBottom,
         decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
+          color: BottomAppBarTheme.of(context).color,
           shape: BoxShape.circle,
-          border: Border.all(
-            width: 4.0,
-            color: BottomAppBarTheme.of(context).color ?? Colors.white,
-          ),
         ),
-        child: const Icon(
-          size: 35,
-          MushroomGOFontUtils.mushroomScan,
-          color: Colors.white,
+        child: Container(
+          margin: const EdgeInsets.all(DimensionConstant.borderNavigationItemCameraTabBottom),
+          decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor,
+            shape: BoxShape.circle,
+          ),
+          child: const Icon(
+            size: DimensionConstant.iconSizeNavigationItemCameraTabBottom,
+            MushroomGOFontUtils.mushroomScan,
+            color: Colors.white,
+          ),
         ),
       ),
     );

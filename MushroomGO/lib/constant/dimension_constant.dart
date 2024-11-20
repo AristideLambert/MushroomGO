@@ -21,8 +21,13 @@ class DimensionConstant {
 
   // NavigationTabBottom
   static const double heightNavigationTabBottom = 56.0;
-  static const double buttonSizeNavigationTabBottom = 70.0;
   static const double iconSizeNavigationTabBottom = 24.0;
+
+  // NavigationItemCameraTabBottom
+  static const double sizeNavigationItemCameraTabBottom = 70.0;
+  static const double iconSizeNavigationItemCameraTabBottom = 35.0;
+  static const double marginNavigationItemCameraTabBottom = 20.0;
+  static const double borderNavigationItemCameraTabBottom = 4.0;
 
   // NavigationTabTop
   static const double widthIndicatorNavigationTabTop = 30.0;

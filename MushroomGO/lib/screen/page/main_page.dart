@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/provider/locale_provider.dart';
+import 'package:mushroom_go/provider/theme_provider.dart';
 import 'package:mushroom_go/screen/tab/challenge_tab.dart';
 import 'package:mushroom_go/screen/tab/home_tab.dart';
 import 'package:mushroom_go/screen/tab/map_tab.dart';
@@ -70,6 +71,7 @@ class _MainPageState extends State<MainPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: NavigationItemCameraTabBottom(onTap: (){
         Provider.of<LocaleProvider>(context, listen: false).setLocale(const Locale("fr"));
+        Provider.of<ThemeProvider>(context, listen: false).setTheme(ThemeMode.dark);
       }),
     );
   }

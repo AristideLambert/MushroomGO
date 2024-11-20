@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:mushroom_go/screen/page/main_page.dart';
 
 class NavigationConstant{
-  //Page
+  // Page
   static const String mainPage = "/";
   
-  //Route
+  // Route
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch(settings.name){
       case mainPage:
