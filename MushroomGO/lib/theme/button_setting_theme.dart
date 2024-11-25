@@ -16,6 +16,7 @@ class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
   final double sizeCheck;
   final double space;
   final TextStyle titleStyle;
+  final TextStyle titleButtonStyle;
   final TextStyle dataStyle;
 
   const ButtonSettingTheme({
@@ -31,6 +32,7 @@ class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
     this.sizeCheck = DimensionConstant.checkSizeButtonSetting,
     this.space = DimensionConstant.spaceButtonSetting,
     this.titleStyle = TextStyleConstant.lightTitleButtonSetting,
+    this.titleButtonStyle = TextStyleConstant.lightTitleButtonButtonSetting,
     this.dataStyle = TextStyleConstant.lightDataButtonSetting,
   });
 
@@ -48,6 +50,7 @@ class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
     double? sizeCheck,
     double? space,
     TextStyle? titleStyle,
+    TextStyle? titleButtonStyle,
     TextStyle? dataStyle,
   }) {
     return ButtonSettingTheme(
@@ -63,6 +66,7 @@ class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
       sizeCheck: sizeCheck ?? this.sizeCheck,
       space: space ?? this.space,
       titleStyle: titleStyle ?? this.titleStyle,
+      titleButtonStyle: titleButtonStyle ?? this.titleButtonStyle,
       dataStyle: dataStyle ?? this.dataStyle,
     );
   }
@@ -83,6 +87,7 @@ class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
       sizeCheck: sizeCheck + (other.sizeCheck - sizeCheck) * t,
       space: space + (other.space - space) * t,
       titleStyle: TextStyle.lerp(titleStyle, other.titleStyle, t)!,
+      titleButtonStyle: TextStyle.lerp(titleButtonStyle, other.titleButtonStyle, t)!,
       dataStyle: TextStyle.lerp(dataStyle, other.dataStyle, t)!,
     );
   }

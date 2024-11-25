@@ -67,6 +67,16 @@ class TextStyleConstant {
     fontSize: DimensionConstant.titleSmall,
     fontWeight: FontWeight.w500,
   );
+  static const TextStyle lightTitleButtonButtonSetting = TextStyle(
+    color: ColorConstant.lightTitleButtonButtonSetting,
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.w500,
+  );
+  static const TextStyle darkTitleButtonButtonSetting = TextStyle(
+    color: ColorConstant.darkTitleButtonButtonSetting,
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.w500,
+  );
   static const TextStyle lightDataButtonSetting = TextStyle(
     fontSize: DimensionConstant.titleSmall,
     color: ColorConstant.lightDataButtonSetting,
@@ -74,6 +84,12 @@ class TextStyleConstant {
   static const TextStyle darkDataButtonSetting = TextStyle(
     fontSize: DimensionConstant.titleSmall,
     color: ColorConstant.darkDataButtonSetting,
+  );
+  // ButtonSetting - AccountSettingPage
+  static const TextStyle titleButtonButtonSettingAccountSettingPage = TextStyle(
+    color: ColorConstant.warningColor,
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.w500,
   );
 
   // ButtonSettingContainer

@@ -31,6 +31,10 @@
     "@challengeMissions": {
       "description": "Tab challenge (Missions)"
     },
+  "setting": "Settings",
+  "@setting": {
+    "description": "Settings"
+  },
   "settingLanguage": "Language",
     "@settingLanguage": {
     "description": "Language (Setting)"
@@ -59,16 +63,16 @@
     "@settingDark": {
     "description": "Dark theme (Setting)"
   },
- "challengeMushroomsCommon": "Common",
-   "@challengeMushroomsCommon": {
-   "description": "Challenge Mushrooms (Common)"
+  "challengeMushroomsCommon": "Common",
+    "@challengeMushroomsCommon": {
+    "description": "Challenge Mushrooms (Common)"
   },
-   "challengeMushroomsRare": "Rare",
-     "@challengeMushroomsRare": {
-     "description": "Challenge Mushrooms (Rare)"
+  "challengeMushroomsRare": "Rare",
+    "@challengeMushroomsRare": {
+    "description": "Challenge Mushrooms (Rare)"
   },
-   "challengeMushroomsEpic": "Epic",
-     "@challengeMushroomsEpic": {
-     "description": "Challenge Mushrooms (Epic)"
+  "challengeMushroomsEpic": "Epic",
+    "@challengeMushroomsEpic": {
+    "description": "Challenge Mushrooms (Epic)"
   }
 }
