@@ -13,5 +13,8 @@
   "settingDisplay": "Affichage",
   "settingDisplaySystem": "Système",
   "settingDisplayLight": "Clair",
-  "settingDisplayDark": "Sombre"
+  "settingDisplayDark": "Sombre",
+  "challengeMushroomsCommon": "Commun",
+  "challengeMushroomsRare" : "Rare",
+  "challengeMushroomsEpic" : "Epic"
 }
