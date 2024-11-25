@@ -107,4 +107,25 @@ class TextStyleConstant {
     color: ColorConstant.darkMailProfileContainer,
     fontSize: DimensionConstant.titleSmall,
   );
+
+  // ChallengeMushroomsList
+  static const TextStyle lightTitleChallengeMushroomsList = TextStyle(
+    color: ColorConstant.lightTitleChallengeMushroomsList,
+    fontSize: DimensionConstant.titleMedium,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle darkTitleChallengeMushroomsList = TextStyle(
+    color: ColorConstant.darkTitleChallengeMushroomsList,
+    fontSize: DimensionConstant.titleMedium,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle lightTitleItemChallengeMushroomsList = TextStyle(
+    color: ColorConstant.lightTitleItemChallengeMushroomsList,
+    fontSize: DimensionConstant.bodyText,
+  );
+  static const TextStyle darkTitleItemChallengeMushroomsList = TextStyle(
+    color: ColorConstant.darkTitleItemChallengeMushroomsList,
+    fontSize: DimensionConstant.bodyText,
+  );
+
 }

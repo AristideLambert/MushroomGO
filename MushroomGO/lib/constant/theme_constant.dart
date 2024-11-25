@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:mushroom_go/constant/text_style_constant.dart';
 import 'package:mushroom_go/theme/button_setting_container_theme.dart';
 import 'package:mushroom_go/theme/button_setting_theme.dart';
+import 'package:mushroom_go/theme/challenge_mushrooms_list_theme.dart';
 import 'package:mushroom_go/theme/navigation_tab_bottom_theme.dart';
 import 'package:mushroom_go/theme/navigation_tab_top_theme.dart';
 import 'package:mushroom_go/theme/profile_container_theme.dart';
@@ -43,6 +44,11 @@ class ThemeConstant{
         backgroundColor: ColorConstant.lightBackgroundProfileContainer,
         nameStyle: TextStyleConstant.lightNameProfileContainer,
         mailStyle: TextStyleConstant.lightMailProfileContainer,
+      ),
+      const ChallengeMushroomsListTheme(
+        backgroundColor: ColorConstant.lightBackgroundChallengeMushroomsList,
+        titleStyle: TextStyleConstant.lightTitleChallengeMushroomsList,
+        titleItemStyle: TextStyleConstant.lightTitleItemChallengeMushroomsList
       )
     ]
   );
@@ -79,6 +85,11 @@ class ThemeConstant{
           backgroundColor: ColorConstant.darkBackgroundProfileContainer,
           nameStyle: TextStyleConstant.darkNameProfileContainer,
           mailStyle: TextStyleConstant.darkMailProfileContainer,
+        ),
+        const ChallengeMushroomsListTheme(
+          backgroundColor: ColorConstant.darkBackgroundChallengeMushroomsList,
+          titleStyle: TextStyleConstant.darkTitleChallengeMushroomsList,
+          titleItemStyle: TextStyleConstant.darkTitleItemChallengeMushroomsList
         )
       ]
   );

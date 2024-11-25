@@ -33,4 +33,12 @@ class ColorConstant{
   static const Color darkNameProfileContainer = CupertinoColors.white;
   static const Color lightMailProfileContainer = CupertinoColors.systemGrey;
   static const Color darkMailProfileContainer = CupertinoColors.systemGrey;
+
+  // ChallengeMushroomsList
+  static const Color lightBackgroundChallengeMushroomsList = CupertinoColors.systemBackground;
+  static const Color darkBackgroundChallengeMushroomsList = CupertinoColors.darkBackgroundGray;
+  static const Color lightTitleChallengeMushroomsList = CupertinoColors.label;
+  static const Color darkTitleChallengeMushroomsList = CupertinoColors.white;
+  static const Color lightTitleItemChallengeMushroomsList = CupertinoColors.label;
+  static const Color darkTitleItemChallengeMushroomsList = CupertinoColors.white;
 }

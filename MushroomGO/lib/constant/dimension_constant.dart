@@ -55,4 +55,13 @@ class DimensionConstant {
   static const double circleAvatarRadiusProfileContainer = 35.0;
   static const double spaceProfileContainer = 16.0;
   static const double chevronSizeProfileContainer = 16.0;
+
+  // ChallengeMushroomsList
+  static const double identTitleChallengeMushroomsList = 16.0;
+  static const double paddingBetweenItemChallengeMushroomsList = 8.0;
+  static const double widthItemChallengeMushroomsList = 120.0;
+  static const double sizeImageItemChallengeMushroomsList = 120.0;
+  static const double heightTitleItemChallengeMushroomsList = 35.0;
+  static const double radiusItemChallengeMushroomsList = 16.0;
+  static const double spaceChallengeMushroomsList = 5.0;
 }
