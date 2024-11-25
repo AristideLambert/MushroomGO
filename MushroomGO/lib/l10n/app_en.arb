@@ -78,11 +78,31 @@
   "settingAboutTermsAndConditions": "Terms and conditions",
   "@settingAboutTermsAndConditions": {
     "description": "Terms and conditions (Setting)"
-  },
+},
+  "settingAccount": "Account",
+    "@settingAccount": {
+    "description": "Account (Setting)"
+ },
+ "settingAccountMail": "Update email address",
+   "@settingAccountMail": {
+   "description": "Setting Account Mail (Setting)"
+},
+   "settingAccountPassword": "Update password",
+     "@settingAccountPassword": {
+     "description": "Setting Account Password (Setting)"
+},
+    "settingAccountDelete": "Delete my account",
+      "@settingAccountDelete": {
+      "description": "Setting Account Delete (Setting)"
+},
+   "settingAccountLogout": "Log out",
+     "@settingAccountLogout": {
+     "description": "Setting Account Logout (Setting)"
+},
   "challengeMushroomsCommon": "Common",
     "@challengeMushroomsCommon": {
     "description": "Challenge Mushrooms (Common)"
-  },
+},
   "challengeMushroomsRare": "Rare",
     "@challengeMushroomsRare": {
     "description": "Challenge Mushrooms (Rare)"

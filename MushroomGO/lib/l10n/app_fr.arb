@@ -19,6 +19,11 @@
   "settingDisplayDark": "Sombre",
   "settingAboutPrivacyPolicy": "Déclaration de confidentialité",
   "settingAboutTermsAndConditions": "Conditions générales",
+  "settingAccount": "Compte",
+  "settingAccountMail": "Modifier l'addresse email",
+  "settingAccountPassword": "Modifier le mot de passe",
+  "settingAccountDelete": "Supprimer mon compte",
+  "settingAccountLogout": "Déconnecter",
   "challengeMushroomsCommon": "Commun",
   "challengeMushroomsRare" : "Rare",
   "challengeMushroomsEpic" : "Épic"

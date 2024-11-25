@@ -42,7 +42,9 @@ class _SettingPageState extends State<SettingPage> {
                   name: "Aristide LAMBERT",
                   mail: "aristidelambert@yahoo.fr",
                   onTap: () {
-
+                    Navigator.of(widget.mainContext).pushNamed(
+                        NavigationConstant.accountSettingPage
+                    );
                   },
                 ),
                 const SizedBox(height: DimensionConstant.spaceSetting),
