@@ -19,6 +19,9 @@ class DimensionConstant {
   // Home
   static const double appBarTitleSpacingHome = 40.0;
 
+  // Setting
+  static const double spaceSetting = 16.0;
+
   // NavigationTabBottom
   static const double heightNavigationTabBottom = 56.0;
   static const double iconSizeNavigationTabBottom = 24.0;

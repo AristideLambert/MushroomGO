@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/screen/page/main_page.dart';
+import 'package:mushroom_go/screen/page/setting/display_setting_page.dart';
+import 'package:mushroom_go/screen/page/setting/language_setting_page.dart';
 import 'package:mushroom_go/screen/page/setting/setting_page.dart';
 
 class NavigationConstant{
   // Page
   static const String mainPage = "/";
   static const String settingPage = "/SettingPage";
-  
+  static const String displaySettingPage = "/DisplaySettingPage";
+  static const String languageSettingPage = "/LanguageSettingPage";
+
   // Route
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch(settings.name){
       case mainPage:
         return MaterialPageRoute(builder: (context) => const MainPage(), settings: settings);
       case settingPage:
-        return MaterialPageRoute(builder: (context) => const SettingPage(), settings: settings);
+        return MaterialPageRoute(builder: (context) => SettingPage(mainContext: context), settings: settings);
+      case displaySettingPage:
+        return MaterialPageRoute(builder: (context) => const DisplaySettingPage(), settings: settings);
+      case languageSettingPage:
+        return MaterialPageRoute(builder: (context) => const LanguageSettingPage(), settings: settings);
       default :
         return MaterialPageRoute(builder: (context) => const MainPage(), settings: settings);
     }

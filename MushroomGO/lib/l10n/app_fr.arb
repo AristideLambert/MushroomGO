@@ -8,6 +8,8 @@
   "challengeMushrooms": "Champignons",
   "challengeMissions": "Missions",
   "setting": "Paramètres",
+  "settingContentDisplay": "Contenu et affichage",
+  "settingAbout": "À propos de nous",
   "settingLanguage": "Langue",
   "settingLanguageEN": "Anglais",
   "settingLanguageFR": "Français",
@@ -15,7 +17,9 @@
   "settingDisplaySystem": "Système",
   "settingDisplayLight": "Clair",
   "settingDisplayDark": "Sombre",
+  "settingAboutPrivacyPolicy": "Déclaration de confidentialité",
+  "settingAboutTermsAndConditions": "Conditions générales",
   "challengeMushroomsCommon": "Commun",
   "challengeMushroomsRare" : "Rare",
-  "challengeMushroomsEpic" : "Epic"
+  "challengeMushroomsEpic" : "Épic"
 }

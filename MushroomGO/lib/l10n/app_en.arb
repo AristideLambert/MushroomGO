@@ -35,6 +35,14 @@
   "@setting": {
     "description": "Settings"
   },
+  "settingContentDisplay": "Content & Display",
+  "@settingContentDisplay": {
+    "description": "Content & Display"
+  },
+  "settingAbout": "About us",
+  "@settingAbout": {
+    "description": "About us"
+  },
   "settingLanguage": "Language",
     "@settingLanguage": {
     "description": "Language (Setting)"
@@ -62,6 +70,14 @@
   "settingDisplayDark": "Dark",
     "@settingDark": {
     "description": "Dark theme (Setting)"
+  },
+  "settingAboutPrivacyPolicy": "Privacy policy",
+  "@settingAboutPrivacyPolicy": {
+    "description": "Privacy policy (Setting)"
+  },
+  "settingAboutTermsAndConditions": "Terms and conditions",
+  "@settingAboutTermsAndConditions": {
+    "description": "Terms and conditions (Setting)"
   },
   "challengeMushroomsCommon": "Common",
     "@challengeMushroomsCommon": {
