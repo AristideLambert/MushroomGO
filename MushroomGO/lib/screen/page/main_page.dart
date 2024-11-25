@@ -70,7 +70,7 @@ class _MainPageState extends State<MainPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: NavigationItemCameraTabBottom(onTap: (){
-        Provider.of<LocaleProvider>(context, listen: false).setLocale(const Locale("fr"));
+        Provider.of<LocaleProvider>(context, listen: false).setLocale(const Locale("en"));
         Provider.of<ThemeProvider>(context, listen: false).setTheme(ThemeMode.dark);
       }),
     );
