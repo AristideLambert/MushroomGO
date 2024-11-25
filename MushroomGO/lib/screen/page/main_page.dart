@@ -41,7 +41,7 @@ class _MainPageState extends State<MainPage> {
           key: challengeKey
       ),
       NavigationModel(
-          tab: const ProfileTab(),
+          tab: ProfileTab(mainContext: context),
           key: profileKey
       ),
     ];

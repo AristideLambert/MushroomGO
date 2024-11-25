@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class ColorConstant{
   // Default
   static const Color primaryColor = Colors.red;
+  static const Color warningColor = CupertinoColors.systemRed;
 
   // NavigationTabBottom
   static const Color lightUnselectedNavigationTabBottom = CupertinoColors.label;
@@ -18,9 +19,11 @@ class ColorConstant{
   static const Color darkBackgroundButtonSetting = CupertinoColors.darkBackgroundGray;
   static const Color lightTitleButtonSetting = CupertinoColors.label;
   static const Color darkTitleButtonSetting = CupertinoColors.white;
+  static const Color lightTitleButtonButtonSetting = CupertinoColors.systemBlue;
+  static const Color darkTitleButtonButtonSetting = CupertinoColors.systemBlue;
   static const Color lightDataButtonSetting = CupertinoColors.systemGrey;
   static const Color darkDataButtonSetting = CupertinoColors.systemGrey;
-  static const Color checkButtonSetting = CupertinoColors.activeBlue;
+  static const Color checkButtonSetting = CupertinoColors.systemBlue;
 
   // ButtonSettingContainer
   static const Color lightTitleButtonSettingContainer = CupertinoColors.label;
