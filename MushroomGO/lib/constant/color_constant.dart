@@ -14,6 +14,12 @@ class ColorConstant{
   static const Color lightUnselectedNavigationTabTop = CupertinoColors.label;
   static const Color darkUnselectedNavigationTabTop = CupertinoColors.white;
 
+  // ButtonStandard
+  static const Color lightTitleButtonStandard = CupertinoColors.white;
+  static const Color darkTitleButtonStandard = CupertinoColors.white;
+  static const Color lightIconButtonStandard = CupertinoColors.white;
+  static const Color darkIconButtonStandard = CupertinoColors.white;
+
   // ButtonSetting
   static const Color lightBackgroundButtonSetting = CupertinoColors.systemBackground;
   static const Color darkBackgroundButtonSetting = CupertinoColors.darkBackgroundGray;

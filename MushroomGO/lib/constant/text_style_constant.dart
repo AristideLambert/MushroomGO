@@ -56,6 +56,18 @@ class TextStyleConstant {
     color: ColorConstant.darkUnselectedNavigationTabTop,
   );
 
+  // ButtonStandard
+  static const TextStyle lightTitleButtonStandard = TextStyle(
+    color: ColorConstant.lightTitleButtonStandard,
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.w700,
+  );
+  static const TextStyle darkTitleButtonStandard = TextStyle(
+    color: ColorConstant.darkTitleButtonStandard,
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.w700,
+  );
+
   // ButtonSetting
   static const TextStyle lightTitleButtonSetting = TextStyle(
     color: ColorConstant.lightTitleButtonSetting,

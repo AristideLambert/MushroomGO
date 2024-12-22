@@ -38,6 +38,13 @@ class DimensionConstant {
   static const double marginIndicatorNavigationTabTop = 4.0;
   static const double dividerHeightNavigationTabTop = 0.0;
 
+  // ButtonStandard
+  static const double radiusButtonStandard = 15.0;
+  static const double heightButtonStandard = 45.0;
+  static const double paddingButtonStandard = 16.0;
+  static const double iconSizeButtonStandard = 24.0;
+  static const double spaceButtonStandard = 10.0;
+
   // ButtonSetting
   static const double radiusButtonSetting = 15.0;
   static const double heightButtonSetting = 45.0;
