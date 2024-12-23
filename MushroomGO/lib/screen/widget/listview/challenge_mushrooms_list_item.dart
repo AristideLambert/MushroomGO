@@ -18,6 +18,7 @@ class _ChallengeMushroomsListItemState extends State<ChallengeMushroomsListItem>
   }
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).extension<ChallengeMushroomsListTheme>()!;
     return Container(
       padding: widget.index == 0 ? EdgeInsets.zero : EdgeInsets.only(left: theme.paddingBetweenItem),
       width: theme.widthItem,
