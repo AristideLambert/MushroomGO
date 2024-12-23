@@ -26,5 +26,7 @@
   "settingAccountLogout": "Déconnecter",
   "challengeMushroomsCommon": "Commun",
   "challengeMushroomsRare" : "Rare",
-  "challengeMushroomsEpic" : "Épic"
+  "challengeMushroomsEpic" : "Épic",
+  "challengeMissionsWeakly" : "Missions hebdomadaires",
+  "challengeMissionsMonthly" : "Missions mensuelles"
 }

@@ -74,4 +74,13 @@ class DimensionConstant {
   static const double heightTitleItemChallengeMushroomsList = 35.0;
   static const double radiusItemChallengeMushroomsList = 16.0;
   static const double spaceChallengeMushroomsList = 5.0;
+
+  // ChallengeMissionsList
+  static const double identTitleChallengeMissionsList = 16.0;
+  static const double paddingBetweenItemChallengeMissionsList = 10.0;
+  static const double radiusItemChallengeMissionsList = 16.0;
+  static const double progressMinChallengeMissionsList = 0.0;
+  static const double progressMaxChallengeMissionsList = 1.0;
+  static const double cardMarginChallengeMissionsList = 8.0;
+  static const double progressBarHeightChallengeMissionsList = 8.0;
 }

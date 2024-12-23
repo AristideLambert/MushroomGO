@@ -50,4 +50,18 @@ class ColorConstant{
   static const Color darkTitleChallengeMushroomsList = CupertinoColors.white;
   static const Color lightTitleItemChallengeMushroomsList = CupertinoColors.label;
   static const Color darkTitleItemChallengeMushroomsList = CupertinoColors.white;
+
+  // ChallengeMissionsList
+  static const Color lightBackgroundChallengeMissionsList = CupertinoColors.systemGroupedBackground;
+  static const Color darkBackgroundChallengeMissionsList = CupertinoColors.darkBackgroundGray;
+  static const Color lightTitleChallengeMissionsList = CupertinoColors.label;
+  static const Color darkTitleChallengeMissionsList = CupertinoColors.white;
+  static const Color lightItemChallengeMissionsList = CupertinoColors.label;
+  static const Color darkItemChallengeMissionsList = CupertinoColors.white;
+  static const Color lightProgressTextChallengeMissionsList = CupertinoColors.inactiveGray;
+  static const Color darkProgressTextChallengeMissionsList = CupertinoColors.inactiveGray;
+  static const Color lightProgressBarForegroundChallengeMissionsList = CupertinoColors.activeGreen;
+  static const Color darkProgressBarForegroundChallengeMissionsList = CupertinoColors.activeBlue;
+  static const Color lightProgressBarBackgroundChallengeMissionsList = CupertinoColors.quaternarySystemFill;
+  static const Color darkProgressBarBackgroundChallengeMissionsList = CupertinoColors.systemFill;
 }

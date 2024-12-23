@@ -156,4 +156,33 @@ class TextStyleConstant {
     fontSize: DimensionConstant.bodyText,
   );
 
+  // ChallengeMissionsList
+  static const TextStyle lightTitleChallengeMissionsList = TextStyle(
+    color: ColorConstant.lightTitleChallengeMissionsList,
+    fontSize: DimensionConstant.titleMedium,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle darkTitleChallengeMissionsList = TextStyle(
+    color: ColorConstant.darkTitleChallengeMissionsList,
+    fontSize: DimensionConstant.titleMedium,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle lightProgressTextChallengeMissionsList = TextStyle(
+    fontSize: DimensionConstant.captionText,
+    color: ColorConstant.lightProgressTextChallengeMissionsList,
+  );
+  static const TextStyle darkProgressTextChallengeMissionsList = TextStyle(
+    fontSize: DimensionConstant.captionText,
+    color: ColorConstant.darkProgressTextChallengeMissionsList,
+  );
+  static const TextStyle lightDescriptionChallengeMissionsList = TextStyle(
+    fontSize: DimensionConstant.bodyText,
+    color: ColorConstant.lightItemChallengeMissionsList,
+  );
+  static const TextStyle darkDescriptionChallengeMissionsList = TextStyle(
+    fontSize: DimensionConstant.bodyText,
+    color: ColorConstant.darkItemChallengeMissionsList,
+  );
+
+
 }

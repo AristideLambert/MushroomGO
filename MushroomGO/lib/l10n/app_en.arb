@@ -110,5 +110,13 @@
   "challengeMushroomsEpic": "Epic",
     "@challengeMushroomsEpic": {
     "description": "Challenge Mushrooms (Epic)"
+  },
+  "challengeMissionsWeakly": "Weekly Missions",
+      "@challengeMissionsWeakly": {
+      "description": "challenge Missions (Weakly)"
+  },
+  "challengeMissionsMonthly": "Monthly Missions",
+      "@challengeMissionsMonthly": {
+      "description": "challenge Missions (Monthly)"
   }
 }

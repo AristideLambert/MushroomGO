@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mushroom_go/constant/text_style_constant.dart';
+import 'package:mushroom_go/theme/challenge_missions_list_theme.dart';
 import 'package:mushroom_go/theme/button_setting_container_theme.dart';
 import 'package:mushroom_go/theme/button_setting_theme.dart';
 import 'package:mushroom_go/theme/button_standard_theme.dart';
@@ -53,7 +54,16 @@ class ThemeConstant{
         backgroundColor: ColorConstant.lightBackgroundChallengeMushroomsList,
         titleStyle: TextStyleConstant.lightTitleChallengeMushroomsList,
         titleItemStyle: TextStyleConstant.lightTitleItemChallengeMushroomsList
-      )
+      ),
+      const ChallengeMissionListTheme(
+        cardBackgroundColor: ColorConstant.lightBackgroundChallengeMissionsList,
+        progressBarBackgroundColor: ColorConstant.lightProgressBarBackgroundChallengeMissionsList,
+        progressBarForegroundColor: ColorConstant.lightProgressBarForegroundChallengeMissionsList,
+        titleStyle: TextStyleConstant.lightTitleChallengeMissionsList,
+        descriptionStyle: TextStyleConstant.lightDescriptionChallengeMissionsList,
+        progressTextStyle: TextStyleConstant.lightProgressTextChallengeMissionsList,
+      ),
+
     ]
   );
   static ThemeData darkTheme = ThemeData(
@@ -97,7 +107,16 @@ class ThemeConstant{
           backgroundColor: ColorConstant.darkBackgroundChallengeMushroomsList,
           titleStyle: TextStyleConstant.darkTitleChallengeMushroomsList,
           titleItemStyle: TextStyleConstant.darkTitleItemChallengeMushroomsList
-        )
+        ),
+        const ChallengeMissionListTheme(
+          cardBackgroundColor: ColorConstant.darkBackgroundChallengeMissionsList,
+          progressBarBackgroundColor: ColorConstant.darkProgressBarBackgroundChallengeMissionsList,
+          progressBarForegroundColor: ColorConstant.darkProgressBarForegroundChallengeMissionsList,
+          titleStyle: TextStyleConstant.darkTitleChallengeMissionsList,
+          descriptionStyle: TextStyleConstant.darkDescriptionChallengeMissionsList,
+          progressTextStyle: TextStyleConstant.darkProgressTextChallengeMissionsList,
+        ),
+
       ]
   );
 }
