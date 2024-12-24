@@ -50,4 +50,10 @@ class ColorConstant{
   static const Color darkTitleChallengeMushroomsList = CupertinoColors.white;
   static const Color lightTitleItemChallengeMushroomsList = CupertinoColors.label;
   static const Color darkTitleItemChallengeMushroomsList = CupertinoColors.white;
+
+  // TextInputPolicy
+  static const Color lightPolicyTextInputPolicy = CupertinoColors.label;
+  static const Color darkPolicyTextInputPolicy = CupertinoColors.white;
+  static const Color respectIconTextInputPolicy = CupertinoColors.systemGreen;
+  static const Color notRespectIconTextInputPolicy = CupertinoColors.systemRed;
 }

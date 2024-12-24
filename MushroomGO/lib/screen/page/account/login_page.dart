@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/screen/widget/button/standard/button_standard.dart';
 import 'package:mushroom_go/screen/widget/textfield/text_input.dart';
+import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -31,7 +32,7 @@ class LoginPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           SizedBox(height: 20,),
-              Icon(Icons.ac_unit, size: MediaQuery.of(context).size.width * 0.20,),
+              Icon(MushroomGOFontUtils.mushroomScan, color: Colors.white, size: MediaQuery.of(context).size.width * 0.20,),
                           SizedBox(height: 20,),
               Text("Sign in to your account", style: TextStyle(
                 color: Colors.white,
@@ -48,6 +49,8 @@ class LoginPage extends StatelessWidget {
                           ),),
                           SizedBox(height: 30,),
                           Card(
+                            elevation: 0.0,
+                            color: Theme.of(context).appBarTheme.backgroundColor,
                             margin: EdgeInsets.symmetric(horizontal: 25),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -56,9 +59,9 @@ class LoginPage extends StatelessWidget {
                               padding: const EdgeInsets.all(25.0),
                               child: Column(
                                 children: [
-                                  TextInput(),
-                                  SizedBox(height: 25,),
-                                  TextInput(),
+                                  TextInput(textInputAction: TextInputAction.send, keyboardType: TextInputType.text, placeHolder: "Enter text", clearText: true, title: "Email"),
+                                  SizedBox(height: 15,),
+                                  TextInput(textInputAction: TextInputAction.done, keyboardType: TextInputType.text, placeHolder: "Enter text", password: true, passwordPolicy: true, title: "Password"),
                                   Align(
                                     alignment: AlignmentDirectional.centerEnd,
                                     child: Text("Forgot password ?"),
@@ -69,9 +72,9 @@ class LoginPage extends StatelessWidget {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text("Don't have an account ?"),
+                                      Text("Don't have an account ?", style: TextStyle(color: Colors.white),),
                                       SizedBox(width: 10,),
-                                      Text("Sign up ?"),
+                                      Text("Sign up ?", style: TextStyle(color: Theme.of(context).primaryColor, fontWeight: FontWeight.w800),),
                                     ],
                                   ),
                                 ],

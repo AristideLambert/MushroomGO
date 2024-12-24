@@ -8,6 +8,7 @@ import 'package:mushroom_go/theme/challenge_mushrooms_list_theme.dart';
 import 'package:mushroom_go/theme/navigation_tab_bottom_theme.dart';
 import 'package:mushroom_go/theme/navigation_tab_top_theme.dart';
 import 'package:mushroom_go/theme/profile_container_theme.dart';
+import 'package:mushroom_go/theme/text_input_policy_theme.dart';
 import 'color_constant.dart';
 
 class ThemeConstant{
@@ -47,12 +48,15 @@ class ThemeConstant{
       const ProfileContainerTheme(
         backgroundColor: ColorConstant.lightBackgroundProfileContainer,
         nameStyle: TextStyleConstant.lightNameProfileContainer,
-        mailStyle: TextStyleConstant.lightMailProfileContainer,
+        mailStyle: TextStyleConstant.lightMailProfileContainer
       ),
       const ChallengeMushroomsListTheme(
         backgroundColor: ColorConstant.lightBackgroundChallengeMushroomsList,
         titleStyle: TextStyleConstant.lightTitleChallengeMushroomsList,
         titleItemStyle: TextStyleConstant.lightTitleItemChallengeMushroomsList
+      ),
+      const TextInputPolicyTheme(
+        policyStyle: TextStyleConstant.lightPolicyTextInputPolicy
       )
     ]
   );
@@ -97,6 +101,9 @@ class ThemeConstant{
           backgroundColor: ColorConstant.darkBackgroundChallengeMushroomsList,
           titleStyle: TextStyleConstant.darkTitleChallengeMushroomsList,
           titleItemStyle: TextStyleConstant.darkTitleItemChallengeMushroomsList
+        ),
+        const TextInputPolicyTheme(
+            policyStyle: TextStyleConstant.darkPolicyTextInputPolicy
         )
       ]
   );

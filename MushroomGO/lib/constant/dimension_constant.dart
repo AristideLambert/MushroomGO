@@ -74,4 +74,8 @@ class DimensionConstant {
   static const double heightTitleItemChallengeMushroomsList = 35.0;
   static const double radiusItemChallengeMushroomsList = 16.0;
   static const double spaceChallengeMushroomsList = 5.0;
+
+  // TextInputPolicy
+  static const double sizeIconTextInputPolicy = captionText;
+  static const double spaceTextInputPolicy = 5.0;
 }

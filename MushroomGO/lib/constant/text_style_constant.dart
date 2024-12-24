@@ -156,4 +156,13 @@ class TextStyleConstant {
     fontSize: DimensionConstant.bodyText,
   );
 
+  // TextInputPolicy
+  static const TextStyle lightPolicyTextInputPolicy = TextStyle(
+    color: ColorConstant.lightPolicyTextInputPolicy,
+    fontSize: DimensionConstant.captionText,
+  );
+  static const TextStyle darkPolicyTextInputPolicy = TextStyle(
+    color: ColorConstant.darkPolicyTextInputPolicy,
+    fontSize: DimensionConstant.captionText,
+  );
 }
