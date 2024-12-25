@@ -29,7 +29,7 @@ class _TextInputPolicyState extends State<TextInputPolicy> {
         //TODO: Update icon
         Icon(
           widget.respect ? Icons.check_circle : MushroomGOFontUtils.clear,
-          color: widget.respect ? _theme.respect : _theme.notRespect,
+          color: widget.respect ? _theme.respectColor : _theme.notRespectColor,
           size: _theme.sizeIcon
         ),
         SizedBox(width: _theme.space,),

@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
-import 'package:mushroom_go/constant/dimension_constant.dart';
+import 'package:flutter/material.dart';
 import 'package:mushroom_go/screen/widget/textfield/text_input_policy.dart';
+import 'package:mushroom_go/theme/text_input_theme.dart';
+import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 import 'package:mushroom_go/utils/text/password_utils.dart';
 
 class TextInput extends StatefulWidget {
+  final TextEditingController controller;
   final TextInputAction textInputAction;
   final TextInputType keyboardType;
   final String? title;
@@ -12,9 +15,11 @@ class TextInput extends StatefulWidget {
   final bool password;
   final bool clearText;
   final bool passwordPolicy;
+  final TextInputTheme? theme;
 
   const TextInput(
     {super.key,
+      required this.controller,
       required this.textInputAction,
       required this.keyboardType,
       this.title,
@@ -22,15 +27,23 @@ class TextInput extends StatefulWidget {
       this.leftIcon,
       this.password = false,
       this.clearText = false,
-      this.passwordPolicy = false});
+      this.passwordPolicy = false,
+      this.theme
+    });
 
   @override
   State<TextInput> createState() => _TextInputState();
 }
 
 class _TextInputState extends State<TextInput> {
+  late TextInputTheme _theme;
+  late TextEditingController _controller;
   late bool _title;
   late bool _policy;
+  late bool _leftIcon;
+  bool _hasText = false;
+  bool _clearText = false;
+  bool _passwordVisible = false;
   bool _length = false;
   bool _upperCase = false;
   bool _lowerCase = false;
@@ -39,8 +52,23 @@ class _TextInputState extends State<TextInput> {
   @override
   void initState() {
     super.initState();
+    _controller = widget.controller;
+    _controller.addListener((){
+      setState(() {
+        _hasText = _controller.text.isNotEmpty;
+        _clearText = widget.clearText && _hasText && !widget.password;
+      });
+    });
+    _passwordVisible = !widget.password;
     _title = widget.title != null && widget.title!.isNotEmpty;
     _policy = widget.password && widget.passwordPolicy;
+    _leftIcon = widget.leftIcon != null;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _theme = widget.theme ?? Theme.of(context).extension<TextInputTheme>()!;
   }
 
   @override
@@ -50,54 +78,92 @@ class _TextInputState extends State<TextInput> {
       children: [
         if(_title)
           Padding(
-            padding: const EdgeInsets.only(left: 8.0, bottom: 5.0),
-            child: Text(widget.title!, style: TextStyle(
-              fontSize: DimensionConstant.bodyText,
-              fontWeight: FontWeight.bold,
-              color: CupertinoColors.white
-            ),),
+            padding: EdgeInsets.only(left: _theme.leftPaddingTitle, bottom: _theme.bottomPaddingTitle),
+            child: Text(widget.title!, style: _theme.titleStyle),
           ),
-        SizedBox(
-          height: 35,
-          child: CupertinoTheme(
-            data: CupertinoThemeData(
-
-              primaryColor: CupertinoColors.systemRed, // Couleur du bouton clear
-            ),
-            child: CupertinoTextField(
-              clearButtonMode: widget.clearText ? OverlayVisibilityMode.editing : OverlayVisibilityMode.never,
-              obscureText: widget.password,
-              placeholder: widget.placeHolder,
-              keyboardType: widget.keyboardType,
-              textInputAction: widget.textInputAction,
-              style: TextStyle(fontSize: DimensionConstant.bodyText, color: CupertinoColors.white),
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              decoration: BoxDecoration(
-                color: Color(0xFF2E2E2E), //F1F1F3
-                borderRadius: BorderRadius.circular(10),
-              ),
-              prefix: widget.leftIcon != null ? Padding(
-                padding: const EdgeInsets.only(left: 8),
-                child: Icon(
-                  widget.leftIcon,
-                  size: 20,
+        Stack(
+          alignment: AlignmentDirectional.centerEnd,
+          children: [
+            Stack(
+              alignment: AlignmentDirectional.centerStart,
+              children:[
+                SizedBox(
+                  height: _theme.heightInput,
+                  child: CupertinoTheme(
+                    data: CupertinoThemeData(
+                      primaryColor: _theme.selectionCursorColor
+                    ),
+                    child: CupertinoTextField(
+                      controller: _controller,
+                      obscureText: !_passwordVisible,
+                      placeholder: widget.placeHolder,
+                      placeholderStyle: _theme.placeHolderStyle,
+                      keyboardType: widget.keyboardType,
+                      textInputAction: widget.textInputAction,
+                      style: _theme.inputStyle,
+                      padding: EdgeInsets.only(left: _leftIcon ? _theme.leftPaddingInputIcon : _theme.leftPaddingInput, right: _clearText ? _theme.rightPaddingInputIcon : _theme.rightPaddingInput),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: _theme.borderInputColor, width: _theme.borderInput),
+                        borderRadius: BorderRadius.circular(_theme.radiusBorderInput),
+                      ),
+                      onChanged: _policy ? (password) {
+                        setState(() {
+                          _length = PasswordUtils.checkLength(password);
+                          _upperCase = PasswordUtils.checkUpperCase(password);
+                          _lowerCase = PasswordUtils.checkLowerCase(password);
+                          _specialCharacter = PasswordUtils.checkSpecialCharacter(password);
+                        });
+                      } : null,
+                    ),
+                  ),
                 ),
-              ) : null,
-              onChanged: _policy ?
-                  (password){
-                    setState(() {
-                      _length = PasswordUtils.checkLength(password);
-                      _upperCase = PasswordUtils.checkUpperCase(password);
-                      _lowerCase = PasswordUtils.checkLowerCase(password);
-                      _specialCharacter = PasswordUtils.checkSpecialCharacter(password);
-                    });
-                  } : null,
+                if(_leftIcon)
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: _theme.marginLeftIcon),
+                    child: Icon(
+                      widget.leftIcon,
+                      color: _theme.leftIconColor,
+                      size: _theme.sizeLeftIcon,
+                    )
+                  ),
+              ]
             ),
-          ),
+            if(_clearText)
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: _theme.marginRightIcon),
+                child: GestureDetector(
+                    onTap: (){
+                      _controller.clear();
+                    },
+                    child: Icon(
+                      MushroomGOFontUtils.clear,
+                      color: _theme.rightIconColor,
+                      size: _theme.sizeRightIcon,
+                    )
+                )
+              )
+            else if(widget.password)
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: _theme.marginRightIcon),
+                child: GestureDetector(
+                  onTap: (){
+                    setState(() {
+                      _passwordVisible = widget.password && !_passwordVisible;
+                    });
+                  },
+                  child: Icon(
+                    // TODO: Update icon
+                    _passwordVisible ? MushroomGOFontUtils.history : MushroomGOFontUtils.mushroomScan,
+                    color: _theme.rightIconColor,
+                    size: _theme.sizeRightIcon,
+                  )
+                )
+              )
+          ]
         ),
         if(_policy)
           Padding(
-            padding: const EdgeInsets.only(left: 8.0, top: 5.0),
+            padding: EdgeInsets.only(left: _theme.leftPaddingPolicy, top: _theme.topPaddingPolicy),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

@@ -5,6 +5,8 @@ import 'package:mushroom_go/screen/widget/textfield/text_input.dart';
 import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 
 class LoginPage extends StatelessWidget {
+  TextEditingController controllerEmail = TextEditingController();
+  TextEditingController controllerPassword = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -59,9 +61,9 @@ class LoginPage extends StatelessWidget {
                               padding: const EdgeInsets.all(25.0),
                               child: Column(
                                 children: [
-                                  TextInput(textInputAction: TextInputAction.send, keyboardType: TextInputType.text, placeHolder: "Enter text", clearText: true, title: "Email"),
+                                  TextInput(controller: controllerEmail, textInputAction: TextInputAction.send, keyboardType: TextInputType.text, placeHolder: "Enter text", clearText: true, title: "Email", leftIcon: MushroomGOFontUtils.search),
                                   SizedBox(height: 15,),
-                                  TextInput(textInputAction: TextInputAction.done, keyboardType: TextInputType.text, placeHolder: "Enter text", password: true, passwordPolicy: true, title: "Password"),
+                                  TextInput(controller: controllerPassword, textInputAction: TextInputAction.done, keyboardType: TextInputType.text, placeHolder: "Enter text", password: true, passwordPolicy: true, title: "Password"),
                                   Align(
                                     alignment: AlignmentDirectional.centerEnd,
                                     child: Text("Forgot password ?"),

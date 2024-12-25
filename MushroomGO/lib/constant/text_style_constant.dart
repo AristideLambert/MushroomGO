@@ -156,6 +156,38 @@ class TextStyleConstant {
     fontSize: DimensionConstant.bodyText,
   );
 
+  // TextInput
+  static const TextStyle lightTitleTextInput = TextStyle(
+    color: ColorConstant.lightTitleTextInput,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle darkTitleTextInput = TextStyle(
+    color: ColorConstant.darkTitleTextInput,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle lightPlaceHolderTextInput = TextStyle(
+    color: ColorConstant.lightPlaceHolderTextInput,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.normal,
+  );
+  static const TextStyle darkPlaceHolderTextInput = TextStyle(
+    color: ColorConstant.darkPlaceHolderTextInput,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.normal,
+  );
+  static const TextStyle lightInputTextInput = TextStyle(
+    color: ColorConstant.lightInputTextInput,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.normal,
+  );
+  static const TextStyle darkInputTextInput = TextStyle(
+    color: ColorConstant.darkInputTextInput,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.normal,
+  );
+
   // TextInputPolicy
   static const TextStyle lightPolicyTextInputPolicy = TextStyle(
     color: ColorConstant.lightPolicyTextInputPolicy,

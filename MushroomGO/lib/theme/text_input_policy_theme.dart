@@ -4,15 +4,15 @@ import 'package:mushroom_go/constant/text_style_constant.dart';
 import 'package:mushroom_go/constant/color_constant.dart';
 
 class TextInputPolicyTheme extends ThemeExtension<TextInputPolicyTheme> {
-  final Color respect;
-  final Color notRespect;
+  final Color respectColor;
+  final Color notRespectColor;
   final double sizeIcon;
   final double space;
   final TextStyle policyStyle;
 
   const TextInputPolicyTheme({
-    this.respect = ColorConstant.respectIconTextInputPolicy,
-    this.notRespect = ColorConstant.notRespectIconTextInputPolicy,
+    this.respectColor = ColorConstant.respectIconTextInputPolicy,
+    this.notRespectColor = ColorConstant.notRespectIconTextInputPolicy,
     this.sizeIcon = DimensionConstant.sizeIconTextInputPolicy,
     this.space = DimensionConstant.spaceTextInputPolicy,
     this.policyStyle = TextStyleConstant.lightPolicyTextInputPolicy,
@@ -20,15 +20,15 @@ class TextInputPolicyTheme extends ThemeExtension<TextInputPolicyTheme> {
 
   @override
   TextInputPolicyTheme copyWith({
-    Color? respect,
-    Color? notRespect,
+    Color? respectColor,
+    Color? notRespectColor,
     double? sizeIcon,
     double? space,
     TextStyle? policyStyle,
   }) {
     return TextInputPolicyTheme(
-      respect: respect ?? this.respect,
-      notRespect: notRespect ?? this.notRespect,
+      respectColor: respectColor ?? this.respectColor,
+      notRespectColor: notRespectColor ?? this.notRespectColor,
       sizeIcon: sizeIcon ?? this.sizeIcon,
       space: space ?? this.space,
       policyStyle: policyStyle ?? this.policyStyle,
@@ -39,8 +39,8 @@ class TextInputPolicyTheme extends ThemeExtension<TextInputPolicyTheme> {
   TextInputPolicyTheme lerp(ThemeExtension<TextInputPolicyTheme>? other, double t) {
     if (other is! TextInputPolicyTheme) return this;
     return TextInputPolicyTheme(
-      respect: Color.lerp(respect, other.respect, t)!,
-      notRespect: Color.lerp(notRespect, other.notRespect, t)!,
+      respectColor: Color.lerp(respectColor, other.respectColor, t)!,
+      notRespectColor: Color.lerp(notRespectColor, other.notRespectColor, t)!,
       sizeIcon: sizeIcon + (other.sizeIcon - sizeIcon) * t,
       space: space + (other.space - space) * t,
       policyStyle: TextStyle.lerp(policyStyle, other.policyStyle, t)!,

@@ -16,4 +16,8 @@ class PasswordUtils{
   static bool checkSpecialCharacter(String password) {
     return RegExp(r'[^\w\s]').hasMatch(password);
   }
+
+  static bool checkValid(String password){
+    return checkLength(password) && checkUpperCase(password) && checkLowerCase(password) && checkSpecialCharacter(password);
+  }
 }

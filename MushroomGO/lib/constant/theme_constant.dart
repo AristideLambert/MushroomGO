@@ -9,6 +9,7 @@ import 'package:mushroom_go/theme/navigation_tab_bottom_theme.dart';
 import 'package:mushroom_go/theme/navigation_tab_top_theme.dart';
 import 'package:mushroom_go/theme/profile_container_theme.dart';
 import 'package:mushroom_go/theme/text_input_policy_theme.dart';
+import 'package:mushroom_go/theme/text_input_theme.dart';
 import 'color_constant.dart';
 
 class ThemeConstant{
@@ -22,6 +23,11 @@ class ThemeConstant{
     ),
     bottomAppBarTheme: const BottomAppBarTheme(
         color: CupertinoColors.systemBackground
+    ),
+    textSelectionTheme: TextSelectionThemeData(
+        selectionHandleColor: ColorConstant.primaryColor,
+        cursorColor: ColorConstant.primaryColor,
+        selectionColor: ColorConstant.primaryColor.withOpacity(0.3)
     ),
   ).copyWith(
     extensions: [
@@ -55,6 +61,11 @@ class ThemeConstant{
         titleStyle: TextStyleConstant.lightTitleChallengeMushroomsList,
         titleItemStyle: TextStyleConstant.lightTitleItemChallengeMushroomsList
       ),
+      const TextInputTheme(
+          titleStyle: TextStyleConstant.lightTitleTextInput,
+          placeHolderStyle: TextStyleConstant.lightPlaceHolderTextInput,
+          inputStyle: TextStyleConstant.lightInputTextInput
+      ),
       const TextInputPolicyTheme(
         policyStyle: TextStyleConstant.lightPolicyTextInputPolicy
       )
@@ -69,6 +80,11 @@ class ThemeConstant{
     ),
     bottomAppBarTheme: const BottomAppBarTheme(
         color: CupertinoColors.darkBackgroundGray
+    ),
+    textSelectionTheme: TextSelectionThemeData(
+        selectionHandleColor: ColorConstant.primaryColor,
+        cursorColor: ColorConstant.primaryColor,
+        selectionColor: ColorConstant.primaryColor.withOpacity(0.3)
     ),
   ).copyWith(
       extensions: [
@@ -95,12 +111,17 @@ class ThemeConstant{
         const ProfileContainerTheme(
           backgroundColor: ColorConstant.darkBackgroundProfileContainer,
           nameStyle: TextStyleConstant.darkNameProfileContainer,
-          mailStyle: TextStyleConstant.darkMailProfileContainer,
+          mailStyle: TextStyleConstant.darkMailProfileContainer
         ),
         const ChallengeMushroomsListTheme(
           backgroundColor: ColorConstant.darkBackgroundChallengeMushroomsList,
           titleStyle: TextStyleConstant.darkTitleChallengeMushroomsList,
           titleItemStyle: TextStyleConstant.darkTitleItemChallengeMushroomsList
+        ),
+        const TextInputTheme(
+          titleStyle: TextStyleConstant.darkTitleTextInput,
+          placeHolderStyle: TextStyleConstant.darkPlaceHolderTextInput,
+          inputStyle: TextStyleConstant.darkInputTextInput
         ),
         const TextInputPolicyTheme(
             policyStyle: TextStyleConstant.darkPolicyTextInputPolicy

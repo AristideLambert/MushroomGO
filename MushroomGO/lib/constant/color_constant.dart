@@ -51,6 +51,18 @@ class ColorConstant{
   static const Color lightTitleItemChallengeMushroomsList = CupertinoColors.label;
   static const Color darkTitleItemChallengeMushroomsList = CupertinoColors.white;
 
+  // TextInput
+  static const Color lightTitleTextInput = CupertinoColors.label;
+  static const Color darkTitleTextInput = CupertinoColors.white;
+  static const Color lightPlaceHolderTextInput = CupertinoColors.systemGrey;
+  static const Color darkPlaceHolderTextInput = CupertinoColors.systemGrey;
+  static const Color lightInputTextInput = CupertinoColors.label;
+  static const Color darkInputTextInput = CupertinoColors.white;
+  static const Color selectionCursorTextInput = primaryColor;
+  static const Color borderInputTextInput = CupertinoColors.systemGrey;
+  static const Color leftIconTextInput = CupertinoColors.systemGrey;
+  static const Color rightIconTextInput = CupertinoColors.systemGrey;
+
   // TextInputPolicy
   static const Color lightPolicyTextInputPolicy = CupertinoColors.label;
   static const Color darkPolicyTextInputPolicy = CupertinoColors.white;

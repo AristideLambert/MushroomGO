@@ -75,6 +75,23 @@ class DimensionConstant {
   static const double radiusItemChallengeMushroomsList = 16.0;
   static const double spaceChallengeMushroomsList = 5.0;
 
+  // TextInput
+  static const double leftPaddingTitleTextInput = 10.0;
+  static const double bottomPaddingTitleTextInput = 5.0;
+  static const double heightInputTextInput = 35.0;
+  static const double sizeLeftIconTextInput = 16.0;
+  static const double marginLeftIconTextInput = 10.0;
+  static const double sizeRightIconTextInput = 16.0;
+  static const double marginRightIconTextInput = 10.0;
+  static const double leftPaddingInputTextInput = 10.0;
+  static const double leftPaddingInputIconTextInput = (leftPaddingInputTextInput * 2) + sizeLeftIconTextInput;
+  static const double rightPaddingInputTextInput = 10.0;
+  static const double rightPaddingInputIconTextInput = (rightPaddingInputTextInput * 2) + sizeRightIconTextInput;
+  static const double borderInputTextInput = 0.5;
+  static const double radiusBorderInputTextInput = 10.0;
+  static const double leftPaddingPolicyTextInput = 10.0;
+  static const double topPaddingPolicyTextInput = 5.0;
+
   // TextInputPolicy
   static const double sizeIconTextInputPolicy = captionText;
   static const double spaceTextInputPolicy = 5.0;
