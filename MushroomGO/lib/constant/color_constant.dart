@@ -68,4 +68,8 @@ class ColorConstant{
   static const Color darkPolicyTextInputPolicy = CupertinoColors.white;
   static const Color respectIconTextInputPolicy = CupertinoColors.systemGreen;
   static const Color notRespectIconTextInputPolicy = CupertinoColors.systemRed;
+
+  // TextOutput
+  static const Color lightTextOutput = CupertinoColors.label;
+  static const Color darkTextOutput = CupertinoColors.white;
 }

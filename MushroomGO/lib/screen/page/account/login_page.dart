@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/screen/widget/button/standard/button_standard.dart';
+import 'package:mushroom_go/screen/widget/text/text_output.dart';
 import 'package:mushroom_go/screen/widget/textfield/text_input.dart';
 import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   TextEditingController controllerEmail = TextEditingController();
+
   TextEditingController controllerPassword = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -36,6 +47,7 @@ class LoginPage extends StatelessWidget {
                           SizedBox(height: 20,),
               Icon(MushroomGOFontUtils.mushroomScan, color: Colors.white, size: MediaQuery.of(context).size.width * 0.20,),
                           SizedBox(height: 20,),
+              TextOutput(text: "Sign in to your account", type: Type.largeTitle, fontColor: Colors.white,),
               Text("Sign in to your account", style: TextStyle(
                 color: Colors.white,
                 fontSize: DimensionConstant.titleLarge,
@@ -53,30 +65,31 @@ class LoginPage extends StatelessWidget {
                           Card(
                             elevation: 0.0,
                             color: Theme.of(context).appBarTheme.backgroundColor,
-                            margin: EdgeInsets.symmetric(horizontal: 25),
+                            margin: EdgeInsets.symmetric(horizontal: 20),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(25.0),
+                              padding: const EdgeInsets.all(20.0),
                               child: Column(
                                 children: [
-                                  TextInput(controller: controllerEmail, textInputAction: TextInputAction.send, keyboardType: TextInputType.text, placeHolder: "Enter text", clearText: true, title: "Email", leftIcon: MushroomGOFontUtils.search),
-                                  SizedBox(height: 15,),
-                                  TextInput(controller: controllerPassword, textInputAction: TextInputAction.done, keyboardType: TextInputType.text, placeHolder: "Enter text", password: true, passwordPolicy: true, title: "Password"),
+                                  TextInput(controller: controllerEmail, textInputAction: TextInputAction.next, keyboardType: TextInputType.emailAddress, placeHolder: "aristide.lambert@student.hepl.be", clearText: true, title: "Email"),
+                                  SizedBox(height: 20,),
+                                  TextInput(controller: controllerPassword, textInputAction: TextInputAction.done, keyboardType: TextInputType.visiblePassword, placeHolder: "••••••••••••••", password: true, title: "Password"),
+                                  SizedBox(height: 5,),
                                   Align(
                                     alignment: AlignmentDirectional.centerEnd,
                                     child: Text("Forgot password ?"),
                                   ),
-                                  SizedBox(height: 25,),
+                                  SizedBox(height: 20,),
                                   ButtonStandard(title: "Login", onTap: null),
-                                  SizedBox(height: 25,),
+                                  SizedBox(height: 20,),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text("Don't have an account ?", style: TextStyle(color: Colors.white),),
-                                      SizedBox(width: 10,),
-                                      Text("Sign up ?", style: TextStyle(color: Theme.of(context).primaryColor, fontWeight: FontWeight.w800),),
+                                      Text("Don't have an account ?", style: TextStyle(color: Colors.black),),
+                                      SizedBox(width: 5,),
+                                      Text("Sign up", style: TextStyle(color: Theme.of(context).primaryColor, fontWeight: FontWeight.w800),),
                                     ],
                                   ),
                                 ],

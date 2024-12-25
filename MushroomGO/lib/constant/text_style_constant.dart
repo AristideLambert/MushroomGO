@@ -197,4 +197,46 @@ class TextStyleConstant {
     color: ColorConstant.darkPolicyTextInputPolicy,
     fontSize: DimensionConstant.captionText,
   );
+
+  // TextOutput
+  static const TextStyle lightBodyTextOutput = TextStyle(
+    color: ColorConstant.lightTextOutput,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.normal,
+  );
+  static const TextStyle darkBodyTextOutput = TextStyle(
+    color: ColorConstant.darkTextOutput,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.normal,
+  );
+  static const TextStyle lightSmallTitleTextOutput = TextStyle(
+    color: ColorConstant.lightTextOutput,
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle darkSmallTitleTextOutput = TextStyle(
+    color: ColorConstant.darkTextOutput,
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle lightMediumTitleTextOutput = TextStyle(
+    color: ColorConstant.lightTextOutput,
+    fontSize: DimensionConstant.titleMedium,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle darkMediumTitleTextOutput = TextStyle(
+    color: ColorConstant.darkTextOutput,
+    fontSize: DimensionConstant.titleMedium,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle lightLargeTitleTextOutput = TextStyle(
+    color: ColorConstant.lightTextOutput,
+    fontSize: DimensionConstant.titleLarge,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle darkLargeTitleTextOutput = TextStyle(
+    color: ColorConstant.darkTextOutput,
+    fontSize: DimensionConstant.titleLarge,
+    fontWeight: FontWeight.bold,
+  );
 }

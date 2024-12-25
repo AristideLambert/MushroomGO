@@ -10,6 +10,7 @@ import 'package:mushroom_go/theme/navigation_tab_top_theme.dart';
 import 'package:mushroom_go/theme/profile_container_theme.dart';
 import 'package:mushroom_go/theme/text_input_policy_theme.dart';
 import 'package:mushroom_go/theme/text_input_theme.dart';
+import 'package:mushroom_go/theme/text_output_theme.dart';
 import 'color_constant.dart';
 
 class ThemeConstant{
@@ -68,6 +69,12 @@ class ThemeConstant{
       ),
       const TextInputPolicyTheme(
         policyStyle: TextStyleConstant.lightPolicyTextInputPolicy
+      ),
+      const TextOutputTheme(
+        bodyStyle: TextStyleConstant.lightBodyTextOutput,
+        smallTitleStyle: TextStyleConstant.lightSmallTitleTextOutput,
+        mediumTitleStyle: TextStyleConstant.lightMediumTitleTextOutput,
+        largeTitleStyle: TextStyleConstant.lightLargeTitleTextOutput,
       )
     ]
   );
@@ -125,6 +132,12 @@ class ThemeConstant{
         ),
         const TextInputPolicyTheme(
             policyStyle: TextStyleConstant.darkPolicyTextInputPolicy
+        ),
+        const TextOutputTheme(
+          bodyStyle: TextStyleConstant.darkBodyTextOutput,
+          smallTitleStyle: TextStyleConstant.darkSmallTitleTextOutput,
+          mediumTitleStyle: TextStyleConstant.darkMediumTitleTextOutput,
+          largeTitleStyle: TextStyleConstant.darkLargeTitleTextOutput,
         )
       ]
   );
