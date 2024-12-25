@@ -21,7 +21,7 @@ class NavigationConstant{
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch(settings.name){
       case mainPage:
-        return MaterialPageRoute(builder: (context) => LoginPage(), settings: settings);
+        return MaterialPageRoute(builder: (context) => RegistrationPage(), settings: settings);
       case loginPage:
         return MaterialPageRoute(builder: (context) => LoginPage(), settings: settings);
       case registrationPage:
