@@ -184,5 +184,17 @@ class TextStyleConstant {
     color: ColorConstant.darkItemChallengeMissionsList,
   );
 
+  // HomeNewsList
+  static const TextStyle lightTitleHomeNewsList = TextStyle(
+    color: ColorConstant.lightTitleHomeNewsList,
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle darkTitleHomeNewsList = TextStyle(
+    color: ColorConstant.darkTitleHomeNewsList,
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.bold,
+  );
+
 
 }

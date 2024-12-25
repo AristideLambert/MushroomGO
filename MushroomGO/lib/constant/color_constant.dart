@@ -60,8 +60,15 @@ class ColorConstant{
   static const Color darkItemChallengeMissionsList = CupertinoColors.white;
   static const Color lightProgressTextChallengeMissionsList = CupertinoColors.inactiveGray;
   static const Color darkProgressTextChallengeMissionsList = CupertinoColors.inactiveGray;
-  static const Color lightProgressBarForegroundChallengeMissionsList = CupertinoColors.activeGreen;
-  static const Color darkProgressBarForegroundChallengeMissionsList = CupertinoColors.activeBlue;
+  static const Color lightProgressBarForegroundChallengeMissionsList = primaryColor;
+  static const Color darkProgressBarForegroundChallengeMissionsList = primaryColor;
   static const Color lightProgressBarBackgroundChallengeMissionsList = CupertinoColors.quaternarySystemFill;
   static const Color darkProgressBarBackgroundChallengeMissionsList = CupertinoColors.systemFill;
+
+  // HomeNewsList
+  static const Color lightBackgroundHomeNewsList = CupertinoColors.systemGroupedBackground;
+  static const Color darkBackgroundHomeNewsList = CupertinoColors.darkBackgroundGray;
+  static const Color lightTitleHomeNewsList = CupertinoColors.label;
+  static const Color darkTitleHomeNewsList = CupertinoColors.white;
+
 }

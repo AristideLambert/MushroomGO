@@ -31,10 +31,14 @@ class _ChallengeMissionItemState extends State<ChallengeMissionItem> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ChallengeMissionListTheme>()!;
-    final double progress = (widget.currentProgress / widget.goal).clamp(theme.progressMin, theme.progressMax);
+  void didUpdateWidget(ChallengeMissionItem oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    theme = (widget.theme ?? Theme.of(context).extension<ChallengeMissionListTheme>())!;
+  }
 
+  @override
+  Widget build(BuildContext context) {
+    final double progress = (widget.currentProgress / widget.goal).clamp(theme.progressMin, theme.progressMax);
     return Card(
       margin: EdgeInsets.symmetric(vertical: theme.cardMargin),
       color: theme.cardBackgroundColor,

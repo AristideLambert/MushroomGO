@@ -16,9 +16,15 @@ class _ChallengeMushroomsListItemState extends State<ChallengeMushroomsListItem>
     super.didChangeDependencies();
     theme = (widget.theme ?? Theme.of(context).extension<ChallengeMushroomsListTheme>())!;
   }
+
+  @override
+  void didUpdateWidget(ChallengeMushroomsListItem oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    theme = (widget.theme ?? Theme.of(context).extension<ChallengeMushroomsListTheme>())!;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<ChallengeMushroomsListTheme>()!;
     return Container(
       padding: widget.index == 0 ? EdgeInsets.zero : EdgeInsets.only(left: theme.paddingBetweenItem),
       width: theme.widthItem,

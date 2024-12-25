@@ -83,4 +83,11 @@ class DimensionConstant {
   static const double progressMaxChallengeMissionsList = 1.0;
   static const double cardMarginChallengeMissionsList = 8.0;
   static const double progressBarHeightChallengeMissionsList = 8.0;
+
+  // HomeNewsList
+  static const double radiusItemHomeNewsList = 12.0;
+  static const double imageHeightHomeNewsList = 180.0;
+  static const double cardMarginHomeNewsList = 8.0;
+  static const double cardPaddingHomeNewsList = 12.0;
+
 }
