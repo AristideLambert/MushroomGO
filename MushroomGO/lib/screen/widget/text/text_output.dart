@@ -9,6 +9,7 @@ class TextOutput extends StatefulWidget {
   final double? fontSize;
   final Color? fontColor;
   final FontWeight? fontWeight;
+  final Function()? onTap;
   final TextOutputTheme? theme;
 
   const TextOutput({
@@ -18,6 +19,7 @@ class TextOutput extends StatefulWidget {
     this.fontSize,
     this.fontColor,
     this.fontWeight,
+    this.onTap,
     this.theme
   });
 
@@ -40,13 +42,16 @@ class _TextOutputState extends State<TextOutput> {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      widget.text,
-      style: TextStyle(
-        fontSize: _fontSize,
-        color: _fontColor,
-        fontWeight: _fontWeight,
-        decoration: TextDecoration.none
+    return GestureDetector(
+      onTap: widget.onTap,
+      child: Text(
+        widget.text,
+        style: TextStyle(
+          fontSize: _fontSize,
+          color: _fontColor,
+          fontWeight: _fontWeight,
+          decoration: TextDecoration.none
+        ),
       ),
     );
   }
