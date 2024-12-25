@@ -22,6 +22,16 @@ class DimensionConstant {
   // Setting
   static const double spaceSetting = 16.0;
 
+  // Login
+  static const int flexTopBackgroundLogin = 9;
+  static const int flexBottomBackgroundLogin = 11;
+  static const double spaceVerticalLogin = 20.0;
+  static const double spaceHorizontalLogin = 5.0;
+  static const double elevationLogin = 0.0;
+  static const double marginLogin = 20.0;
+  static const double paddingLogin = 20.0;
+  static const double radiusLogin = 10.0;
+
   // NavigationTabBottom
   static const double heightNavigationTabBottom = 56.0;
   static const double iconSizeNavigationTabBottom = 24.0;

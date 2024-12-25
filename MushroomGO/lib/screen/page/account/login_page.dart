@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mushroom_go/constant/color_constant.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/screen/widget/button/standard/button_standard.dart';
 import 'package:mushroom_go/screen/widget/text/text_output.dart';
@@ -15,88 +16,117 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   TextEditingController controllerEmail = TextEditingController();
-
   TextEditingController controllerPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.bottomCenter,
       children: [
-        Column(
+        Stack(
           children: [
-            Expanded(
-              flex: 9,
-              child: Container(
-                color: Theme.of(context).primaryColor,
-              ),
+            Column(
+              children: [
+                Expanded(
+                  flex: DimensionConstant.flexTopBackgroundLogin,
+                  child: Container(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+                Expanded(
+                  flex: DimensionConstant.flexBottomBackgroundLogin,
+                  child: Container(
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                  ),
+                ),
+              ],
             ),
-            Expanded(
-              flex: 11,
-              child: Container(
-                color: Theme.of(context).scaffoldBackgroundColor,
-              ),
-            ),
-          ],
+            SafeArea(
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: DimensionConstant.spaceVerticalLogin,),
+                    Icon(MushroomGOFontUtils.mushroomScan, color: ColorConstant.textLogin, size: MediaQuery.of(context).size.width * 0.20,),
+                    const SizedBox(height: DimensionConstant.spaceVerticalLogin,),
+                    const TextOutput(text: "Sign in to your account", type: Type.largeTitle, fontColor: ColorConstant.textLogin,),
+                    const SizedBox(height: DimensionConstant.spaceVerticalLogin,),
+                    const TextOutput(text: "Enter your email and password to log in", type: Type.smallTitle, fontColor: ColorConstant.textLogin, fontWeight: FontWeight.normal,),
+                    const SizedBox(height: DimensionConstant.spaceVerticalLogin + 10,),
+                    Card(
+                      elevation: DimensionConstant.elevationLogin,
+                      color: Theme.of(context).appBarTheme.backgroundColor,
+                      margin: const EdgeInsets.symmetric(horizontal: DimensionConstant.marginLogin),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(DimensionConstant.radiusLogin),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(DimensionConstant.paddingLogin),
+                        child: Column(
+                          children: [
+                            TextInput(
+                              controller: controllerEmail,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.emailAddress,
+                              placeHolder: "aristide.lambert@student.hepl.be",
+                              clearText: true,
+                              title: "Email"
+                            ),
+                            const SizedBox(height: DimensionConstant.spaceVerticalLogin,),
+                            TextInput(
+                              controller: controllerPassword,
+                              textInputAction: TextInputAction.done,
+                              keyboardType: TextInputType.visiblePassword,
+                              placeHolder: "••••••••••••••",
+                              password: true,
+                              title: "Password"
+                            ),
+                            const SizedBox(height: DimensionConstant.spaceHorizontalLogin,),
+                            Align(
+                              alignment: AlignmentDirectional.centerEnd,
+                              child: TextOutput(text: "Forgot password ?", fontColor: ColorConstant.textOnTapLogin, onTap: (){
+                                  // TODO: Password recovery
+                                  print("Forgot password");
+                                }
+                              )
+                            ),
+                            const SizedBox(height: DimensionConstant.spaceVerticalLogin,),
+                            ButtonStandard(title: "Login", onTap: (){
+                                // TODO: Login
+                                print("Login");
+                              }
+                            ),
+                            const SizedBox(height: DimensionConstant.spaceVerticalLogin,),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const TextOutput(text: "Don't have an account ?"),
+                                const SizedBox(width: DimensionConstant.spaceHorizontalLogin,),
+                                TextOutput(text: "Sign up", fontColor: ColorConstant.textOnTapLogin, fontWeight: FontWeight.bold, onTap: (){
+                                    // TODO: Register
+                                    print("Sign up");
+                                  },
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ]
+                )
+              )
+            )
+          ]
         ),
         SafeArea(
-            child: SizedBox(
-              width: double.infinity,
-              child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(height: 20,),
-              Icon(MushroomGOFontUtils.mushroomScan, color: Colors.white, size: MediaQuery.of(context).size.width * 0.20,),
-                          SizedBox(height: 20,),
-              TextOutput(text: "Sign in to your account", type: Type.largeTitle, fontColor: Colors.white,),
-              Text("Sign in to your account", style: TextStyle(
-                color: Colors.white,
-                fontSize: DimensionConstant.titleLarge,
-                fontWeight: FontWeight.bold,
-                decoration: TextDecoration.none,
-              ),),
-                          SizedBox(height: 20,),
-                          Text("Enter your email and password to log in", style: TextStyle(
-                            color: Colors.white,
-                            fontSize: DimensionConstant.titleSmall,
-                            fontWeight: FontWeight.normal,
-                            decoration: TextDecoration.none,
-                          ),),
-                          SizedBox(height: 30,),
-                          Card(
-                            elevation: 0.0,
-                            color: Theme.of(context).appBarTheme.backgroundColor,
-                            margin: EdgeInsets.symmetric(horizontal: 20),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Column(
-                                children: [
-                                  TextInput(controller: controllerEmail, textInputAction: TextInputAction.next, keyboardType: TextInputType.emailAddress, placeHolder: "aristide.lambert@student.hepl.be", clearText: true, title: "Email"),
-                                  SizedBox(height: 20,),
-                                  TextInput(controller: controllerPassword, textInputAction: TextInputAction.done, keyboardType: TextInputType.visiblePassword, placeHolder: "••••••••••••••", password: true, title: "Password"),
-                                  SizedBox(height: 5,),
-                                  Align(
-                                    alignment: AlignmentDirectional.centerEnd,
-                                    child: Text("Forgot password ?"),
-                                  ),
-                                  SizedBox(height: 20,),
-                                  ButtonStandard(title: "Login", onTap: null),
-                                  SizedBox(height: 20,),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text("Don't have an account ?", style: TextStyle(color: Colors.black),),
-                                      SizedBox(width: 5,),
-                                      Text("Sign up", style: TextStyle(color: Theme.of(context).primaryColor, fontWeight: FontWeight.w800),),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 25,),
-              ])))]);
+          child: Container(
+            margin: const EdgeInsets.only(bottom: DimensionConstant.marginLogin),
+            child: const TextOutput(text: "Skip", type: Type.mediumTitle, fontColor: ColorConstant.textOnTapLogin,),
+          )
+        ),
+      ]
+    );
   }
 }
