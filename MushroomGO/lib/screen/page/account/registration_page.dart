@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/color_constant.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
@@ -6,6 +7,7 @@ import 'package:mushroom_go/screen/widget/text/text_output.dart';
 import 'package:mushroom_go/screen/widget/textfield/text_input.dart';
 import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
@@ -19,6 +21,24 @@ class _RegistrationPageState extends State<RegistrationPage> {
   TextEditingController controllerName = TextEditingController();
   TextEditingController controllerEmail = TextEditingController();
   TextEditingController controllerPassword = TextEditingController();
+
+  void getDocumentById(String documentId) async {
+    try {
+      // Référence à la collection et au document
+      DocumentSnapshot doc = await FirebaseFirestore.instance
+          .collection('nom_de_la_collection')
+          .doc(documentId)
+          .get();
+
+      if (doc.exists) {
+        print("Document Data: ${doc.data()}");
+      } else {
+        print("Document does not exist!");
+      }
+    } catch (e) {
+      print("Error retrieving document: $e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -125,8 +145,21 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             const SizedBox(height: DimensionConstant.spaceVerticalRegister,),
                             ButtonStandard(
                               title: AppLocalizations.of(context)!.registerSignUp,
-                              onTap: (){
-                                // TODO: Sign up
+                              onTap: () async {
+                                try {
+                                  UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                                      email: controllerEmail.text,
+                                      password: controllerPassword.text
+                                  );
+                                } on FirebaseAuthException catch (e) {
+                                  if (e.code == 'weak-password') {
+                                    print('The password provided is too weak.');
+                                  } else if (e.code == 'email-already-in-use') {
+                                    print('The account already exists for that email.');
+                                  }
+                                } catch (e) {
+                                  print(e);
+                                }
                                 print("Sign up");
                               }
                             ),
@@ -141,7 +174,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                   fontColor: ColorConstant.textOnTapRegister,
                                   fontWeight: FontWeight.bold,
                                   onTap: (){
-                                    // TODO: Register
+                                    // TODO: Login
+                                    getDocumentById("xvDSWKO6utRnGsxOGoWsXE5eEKp1");
                                     /*Navigator.of(widget.mainContext).pushNamed(
                                       NavigationConstant.registrationPage
                                       );*/

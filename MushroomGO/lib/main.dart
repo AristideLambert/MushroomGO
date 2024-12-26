@@ -8,12 +8,14 @@ import 'package:mushroom_go/screen/page/navigation/navigator_observer_page.dart'
 import 'package:mushroom_go/utils/setting/setting_utils.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+  await Firebase.initializeApp();
   LocaleProvider localeProvider = LocaleProvider(locale: await SettingUtils.getLanguageSharedPreferences());
   ThemeProvider themeProvider = ThemeProvider(themeMode: await SettingUtils.getDisplaySharedPreferences());
   runApp(
@@ -25,6 +27,7 @@ void main() async {
       child: const MyApp(),
     )
   );
+
 }
 
 class MyApp extends StatelessWidget {
