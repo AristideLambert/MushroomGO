@@ -34,7 +34,7 @@
   "loginForgotPassword": "Mot de passe oublié ?",
   "loginLogin": "Se connecter",
   "loginHaveAccount": "Vous n'avez pas de compte ?",
-  "loginSignup": "S'inscrire",
+  "loginSignUp": "S'inscrire",
   "loginSkip": "Passer",
   "textInputPasswordLength": "Au moins 12 caractères",
   "textInputPasswordUpperCase": "Au moins un caractère majuscule",

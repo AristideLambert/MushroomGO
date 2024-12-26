@@ -1,3 +1,8 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/color_constant.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
@@ -19,6 +24,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
   TextEditingController controllerName = TextEditingController();
   TextEditingController controllerEmail = TextEditingController();
   TextEditingController controllerPassword = TextEditingController();
+
+  Future<void> test() async {
+    FirebaseFirestore.instance.collection("user").doc("xvDSWKO6utRnGsxOGoWsXE5eEKp1").get().then((onValue){
+      print(onValue.data());
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -125,9 +136,24 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             const SizedBox(height: DimensionConstant.spaceVerticalRegister,),
                             ButtonStandard(
                               title: AppLocalizations.of(context)!.registerSignUp,
-                              onTap: (){
+                              onTap: () async {
                                 // TODO: Sign up
                                 print("Sign up");
+                                try{
+                                  await FirebaseAuth.instance.createUserWithEmailAndPassword(email: controllerEmail.text, password: controllerPassword.text).then(
+                                      FirebaseFirestore.instance.collection("user").doc(FirebaseAuth.instance.currentUser?.uid).set({"firsname": controllerFirstname.text, "name": controllerName.text}) as FutureOr Function(UserCredential value)
+                                  );
+                                } on FirebaseAuthException catch (e) {
+                                  if (e.code == 'weak-password') {
+                                    print('The password provided is too weak.');
+                                  } else if (e.code == 'email-already-in-use') {
+                                    print('The account already exists for that email.');
+                                  }
+                                  print(e.code);
+                                }
+                                print(FirebaseAuth.instance.currentUser);
+
+
                               }
                             ),
                             const SizedBox(height: DimensionConstant.spaceVerticalRegister,),
@@ -141,6 +167,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                   fontColor: ColorConstant.textOnTapRegister,
                                   fontWeight: FontWeight.bold,
                                   onTap: (){
+                                    test();
                                     // TODO: Register
                                     /*Navigator.of(widget.mainContext).pushNamed(
                                       NavigationConstant.registrationPage
