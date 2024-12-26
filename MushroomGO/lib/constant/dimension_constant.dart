@@ -90,4 +90,14 @@ class DimensionConstant {
   static const double cardMarginHomeNewsList = 8.0;
   static const double cardPaddingHomeNewsList = 12.0;
 
+  // HomeForYouList
+  static const double identTitleHomeForYouList = 16.0;
+  static const double paddingBetweenItemHomeForYouList = 8.0;
+  static const double widthItemHomeForYouList = 180.0;
+  static const double sizeImageItemHomeForYouList = 180.0;
+  static const double heightTitleItemHomeForYouList = 35.0;
+  static const double radiusItemHomeForYouList = 16.0;
+  static const double spaceHomeForYouList = 5.0;
+  static const double textPaddingHomeForYouList = 8.0;
+  static const double textOpacityHomeForYouList = 0.9;
 }

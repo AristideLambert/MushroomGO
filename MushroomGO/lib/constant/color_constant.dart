@@ -71,4 +71,13 @@ class ColorConstant{
   static const Color lightTitleHomeNewsList = CupertinoColors.label;
   static const Color darkTitleHomeNewsList = CupertinoColors.white;
 
+  // HomeForYou
+  static const Color lightBackgroundHomeForYou = CupertinoColors.systemBackground;
+  static const Color darkBackgroundHomeForYou = CupertinoColors.darkBackgroundGray;
+  static const Color lightTitleHomeForYou = CupertinoColors.label;
+  static const Color darkTitleHomeForYou = CupertinoColors.white;
+  static const Color lightTitleItemHomeForYou = CupertinoColors.label;
+  static const Color darkTitleItemHomeForYou = CupertinoColors.white;
+  static const Color lightItemHomeForYou = CupertinoColors.white;
+
 }

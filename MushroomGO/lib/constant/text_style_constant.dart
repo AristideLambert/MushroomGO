@@ -196,5 +196,30 @@ class TextStyleConstant {
     fontWeight: FontWeight.bold,
   );
 
+  // HomeForYouList
+  static const TextStyle lightTitleHomeForYouList = TextStyle(
+    color: ColorConstant.lightTitleChallengeMushroomsList,
+    fontSize: DimensionConstant.titleMedium,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle darkTitleHomeForYouList = TextStyle(
+    color: ColorConstant.darkTitleChallengeMushroomsList,
+    fontSize: DimensionConstant.titleMedium,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle lightTitleItemHomeForYouList = TextStyle(
+    color: ColorConstant.lightTitleItemChallengeMushroomsList,
+    fontSize: DimensionConstant.bodyText,
+  );
+  static const TextStyle darkTitleItemHomeForYouList = TextStyle(
+    color: ColorConstant.darkTitleItemChallengeMushroomsList,
+    fontSize: DimensionConstant.bodyText,
+  );
+  static const TextStyle lightItemStyleHomeNewsList = TextStyle(
+    color: ColorConstant.lightItemHomeForYou,
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.bold,
+  );
+
 
 }

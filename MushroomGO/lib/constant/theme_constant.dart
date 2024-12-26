@@ -6,6 +6,7 @@ import 'package:mushroom_go/theme/button_setting_container_theme.dart';
 import 'package:mushroom_go/theme/button_setting_theme.dart';
 import 'package:mushroom_go/theme/button_standard_theme.dart';
 import 'package:mushroom_go/theme/challenge_mushrooms_list_theme.dart';
+import 'package:mushroom_go/theme/home_for_you_list_theme.dart';
 import 'package:mushroom_go/theme/home_news_list_theme.dart';
 import 'package:mushroom_go/theme/navigation_tab_bottom_theme.dart';
 import 'package:mushroom_go/theme/navigation_tab_top_theme.dart';
@@ -67,6 +68,11 @@ class ThemeConstant{
       const HomeNewsListTheme(
         titleStyle: TextStyleConstant.lightTitleHomeNewsList,
         cardBackgroundColor: ColorConstant.lightBackgroundHomeNewsList
+      ),
+      const HomeForYouListTheme(
+          backgroundColor: ColorConstant.lightBackgroundHomeForYou,
+          titleStyle: TextStyleConstant.lightTitleHomeForYouList,
+          titleItemStyle: TextStyleConstant.lightTitleItemHomeForYouList
       )
     ]
   );
@@ -123,6 +129,11 @@ class ThemeConstant{
         const HomeNewsListTheme(
             titleStyle: TextStyleConstant.darkTitleHomeNewsList,
             cardBackgroundColor: ColorConstant.darkBackgroundHomeNewsList
+        ),
+        const HomeForYouListTheme(
+            backgroundColor: ColorConstant.darkBackgroundHomeForYou,
+            titleStyle: TextStyleConstant.darkTitleHomeForYouList,
+            titleItemStyle: TextStyleConstant.darkTitleItemHomeForYouList
         )
       ]
   );
