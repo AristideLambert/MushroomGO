@@ -5,6 +5,7 @@ class MushroomGOFontUtils {
 
   static const _mushroomGOFont = 'MushroomGO';
 
+  static const IconData logo = IconData(0xe002, fontFamily: _mushroomGOFont);
   static const IconData home = IconData(0xe000, fontFamily: _mushroomGOFont);
   static const IconData map = IconData(0xe001, fontFamily: _mushroomGOFont);
   static const IconData mushroomScan = IconData(0xe002, fontFamily: _mushroomGOFont);

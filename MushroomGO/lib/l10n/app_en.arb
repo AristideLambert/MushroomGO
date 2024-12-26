@@ -110,5 +110,93 @@
   "challengeMushroomsEpic": "Epic",
     "@challengeMushroomsEpic": {
     "description": "Challenge Mushrooms (Epic)"
+  },
+  "loginTitle": "Sign in to your account",
+  "@loginTitle": {
+    "description": "Title (Login)"
+  },
+  "loginDescription": "Enter your email and password to log in",
+  "@loginDescription": {
+    "description": "Description (Login)"
+  },
+  "loginEmail": "Email",
+  "@loginEmail": {
+    "description": "Email (Login)"
+  },
+  "loginPassword": "Password",
+  "@loginPassword": {
+    "description": "Password (Login)"
+  },
+  "loginForgotPassword": "Forgot password ?",
+  "@loginForgotPassword": {
+    "description": "Forgot password (Login)"
+  },
+  "loginLogin": "Login",
+  "@loginLogin": {
+    "description": "Login (Login)"
+  },
+  "loginHaveAccount": "Don't have an account ?",
+  "@loginHaveAccount": {
+    "description": "Have account (Login)"
+  },
+  "loginSignUp": "Sign up",
+  "@loginSignUp": {
+    "description": "Sign up (Login)"
+  },
+  "loginSkip": "Skip",
+  "@loginSkip": {
+    "description": "Skip (Login)"
+  },
+  "textInputPasswordLength": "Least 12 characters",
+  "@textInputPasswordLength": {
+    "description": "Password length (Register)"
+  },
+  "textInputPasswordUpperCase": "Least one upper case character",
+  "@textInputPasswordUpperCase": {
+    "description": "Password upper case (Register)"
+  },
+  "textInputPasswordLowerCase": "Least one lower case character",
+  "@textInputPasswordLowerCase": {
+    "description": "Password lower case (Register)"
+  },
+  "textInputPasswordSpecialCharacter": "Least one special character",
+  "@textInputPasswordSpecialCharacter": {
+    "description": "Password special character (Register)"
+  },
+  "registerTitle": "Sign up",
+  "@registerTitle": {
+    "description": "Title (Register)"
+  },
+  "registerDescription": "Create an account to continue !",
+  "@registerDescription": {
+    "description": "Description (Register)"
+  },
+  "registerFirstName": "First name",
+  "@registerFirstName": {
+    "description": "First name (Register)"
+  },
+  "registerName": "Name",
+  "@registerName": {
+    "description": "Name (Register)"
+  },
+  "registerEmail": "Email",
+  "@registerEmail": {
+    "description": "Email (Register)"
+  },
+  "registerPassword": "Password",
+  "@registerPassword": {
+    "description": "Password (Register)"
+  },
+  "registerSignUp": "Sign up",
+  "@registerSignUp": {
+    "description": "Sign up (Register)"
+  },
+  "registerHaveAccount": "Already have an account ?",
+  "@registerHaveAccount": {
+    "description": "Have account (Register)"
+  },
+  "registerLogin": "Login",
+  "@registerLogin": {
+    "description": "Login (Register)"
   }
 }

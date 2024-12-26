@@ -55,6 +55,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                         titleButtonStyle: TextStyleConstant.titleButtonButtonSettingAccountSettingPage
                     ),
                     onTap: () {
+                      // TODO: Logout
                       print("Se déconnecter");
                     },
                   ),

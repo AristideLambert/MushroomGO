@@ -5,6 +5,7 @@ import 'package:mushroom_go/screen/widget/button/standard/button_standard.dart';
 import 'package:mushroom_go/screen/widget/text/text_output.dart';
 import 'package:mushroom_go/screen/widget/textfield/text_input.dart';
 import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginPage extends StatefulWidget {
 
@@ -48,11 +49,11 @@ class _LoginPageState extends State<LoginPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(height: DimensionConstant.spaceVerticalLogin,),
-                    Icon(MushroomGOFontUtils.mushroomScan, color: ColorConstant.textLogin, size: MediaQuery.of(context).size.width * 0.20,),
+                    Icon(MushroomGOFontUtils.logo, color: ColorConstant.textLogin, size: MediaQuery.of(context).size.width * 0.20,),
                     const SizedBox(height: DimensionConstant.spaceVerticalLogin,),
-                    const TextOutput(text: "Sign in to your account", type: Type.largeTitle, fontColor: ColorConstant.textLogin,),
+                    TextOutput(text: AppLocalizations.of(context)!.loginTitle, type: Type.largeTitle, fontColor: ColorConstant.textLogin,),
                     const SizedBox(height: DimensionConstant.spaceVerticalLogin,),
-                    const TextOutput(text: "Enter your email and password to log in", type: Type.smallTitle, fontColor: ColorConstant.textLogin, fontWeight: FontWeight.normal,),
+                    TextOutput(text: AppLocalizations.of(context)!.loginDescription, type: Type.smallTitle, fontColor: ColorConstant.textLogin, fontWeight: FontWeight.normal,),
                     const SizedBox(height: DimensionConstant.spaceVerticalLogin + 10,),
                     Card(
                       elevation: DimensionConstant.elevationLogin,
@@ -71,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                               keyboardType: TextInputType.emailAddress,
                               placeHolder: "aristide.lambert@student.hepl.be",
                               clearText: true,
-                              title: "Email"
+                              title: AppLocalizations.of(context)!.loginEmail
                             ),
                             const SizedBox(height: DimensionConstant.spaceVerticalLogin,),
                             TextInput(
@@ -80,19 +81,19 @@ class _LoginPageState extends State<LoginPage> {
                               keyboardType: TextInputType.visiblePassword,
                               placeHolder: "••••••••••••••",
                               password: true,
-                              title: "Password"
+                              title: AppLocalizations.of(context)!.loginPassword
                             ),
                             const SizedBox(height: DimensionConstant.spaceHorizontalLogin,),
                             Align(
                               alignment: AlignmentDirectional.centerEnd,
-                              child: TextOutput(text: "Forgot password ?", fontColor: ColorConstant.textOnTapLogin, onTap: (){
+                              child: TextOutput(text: AppLocalizations.of(context)!.loginForgotPassword, fontColor: ColorConstant.textOnTapLogin, onTap: (){
                                   // TODO: Password recovery
                                   print("Forgot password");
                                 }
                               )
                             ),
                             const SizedBox(height: DimensionConstant.spaceVerticalLogin,),
-                            ButtonStandard(title: "Login", onTap: (){
+                            ButtonStandard(title: AppLocalizations.of(context)!.loginLogin, onTap: (){
                                 // TODO: Login
                                 print("Login");
                               }
@@ -101,11 +102,13 @@ class _LoginPageState extends State<LoginPage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const TextOutput(text: "Don't have an account ?"),
+                                TextOutput(text: AppLocalizations.of(context)!.loginHaveAccount),
                                 const SizedBox(width: DimensionConstant.spaceHorizontalLogin,),
-                                TextOutput(text: "Sign up", fontColor: ColorConstant.textOnTapLogin, fontWeight: FontWeight.bold, onTap: (){
+                                TextOutput(text: AppLocalizations.of(context)!.loginSignUp, fontColor: ColorConstant.textOnTapLogin, fontWeight: FontWeight.bold, onTap: (){
                                     // TODO: Register
-                                    print("Sign up");
+                                    /*Navigator.of(widget.mainContext).pushNamed(
+                                        NavigationConstant.registrationPage
+                                    );*/
                                   },
                                 )
                               ],
@@ -123,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
         SafeArea(
           child: Container(
             margin: const EdgeInsets.only(bottom: DimensionConstant.marginLogin),
-            child: const TextOutput(text: "Skip", type: Type.mediumTitle, fontColor: ColorConstant.textOnTapLogin,),
+            child: TextOutput(text: AppLocalizations.of(context)!.loginSkip, type: Type.mediumTitle, fontColor: ColorConstant.textOnTapLogin,),
           )
         ),
       ]

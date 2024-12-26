@@ -4,6 +4,7 @@ import 'package:mushroom_go/screen/widget/textfield/text_input_policy.dart';
 import 'package:mushroom_go/theme/text_input_theme.dart';
 import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 import 'package:mushroom_go/utils/text/password_utils.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TextInput extends StatefulWidget {
   final TextEditingController controller;
@@ -167,10 +168,10 @@ class _TextInputState extends State<TextInput> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextInputPolicy(policy: "_length", respect: _length),
-                TextInputPolicy(policy: "_upperCase", respect: _upperCase),
-                TextInputPolicy(policy: "_lowerCase", respect: _lowerCase),
-                TextInputPolicy(policy: "_specialCharacter", respect: _specialCharacter),
+                TextInputPolicy(policy: AppLocalizations.of(context)!.textInputPasswordLength, respect: _length),
+                TextInputPolicy(policy: AppLocalizations.of(context)!.textInputPasswordUpperCase, respect: _upperCase),
+                TextInputPolicy(policy: AppLocalizations.of(context)!.textInputPasswordLowerCase, respect: _lowerCase),
+                TextInputPolicy(policy: AppLocalizations.of(context)!.textInputPasswordSpecialCharacter, respect: _specialCharacter),
               ],
             ),
           )

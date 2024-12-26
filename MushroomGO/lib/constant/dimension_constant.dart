@@ -32,6 +32,16 @@ class DimensionConstant {
   static const double paddingLogin = 20.0;
   static const double radiusLogin = 10.0;
 
+  // Register
+  static const int flexTopBackgroundRegister = 9;
+  static const int flexBottomBackgroundRegister = 11;
+  static const double spaceVerticalRegister = 20.0;
+  static const double spaceHorizontalRegister = 5.0;
+  static const double elevationRegister = 0.0;
+  static const double marginRegister = 20.0;
+  static const double paddingRegister = 20.0;
+  static const double radiusRegister = 10.0;
+
   // NavigationTabBottom
   static const double heightNavigationTabBottom = 56.0;
   static const double iconSizeNavigationTabBottom = 24.0;

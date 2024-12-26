@@ -10,6 +10,10 @@ class ColorConstant{
   static const Color textLogin = CupertinoColors.white;
   static const Color textOnTapLogin = primaryColor;
 
+  // Register
+  static const Color textRegister = CupertinoColors.white;
+  static const Color textOnTapRegister = primaryColor;
+
   // NavigationTabBottom
   static const Color lightUnselectedNavigationTabBottom = CupertinoColors.label;
   static const Color darkUnselectedNavigationTabBottom = CupertinoColors.white;
