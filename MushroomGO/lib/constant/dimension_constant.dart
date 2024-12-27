@@ -100,4 +100,19 @@ class DimensionConstant {
   static const double spaceHomeForYouList = 5.0;
   static const double textPaddingHomeForYouList = 8.0;
   static const double textOpacityHomeForYouList = 0.9;
+
+  // MushroomDetail
+  static const double radiusItemMushroomDetail = 8.0;
+  static const double imageHeightMushroomDetail = 200.0;
+  static const double spaceBetweenImageTextMushroomDetail = 16.0;
+  static const double boxShadowOpacityMushroomDetail = 0.8;
+  static const double boxShadowBlurRadiusMushroomDetail = 5;
+  static const double boxShadowSpreadRadiusMushroomDetail = 2;
+  static const double boxShadowMinOffsetMushroomDetail = 0;
+  static const double boxShadowMaxOffsetMushroomDetail = 3;
+  static const double heightBetweenNameScientificNameMushroomDetail = 3;
+  static const double widthBetweenNameScientificNameMushroomDetail = 8;
+  static const double detailMarginNameMushroomDetail = 8.0;
+  static const double sizeIconMushroomDetail = 19.0;
+  static const double spaceBetweenTextMushroomDetail = 8.0;
 }

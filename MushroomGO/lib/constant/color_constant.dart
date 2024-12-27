@@ -80,4 +80,9 @@ class ColorConstant{
   static const Color darkTitleItemHomeForYou = CupertinoColors.white;
   static const Color lightItemHomeForYou = CupertinoColors.white;
 
+  // MushroomDetail
+  static const Color lightBackgroundMushroomDetail = CupertinoColors.systemBackground;
+  static const Color darkBackgroundMushroomDetail = CupertinoColors.darkBackgroundGray;
+  static const Color lightNameMushroomDetail = CupertinoColors.label;
+  static const Color darkNameMushroomDetail = CupertinoColors.white;
 }

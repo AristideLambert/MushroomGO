@@ -220,6 +220,44 @@ class TextStyleConstant {
     fontSize: DimensionConstant.titleSmall,
     fontWeight: FontWeight.bold,
   );
+  // MushroomDetail
+  static const TextStyle lightNameMushroomDetail = TextStyle(
+    color: ColorConstant.lightNameMushroomDetail,
+    fontSize: DimensionConstant.titleMedium,
+    fontWeight: FontWeight.bold,
+  );
 
+  static const TextStyle darkNameMushroomDetail = TextStyle(
+    color: ColorConstant.darkNameMushroomDetail,
+    fontSize: DimensionConstant.titleMedium,
+    fontWeight: FontWeight.bold,
+  );
+
+  static const TextStyle scientificNameTextMushroomDetail = TextStyle(
+    color: ColorConstant.primaryColor,
+    fontSize: DimensionConstant.bodyText
+  );
+
+  static const TextStyle lightScientificNameMushroomDetail = TextStyle(
+      color: ColorConstant.lightNameMushroomDetail,
+      fontSize: DimensionConstant.bodyText,
+      fontStyle: FontStyle.italic
+  );
+
+  static const TextStyle darkScientificNameMushroomDetail = TextStyle(
+      color: ColorConstant.darkNameMushroomDetail,
+      fontSize: DimensionConstant.bodyText,
+      fontStyle: FontStyle.italic
+  );
+  static const TextStyle lightTitleMushroomDetail = TextStyle(
+    color: ColorConstant.lightNameMushroomDetail,
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.bold
+  );
+  static const TextStyle darkTitleMushroomDetail = TextStyle(
+    color: ColorConstant.darkNameMushroomDetail,
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.bold
+  );
 
 }

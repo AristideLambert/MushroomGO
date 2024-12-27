@@ -6,7 +6,8 @@ import 'package:mushroom_go/screen/widget/listview/home_for_you_item.dart';
 import 'package:mushroom_go/screen/widget/listview/home_for_you_list.dart';
 
 class HomeForYouTab extends StatefulWidget {
-  const HomeForYouTab({super.key});
+  final BuildContext buildContext;
+  const HomeForYouTab({super.key, required this.buildContext });
 
   @override
   State<HomeForYouTab> createState() => _HomeForYouTabState();
@@ -43,6 +44,7 @@ class _HomeForYouTabState extends State<HomeForYouTab> {
                 itemBuilder: (context, Recipe recipe, index, theme) {
                   return HomeForYouItem<Recipe>(
                     item: recipe,
+                    buildContext: widget.buildContext,
                     index: index,
                     getTitle: (Recipe item) => item.title,
                     getImageUrl: (Recipe item) => item.imageUrl,
@@ -84,6 +86,7 @@ class _HomeForYouTabState extends State<HomeForYouTab> {
                 itemBuilder: (context, Mushroom mushroom, index, theme) {
                   return HomeForYouItem<Mushroom>(
                     item: mushroom,
+                    buildContext: widget.buildContext,
                     index: index,
                     getTitle: (Mushroom item) => item.name,
                     getImageUrl: (Mushroom item) => item.imageUrl,
