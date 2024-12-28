@@ -9,6 +9,7 @@ import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/screen/widget/button/standard/button_standard.dart';
 import 'package:mushroom_go/screen/widget/text/text_output.dart';
 import 'package:mushroom_go/screen/widget/textfield/text_input.dart';
+import 'package:mushroom_go/utils/firebase/firebase_auth_utils.dart';
 import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -265,7 +266,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                     },
                                   );*/
 
-                                  signUpAndSaveUser(context);
+                                  //signUpAndSaveUser(context);
+                                  FirebaseAuthUtils.createUserWithEmailAndPassword(context, controllerFirstname.text, controllerName.text, controllerEmail.text, controllerPassword.text);
 
 
 
