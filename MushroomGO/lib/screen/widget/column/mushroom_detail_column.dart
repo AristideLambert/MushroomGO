@@ -28,6 +28,7 @@ class _MushroomDetailColumnState extends State<MushroomDetailColumn> {
     super.didChangeDependencies();
     theme = (widget.theme ?? Theme.of(context).extension<MushroomDetailTheme>())!;
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,7 +36,7 @@ class _MushroomDetailColumnState extends State<MushroomDetailColumn> {
       padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
       decoration: BoxDecoration(
         color: theme.backgroundColor,
-        borderRadius: BorderRadius.circular(theme.radiusItem)
+        borderRadius: BorderRadius.circular(theme.radiusItem),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,19 +47,23 @@ class _MushroomDetailColumnState extends State<MushroomDetailColumn> {
             size: theme.sizeIcon,
           ),
           SizedBox(width: theme.spaceBetweenText),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                widget.title,
-                style: theme.titleStyle,
-              ),
-              SizedBox(height: theme.spaceBetweenText),
-              Text(
-                widget.content,
-                style: theme.textStyle,
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.title,
+                  style: theme.titleStyle,
+                ),
+                SizedBox(height: theme.spaceBetweenText),
+                Text(
+                  widget.content,
+                  style: theme.textStyle,
+                  softWrap: true,
+                  overflow: TextOverflow.visible,
+                ),
+              ],
+            ),
           ),
         ],
       ),
