@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/color_constant.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
+import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/screen/widget/button/standard/button_standard.dart';
 import 'package:mushroom_go/screen/widget/text/text_output.dart';
 import 'package:mushroom_go/screen/widget/textfield/text_input.dart';
+import 'package:mushroom_go/utils/firebase/firebase_auth_utils.dart';
 import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -87,8 +89,9 @@ class _LoginPageState extends State<LoginPage> {
                             Align(
                               alignment: AlignmentDirectional.centerEnd,
                               child: TextOutput(text: AppLocalizations.of(context)!.loginForgotPassword, fontColor: ColorConstant.textOnTapLogin, onTap: (){
-                                  // TODO: Password recovery
-                                  print("Forgot password");
+                                  Navigator.of(context).pushNamed(
+                                      NavigationConstant.forgotPasswordPage
+                                  );
                                 }
                               )
                             ),
@@ -96,6 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                             ButtonStandard(title: AppLocalizations.of(context)!.loginLogin, onTap: (){
                                 // TODO: Login
                                 print("Login");
+                                FirebaseAuthUtils.signInWithEmailAndPassword(context, controllerEmail.text, controllerPassword.text);
                               }
                             ),
                             const SizedBox(height: DimensionConstant.spaceVerticalLogin,),

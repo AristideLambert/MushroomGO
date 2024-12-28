@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/screen/widget/container/error_container.dart';
+import 'package:mushroom_go/screen/widget/container/information_container.dart';
 import 'package:mushroom_go/screen/widget/container/loading_container.dart';
 
 class DialogUtils{
@@ -21,6 +22,16 @@ class DialogUtils{
       barrierDismissible: false,
       builder: (BuildContext context) {
         return ErrorContainer(title: title, message: message);
+      },
+    );
+  }
+
+  static void showInformation(BuildContext context, String title, String message, Function()? onTap){
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return InformationContainer(title: title, message: message, onTap: onTap);
       },
     );
   }

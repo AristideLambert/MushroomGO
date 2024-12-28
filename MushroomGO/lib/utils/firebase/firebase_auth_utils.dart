@@ -8,7 +8,9 @@ class FirebaseAuthUtils{
 
   static Future<void> createUserWithEmailAndPassword(BuildContext context, String firstname, String name, String email, String password) async {
     try {
-      DialogUtils.showLoading(context, "Inscription en cours...");
+      if(context.mounted){
+        DialogUtils.showLoading(context, "Inscription en cours...");
+      }
       UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
@@ -38,14 +40,78 @@ class FirebaseAuthUtils{
         default:
           errorMessage = "Une erreur inconnue s'est produite.";
       }
-      DialogUtils.showError(context, "Inscription", errorMessage);
+      if (context.mounted){
+        DialogUtils.showError(context, "Inscription", errorMessage);
+      }
     }
-
-
-
-
-
-
   }
 
+  static Future<void> signInWithEmailAndPassword(BuildContext context, String email, String password) async {
+    try {
+      if (context.mounted) {
+        DialogUtils.showLoading(context, "Identification en cours...");
+      }
+      await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+      if (context.mounted) {
+        Navigator.of(context).pop();
+      }
+    } on FirebaseAuthException catch (e) {
+      if (context.mounted) {
+        Navigator.of(context).pop();
+      }
+      String errorMessage;
+      switch (e.code) {
+        case 'invalid-email':
+          errorMessage = "L'adresse e-mail est invalide.";
+          break;
+        case 'user-disabled':
+          errorMessage = "Ce compte utilisateur a été désactivé.";
+          break;
+        case 'user-not-found':
+          errorMessage = "Aucun utilisateur trouvé pour cet e-mail.";
+          break;
+        case 'wrong-password':
+          errorMessage = "Mot de passe incorrect.";
+          break;
+        default:
+          errorMessage = "Une erreur inattendue est survenue : ${e.code}.";
+      }
+      if (context.mounted) {
+        DialogUtils.showError(context, "Identification", errorMessage);
+      }
+    }
+  }
+
+  static Future<void> sendPasswordResetEmail(BuildContext context, String email) async {
+    try {
+      if (context.mounted) {
+        DialogUtils.showLoading(context, "Rénitialisation en cours...");
+      }
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      if (context.mounted) {
+        Navigator.of(context).pop();
+        DialogUtils.showInformation(context, "Rénitialisation du mot de passe", "Un mail de rénitialisation vous a été envoyé.\nVérifier votre boite mail.", (){
+          Navigator.of(context).pop();
+        });
+      }
+    } on FirebaseAuthException catch (e) {
+      if (context.mounted) {
+        Navigator.of(context).pop();
+      }
+      String errorMessage;
+      switch (e.code) {
+        case 'invalid-email':
+          errorMessage = "L'adresse e-mail est invalide.";
+          break;
+        case 'user-not-found':
+          errorMessage = "Aucun utilisateur trouvé pour cet e-mail.";
+          break;
+        default:
+          errorMessage = "Une erreur inattendue est survenue : ${e.code}.";
+      }
+      if (context.mounted) {
+        DialogUtils.showError(context, "Identification", errorMessage);
+      }
+    }
+  }
 }
