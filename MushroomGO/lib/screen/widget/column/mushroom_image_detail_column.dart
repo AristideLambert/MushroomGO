@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/theme/mushroom_detail_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MushroomImageDetailColumn extends StatefulWidget {
   final String imageUrl;
@@ -50,15 +51,7 @@ class _MushroomImageDetailColumnState extends State<MushroomImageDetailColumn> {
           padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
           decoration: BoxDecoration(
             color: theme.backgroundColor,
-            borderRadius: BorderRadius.circular(theme.radiusItem),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(theme.boxShadowOpacity),
-                blurRadius: theme.boxShadowBlurRadius,
-                spreadRadius: theme.boxShadowSpreadRadius,
-                offset: Offset(theme.boxShadowMinOffset, theme.boxShadowMaxOffset),
-              ),
-            ],
+            borderRadius: BorderRadius.circular(theme.radiusItem)
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +65,7 @@ class _MushroomImageDetailColumnState extends State<MushroomImageDetailColumn> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Scientific Name:",
+                      "${AppLocalizations.of(context)!.scientificName}:",
                     style: theme.scientificNameText
                   ),
                   SizedBox(width: theme.widthBetweenNameScientificName),

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/color_constant.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
@@ -30,25 +31,17 @@ class _MushroomDetailColumnState extends State<MushroomDetailColumn> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: theme.detailMargin),
+      margin: EdgeInsets.only(top: theme.detailMargin),
       padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
       decoration: BoxDecoration(
         color: theme.backgroundColor,
-        borderRadius: BorderRadius.circular(theme.radiusItem),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(theme.boxShadowOpacity),
-            blurRadius: theme.boxShadowBlurRadius,
-            spreadRadius: theme.boxShadowSpreadRadius,
-            offset: Offset(theme.boxShadowMinOffset, theme.boxShadowMaxOffset),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(theme.radiusItem)
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(
-            widget.title == "Description" ? Icons.description : Icons.nature,
+            widget.title == "Description" ? CupertinoIcons.doc_text_fill : CupertinoIcons.tree,
             color: ColorConstant.primaryColor,
             size: theme.sizeIcon,
           ),
@@ -63,7 +56,7 @@ class _MushroomDetailColumnState extends State<MushroomDetailColumn> {
               SizedBox(height: theme.spaceBetweenText),
               Text(
                 widget.content,
-                style: Theme.of(context).textTheme.bodyLarge,
+                style: theme.textStyle,
               ),
             ],
           ),

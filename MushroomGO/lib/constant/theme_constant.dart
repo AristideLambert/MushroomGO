@@ -76,7 +76,11 @@ class ThemeConstant{
           titleItemStyle: TextStyleConstant.lightTitleItemHomeForYouList
       ),
       const MushroomDetailTheme(
-
+          backgroundColor: ColorConstant.lightBackgroundMushroomDetail,
+          titleStyle: TextStyleConstant.lightTitleMushroomDetail,
+          textStyle: TextStyleConstant.lightTextMushroomDetail,
+          nameStyle: TextStyleConstant.lightNameMushroomDetail,
+          scientificName: TextStyleConstant.lightScientificNameMushroomDetail
       )
     ]
   );
@@ -140,7 +144,11 @@ class ThemeConstant{
             titleItemStyle: TextStyleConstant.darkTitleItemHomeForYouList
         ),
         const MushroomDetailTheme(
-
+            backgroundColor: ColorConstant.darkBackgroundMushroomDetail,
+            titleStyle: TextStyleConstant.darkTitleMushroomDetail,
+            textStyle: TextStyleConstant.darkTextMushroomDetail,
+            nameStyle: TextStyleConstant.darkNameMushroomDetail,
+            scientificName: TextStyleConstant.darkScientificNameMushroomDetail
         )
       ]
   );

@@ -28,5 +28,14 @@
   "challengeMushroomsRare" : "Rare",
   "challengeMushroomsEpic" : "Épic",
   "challengeMissionsWeakly" : "Missions hebdomadaires",
-  "challengeMissionsMonthly" : "Missions mensuelles"
+  "challengeMissionsMonthly" : "Missions mensuelles",
+  "mushroomDescription": "Description",
+  "mushroomHabitat": "Habitat",
+  "notSpecified": "Non spécifié",
+  "mushroomFamily": "Famille",
+  "mushroomOrder": "Ordre",
+  "mushroomClass": "Classe",
+  "mushroomPhylum": "Embranchement",
+  "scientificClassification" : "Classification scientifique",
+  "scientificName" : "Nom scientifique"
 }

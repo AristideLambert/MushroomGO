@@ -22,7 +22,7 @@ class _ProfileTabState extends State<ProfileTab> {
               NavigationConstant.settingPage
             );
           },
-          child: Text("Settings")
+          child: const Text("Settings")
         ),
       ),
     );

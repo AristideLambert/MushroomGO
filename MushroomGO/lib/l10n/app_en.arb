@@ -118,5 +118,41 @@
   "challengeMissionsMonthly": "Monthly Missions",
       "@challengeMissionsMonthly": {
       "description": "challenge Missions (Monthly)"
+  },
+    "mushroomDescription": "Description",
+    "@mushroomDescription": {
+      "description": "Mushroom detail page - description"
+  },
+    "mushroomHabitat": "Habitat",
+    "@mushroomHabitat": {
+      "description": "Mushroom detail page - habitat"
+  },
+    "notSpecified": "Not specified",
+    "@notSpecified": {
+      "description": "Placeholder for unspecified values"
+  },
+    "mushroomFamily": "Family",
+    "@mushroomFamily": {
+      "description": "Mushroom detail page - family classification"
+  },
+    "mushroomOrder": "Order",
+    "@mushroomOrder": {
+      "description": "Mushroom detail page - order classification"
+  },
+    "mushroomClass": "Class",
+    "@mushroomClass": {
+      "description": "Mushroom detail page - class classification"
+  },
+    "mushroomPhylum": "Phylum",
+    "@mushroomPhylum": {
+      "description": "Mushroom detail page - phylum classification"
+  },
+  "scientificClassification": "Scientific Classification",
+      "@scientificClassification": {
+        "description": "Mushroom Scientific Classification"
+  },
+     "scientificName": "Scientific Name",
+         "@scientificName": {
+           "description": "Mushroom Scientific Name"
   }
 }

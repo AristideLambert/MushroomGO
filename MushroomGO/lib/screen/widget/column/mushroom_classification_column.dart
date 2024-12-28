@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/color_constant.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/theme/mushroom_detail_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MushroomClassificationColumn extends StatefulWidget {
   final Map<String, String> classification;
@@ -32,15 +34,7 @@ class _MushroomClassificationColumnState extends State<MushroomClassificationCol
       padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
       decoration: BoxDecoration(
         color: theme.backgroundColor,
-        borderRadius: BorderRadius.circular(theme.radiusItem),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(theme.boxShadowOpacity),
-            blurRadius: theme.boxShadowBlurRadius,
-            spreadRadius: theme.boxShadowSpreadRadius,
-            offset: Offset(theme.boxShadowMinOffset, theme.boxShadowMaxOffset),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(theme.radiusItem)
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,44 +42,44 @@ class _MushroomClassificationColumnState extends State<MushroomClassificationCol
           Row(
             children: [
               Icon(
-                Icons.science,
+                CupertinoIcons.lab_flask_solid,
                 color: ColorConstant.primaryColor,
                 size: theme.sizeIcon,
               ),
-              const SizedBox(width: 8),
+              SizedBox(width: theme.spaceBetweenText),
               Text(
-                "Scientific Classification",
+                AppLocalizations.of(context)!.scientificClassification,
                 style: theme.titleStyle,
               ),
             ],
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: theme.spaceBetweenText),
           Table(
             columnWidths: const {
               0: IntrinsicColumnWidth(),
               1: FlexColumnWidth(),
             },
-            border: const TableBorder(
+            border: TableBorder(
               horizontalInside: BorderSide(
                 color: ColorConstant.primaryColor,
-                width: 1,
+                width: theme.widthTableBorder,
               ),
             ),
             children: widget.classification.entries.map((entry) {
               return TableRow(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    padding: EdgeInsets.symmetric(vertical: theme.paddingClassification),
                     child: Text(
-                      "${entry.key}:",
-                      style: Theme.of(context).textTheme.titleMedium,
+                      "${entry.key}: ",
+                      style: theme.textStyle,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    padding: EdgeInsets.symmetric(vertical: theme.paddingClassification),
                     child: Text(
                       entry.value,
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: theme.textStyle,
                     ),
                   ),
                 ],

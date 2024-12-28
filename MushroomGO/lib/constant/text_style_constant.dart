@@ -259,5 +259,13 @@ class TextStyleConstant {
     fontSize: DimensionConstant.titleSmall,
     fontWeight: FontWeight.bold
   );
+  static const TextStyle lightTextMushroomDetail = TextStyle(
+      color: ColorConstant.lightNameMushroomDetail,
+      fontSize: DimensionConstant.bodyText,
+  );
+  static const TextStyle darkTextMushroomDetail = TextStyle(
+    color: ColorConstant.darkNameMushroomDetail,
+    fontSize: DimensionConstant.bodyText,
+  );
 
 }
