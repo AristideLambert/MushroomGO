@@ -6,6 +6,7 @@ import 'package:mushroom_go/screen/page/setting/display_setting_page.dart';
 import 'package:mushroom_go/screen/page/setting/language_setting_page.dart';
 import 'package:mushroom_go/screen/page/setting/setting_page.dart';
 import 'package:mushroom_go/models/mushroom.dart';
+import 'package:mushroom_go/screen/page/web/web_view_page.dart';
 
 class NavigationConstant {
   // Pages
@@ -15,6 +16,8 @@ class NavigationConstant {
   static const String displaySettingPage = "/DisplaySettingPage";
   static const String languageSettingPage = "/LanguageSettingPage";
   static const String mushroomDetailPage = "/MushroomDetailPage";
+  static const String webViewPage = "/WebViewPage";
+
 
   // Route
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
@@ -43,6 +46,14 @@ class NavigationConstant {
         return MaterialPageRoute(
           builder: (context) => MushroomDetailPage(mushroom: mushroom),
           settings: settings);
+      case webViewPage:
+        final args = settings.arguments as Map<String, String>;
+        final url = args['url']!;
+        final titleArticle = args['title']!;
+        return MaterialPageRoute(
+          builder: (context) => WebViewPage(url: url, articleName: titleArticle),
+          settings: settings,
+        );
       default:
         return MaterialPageRoute(
             builder: (context) => const MainPage(), settings: settings);

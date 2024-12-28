@@ -29,16 +29,19 @@ class _HomeForYouTabState extends State<HomeForYouTab> {
                     title: "Sautéed Mushroom Recipe",
                     imageUrl:
                     "https://weekendatthecottage.com/wp-content/uploads/2024/05/SauteedMushroomRecipe6.jpeg",
+                    url: "https://www.allrecipes.com/recipe/222795/superb-sauteed-mushrooms/"
                   ),
                   Recipe(
                     title: "Mushroom Hunting Tips",
                     imageUrl:
                     "https://realfood.tesco.com/media/images/Mushroom-Stewl-6fda57ea-e430-4a58-a92b-08639bda60b3-0-1400x919.jpg",
+                    url: "https://www.allrecipes.com/recipe/222795/superb-sauteed-mushrooms/"
                   ),
                   Recipe(
                     title: "Mushroom Stew",
                     imageUrl:
                     "https://holycowvegan.net/wp-content/uploads/2017/10/mushroom-stew-recipe-1.jpg",
+                    url: "https://www.allrecipes.com/recipe/222795/superb-sauteed-mushrooms/"
                   ),
                 ],
                 itemBuilder: (context, Recipe recipe, index, theme) {

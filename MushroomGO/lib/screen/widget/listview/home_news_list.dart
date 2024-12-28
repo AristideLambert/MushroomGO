@@ -5,9 +5,10 @@ import 'package:mushroom_go/screen/widget/listview/home_news_list_item.dart';
 import 'package:mushroom_go/theme/home_news_list_theme.dart';
 
 class HomeNewsList extends StatefulWidget {
-  const HomeNewsList({super.key, required this.articles, this.theme});
+  const HomeNewsList({super.key, required this.articles, this.theme, required this.buildContext});
   final List<Article> articles;
   final HomeNewsListTheme? theme;
+  final BuildContext buildContext;
 
   @override
   State<HomeNewsList> createState() => _HomeNewsListState();
@@ -37,7 +38,9 @@ class _HomeNewsListState extends State<HomeNewsList> {
               return HomeNewsListItem(
                 title: article.title,
                 imageUrl: article.imageUrl,
+                url: article.url,
                 theme: theme,
+                buildContext: widget.buildContext,
               );
             },
           ),

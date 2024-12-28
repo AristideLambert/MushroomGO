@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/models/mushroom.dart';
+import 'package:mushroom_go/models/recipe.dart';
 import 'package:mushroom_go/theme/home_for_you_list_theme.dart';
 
 class HomeForYouItem<T> extends StatefulWidget {
@@ -11,7 +12,7 @@ class HomeForYouItem<T> extends StatefulWidget {
     required this.index,
     required this.getTitle,
     required this.getImageUrl,
-    this.theme,
+    this.theme
   });
 
   final BuildContext buildContext;
@@ -50,6 +51,19 @@ class _HomeForYouItemState<T> extends State<HomeForYouItem<T>> {
             NavigationConstant.mushroomDetailPage,
             arguments: widget.item as Mushroom,
           );
+        }
+        else{
+          if (widget.item is Recipe) {
+            final recipe = widget.item as Recipe;
+            Navigator.pushNamed(
+              widget.buildContext,
+              NavigationConstant.webViewPage,
+              arguments: {
+                'url': recipe.url,
+                'title': widget.getTitle(widget.item),
+              },
+            );
+          }
         }
       },
       child: Container(

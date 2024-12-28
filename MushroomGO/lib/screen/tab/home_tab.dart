@@ -28,7 +28,7 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
     ];
     _tabChildren = [
       HomeForYouTab(buildContext: widget.mainPageContext),
-      const HomeNewsTab()
+      HomeNewsTab(buildContext: widget.mainPageContext)
     ];
     _tabController = TabController(length: _tabChildren.length, vsync: this);
   }
