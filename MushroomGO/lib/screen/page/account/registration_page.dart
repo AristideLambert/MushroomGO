@@ -6,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/color_constant.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
+import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/screen/widget/button/standard/button_standard.dart';
 import 'package:mushroom_go/screen/widget/text/text_output.dart';
 import 'package:mushroom_go/screen/widget/textfield/text_input.dart';
@@ -25,129 +26,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
   TextEditingController controllerName = TextEditingController();
   TextEditingController controllerEmail = TextEditingController();
   TextEditingController controllerPassword = TextEditingController();
-  Future<void>? _signUpFuture;
-
-  Future<void> test() async {
-    FirebaseFirestore.instance.collection("user").doc("xvDSWKO6utRnGsxOGoWsXE5eEKp1").get().then((onValue){
-      print(onValue.data());
-    });
-  }
-
-  void showLoadingDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      // Empêche la fermeture du popup en cliquant à l'extérieur
-      builder: (BuildContext context) {
-        return Center(
-          child: Container(
-            padding: const EdgeInsets.all(20.0),
-            child: Text("Chargement..."),
-          ),
-        );
-      },
-    );
-  }
-
-  Future<void> signUpAndSaveUser(BuildContext context) async {
-    try {
-      // Afficher le dialogue de chargement
-      showLoadingDialog(context);
-
-      // Création de l'utilisateur avec FirebaseAuth
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-        email: controllerEmail.text.trim(),
-        password: controllerPassword.text.trim(),
-      );
-
-      // Enregistrement des informations dans Firestore
-      await FirebaseFirestore.instance
-          .collection("user")
-          .doc(userCredential.user?.uid)
-          .set({
-        "firstname": controllerFirstname.text.trim(),
-        "name": controllerName.text.trim(),
-      });
-
-      // Masquer le dialogue de chargement
-      Navigator.of(context).pop();
-
-      // Afficher un message de succès
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Succès"),
-            content: Text("Inscription réussie !"),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: Text("OK"),
-              ),
-            ],
-          );
-        },
-      );
-    } on FirebaseAuthException catch (e) {
-      // Fermer le dialogue en cas d'erreur
-      Navigator.of(context).pop();
-
-      // Gérer les erreurs
-      String errorMessage;
-      switch (e.code) {
-        case 'email-already-in-use':
-          errorMessage = "Cet e-mail est déjà utilisé.";
-          break;
-        case 'invalid-email':
-          errorMessage = "L'adresse e-mail est invalide.";
-          break;
-        case 'weak-password':
-          errorMessage = "Le mot de passe est trop faible.";
-          break;
-        default:
-          errorMessage = "Une erreur inconnue s'est produite.";
-      }
-
-      // Afficher un message d'erreur
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Erreur"),
-            content: Text(errorMessage),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: Text("OK"),
-              ),
-            ],
-          );
-        },
-      );
-    } catch (e) {
-      // Fermer le dialogue en cas d'erreur générique
-      Navigator.of(context).pop();
-
-      // Afficher un message d'erreur générique
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Erreur"),
-            content: Text("Une erreur s'est produite : $e"),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: Text("OK"),
-              ),
-            ],
-          );
-        },
-      );
-    }
-  }
-
 
   @override
   Widget build(BuildContext context) {
@@ -315,11 +193,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                     fontColor: ColorConstant.textOnTapRegister,
                                     fontWeight: FontWeight.bold,
                                     onTap: (){
-                                      test();
+                                      Navigator.of(context).pushNamed(NavigationConstant.registrationPage);
                                       // TODO: Register
-                                      /*Navigator.of(widget.mainContext).pushNamed(
-                                        NavigationConstant.registrationPage
-                                        );*/
                                     },
                                   )
                                 ],

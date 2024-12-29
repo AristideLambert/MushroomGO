@@ -11,6 +11,7 @@ import 'package:mushroom_go/screen/widget/button/setting/button_setting.dart';
 import 'package:mushroom_go/screen/widget/button/setting/button_setting_container.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mushroom_go/utils/firebase/firebase_auth_utils.dart';
+import 'package:mushroom_go/utils/text/password_utils.dart';
 
 class AccountUpdatePasswordSettingPage extends StatefulWidget {
   const AccountUpdatePasswordSettingPage({super.key});
@@ -22,11 +23,18 @@ class AccountUpdatePasswordSettingPage extends StatefulWidget {
 class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePasswordSettingPage> {
   late final String? _oobCode;
   late final TextEditingController _controllerPassword;
+  late bool _isValid;
 
   @override
   void initState() {
     super.initState();
     _controllerPassword = TextEditingController();
+    _controllerPassword.addListener(() {
+      setState(() {
+        _isValid = PasswordUtils.checkValid(_controllerPassword.text);
+      });
+    });
+    _isValid = false;
   }
 
 
@@ -57,7 +65,7 @@ class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePassword
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-        child: ButtonStandard(title: _oobCode == null ? "Update password" : "Reset password", enabled: false, onTap: (){
+        child: ButtonStandard(title: _oobCode == null ? "Update password" : "Reset password", enabled: _isValid, onTap: (){
           print("Reset");
           FirebaseAuthUtils.confirmPasswordReset(context, _oobCode!, _controllerPassword.text);
         }),
