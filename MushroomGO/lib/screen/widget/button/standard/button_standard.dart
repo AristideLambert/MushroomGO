@@ -5,10 +5,11 @@ class ButtonStandard extends StatefulWidget {
   final String title;
   final IconData? icon;
   final bool centerTitle;
+  final bool enabled;
   final Function()? onTap;
   final ButtonStandardTheme? theme;
 
-  const ButtonStandard({super.key, required this.title, this.icon, this.centerTitle = true, required this.onTap, this.theme});
+  const ButtonStandard({super.key, required this.title, this.icon, this.centerTitle = true, this.enabled = true, required this.onTap, this.theme});
 
   @override
   State<ButtonStandard> createState() => _ButtonStandardState();
@@ -25,49 +26,51 @@ class _ButtonStandardState extends State<ButtonStandard> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(_theme.radius),
-          topRight: Radius.circular(_theme.radius),
-          bottomLeft: Radius.circular(_theme.radius),
-          bottomRight: Radius.circular(_theme.radius),
-        ),
-        color: _theme.backgroundColor,
-        child: InkWell(
-          customBorder: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(_theme.radius),
-                topRight: Radius.circular(_theme.radius),
-                bottomLeft: Radius.circular(_theme.radius),
-                bottomRight: Radius.circular(_theme.radius),
-              )
-          ),
-          splashColor: _theme.splashColor,
-          onTap: widget.onTap,
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: _theme.padding),
-            height: _theme.height,
-            child: Row(
-              mainAxisAlignment: widget.centerTitle ? MainAxisAlignment.center : MainAxisAlignment.start,
-              children: [
-                if(widget.icon != null)
-                  Icon(
-                    widget.icon,
-                    size: _theme.sizeIcon,
-                    color: _theme.iconColor,
-                  ),
-                if(widget.icon != null)
-                  SizedBox(
-                    width: _theme.space,
-                  ),
-                Text(
+    return Stack(
+      children: [
+        Material(
+          borderRadius: BorderRadius.all(Radius.circular(_theme.radius)),
+          color: _theme.backgroundColor,
+          child: InkWell(
+            customBorder: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(_theme.radius))
+            ),
+            splashColor: _theme.splashColor,
+            onTap: widget.onTap,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: _theme.padding),
+              height: _theme.height,
+              child: Row(
+                mainAxisAlignment: widget.centerTitle ? MainAxisAlignment.center : MainAxisAlignment.start,
+                children: [
+                  if(widget.icon != null)
+                    Icon(
+                      widget.icon,
+                      size: _theme.sizeIcon,
+                      color: _theme.iconColor,
+                    ),
+                  if(widget.icon != null)
+                    SizedBox(
+                      width: _theme.space,
+                    ),
+                  Text(
                     widget.title,
                     style: _theme.titleStyle
-                )
-              ],
+                  )
+                ],
+              ),
+            ),
+          )
+        ),
+        if(!widget.enabled)
+          Container(
+            height: _theme.height,
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.5),
+              borderRadius: BorderRadius.circular(_theme.radius),
             ),
           ),
-        )
+      ]
     );
   }
 }

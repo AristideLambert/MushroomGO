@@ -57,7 +57,7 @@ class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePassword
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-        child: ButtonStandard(title: _oobCode == null ? "Update password" : "Reset password", onTap: (){
+        child: ButtonStandard(title: _oobCode == null ? "Update password" : "Reset password", enabled: false, onTap: (){
           print("Reset");
           FirebaseAuthUtils.confirmPasswordReset(context, _oobCode!, _controllerPassword.text);
         }),
