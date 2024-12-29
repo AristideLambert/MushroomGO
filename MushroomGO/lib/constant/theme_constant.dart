@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mushroom_go/constant/text_style_constant.dart';
+import 'package:mushroom_go/theme/badge_tab_theme.dart';
 import 'package:mushroom_go/theme/challenge_missions_list_theme.dart';
 import 'package:mushroom_go/theme/button_setting_container_theme.dart';
 import 'package:mushroom_go/theme/button_setting_theme.dart';
@@ -81,6 +82,11 @@ class ThemeConstant{
           textStyle: TextStyleConstant.lightTextMushroomDetail,
           nameStyle: TextStyleConstant.lightNameMushroomDetail,
           scientificName: TextStyleConstant.lightScientificNameMushroomDetail
+      ),
+      const BadgeTabTheme(
+        textStyle: TextStyleConstant.lightTextBadgeTab,
+        titleStyle: TextStyleConstant.lightTitleBadgeTab,
+        descriptionStyle: TextStyleConstant.lightDescriptionBadgeTab,
       )
     ]
   );
@@ -149,6 +155,11 @@ class ThemeConstant{
             textStyle: TextStyleConstant.darkTextMushroomDetail,
             nameStyle: TextStyleConstant.darkNameMushroomDetail,
             scientificName: TextStyleConstant.darkScientificNameMushroomDetail
+        ),
+        const BadgeTabTheme(
+            textStyle: TextStyleConstant.darkTextBadgeTab,
+            titleStyle: TextStyleConstant.darkTitleBadgeTab,
+            descriptionStyle: TextStyleConstant.darkDescriptionBadgeTab,
         )
       ]
   );

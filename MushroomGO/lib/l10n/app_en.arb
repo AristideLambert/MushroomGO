@@ -154,5 +154,9 @@
      "scientificName": "Scientific Name",
          "@scientificName": {
            "description": "Mushroom Scientific Name"
+  },
+    "earnedBadge": "You earned this badge on",
+        "@earnedBadge": {
+          "description": "Earned Badge"
   }
 }

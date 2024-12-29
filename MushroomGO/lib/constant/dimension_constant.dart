@@ -112,4 +112,16 @@ class DimensionConstant {
   static const double spaceBetweenTextMushroomDetail = 8.0;
   static const double paddingClassificationMushroomDetail = 4.0;
   static const double widthTableBorderMushroomDetail = 1.0;
+
+  // BadgeTab
+  static const int gridDelegateCrossAxisCountBadgeTab = 3;
+  static const double gridDelegateSpacingBadgeTab = 8.0;
+  static const double gridDelegateChildAspectRatioBadgeTab = 0.85;
+  static const double heightImageBadgeTab = 100;
+  static const double spaceBetweenTextImageBadgeTab = 8.0;
+  static const double textHeightBadgeTab = 36.0;
+  static const int textMaxLinesBadgeTab = 2;
+  static const double defaultPaddingBadgeTab = 8.0;
+  static const double heightImageBadgeDetail = 200.0;
+  static const double spaceBetweenTextBadgeDetail = 20.0;
 }

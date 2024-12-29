@@ -268,4 +268,37 @@ class TextStyleConstant {
     fontSize: DimensionConstant.bodyText,
   );
 
+  // BadgeTab
+  static const TextStyle darkTextBadgeTab = TextStyle(
+    color: ColorConstant.darkTextBadgeTab,
+    fontSize: DimensionConstant.bodyText,
+  );
+  static const TextStyle lightTextBadgeTab = TextStyle(
+    color: ColorConstant.lightTextBadgeTab,
+    fontSize: DimensionConstant.bodyText,
+  );
+  static const TextStyle textDateBadgeTab = TextStyle(
+    color: ColorConstant.primaryColor,
+    fontSize: DimensionConstant.bodyText,
+  );
+  static const TextStyle darkTitleBadgeTab = TextStyle(
+    color: ColorConstant.darkTextBadgeTab,
+    fontSize: DimensionConstant.titleLarge,
+    fontWeight: FontWeight.bold
+  );
+  static const TextStyle lightTitleBadgeTab = TextStyle(
+    color: ColorConstant.lightTextBadgeTab,
+    fontSize: DimensionConstant.titleLarge,
+    fontWeight: FontWeight.bold
+  );
+  static const TextStyle darkDescriptionBadgeTab = TextStyle(
+    color: ColorConstant.darkTextBadgeTab,
+    fontSize: DimensionConstant.titleSmall,
+  );
+  static const TextStyle lightDescriptionBadgeTab = TextStyle(
+    color: ColorConstant.lightTextBadgeTab,
+    fontSize: DimensionConstant.titleSmall,
+  );
+
+
 }

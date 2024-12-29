@@ -25,18 +25,24 @@ class _ChallengeMissionsTabState extends State<ChallengeMissionsTab> {
             description: "Collect 200 coins in a single run.",
             currentProgress: 50,
             goal: 200,
+            badge: 'assets/images/rare_mushroom_collector.png',
+              isEarned: false
           ),
           Mission(
             title: "Pick up 3 Magnets",
             description: "Collect 3 magnets during your runs.",
             currentProgress: 2,
             goal: 3,
+            badge: 'assets/images/rare_mushroom_collector.png',
+              isEarned: false
           ),
           Mission(
             title: "Pick up 5 Rockets",
             description: "Collect 5 Rockets during your runs.",
             currentProgress: 2,
             goal: 5,
+            badge: 'assets/images/rare_mushroom_collector.png',
+              isEarned: false
           ),
         ],
       },
@@ -48,12 +54,16 @@ class _ChallengeMissionsTabState extends State<ChallengeMissionsTab> {
             description: "Reach 10,000 points in one run.",
             currentProgress: 5000,
             goal: 10000,
+            badge: 'assets/images/rare_mushroom_collector.png',
+              isEarned: false
           ),
           Mission(
             title: "Win 5 Games",
             description: "Play and win 5 games.",
             currentProgress: 3,
             goal: 5,
+            badge: 'assets/images/rare_mushroom_collector.png',
+            isEarned: false
           ),
         ],
       },

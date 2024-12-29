@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mushroom_go/models/mission.dart';
+import 'package:mushroom_go/screen/page/detail/badge_detail_page.dart';
 import 'package:mushroom_go/screen/page/detail/mushroom_detail_page.dart';
 import 'package:mushroom_go/screen/page/main_page.dart';
 import 'package:mushroom_go/screen/page/setting/account_setting_page.dart';
@@ -17,6 +19,7 @@ class NavigationConstant {
   static const String languageSettingPage = "/LanguageSettingPage";
   static const String mushroomDetailPage = "/MushroomDetailPage";
   static const String webViewPage = "/WebViewPage";
+  static const String badgeDetailPage = "/BadgeDetailPage";
 
 
   // Route
@@ -52,6 +55,12 @@ class NavigationConstant {
         final titleArticle = args['title']!;
         return MaterialPageRoute(
           builder: (context) => WebViewPage(url: url, articleName: titleArticle),
+          settings: settings,
+        );
+      case badgeDetailPage:
+        final mission = settings.arguments as Mission;
+        return MaterialPageRoute(
+          builder: (context) => BadgeDetailPage(mission: mission),
           settings: settings,
         );
       default:

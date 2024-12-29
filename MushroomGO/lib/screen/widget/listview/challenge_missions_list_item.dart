@@ -9,13 +9,13 @@ class ChallengeMissionItem extends StatefulWidget {
   final ChallengeMissionListTheme? theme;
 
   const ChallengeMissionItem({
-    Key? key,
+    super.key,
     required this.title,
     required this.description,
     required this.currentProgress,
     required this.goal,
     this.theme,
-  }) : super(key: key);
+  });
 
   @override
   State<ChallengeMissionItem> createState() => _ChallengeMissionItemState();

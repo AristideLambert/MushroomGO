@@ -85,4 +85,8 @@ class ColorConstant{
   static const Color darkBackgroundMushroomDetail = CupertinoColors.darkBackgroundGray;
   static const Color lightNameMushroomDetail = CupertinoColors.label;
   static const Color darkNameMushroomDetail = CupertinoColors.white;
+
+  // BadgeTab
+  static const Color lightTextBadgeTab = CupertinoColors.label;
+  static const Color darkTextBadgeTab = CupertinoColors.white;
 }
