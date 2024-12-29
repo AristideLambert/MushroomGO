@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
+import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/constant/text_style_constant.dart';
 import 'package:mushroom_go/theme/button_setting_theme.dart';
 import 'package:mushroom_go/screen/widget/button/setting/button_setting.dart';
 import 'package:mushroom_go/screen/widget/button/setting/button_setting_container.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mushroom_go/utils/firebase/firebase_auth_utils.dart';
 
 class AccountSettingPage extends StatefulWidget {
   const AccountSettingPage({super.key});
@@ -36,6 +38,9 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                     type: Type.standard,
                     title: AppLocalizations.of(context)!.settingAccountPassword,
                     leftIcon: CupertinoIcons.lock_fill,
+                    onTap: (){
+                      Navigator.of(context).pushNamed(NavigationConstant.accountUpdatePasswordSettingPage);
+                    },
                   ),
                   ButtonSetting(
                     type: Type.standard,
@@ -55,8 +60,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                         titleButtonStyle: TextStyleConstant.titleButtonButtonSettingAccountSettingPage
                     ),
                     onTap: () {
-                      // TODO: Logout
-                      print("Se déconnecter");
+                      FirebaseAuthUtils.signOut(context);
                     },
                   ),
                 ]

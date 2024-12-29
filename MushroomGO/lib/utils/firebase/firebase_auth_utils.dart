@@ -85,7 +85,7 @@ class FirebaseAuthUtils{
   static Future<void> sendPasswordResetEmail(BuildContext context, String email) async {
     try {
       if (context.mounted) {
-        DialogUtils.showLoading(context, "Rénitialisation en cours...");
+        DialogUtils.showLoading(context, "Réinitialisation en cours...");
       }
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
       if (context.mounted) {
@@ -110,8 +110,54 @@ class FirebaseAuthUtils{
           errorMessage = "Une erreur inattendue est survenue : ${e.code}.";
       }
       if (context.mounted) {
-        DialogUtils.showError(context, "Identification", errorMessage);
+        DialogUtils.showError(context, "Réinitialisation", errorMessage);
       }
+    }
+  }
+
+  static Future<void> confirmPasswordReset(BuildContext context, String oobCode, String newPassword) async {
+    try {
+      if (context.mounted) {
+        DialogUtils.showLoading(context, "Réinitialisation en cours...");
+      }
+      await FirebaseAuth.instance.confirmPasswordReset(code: oobCode, newPassword: newPassword);
+      if (context.mounted) {
+        Navigator.of(context).pop();
+        DialogUtils.showInformation(context, "Réinitialisation du mot de passe", "Le mot de passe a été réinitialisé avec succès.", (){
+          Navigator.of(context).pop();
+        });
+      }
+    } on FirebaseAuthException catch (e) {
+      if (context.mounted) {
+        Navigator.of(context).pop();
+      }
+      String errorMessage;
+      switch (e.code) {
+        case 'expired-action-code':
+          errorMessage = "Le lien de réinitialisation a expiré.";
+          break;
+        case 'invalid-action-code':
+          errorMessage = "Le code de réinitialisation est invalide.";
+          break;
+        case 'weak-password':
+          errorMessage = "Le nouveau mot de passe est trop faible.";
+          break;
+        default:
+          errorMessage = "Une erreur inattendue est survenue : ${e.code}.";
+      }
+      if (context.mounted) {
+        DialogUtils.showError(context, "Réinitialisation", errorMessage);
+      }
+    }
+  }
+
+  static Future<void> signOut(BuildContext context) async {
+    if (context.mounted) {
+      DialogUtils.showLoading(context, "Déconnexion en cours...");
+    }
+    await FirebaseAuth.instance.signOut();
+    if (context.mounted) {
+      Navigator.of(context).pop();
     }
   }
 }
