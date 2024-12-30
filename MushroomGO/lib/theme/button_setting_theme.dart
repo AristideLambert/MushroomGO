@@ -6,6 +6,7 @@ import 'package:mushroom_go/constant/color_constant.dart';
 class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
   final Color backgroundColor;
   final Color splashColor;
+  final Color leftIconColor;
   final Color chevronColor;
   final Color checkColor;
   final double height;
@@ -22,6 +23,7 @@ class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
   const ButtonSettingTheme({
     this.backgroundColor = ColorConstant.lightBackgroundButtonSetting,
     this.splashColor = Colors.transparent,
+    this.leftIconColor = ColorConstant.lightLeftIconButtonSetting,
     this.chevronColor = ColorConstant.lightDataButtonSetting,
     this.checkColor = ColorConstant.checkButtonSetting,
     this.height = DimensionConstant.heightButtonSetting,
@@ -40,6 +42,7 @@ class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
   ButtonSettingTheme copyWith({
     Color? backgroundColor,
     Color? splashColor,
+    Color? leftIconColor,
     Color? chevronColor,
     Color? checkColor,
     double? height,
@@ -56,6 +59,7 @@ class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
     return ButtonSettingTheme(
       backgroundColor: backgroundColor ?? this.backgroundColor,
       splashColor: splashColor ?? this.splashColor,
+      leftIconColor: leftIconColor ?? this.leftIconColor,
       chevronColor: chevronColor ?? this.chevronColor,
       checkColor: checkColor ?? this.checkColor,
       height: height ?? this.height,
@@ -77,6 +81,7 @@ class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
     return ButtonSettingTheme(
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t)!,
       splashColor: Color.lerp(splashColor, other.splashColor, t)!,
+      leftIconColor: Color.lerp(leftIconColor, other.leftIconColor, t)!,
       chevronColor: Color.lerp(chevronColor, other.chevronColor, t)!,
       checkColor: Color.lerp(checkColor, other.checkColor, t)!,
       height: height + (other.height - height) * t,

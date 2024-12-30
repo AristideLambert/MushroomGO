@@ -133,53 +133,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               ButtonStandard(
                                 title: AppLocalizations.of(context)!.registerSignUp,
                                 onTap: () {
-                                  /*showDialog(
-                                    context: context,
-                                    barrierDismissible: false,
-                                    builder: (BuildContext context) {
-                                      context = context;
-                                      return Center(
-                                        child: Container(height: 100,child: Text("data"), color: Colors.red,),
-                                      );
-                                    },
-                                  );*/
-
-                                  //signUpAndSaveUser(context);
-                                  FirebaseAuthUtils.createUserWithEmailAndPassword(context, controllerFirstname.text, controllerName.text, controllerEmail.text, controllerPassword.text);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                  /*
+                                  FirebaseAuthUtils
+                                      .createUserWithEmailAndPassword(
+                                      context, controllerFirstname.text,
+                                      controllerName.text, controllerEmail.text,
+                                      controllerPassword.text);
+                                  Navigator.of(context).pop();
                                   // TODO: Sign up
-                                  print("Sign up");
-                                  try{
-                                    await FirebaseAuth.instance.createUserWithEmailAndPassword(email: controllerEmail.text, password: controllerPassword.text).then(
-                                        FirebaseFirestore.instance.collection("user").doc(FirebaseAuth.instance.currentUser?.uid).set({"firsname": controllerFirstname.text, "name": controllerName.text}) as FutureOr Function(UserCredential value)
-                                    );
-                                  } on FirebaseAuthException catch (e) {
-                                    if (e.code == 'weak-password') {
-                                      print('The password provided is too weak.');
-                                    } else if (e.code == 'email-already-in-use') {
-                                      print('The account already exists for that email.');
-                                    }
-                                    print(e.code);
-                                  }
-                                  print(FirebaseAuth.instance.currentUser);
-
-      */
                                 }
                               ),
                               const SizedBox(height: DimensionConstant.spaceVerticalRegister,),

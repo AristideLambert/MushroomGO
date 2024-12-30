@@ -35,6 +35,8 @@ class ColorConstant{
   static const Color darkTitleButtonSetting = CupertinoColors.white;
   static const Color lightTitleButtonButtonSetting = CupertinoColors.systemBlue;
   static const Color darkTitleButtonButtonSetting = CupertinoColors.systemBlue;
+  static const Color lightLeftIconButtonSetting = CupertinoColors.label;
+  static const Color darkLeftIconButtonSetting = CupertinoColors.white;
   static const Color lightDataButtonSetting = CupertinoColors.systemGrey;
   static const Color darkDataButtonSetting = CupertinoColors.systemGrey;
   static const Color checkButtonSetting = CupertinoColors.systemBlue;

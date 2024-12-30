@@ -11,6 +11,7 @@ class ProfileContainerTheme extends ThemeExtension<ProfileContainerTheme> {
   final double radiusCircleAvatar;
   final double sizeChevron;
   final double space;
+  final double blur;
   final TextStyle nameStyle;
   final TextStyle mailStyle;
 
@@ -22,6 +23,7 @@ class ProfileContainerTheme extends ThemeExtension<ProfileContainerTheme> {
     this.radiusCircleAvatar = DimensionConstant.circleAvatarRadiusProfileContainer,
     this.sizeChevron = DimensionConstant.chevronSizeProfileContainer,
     this.space = DimensionConstant.spaceProfileContainer,
+    this.blur = DimensionConstant.blurProfileContainer,
     this.nameStyle = TextStyleConstant.lightNameProfileContainer,
     this.mailStyle = TextStyleConstant.lightMailProfileContainer,
   });
@@ -35,6 +37,7 @@ class ProfileContainerTheme extends ThemeExtension<ProfileContainerTheme> {
     double? radiusCircleAvatar,
     double? sizeChevron,
     double? space,
+    double? blur,
     TextStyle? nameStyle,
     TextStyle? mailStyle,
   }) {
@@ -46,6 +49,7 @@ class ProfileContainerTheme extends ThemeExtension<ProfileContainerTheme> {
       radiusCircleAvatar: radiusCircleAvatar ?? this.radiusCircleAvatar,
       sizeChevron: sizeChevron ?? this.sizeChevron,
       space: space ?? this.space,
+      blur: blur ?? this.blur,
       nameStyle: nameStyle ?? this.nameStyle,
       mailStyle: mailStyle ?? this.mailStyle,
     );
@@ -62,6 +66,7 @@ class ProfileContainerTheme extends ThemeExtension<ProfileContainerTheme> {
       radiusCircleAvatar: radiusCircleAvatar + (other.radiusCircleAvatar - radiusCircleAvatar) * t,
       sizeChevron: sizeChevron + (other.sizeChevron - sizeChevron) * t,
       space: space + (other.space - space) * t,
+      blur: blur + (other.blur - blur) * t,
       nameStyle: TextStyle.lerp(nameStyle, other.nameStyle, t)!,
       mailStyle: TextStyle.lerp(mailStyle, other.mailStyle, t)!,
     );

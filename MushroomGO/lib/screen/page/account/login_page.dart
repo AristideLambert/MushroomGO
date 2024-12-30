@@ -110,9 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                                 const SizedBox(width: DimensionConstant.spaceHorizontalLogin,),
                                 TextOutput(text: AppLocalizations.of(context)!.loginSignUp, fontColor: ColorConstant.textOnTapLogin, fontWeight: FontWeight.bold, onTap: (){
                                     // TODO: Register
-                                    /*Navigator.of(widget.mainContext).pushNamed(
-                                        NavigationConstant.registrationPage
-                                    );*/
+                                    Navigator.of(context).pushNamed(NavigationConstant.registrationPage);
                                   },
                                 )
                               ],

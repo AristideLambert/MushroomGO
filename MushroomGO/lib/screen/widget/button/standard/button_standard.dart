@@ -6,10 +6,11 @@ class ButtonStandard extends StatefulWidget {
   final IconData? icon;
   final bool centerTitle;
   final bool enabled;
+  final bool widthContent;
   final Function()? onTap;
   final ButtonStandardTheme? theme;
 
-  const ButtonStandard({super.key, required this.title, this.icon, this.centerTitle = true, this.enabled = true, required this.onTap, this.theme});
+  const ButtonStandard({super.key, required this.title, this.icon, this.centerTitle = true, this.enabled = true, required this.onTap, this.theme, this.widthContent = false});
 
   @override
   State<ButtonStandard> createState() => _ButtonStandardState();
@@ -41,6 +42,7 @@ class _ButtonStandardState extends State<ButtonStandard> {
               padding: EdgeInsets.symmetric(horizontal: _theme.padding),
               height: _theme.height,
               child: Row(
+                mainAxisSize: widget.widthContent ? MainAxisSize.min : MainAxisSize.max,
                 mainAxisAlignment: widget.centerTitle ? MainAxisAlignment.center : MainAxisAlignment.start,
                 children: [
                   if(widget.icon != null)

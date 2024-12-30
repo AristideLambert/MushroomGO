@@ -61,6 +61,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                     ),
                     onTap: () {
                       FirebaseAuthUtils.signOut(context);
+                      Navigator.of(context).pop();
                     },
                   ),
                 ]

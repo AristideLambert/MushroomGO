@@ -21,9 +21,10 @@ class AccountUpdatePasswordSettingPage extends StatefulWidget {
 }
 
 class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePasswordSettingPage> {
-  late final String? _oobCode;
   late final TextEditingController _controllerPassword;
   late bool _isValid;
+  late bool _checkOobCode;
+  String? _oobCode;
 
   @override
   void initState() {
@@ -35,6 +36,7 @@ class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePassword
       });
     });
     _isValid = false;
+    _checkOobCode = false;
   }
 
 
@@ -42,6 +44,10 @@ class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePassword
   void didChangeDependencies() {
     super.didChangeDependencies();
     _oobCode = ModalRoute.of(context)!.settings.arguments as String?;
+    if(_oobCode != null && !_checkOobCode){
+      _checkOobCode = true;
+      FirebaseAuthUtils.verifyPasswordResetCode(context, _oobCode!);
+    }
   }
 
   @override
@@ -52,14 +58,22 @@ class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePassword
       ),
       body: Container(
         padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-        child: Column(
-          children: [
-            if(_oobCode == null) ... [
-              TextInput(controller: _controllerPassword, textInputAction: TextInputAction.next, keyboardType: TextInputType.visiblePassword, placeHolder: "Old password", password: true, ),
-              const SizedBox(height: 20,),
+        child: Container(
+          padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
+          decoration: BoxDecoration(
+            color: Theme.of(context).appBarTheme.backgroundColor,
+            borderRadius: const BorderRadius.all(Radius.circular(DimensionConstant.radiusBorderInputTextInput))
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if(_oobCode == null) ... [
+                TextInput(controller: _controllerPassword, textInputAction: TextInputAction.next, keyboardType: TextInputType.visiblePassword, placeHolder: "Old password", password: true, ),
+                const SizedBox(height: 20,),
+              ],
+              TextInput(controller: _controllerPassword, textInputAction: TextInputAction.done, keyboardType: TextInputType.visiblePassword, placeHolder: "New password", password: true, passwordPolicy: true,)
             ],
-            TextInput(controller: _controllerPassword, textInputAction: TextInputAction.done, keyboardType: TextInputType.visiblePassword, placeHolder: "New password", password: true, passwordPolicy: true,)
-          ],
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

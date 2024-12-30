@@ -35,6 +35,10 @@
   "@setting": {
     "description": "Settings"
   },
+  "settingProfileLogin": "Login",
+    "@settingProfileLogin": {
+      "description": "Login (Profile)"
+    },
   "settingContentDisplay": "Content & Display",
   "@settingContentDisplay": {
     "description": "Content & Display"

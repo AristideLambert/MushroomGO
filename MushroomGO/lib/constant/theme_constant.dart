@@ -36,6 +36,7 @@ class ThemeConstant{
           titleStyle: TextStyleConstant.lightTitleButtonStandard
       ),
       const ButtonSettingTheme(
+        leftIconColor: ColorConstant.lightLeftIconButtonSetting,
         titleStyle: TextStyleConstant.lightTitleButtonSetting,
         dataStyle: TextStyleConstant.lightDataButtonSetting,
         backgroundColor: ColorConstant.lightBackgroundButtonSetting
@@ -99,6 +100,7 @@ class ThemeConstant{
             titleStyle: TextStyleConstant.darkTitleButtonStandard
         ),
         const ButtonSettingTheme(
+          leftIconColor: ColorConstant.darkLeftIconButtonSetting,
           titleStyle: TextStyleConstant.darkTitleButtonSetting,
           dataStyle: TextStyleConstant.darkDataButtonSetting,
           backgroundColor: ColorConstant.darkBackgroundButtonSetting

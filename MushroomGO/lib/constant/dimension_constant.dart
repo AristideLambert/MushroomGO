@@ -69,7 +69,7 @@ class DimensionConstant {
   static const double radiusButtonSetting = 15.0;
   static const double heightButtonSetting = 45.0;
   static const double paddingButtonSetting = 16.0;
-  static const double iconSizeButtonSetting = 30.0;
+  static const double iconSizeButtonSetting = 25.0;
   static const double spaceButtonSetting = 10.0;
   static const double chevronSizeButtonSetting = 16.0;
   static const double checkSizeButtonSetting = 25.0;
@@ -84,6 +84,7 @@ class DimensionConstant {
   static const double radiusProfileContainer = 15.0;
   static const double circleAvatarRadiusProfileContainer = 35.0;
   static const double spaceProfileContainer = 16.0;
+  static const double blurProfileContainer = 10.0;
   static const double chevronSizeProfileContainer = 16.0;
 
   // ChallengeMushroomsList

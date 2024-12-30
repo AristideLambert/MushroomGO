@@ -6,7 +6,9 @@ import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 class ErrorContainer extends StatelessWidget {
   final String title;
   final String message;
-  const ErrorContainer({super.key, required this.title, required this.message});
+  final Function()? onTap;
+
+  const ErrorContainer({super.key, required this.title, required this.message, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +38,7 @@ class ErrorContainer extends StatelessWidget {
             SizedBox(height: DimensionConstant.defaultPadding,),
             ButtonStandard(title: "OK", onTap: (){
               Navigator.of(context).pop();
+              onTap?.call();
             })
           ],
         ),

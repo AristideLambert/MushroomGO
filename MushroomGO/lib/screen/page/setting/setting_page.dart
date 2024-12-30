@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -39,8 +40,8 @@ class _SettingPageState extends State<SettingPage> {
                   image: const NetworkImage(
                     'https://picsum.photos/seed/904/600',
                   ),
-                  name: "Aristide LAMBERT",
-                  mail: "aristidelambert@yahoo.fr",
+                  name: FirebaseAuth.instance.currentUser?.displayName ?? "Aristide LAMBERT",
+                  mail: FirebaseAuth.instance.currentUser?.email ?? "aristide.lambert@student.hepl.be",
                   onTap: () {
                     Navigator.of(widget.mainContext).pushNamed(
                         NavigationConstant.accountSettingPage

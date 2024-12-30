@@ -85,7 +85,8 @@ class _ButtonSettingState extends State<ButtonSetting> {
                   if (widget.leftIcon != null)
                     Icon(
                         widget.leftIcon,
-                        size: theme.sizeLeftIcon
+                        size: theme.sizeLeftIcon,
+                        color: theme.leftIconColor,
                     ),
                   if (widget.leftIcon != null)
                     SizedBox(

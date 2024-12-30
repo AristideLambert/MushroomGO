@@ -15,6 +15,7 @@ class FirebaseAuthUtils{
         email: email,
         password: password,
       );
+      userCredential.user?.updateDisplayName("$firstname $name");
       await FirebaseFirestore.instance.collection("user").doc(userCredential.user?.uid).set({
         "firstname": firstname,
         "name": name,
@@ -41,7 +42,7 @@ class FirebaseAuthUtils{
           errorMessage = "Une erreur inconnue s'est produite.";
       }
       if (context.mounted){
-        DialogUtils.showError(context, "Inscription", errorMessage);
+        DialogUtils.showError(context, "Inscription", errorMessage, null);
       }
     }
   }
@@ -77,7 +78,7 @@ class FirebaseAuthUtils{
           errorMessage = "Une erreur inattendue est survenue : ${e.code}.";
       }
       if (context.mounted) {
-        DialogUtils.showError(context, "Identification", errorMessage);
+        DialogUtils.showError(context, "Identification", errorMessage, null);
       }
     }
   }
@@ -110,7 +111,7 @@ class FirebaseAuthUtils{
           errorMessage = "Une erreur inattendue est survenue : ${e.code}.";
       }
       if (context.mounted) {
-        DialogUtils.showError(context, "Réinitialisation", errorMessage);
+        DialogUtils.showError(context, "Réinitialisation", errorMessage, null);
       }
     }
   }
@@ -146,7 +147,39 @@ class FirebaseAuthUtils{
           errorMessage = "Une erreur inattendue est survenue : ${e.code}.";
       }
       if (context.mounted) {
-        DialogUtils.showError(context, "Réinitialisation", errorMessage);
+        DialogUtils.showError(context, "Réinitialisation", errorMessage, null);
+      }
+    }
+  }
+
+  static Future<void> verifyPasswordResetCode(BuildContext context, String oobCode) async {
+    try {
+      if (context.mounted) {
+        DialogUtils.showLoading(context, "Chargement en cours...");
+      }
+      await FirebaseAuth.instance.verifyPasswordResetCode(oobCode);
+      if (context.mounted) {
+        Navigator.of(context).pop();
+      }
+    } on FirebaseAuthException catch (e) {
+      if (context.mounted) {
+        Navigator.of(context).pop();
+      }
+      String errorMessage;
+      switch (e.code) {
+        case 'expired-action-code':
+          errorMessage = "Le lien de réinitialisation a expiré.";
+          break;
+        case 'invalid-action-code':
+          errorMessage = "Le code de réinitialisation est invalide.";
+          break;
+        default:
+          errorMessage = "Une erreur inattendue est survenue : ${e.code}.";
+      }
+      if (context.mounted) {
+        DialogUtils.showError(context, "Réinitialisation", errorMessage, (){
+          Navigator.of(context).pop();
+        });
       }
     }
   }
