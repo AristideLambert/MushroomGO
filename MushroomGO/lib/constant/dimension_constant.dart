@@ -124,4 +124,11 @@ class DimensionConstant {
   static const double defaultPaddingBadgeTab = 8.0;
   static const double heightImageBadgeDetail = 200.0;
   static const double spaceBetweenTextBadgeDetail = 20.0;
+
+  // HistoryTab
+  static const double itemRadiusHistoryTab = 8.0;
+  static const double spaceBetweenImageTextHistoryTab = 16.0;
+  static const double defaultPaddingMarginHistoryTab = 8.0;
+  static const double imageWidthHeightHistoryTab = 80.0;
+  static const double spaceBetweenTextHistoryTab = 4.0;
 }

@@ -89,4 +89,10 @@ class ColorConstant{
   // BadgeTab
   static const Color lightTextBadgeTab = CupertinoColors.label;
   static const Color darkTextBadgeTab = CupertinoColors.white;
+
+  // HistoryTab
+  static const Color lightTextHistoryTab = CupertinoColors.label;
+  static const Color darkTextHistoryTab = CupertinoColors.white;
+  static const Color lightBackgroundHistoryTab = CupertinoColors.systemBackground;
+  static const Color darkBackgroundHistoryTab = CupertinoColors.darkBackgroundGray;
 }

@@ -300,5 +300,28 @@ class TextStyleConstant {
     fontSize: DimensionConstant.titleSmall,
   );
 
-
+// HistoryTab
+  static const TextStyle darkTitleHistoryTab = TextStyle(
+      color: ColorConstant.darkTextHistoryTab,
+      fontSize: DimensionConstant.titleMedium,
+      fontWeight: FontWeight.bold
+  );
+  static const TextStyle lightTitleHistoryTab = TextStyle(
+      color: ColorConstant.lightTextHistoryTab,
+      fontSize: DimensionConstant.titleMedium,
+      fontWeight: FontWeight.bold
+  );
+  static const TextStyle textDateHistoryTab = TextStyle(
+    color: ColorConstant.primaryColor,
+    fontSize: DimensionConstant.bodyText,
+  );
+  static const TextStyle darkTextHistoryTab = TextStyle(
+    color: ColorConstant.darkTextHistoryTab,
+    fontSize: DimensionConstant.bodyText,
+  );
+  static const TextStyle lightTextHistoryTab = TextStyle(
+    color: ColorConstant.lightTextHistoryTab,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.bold
+  );
 }
