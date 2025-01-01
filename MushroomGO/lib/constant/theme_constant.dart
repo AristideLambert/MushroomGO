@@ -18,6 +18,7 @@ class ThemeConstant{
   static ThemeData lightTheme = ThemeData(
     primaryColor: ColorConstant.primaryColor,
     scaffoldBackgroundColor: CupertinoColors.lightBackgroundGray,
+    brightness: Brightness.light,
     appBarTheme: const AppBarTheme(
         backgroundColor: CupertinoColors.systemBackground,
         foregroundColor: CupertinoColors.label
@@ -30,6 +31,10 @@ class ThemeConstant{
         cursorColor: ColorConstant.primaryColor,
         selectionColor: ColorConstant.primaryColor.withOpacity(0.3)
     ),
+    cupertinoOverrideTheme: const CupertinoThemeData(
+      brightness: Brightness.light,
+      primaryColor: ColorConstant.primaryColor
+    )
   ).copyWith(
     extensions: [
       const ButtonStandardTheme(
@@ -82,6 +87,7 @@ class ThemeConstant{
   static ThemeData darkTheme = ThemeData(
     primaryColor: ColorConstant.primaryColor,
     scaffoldBackgroundColor: CupertinoColors.black,
+    brightness: Brightness.dark,
     appBarTheme: const AppBarTheme(
       backgroundColor: CupertinoColors.darkBackgroundGray,
       foregroundColor: Colors.white
@@ -94,6 +100,10 @@ class ThemeConstant{
         cursorColor: ColorConstant.primaryColor,
         selectionColor: ColorConstant.primaryColor.withOpacity(0.3)
     ),
+    cupertinoOverrideTheme: const CupertinoThemeData(
+      brightness: Brightness.dark,
+      primaryColor: ColorConstant.primaryColor
+    )
   ).copyWith(
       extensions: [
         const ButtonStandardTheme(

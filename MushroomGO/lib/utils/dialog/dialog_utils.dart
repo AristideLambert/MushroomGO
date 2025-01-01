@@ -32,7 +32,7 @@ class DialogUtils{
           return ErrorContainer(title: title, message: message, onTap: onTap);
         },
       );*/
-      _popup(context);
+      //_popup(context);
     });
   }
 
@@ -48,26 +48,49 @@ class DialogUtils{
     });
   }
 
-  static Future _popup(BuildContext context){
-    return Platform.isIOS ? _iosPopup(context) : _androidPopup(context);
+  static Future _popup(BuildContext context, String title, String content, String titlePositive, Function()? onTapPositive, bool isDestructiveActionPositive, String titleNegative, Function()? onTapNegative, bool isDestructiveActionNegative){
+    return Platform.isIOS ? _iosPopup(context, title, content, titlePositive, onTapPositive, isDestructiveActionPositive, titleNegative, onTapNegative, isDestructiveActionNegative) : _androidPopup(context, title, content, titlePositive, onTapPositive, isDestructiveActionPositive, titleNegative, onTapNegative, isDestructiveActionNegative);
   }
 
-  static Future _iosPopup(BuildContext context){
+  static Future _popupInformation(BuildContext context, String title, String content, String titlePositive, Function()? onTapPositive, bool isDestructiveActionPositive){
+    return Platform.isIOS ? _iosPopup(context, title, content, titlePositive, onTapPositive, isDestructiveActionPositive, null, null, false) : _androidPopup(context, title, content, titlePositive, onTapPositive, isDestructiveActionPositive, null, null, false);
+  }
+
+  static Future _iosPopup(BuildContext context, String title, String content, String titlePositive, Function()? onTapPositive, bool isDestructiveActionPositive, String? titleNegative, Function()? onTapNegative, bool isDestructiveActionNegative){
+
     return showCupertinoDialog(
       context: context,
       builder: (BuildContext context) {
-        return IosPopup();
+        return IosPopup(
+          title: title,
+          content: content,
+          titlePositive: titlePositive,
+          onTapPositive: onTapPositive,
+          isDestructiveActionPositive: isDestructiveActionPositive,
+          titleNegative: titleNegative,
+          onTapNegative: onTapNegative,
+          isDestructiveActionNegative: isDestructiveActionNegative
+        );
       }
     );
   }
 
-  static Future _androidPopup(BuildContext context){
+  static Future _androidPopup(BuildContext context, String title, String content, String titlePositive, Function()? onTapPositive, bool isDestructiveActionPositive, String? titleNegative, Function()? onTapNegative, bool isDestructiveActionNegative){
     return showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
-        return AndroidPopup();
+        return AndroidPopup(
+            title: title,
+            content: content,
+            titlePositive: titlePositive,
+            onTapPositive: onTapPositive,
+            isDestructiveActionPositive: isDestructiveActionPositive,
+            titleNegative: titleNegative,
+            onTapNegative: onTapNegative,
+            isDestructiveActionNegative: isDestructiveActionNegative
+        );
       }
     );
   }
-
 }

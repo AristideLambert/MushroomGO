@@ -82,4 +82,12 @@ class ColorConstant{
   // TextOutput
   static const Color lightTextOutput = CupertinoColors.label;
   static const Color darkTextOutput = CupertinoColors.white;
+
+  // IosPopup
+  static const Color buttonIosPopup = CupertinoColors.activeBlue;
+  static const Color destructiveButtonIosPopup = CupertinoColors.destructiveRed;
+
+  // AndroidPopup
+  static const Color buttonAndroidPopup = CupertinoColors.activeBlue;
+  static const Color destructiveButtonAndroidPopup = CupertinoColors.destructiveRed;
 }
