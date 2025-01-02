@@ -131,4 +131,11 @@ class DimensionConstant {
   static const double defaultPaddingMarginHistoryTab = 8.0;
   static const double imageWidthHeightHistoryTab = 80.0;
   static const double spaceBetweenTextHistoryTab = 4.0;
+
+  // SearchResultPage
+  static const double defaultPaddingSearchResultPage = 8.0;
+  static const double itemRadiusSearchResultPage = 8.0;
+  static const double imageWidthHeightSearchResultPage = 60.0;
+  static const double spaceBetweenItemSearchResultPage = 16.0;
+  static const double heightBetweenNameScientificNameSearchResultPage = 4.0;
 }

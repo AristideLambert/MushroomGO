@@ -95,4 +95,8 @@ class ColorConstant{
   static const Color darkTextHistoryTab = CupertinoColors.white;
   static const Color lightBackgroundHistoryTab = CupertinoColors.systemBackground;
   static const Color darkBackgroundHistoryTab = CupertinoColors.darkBackgroundGray;
+
+  //SearchResultPage
+  static const Color lightTextSearchResultPage = CupertinoColors.label;
+  static const Color darkTextSearchResultPage = CupertinoColors.white;
 }

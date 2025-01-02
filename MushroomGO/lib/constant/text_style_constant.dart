@@ -324,4 +324,21 @@ class TextStyleConstant {
     fontSize: DimensionConstant.bodyText,
     fontWeight: FontWeight.bold
   );
+  // SearchResultPage
+  static const TextStyle darkTitleSearchResultPage = TextStyle(
+      color: ColorConstant.darkTextSearchResultPage,
+      fontSize: DimensionConstant.titleSmall,
+      fontWeight: FontWeight.bold
+  );
+  static const TextStyle lightTitleSearchResultPage = TextStyle(
+      color: ColorConstant.lightTextSearchResultPage,
+      fontSize: DimensionConstant.titleSmall,
+      fontWeight: FontWeight.bold
+  );
+  static const TextStyle scientificNameSearchResultPage = TextStyle(
+      color: ColorConstant.primaryColor,
+      fontSize: DimensionConstant.bodyText,
+      fontStyle: FontStyle.italic
+  );
+
 }

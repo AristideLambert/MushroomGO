@@ -14,6 +14,7 @@ import 'package:mushroom_go/theme/mushroom_detail_theme.dart';
 import 'package:mushroom_go/theme/navigation_tab_bottom_theme.dart';
 import 'package:mushroom_go/theme/navigation_tab_top_theme.dart';
 import 'package:mushroom_go/theme/profile_container_theme.dart';
+import 'package:mushroom_go/theme/search_result_theme.dart';
 import 'color_constant.dart';
 
 class ThemeConstant{
@@ -93,6 +94,9 @@ class ThemeConstant{
         textStyle: TextStyleConstant.lightTextHistoryTab,
         titleStyle: TextStyleConstant.lightTitleHistoryTab,
         cardBackgroundColor: ColorConstant.lightBackgroundHistoryTab
+      ),
+      const SearchResultTheme(
+        titleStyle: TextStyleConstant.lightTitleSearchResultPage
       )
     ]
   );
@@ -171,6 +175,9 @@ class ThemeConstant{
             textStyle: TextStyleConstant.darkTextHistoryTab,
             titleStyle: TextStyleConstant.darkTitleHistoryTab,
             cardBackgroundColor: ColorConstant.darkBackgroundHistoryTab
+        ),
+        const SearchResultTheme(
+            titleStyle: TextStyleConstant.darkTitleSearchResultPage
         )
       ]
   );
