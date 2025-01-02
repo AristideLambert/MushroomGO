@@ -10,6 +10,7 @@ import 'package:mushroom_go/theme/button_setting_theme.dart';
 import 'package:mushroom_go/screen/widget/button/setting/button_setting.dart';
 import 'package:mushroom_go/screen/widget/button/setting/button_setting_container.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mushroom_go/utils/dialog/dialog_utils.dart';
 import 'package:mushroom_go/utils/firebase/firebase_auth_utils.dart';
 import 'package:mushroom_go/utils/text/password_utils.dart';
 
@@ -21,7 +22,8 @@ class AccountUpdatePasswordSettingPage extends StatefulWidget {
 }
 
 class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePasswordSettingPage> {
-  late final TextEditingController _controllerPassword;
+  late final TextEditingController _controllerOldPassword;
+  late final TextEditingController _controllerNewPassword;
   late bool _isValid;
   late bool _checkOobCode;
   String? _oobCode;
@@ -29,10 +31,11 @@ class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePassword
   @override
   void initState() {
     super.initState();
-    _controllerPassword = TextEditingController();
-    _controllerPassword.addListener(() {
+    _controllerOldPassword = TextEditingController();
+    _controllerNewPassword = TextEditingController();
+    _controllerNewPassword.addListener(() {
       setState(() {
-        _isValid = PasswordUtils.checkValid(_controllerPassword.text);
+        _isValid = PasswordUtils.checkValid(_controllerNewPassword.text);
       });
     });
     _isValid = false;
@@ -68,10 +71,10 @@ class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePassword
             mainAxisSize: MainAxisSize.min,
             children: [
               if(_oobCode == null) ... [
-                TextInput(controller: _controllerPassword, textInputAction: TextInputAction.next, keyboardType: TextInputType.visiblePassword, placeHolder: "Old password", password: true, ),
+                TextInput(controller: _controllerOldPassword, textInputAction: TextInputAction.next, keyboardType: TextInputType.visiblePassword, placeHolder: "••••••••••••••", password: true, title: "Old password",),
                 const SizedBox(height: 20,),
               ],
-              TextInput(controller: _controllerPassword, textInputAction: TextInputAction.done, keyboardType: TextInputType.visiblePassword, placeHolder: "New password", password: true, passwordPolicy: true,)
+              TextInput(controller: _controllerNewPassword, textInputAction: TextInputAction.done, keyboardType: TextInputType.visiblePassword, placeHolder: "••••••••••••••", password: true, passwordPolicy: true, title: "New password",)
             ],
           ),
         ),
@@ -79,9 +82,12 @@ class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePassword
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-        child: ButtonStandard(title: _oobCode == null ? "Update password" : "Reset password", enabled: _isValid, onTap: (){
-          print("Reset");
-          FirebaseAuthUtils.confirmPasswordReset(context, _oobCode!, _controllerPassword.text);
+        child: ButtonStandard(title: _oobCode == null ? "Update password" : "Reset password", enabled: _isValid, onTap: () async {
+          _oobCode == null ? await FirebaseAuthUtils.updatePassword(context, _controllerOldPassword.text, _controllerNewPassword.text) : await FirebaseAuthUtils.confirmPasswordReset(context, _oobCode!, _controllerNewPassword.text);
+
+          DialogUtils.showPopupInformation(context, "Update password", "Successful update", "OK", (){
+            Navigator.of(context).pop();
+          }, false);
         }),
       )
     );

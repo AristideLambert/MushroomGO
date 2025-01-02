@@ -48,11 +48,11 @@ class DialogUtils{
     });
   }
 
-  static Future _popup(BuildContext context, String title, String content, String titlePositive, Function()? onTapPositive, bool isDestructiveActionPositive, String titleNegative, Function()? onTapNegative, bool isDestructiveActionNegative){
+  static Future showPopup(BuildContext context, String title, String content, String titlePositive, Function()? onTapPositive, bool isDestructiveActionPositive, String titleNegative, Function()? onTapNegative, bool isDestructiveActionNegative){
     return Platform.isIOS ? _iosPopup(context, title, content, titlePositive, onTapPositive, isDestructiveActionPositive, titleNegative, onTapNegative, isDestructiveActionNegative) : _androidPopup(context, title, content, titlePositive, onTapPositive, isDestructiveActionPositive, titleNegative, onTapNegative, isDestructiveActionNegative);
   }
 
-  static Future _popupInformation(BuildContext context, String title, String content, String titlePositive, Function()? onTapPositive, bool isDestructiveActionPositive){
+  static Future showPopupInformation(BuildContext context, String title, String content, String titlePositive, Function()? onTapPositive, bool isDestructiveActionPositive){
     return Platform.isIOS ? _iosPopup(context, title, content, titlePositive, onTapPositive, isDestructiveActionPositive, null, null, false) : _androidPopup(context, title, content, titlePositive, onTapPositive, isDestructiveActionPositive, null, null, false);
   }
 

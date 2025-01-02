@@ -8,7 +8,7 @@ import 'package:mushroom_go/provider/locale_provider.dart';
 import 'package:mushroom_go/provider/theme_provider.dart';
 import 'package:mushroom_go/screen/widget/button/setting/button_setting.dart';
 import 'package:mushroom_go/screen/widget/button/setting/button_setting_container.dart';
-import 'package:mushroom_go/screen/widget/container/profile_container.dart';
+import 'package:mushroom_go/screen/widget/container/profile/profile_container.dart';
 import 'package:mushroom_go/utils/setting/setting_utils.dart';
 import 'package:provider/provider.dart';
 

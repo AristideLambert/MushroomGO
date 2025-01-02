@@ -31,7 +31,10 @@ class AndroidPopup extends StatelessWidget {
       actions: [
         if(titleNegative != null) ... [
           TextButton(
-            onPressed: onTapNegative,
+            onPressed: (){
+              Navigator.of(context).pop();
+              onTapNegative?.call();
+            },
             child: Text(
               titleNegative!,
               style: TextStyle(
@@ -41,7 +44,10 @@ class AndroidPopup extends StatelessWidget {
           ),
         ],
         TextButton(
-          onPressed: onTapPositive,
+          onPressed: (){
+            Navigator.of(context).pop();
+            onTapPositive?.call();
+          },
           child: Text(
             titlePositive,
             style: TextStyle(

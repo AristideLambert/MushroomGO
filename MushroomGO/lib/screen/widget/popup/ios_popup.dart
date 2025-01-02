@@ -32,7 +32,10 @@ class IosPopup extends StatelessWidget {
         if(titleNegative != null) ... [
           CupertinoDialogAction(
             isDestructiveAction: isDestructiveActionNegative,
-            onPressed: onTapNegative,
+            onPressed: (){
+              Navigator.of(context).pop();
+              onTapNegative?.call;
+            },
             child: Text(
               titleNegative!,
               style: TextStyle(
@@ -43,7 +46,10 @@ class IosPopup extends StatelessWidget {
         ],
         CupertinoDialogAction(
           isDestructiveAction: isDestructiveActionPositive,
-          onPressed: onTapPositive,
+          onPressed: (){
+            Navigator.of(context).pop();
+            onTapPositive?.call();
+          },
           child: Text(
             titlePositive,
             style: TextStyle(

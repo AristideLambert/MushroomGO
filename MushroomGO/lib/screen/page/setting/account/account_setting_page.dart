@@ -8,6 +8,7 @@ import 'package:mushroom_go/screen/widget/button/setting/button_setting.dart';
 import 'package:mushroom_go/screen/widget/button/setting/button_setting_container.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mushroom_go/utils/firebase/firebase_auth_utils.dart';
+import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 
 class AccountSettingPage extends StatefulWidget {
   const AccountSettingPage({super.key});
@@ -31,6 +32,14 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                 buttons: [
                   ButtonSetting(
                     type: Type.standard,
+                    title: AppLocalizations.of(context)!.settingAccountFirstnameName,
+                    leftIcon: MushroomGOFontUtils.profile,
+                    onTap: (){
+                      Navigator.of(context).pushNamed(NavigationConstant.accountUpdateFirstnameNameSettingPage);
+                    },
+                  ),
+                  ButtonSetting(
+                    type: Type.standard,
                     title: AppLocalizations.of(context)!.settingAccountMail,
                     leftIcon: CupertinoIcons.at,
                   ),
@@ -46,6 +55,9 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                     type: Type.standard,
                     title: AppLocalizations.of(context)!.settingAccountDelete,
                     leftIcon: CupertinoIcons.delete_solid,
+                    onTap: (){
+                      Navigator.of(context).pushNamed(NavigationConstant.accountDeleteSettingPage);
+                    },
                   )
                 ]
             ),

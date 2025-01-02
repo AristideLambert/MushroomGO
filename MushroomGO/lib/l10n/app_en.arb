@@ -87,6 +87,10 @@
     "@settingAccount": {
     "description": "Account (Setting)"
  },
+ "settingAccountFirstnameName": "Update firstname & name",
+    "@settingAccountFirstnameName": {
+    "description": "Setting Account Firstname & name (Setting)"
+ },
  "settingAccountMail": "Update email address",
    "@settingAccountMail": {
    "description": "Setting Account Mail (Setting)"

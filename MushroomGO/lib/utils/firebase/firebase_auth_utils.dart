@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:mushroom_go/models/person.dart';
 import 'package:mushroom_go/utils/dialog/dialog_utils.dart';
 
 class FirebaseAuthUtils{
@@ -42,7 +43,7 @@ class FirebaseAuthUtils{
           errorMessage = "Une erreur inconnue s'est produite.";
       }
       if (context.mounted){
-        DialogUtils.showError(context, "Inscription", errorMessage, null);
+        DialogUtils.showPopupInformation(context, "Inscription", errorMessage, "OK", null, false);
       }
     }
   }
@@ -78,7 +79,46 @@ class FirebaseAuthUtils{
           errorMessage = "Une erreur inattendue est survenue : ${e.code}.";
       }
       if (context.mounted) {
-        DialogUtils.showError(context, "Identification", errorMessage, null);
+        DialogUtils.showPopupInformation(context, "Login", errorMessage, "OK", null, false);
+      }
+    }
+  }
+
+  static Future<void> updatePassword(BuildContext context, String oldPassword, String newPassword) async {
+    try {
+      User user = _getUser();
+      await signInWithEmailAndPassword(context, user.email!, oldPassword);
+      if (context.mounted) {
+        DialogUtils.showLoading(context, "Réinitialisation en cours...");
+      }
+      user = _getUser();
+      await user.updatePassword(newPassword);
+      if (context.mounted) {
+        Navigator.of(context).pop();
+        DialogUtils.showInformation(context, "Réinitialisation du mot de passe", "Le mot de passe a été réinitialisé avec succès.", (){
+          Navigator.of(context).pop();
+        });
+      }
+    } on FirebaseAuthException catch (e) {
+      if (context.mounted) {
+        Navigator.of(context).pop();
+      }
+      String errorMessage;
+      switch (e.code) {
+        case 'expired-action-code':
+          errorMessage = "Le lien de réinitialisation a expiré.";
+          break;
+        case 'invalid-action-code':
+          errorMessage = "Le code de réinitialisation est invalide.";
+          break;
+        case 'weak-password':
+          errorMessage = "Le nouveau mot de passe est trop faible.";
+          break;
+        default:
+          errorMessage = "Une erreur inattendue est survenue : ${e.code}.";
+      }
+      if (context.mounted) {
+        DialogUtils.showError(context, "Réinitialisation", errorMessage, null);
       }
     }
   }
@@ -192,5 +232,118 @@ class FirebaseAuthUtils{
     if (context.mounted) {
       Navigator.of(context).pop();
     }
+  }
+
+  static Future<Person?> getFullName(BuildContext context) async {
+    try {
+      if (context.mounted) {
+        DialogUtils.showLoading(context, "Chargement en cours...");
+      }
+      final uid = FirebaseAuth.instance.currentUser?.uid;
+      if (uid == null) {
+        throw Exception("Aucun utilisateur connecté");
+      }
+      final docSnapshot = await FirebaseFirestore.instance
+          .collection("user")
+          .doc(uid)
+          .get();
+      if (!docSnapshot.exists) {
+        throw Exception("Informations non trouvées pour cet utilisateur");
+      }
+      final firstname = docSnapshot.data()?['firstname'];
+      if (firstname == null) {
+        throw Exception("Prénom non trouvé");
+      }
+      final name = docSnapshot.data()?['name'];
+      if (name == null) {
+        throw Exception("Nom non trouvé");
+      }
+      if (context.mounted) {
+        Navigator.of(context).pop();
+      }
+      return Person(firstname: firstname, name: name);
+    } catch (e) {
+      if (context.mounted) {
+        Navigator.of(context).pop();
+      }
+      if (context.mounted) {
+        DialogUtils.showError(context, "Réinitialisation", e.toString(), null);
+      }
+      return null;
+    }
+  }
+
+  static Future<Person?> updateFullName(BuildContext context, String firstname, String name) async {
+    try {
+      if (context.mounted) {
+        DialogUtils.showLoading(context, "Chargement en cours...");
+      }
+      final uid = FirebaseAuth.instance.currentUser?.uid;
+      if (uid == null) {
+        throw Exception("Aucun utilisateur connecté");
+      }
+      await FirebaseFirestore.instance.collection("user").doc(uid).update({
+        "firstname": firstname,
+        "name": name,
+      });
+      FirebaseAuth.instance.currentUser?.updateDisplayName("$firstname $name");
+      if (context.mounted) {
+        Navigator.of(context).pop();
+      }
+      return Person(firstname: firstname, name: name);
+    } catch (e) {
+      if (context.mounted) {
+        Navigator.of(context).pop();
+      }
+      if (context.mounted) {
+        DialogUtils.showError(context, "Réinitialisation", e.toString(), null);
+      }
+      return null;
+    }
+  }
+
+  static Future<void> deleteAccount(BuildContext context, String password) async {
+    try {
+      User user = _getUser();
+      await signInWithEmailAndPassword(context, user.email!, password);
+      if(context.mounted){
+        DialogUtils.showLoading(context, "Inscription en cours...");
+      }
+      user = _getUser();
+      await FirebaseFirestore.instance.collection("user").doc(user.uid).delete();
+      await user.delete();
+      if (context.mounted) {
+        Navigator.of(context).pop();
+      }
+    }  on FirebaseAuthException catch (e) {
+      if (context.mounted) {
+        Navigator.of(context).pop();
+      }
+      String errorMessage;
+      switch (e.code) {
+        case 'email-already-in-use':
+          errorMessage = "Cet e-mail est déjà utilisé.";
+          break;
+        case 'invalid-email':
+          errorMessage = "L'adresse e-mail est invalide.";
+          break;
+        case 'weak-password':
+          errorMessage = "Le mot de passe est trop faible.";
+          break;
+        default:
+          errorMessage = "Une erreur inconnue s'est produite.";
+      }
+      if (context.mounted){
+        DialogUtils.showPopupInformation(context, "Inscription", errorMessage, "OK", null, false);
+      }
+    }
+  }
+
+  static User _getUser(){
+    User? user = FirebaseAuth.instance.currentUser;
+    if(user == null){
+      throw Exception("Aucun utilisateur connecté");
+    }
+    return user;
   }
 }
