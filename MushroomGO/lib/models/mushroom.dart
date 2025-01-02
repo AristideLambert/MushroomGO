@@ -1,3 +1,5 @@
+import 'recipe.dart';
+
 class Mushroom {
   final String name;
   final String scientificName;
@@ -8,6 +10,8 @@ class Mushroom {
   final String? order;
   final String? classification;
   final String? phylum;
+  final String? culinaryInfo;
+  final List<Recipe>? recipes;
 
   Mushroom({
     required this.name,
@@ -19,5 +23,7 @@ class Mushroom {
     this.order,
     this.classification,
     this.phylum,
+    this.culinaryInfo,
+    this.recipes,
   });
 }

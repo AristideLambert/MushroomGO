@@ -33,52 +33,55 @@ class _MushroomImageDetailColumnState extends State<MushroomImageDetailColumn> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(theme.radiusItem),
-          child: Image.network(
-            widget.imageUrl,
-            fit: BoxFit.cover,
-            height: theme.imageHeight,
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: DimensionConstant.defaultMargin),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(theme.radiusItem),
+            child: Image.network(
+              widget.imageUrl,
+              fit: BoxFit.cover,
+              height: theme.imageHeight,
+              width: double.infinity,
+            ),
+          ),
+          SizedBox(height: theme.spaceBetweenImageText),
+          Container(
             width: double.infinity,
+            padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
+            decoration: BoxDecoration(
+              color: theme.backgroundColor,
+              borderRadius: BorderRadius.circular(theme.radiusItem)
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.name,
+                  style: theme.nameStyle,
+                ),
+                SizedBox(height: theme.heightBetweenNameScientificName),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                        "${AppLocalizations.of(context)!.scientificName}:",
+                      style: theme.scientificNameText
+                    ),
+                    SizedBox(width: theme.widthBetweenNameScientificName),
+                    Text(
+                      widget.scientificName,
+                      style: theme.scientificName
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-        SizedBox(height: theme.spaceBetweenImageText),
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-          decoration: BoxDecoration(
-            color: theme.backgroundColor,
-            borderRadius: BorderRadius.circular(theme.radiusItem)
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                widget.name,
-                style: theme.nameStyle,
-              ),
-              SizedBox(height: theme.heightBetweenNameScientificName),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                      "${AppLocalizations.of(context)!.scientificName}:",
-                    style: theme.scientificNameText
-                  ),
-                  SizedBox(width: theme.widthBetweenNameScientificName),
-                  Text(
-                    widget.scientificName,
-                    style: theme.scientificName
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -34,6 +34,11 @@ class _HomeNewsTabState extends State<HomeNewsTab> {
                   imageUrl: "https://www.incrediblemushrooms.com/images/turkey-mush-800.jpg",
                   url: "https://producemadesimple.ca/produce/mushrooms/",
                 ),
+                Article(
+                  title: "New Species Found",
+                  imageUrl: "https://www.incrediblemushrooms.com/images/turkey-mush-800.jpg",
+                  url: "https://producemadesimple.ca/produce/mushrooms/",
+                ),
               ],
               buildContext: widget.buildContext,
             )

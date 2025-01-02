@@ -158,5 +158,13 @@
     "earnedBadge": "You earned this badge on",
         "@earnedBadge": {
           "description": "Earned Badge"
+  },
+  "culinaryInformation": "Culinary information",
+          "@culinaryInformation": {
+            "description": "culinary Information"
+  },
+  "recipes": "Recipe(s)",
+            "@recipes": {
+              "description": "recipes"
   }
 }

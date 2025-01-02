@@ -38,5 +38,7 @@
   "mushroomPhylum": "Embranchement",
   "scientificClassification" : "Classification scientifique",
   "scientificName" : "Nom scientifique",
-  "earnedBadge" : "Vous avez gagné ce badge le"
+  "earnedBadge" : "Vous avez gagné ce badge le",
+  "culinaryInformation" : "Informations cullinaires",
+  "recipes" : "Recette(s)"
 }

@@ -2,15 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/color_constant.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
+import 'package:mushroom_go/enum/section_type.dart';
 import 'package:mushroom_go/theme/mushroom_detail_theme.dart';
 
 class MushroomDetailColumn extends StatefulWidget {
+  final SectionType sectionType;
   final String title;
   final String content;
   final MushroomDetailTheme? theme;
 
   const MushroomDetailColumn({
     super.key,
+    required this.sectionType,
     required this.title,
     required this.content,
     this.theme,
@@ -29,6 +32,19 @@ class _MushroomDetailColumnState extends State<MushroomDetailColumn> {
     theme = (widget.theme ?? Theme.of(context).extension<MushroomDetailTheme>())!;
   }
 
+  Icon _getIcon(SectionType sectionType) {
+    switch (sectionType) {
+      case SectionType.description:
+        return Icon(CupertinoIcons.doc_text_fill, color: ColorConstant.primaryColor, size: theme.sizeIcon);
+      case SectionType.culinaryInfo:
+        return Icon(Icons.dining, color: ColorConstant.primaryColor, size: theme.sizeIcon);
+      case SectionType.habitat:
+        return Icon(CupertinoIcons.tree, color: ColorConstant.primaryColor, size: theme.sizeIcon);
+      default:
+        return Icon(CupertinoIcons.info_circle, color: ColorConstant.primaryColor, size: theme.sizeIcon);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,11 +57,7 @@ class _MushroomDetailColumnState extends State<MushroomDetailColumn> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(
-            widget.title == "Description" ? CupertinoIcons.doc_text_fill : CupertinoIcons.tree,
-            color: ColorConstant.primaryColor,
-            size: theme.sizeIcon,
-          ),
+          _getIcon(widget.sectionType),
           SizedBox(width: theme.spaceBetweenText),
           Expanded(
             child: Column(
@@ -70,3 +82,4 @@ class _MushroomDetailColumnState extends State<MushroomDetailColumn> {
     );
   }
 }
+

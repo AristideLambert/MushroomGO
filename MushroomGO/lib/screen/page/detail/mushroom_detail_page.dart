@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
+import 'package:mushroom_go/enum/section_type.dart';
 import 'package:mushroom_go/models/mushroom.dart';
+import 'package:mushroom_go/models/recipe.dart';
 import 'package:mushroom_go/screen/widget/column/mushroom_image_detail_column.dart';
 import 'package:mushroom_go/screen/widget/column/mushroom_detail_column.dart';
 import 'package:mushroom_go/screen/widget/column/mushroom_classification_column.dart';
+import 'package:mushroom_go/screen/widget/listview/home_for_you_item.dart';
+import 'package:mushroom_go/screen/widget/listview/home_for_you_list.dart';
 
 class MushroomDetailPage extends StatefulWidget {
   final Mushroom mushroom;
@@ -23,7 +27,10 @@ class _MushroomDetailPageState extends State<MushroomDetailPage> {
         title: Text(widget.mushroom.name),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
+        padding: const EdgeInsets.only(
+          left: DimensionConstant.defaultPadding,
+          right: DimensionConstant.defaultPadding,
+        ),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,10 +41,12 @@ class _MushroomDetailPageState extends State<MushroomDetailPage> {
                 scientificName: widget.mushroom.scientificName,
               ),
               MushroomDetailColumn(
+                sectionType: SectionType.description,
                 title: AppLocalizations.of(context)!.mushroomDescription,
                 content: widget.mushroom.description,
               ),
               MushroomDetailColumn(
+                sectionType: SectionType.habitat,
                 title: AppLocalizations.of(context)!.mushroomHabitat,
                 content: widget.mushroom.habitat ?? AppLocalizations.of(context)!.notSpecified,
               ),
@@ -49,6 +58,26 @@ class _MushroomDetailPageState extends State<MushroomDetailPage> {
                   AppLocalizations.of(context)!.mushroomPhylum: widget.mushroom.phylum ?? AppLocalizations.of(context)!.notSpecified,
                 },
               ),
+              MushroomDetailColumn(
+                sectionType: SectionType.culinaryInfo,
+                title: AppLocalizations.of(context)!.culinaryInformation,
+                content: widget.mushroom.culinaryInfo ?? AppLocalizations.of(context)!.notSpecified,
+              ),
+              const SizedBox(height: DimensionConstant.defaultPadding),
+              if (widget.mushroom.recipes != null && widget.mushroom.recipes!.isNotEmpty)
+                HomeForYouList<Recipe>(
+                  title: AppLocalizations.of(context)!.recipes,
+                  items: widget.mushroom.recipes!,
+                  itemBuilder: (context, Recipe recipe, index, theme) {
+                    return HomeForYouItem<Recipe>(
+                      item: recipe,
+                      buildContext: context,
+                      index: index,
+                      getTitle: (Recipe item) => item.title,
+                      getImageUrl: (Recipe item) => item.imageUrl,
+                    );
+                  },
+                ),
             ],
           ),
         ),
