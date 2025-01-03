@@ -73,7 +73,7 @@ class FirebaseAuthUtils{
     }
   }
 
-  static Future<void> signInAccount(BuildContext context, String email, String password, Function()? next) async {
+  static Future<bool> signInAccount(BuildContext context, String email, String password, Function()? next) async {
     try {
       if (context.mounted) {
         DialogUtils.showLoading(context, AppLocalizations.of(context)!.firebaseAuthUtilsSignInAccountInProgressTitle);
@@ -83,6 +83,7 @@ class FirebaseAuthUtils{
         Navigator.of(context).pop();
         next?.call();
       }
+      return true;
     } on FirebaseAuthException catch (e) {
       if (context.mounted) {
         Navigator.of(context).pop();
@@ -122,24 +123,27 @@ class FirebaseAuthUtils{
             errorMessage = AppLocalizations.of(context)!.firebaseAuthUtilsErrorDefault;
         }
         DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.firebaseAuthUtilsSignInAccountTitle, errorMessage, AppLocalizations.of(context)!.popupOK, null, false);
+        return false;
       }
+      return false;
     }
   }
 
   static Future<void> updatePasswordAccount(BuildContext context, String oldPassword, String newPassword) async {
     try {
       User user = _getUser(context);
-      await signInAccount(context, user.email!, oldPassword, null);
-      if (context.mounted) {
-        DialogUtils.showLoading(context, AppLocalizations.of(context)!.firebaseAuthUtilsUpdatePasswordAccountInProgressTitle);
-        user = _getUser(context);
-      }
-      await user.updatePassword(newPassword);
-      if (context.mounted) {
-        Navigator.of(context).pop();
-        DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.firebaseAuthUtilsUpdatePasswordAccountTitle, AppLocalizations.of(context)!.firebaseAuthUtilsUpdatePasswordAccountDescription, AppLocalizations.of(context)!.popupOK, (){
+      if(await signInAccount(context, user.email!, oldPassword, null)){
+        if (context.mounted) {
+          DialogUtils.showLoading(context, AppLocalizations.of(context)!.firebaseAuthUtilsUpdatePasswordAccountInProgressTitle);
+          user = _getUser(context);
+        }
+        await user.updatePassword(newPassword);
+        if (context.mounted) {
           Navigator.of(context).pop();
-        }, false);
+          DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.firebaseAuthUtilsUpdatePasswordAccountTitle, AppLocalizations.of(context)!.firebaseAuthUtilsUpdatePasswordAccountDescription, AppLocalizations.of(context)!.popupOK, (){
+            Navigator.of(context).pop();
+          }, false);
+        }
       }
     } on FirebaseAuthException catch (e) {
       if (context.mounted) {
@@ -250,112 +254,115 @@ class FirebaseAuthUtils{
   static Future<void> confirmPasswordResetAccount(BuildContext context, String oobCode, String newPassword) async {
     try {
       if (context.mounted) {
-        DialogUtils.showLoading(context, "Réinitialisation en cours...");
+        DialogUtils.showLoading(context, AppLocalizations.of(context)!.firebaseAuthUtilsConfirmPasswordResetAccountInProgressTitle);
       }
       await FirebaseAuth.instance.confirmPasswordReset(code: oobCode, newPassword: newPassword);
       if (context.mounted) {
         Navigator.of(context).pop();
-        DialogUtils.showInformation(context, "Réinitialisation du mot de passe", "Le mot de passe a été réinitialisé avec succès.", (){
+        DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.firebaseAuthUtilsConfirmPasswordResetAccountTitle, AppLocalizations.of(context)!.firebaseAuthUtilsConfirmPasswordResetAccountDescription, AppLocalizations.of(context)!.popupOK, (){
           Navigator.of(context).pop();
-        });
+        }, false);
       }
     } on FirebaseAuthException catch (e) {
       if (context.mounted) {
         Navigator.of(context).pop();
-      }
-      String errorMessage;
-      switch (e.code) {
-        case 'expired-action-code':
-          errorMessage = "Le lien de réinitialisation a expiré.";
-          break;
-        case 'invalid-action-code':
-          errorMessage = "Le code de réinitialisation est invalide.";
-          break;
-        case 'weak-password':
-          errorMessage = "Le nouveau mot de passe est trop faible.";
-          break;
-        default:
-          errorMessage = "Une erreur inattendue est survenue : ${e.code}.";
-      }
-      if (context.mounted) {
-        DialogUtils.showError(context, "Réinitialisation", errorMessage, null);
+        String errorMessage;
+        switch (e.code) {
+          case 'expired-action-code':
+            errorMessage = AppLocalizations.of(context)!.firebaseAuthUtilsErrorConfirmPasswordResetAccountExpiredActionCode;
+            break;
+          case 'invalid-action-code':
+            errorMessage = AppLocalizations.of(context)!.firebaseAuthUtilsErrorConfirmPasswordResetAccountInvalidActionCode;
+            break;
+          case 'user-disabled':
+            errorMessage = AppLocalizations.of(context)!.firebaseAuthUtilsErrorConfirmPasswordResetAccountUserDisabled;
+            break;
+          case 'user-not-found':
+            errorMessage = AppLocalizations.of(context)!.firebaseAuthUtilsErrorConfirmPasswordResetAccountUserNotFound;
+            break;
+          case 'weak-password':
+            errorMessage = AppLocalizations.of(context)!.firebaseAuthUtilsErrorConfirmPasswordResetAccountWeakPassword;
+            break;
+          default:
+            errorMessage = AppLocalizations.of(context)!.firebaseAuthUtilsErrorDefault;
+        }
+        DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.firebaseAuthUtilsConfirmPasswordResetAccountTitle, errorMessage, AppLocalizations.of(context)!.popupOK, null, false);
       }
     }
   }
 
   static Future<void> signOutAccount(BuildContext context) async {
     if (context.mounted) {
-      DialogUtils.showLoading(context, "Déconnexion en cours...");
+      DialogUtils.showLoading(context, AppLocalizations.of(context)!.firebaseAuthUtilsSignOutAccountInProgressTitle);
     }
     await FirebaseAuth.instance.signOut();
     if (context.mounted) {
       Navigator.of(context).pop();
+      Navigator.of(context).pop();
     }
   }
 
-  static Future<Person?> getFullName(BuildContext context) async {
+  static Future<Person?> getFullNameAccount(BuildContext context) async {
     try {
       if (context.mounted) {
-        DialogUtils.showLoading(context, "Chargement en cours...");
-      }
-      final uid = FirebaseAuth.instance.currentUser?.uid;
-      if (uid == null) {
-        throw Exception("Aucun utilisateur connecté");
-      }
-      final docSnapshot = await FirebaseFirestore.instance
+        DialogUtils.showLoading(context, AppLocalizations.of(context)!.firebaseAuthUtilsLoadingDefault);
+        User user = _getUser(context);
+        final docSnapshot = await FirebaseFirestore.instance
           .collection("user")
-          .doc(uid)
+          .doc(user.uid)
           .get();
-      if (!docSnapshot.exists) {
-        throw Exception("Informations non trouvées pour cet utilisateur");
+        if (context.mounted) {
+          if (!docSnapshot.exists) {
+            throw Exception(AppLocalizations.of(context)!.firebaseAuthUtilsErrorData);
+          }
+          final firstname = docSnapshot.data()?['firstname'];
+          if (firstname == null) {
+            throw Exception(AppLocalizations.of(context)!.firebaseAuthUtilsErrorData);
+          }
+          final name = docSnapshot.data()?['name'];
+          if (name == null) {
+            throw Exception(AppLocalizations.of(context)!.firebaseAuthUtilsErrorData);
+          }
+          Navigator.of(context).pop();
+          return Person(firstname: firstname, name: name);
+        }
       }
-      final firstname = docSnapshot.data()?['firstname'];
-      if (firstname == null) {
-        throw Exception("Prénom non trouvé");
-      }
-      final name = docSnapshot.data()?['name'];
-      if (name == null) {
-        throw Exception("Nom non trouvé");
-      }
-      if (context.mounted) {
-        Navigator.of(context).pop();
-      }
-      return Person(firstname: firstname, name: name);
     } catch (e) {
       if (context.mounted) {
         Navigator.of(context).pop();
-      }
-      if (context.mounted) {
-        DialogUtils.showError(context, "Réinitialisation", e.toString(), null);
+        DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.firebaseAuthUtilsGetFullNameAccountTitle, e.toString().contains('Exception:') ? e.toString().split('Exception:').last.trim() : e.toString(), AppLocalizations.of(context)!.popupOK, null, false);
       }
       return null;
     }
+    return null;
   }
 
-  static Future<Person?> updateFullName(BuildContext context, String firstname, String name) async {
+  static Future<Person?> updateFullNameAccount(BuildContext context, String firstname, String name) async {
     try {
       if (context.mounted) {
-        DialogUtils.showLoading(context, "Chargement en cours...");
+        DialogUtils.showLoading(context, AppLocalizations.of(context)!.firebaseAuthUtilsUpdateFullNameAccountInProgressTitle);
+        User user = _getUser(context);
+        await FirebaseFirestore.instance
+          .collection("user")
+          .doc(user.uid)
+          .update({
+            "firstname": firstname,
+            "name": name,
+          }
+        );
+        await user.updateDisplayName("$firstname $name");
       }
-      final uid = FirebaseAuth.instance.currentUser?.uid;
-      if (uid == null) {
-        throw Exception("Aucun utilisateur connecté");
-      }
-      await FirebaseFirestore.instance.collection("user").doc(uid).update({
-        "firstname": firstname,
-        "name": name,
-      });
-      FirebaseAuth.instance.currentUser?.updateDisplayName("$firstname $name");
       if (context.mounted) {
         Navigator.of(context).pop();
+        DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.firebaseAuthUtilsUpdateFullNameAccountTitle, AppLocalizations.of(context)!.firebaseAuthUtilsUpdateFullNameAccountDescription, AppLocalizations.of(context)!.popupOK, (){
+          Navigator.of(context).pop();
+        }, false);
       }
       return Person(firstname: firstname, name: name);
     } catch (e) {
       if (context.mounted) {
         Navigator.of(context).pop();
-      }
-      if (context.mounted) {
-        DialogUtils.showError(context, "Réinitialisation", e.toString(), null);
+        DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.firebaseAuthUtilsUpdateFullNameAccountTitle, e.toString().contains('Exception:') ? e.toString().split('Exception:').last.trim() : e.toString(), AppLocalizations.of(context)!.popupOK, null, false);
       }
       return null;
     }
@@ -364,36 +371,43 @@ class FirebaseAuthUtils{
   static Future<void> deleteAccount(BuildContext context, String password) async {
     try {
       User user = _getUser(context);
-      await signInAccount(context, user.email!, password, null);
-      if(context.mounted){
-        DialogUtils.showLoading(context, "Inscription en cours...");
-      }
-      user = _getUser(context);
-      await FirebaseFirestore.instance.collection("user").doc(user.uid).delete();
-      await user.delete();
-      if (context.mounted) {
-        Navigator.of(context).pop();
+      if(await signInAccount(context, user.email!, password, null)){
+        if(context.mounted){
+          DialogUtils.showPopup(context, AppLocalizations.of(context)!.firebaseAuthUtilsDeleteAccountTitle, AppLocalizations.of(context)!.firebaseAuthUtilsDeleteAccountAskDescription, AppLocalizations.of(context)!.popupDelete, () async {
+            if(context.mounted){
+              DialogUtils.showLoading(context, AppLocalizations.of(context)!.firebaseAuthUtilsDeleteAccountInProgressTitle);
+            }
+            await FirebaseFirestore.instance.collection("user").doc(user.uid).delete();
+            await user.delete();
+            if (context.mounted) {
+              Navigator.of(context).pop();
+              DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.firebaseAuthUtilsDeleteAccountTitle, AppLocalizations.of(context)!.firebaseAuthUtilsDeleteAccountDescription, AppLocalizations.of(context)!.popupOK, (){
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+              }, false);
+            }
+          }, true, AppLocalizations.of(context)!.popupCancel, (){
+            Navigator.of(context).pop();
+          }, false);
+        }
       }
     }  on FirebaseAuthException catch (e) {
       if (context.mounted) {
         Navigator.of(context).pop();
+        String errorMessage;
+        switch (e.code) {
+          case 'requires-recent-login':
+            errorMessage = AppLocalizations.of(context)!.firebaseAuthUtilsErrorDeleteAccountRequiresRecentLogin;
+            break;
+          default:
+            errorMessage = AppLocalizations.of(context)!.firebaseAuthUtilsErrorDefault;
+        }
+        DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.firebaseAuthUtilsDeleteAccountTitle, errorMessage, AppLocalizations.of(context)!.popupOK, null, false);
       }
-      String errorMessage;
-      switch (e.code) {
-        case 'email-already-in-use':
-          errorMessage = "Cet e-mail est déjà utilisé.";
-          break;
-        case 'invalid-email':
-          errorMessage = "L'adresse e-mail est invalide.";
-          break;
-        case 'weak-password':
-          errorMessage = "Le mot de passe est trop faible.";
-          break;
-        default:
-          errorMessage = "Une erreur inconnue s'est produite.";
-      }
-      if (context.mounted){
-        DialogUtils.showPopupInformation(context, "Inscription", errorMessage, "OK", null, false);
+    } catch (e) {
+      if (context.mounted) {
+        Navigator.of(context).pop();
+        DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.firebaseAuthUtilsUpdatePasswordAccountTitle, e.toString().contains('Exception:') ? e.toString().split('Exception:').last.trim() : e.toString(), AppLocalizations.of(context)!.popupOK, null, false);
       }
     }
   }

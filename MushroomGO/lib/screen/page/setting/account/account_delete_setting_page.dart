@@ -63,11 +63,7 @@ class _AccountDeleteSettingPageState extends State<AccountDeleteSettingPage> {
         floatingActionButton: Padding(
           padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
           child: ButtonStandard(title: "Delete account", enabled: _isValid, onTap: () async {
-            DialogUtils.showPopup(context, "Delete account", "Êtes-vous sûr de vouloir supprimer votre compte ?", "Supprimer", (){
-              FirebaseAuthUtils.deleteAccount(context, _controllerPassword.text);
-            }, true, "Annuler", (){
-              Navigator.of(context).pop();
-            }, false);
+            await FirebaseAuthUtils.deleteAccount(context, _controllerPassword.text);
           }),
         )
     );

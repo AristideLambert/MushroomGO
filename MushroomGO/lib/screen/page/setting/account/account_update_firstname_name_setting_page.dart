@@ -30,7 +30,7 @@ class _AccountUpdateFirstnameNameSettingPageState extends State<AccountUpdateFir
   late bool _isSame;
 
   Future<void> _loadData() async {
-    _person = await FirebaseAuthUtils.getFullName(context) as Person;
+    _person = await FirebaseAuthUtils.getFullNameAccount(context) as Person;
     _controllerFirstname.text = _person.firstname;
     _controllerName.text = _person.name;
   }
@@ -83,7 +83,7 @@ class _AccountUpdateFirstnameNameSettingPageState extends State<AccountUpdateFir
         floatingActionButton: Padding(
           padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
           child: ButtonStandard(title: "Update full name", enabled: !_isSame, onTap: () async {
-            await FirebaseAuthUtils.updateFullName(context, _controllerFirstname.text, _controllerName.text);
+            await FirebaseAuthUtils.updateFullNameAccount(context, _controllerFirstname.text, _controllerName.text);
             DialogUtils.showPopupInformation(context, "Update firstname & name", "Successful update", "OK", (){
               Navigator.of(context).pop();
             }, false);

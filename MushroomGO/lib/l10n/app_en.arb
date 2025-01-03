@@ -219,6 +219,10 @@
   "@popupDelete": {
     "description": "Delete option (Popup)"
   },
+  "firebaseAuthUtilsLoadingDefault": "Loading...",
+  "@firebaseAuthUtilsLoadingDefault": {
+    "description": "Default loading (FirebaseAuthUtils)"
+  },
   "firebaseAuthUtilsErrorDefault": "An unexpected error occurred.\nPlease try again later or contact support if the issue persists.",
   "@firebaseAuthUtilsErrorDefault": {
     "description": "Default error (FirebaseAuthUtils)"
@@ -226,6 +230,10 @@
   "firebaseAuthUtilsErrorUser": "No users found",
   "@firebaseAuthUtilsErrorUser": {
     "description": "User error (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorData": "No data found",
+  "@firebaseAuthUtilsErrorData": {
+    "description": "Data error (FirebaseAuthUtils)"
   },
   "firebaseAuthUtilsCreateAccountInProgressTitle": "Signing up...",
   "@firebaseAuthUtilsCreateAccountInProgressTitle": {
@@ -390,5 +398,77 @@
   "firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountUserNotFound": "No user found for this reset code.\nThe account may have been deleted.\nPlease check or contact support.",
   "@firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountUserNotFound": {
     "description": "Verify password reset code account error - user-not-found (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsConfirmPasswordResetAccountInProgressTitle": "Resetting password...",
+  "@firebaseAuthUtilsConfirmPasswordResetAccountInProgressTitle": {
+    "description": "Confirm password reset account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsConfirmPasswordResetAccountTitle": "Reset password",
+  "@firebaseAuthUtilsConfirmPasswordResetAccountTitle": {
+    "description": "Confirm password reset account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsConfirmPasswordResetAccountDescription": "Password successfully reset",
+  "@firebaseAuthUtilsConfirmPasswordResetAccountDescription": {
+    "description": "Confirm password reset account description (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorConfirmPasswordResetAccountExpiredActionCode": "The action code has expired.\nPlease request a new code.",
+  "@firebaseAuthUtilsErrorConfirmPasswordResetAccountExpiredActionCode": {
+    "description": "Confirm password reset account error - expired-action-code (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorConfirmPasswordResetAccountInvalidActionCode": "The action code is invalid.\nEnsure it is correct or request a new one.",
+  "@firebaseAuthUtilsErrorConfirmPasswordResetAccountInvalidActionCode": {
+    "description": "Confirm password reset account error - invalid-action-code (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorConfirmPasswordResetAccountUserDisabled": "This account has been disabled.\nPlease contact support for assistance.",
+  "@firebaseAuthUtilsErrorConfirmPasswordResetAccountUserDisabled": {
+    "description": "Confirm password reset account error - user-disabled (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorConfirmPasswordResetAccountUserNotFound": "No user was found for this action code.\nThe user might have been deleted.",
+  "@firebaseAuthUtilsErrorConfirmPasswordResetAccountUserNotFound": {
+    "description": "Confirm password reset account error - user-not-found (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorConfirmPasswordResetAccountWeakPassword": "The new password is too weak.\nPlease choose a stronger password.",
+  "@firebaseAuthUtilsErrorConfirmPasswordResetAccountWeakPassword": {
+    "description": "Confirm password reset account error - weak-password (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsSignOutAccountInProgressTitle": "Signing out...",
+  "@firebaseAuthUtilsSignOutAccountInProgressTitle": {
+    "description": "Sign out account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsGetFullNameAccountTitle": "Load names",
+  "@firebaseAuthUtilsGetFullNameAccountTitle": {
+    "description": "Get full name account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdateFullNameAccountInProgressTitle": "Updating names...",
+  "@firebaseAuthUtilsUpdateFullNameAccountInProgressTitle": {
+    "description": "Update full name account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdateFullNameAccountTitle": "Update names",
+  "@firebaseAuthUtilsUpdateFullNameAccountTitle": {
+    "description": "Update full name account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdateFullNameAccountDescription": "Names successfully updated",
+  "@firebaseAuthUtilsUpdateFullNameAccountDescription": {
+    "description": "Update full name account description (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsDeleteAccountInProgressTitle": "Deleting account...",
+  "@firebaseAuthUtilsDeleteAccountInProgressTitle": {
+    "description": "Delete account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsDeleteAccountTitle": "Delete account",
+  "@firebaseAuthUtilsDeleteAccountTitle": {
+    "description": "Delete account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsDeleteAccountDescription": "Account successfully deleted",
+  "@firebaseAuthUtilsDeleteAccountDescription": {
+    "description": "Delete account description (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsDeleteAccountAskDescription": "Do you really want to delete your account ?\nAll your data will be lost.",
+  "@firebaseAuthUtilsDeleteAccountAskDescription": {
+    "description": "Delete account ask description (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorDeleteAccountRequiresRecentLogin": "For security reasons, please log in again to perform this action.",
+  "@firebaseAuthUtilsErrorDeleteAccountRequiresRecentLogin": {
+    "description": "Delete account error - requires-recent-login (FirebaseAuthUtils)"
   }
 }
