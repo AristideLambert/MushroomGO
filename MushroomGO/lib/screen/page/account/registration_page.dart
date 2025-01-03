@@ -132,14 +132,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               const SizedBox(height: DimensionConstant.spaceVerticalRegister,),
                               ButtonStandard(
                                 title: AppLocalizations.of(context)!.registerSignUp,
-                                onTap: () {
-                                  FirebaseAuthUtils
-                                      .createUserWithEmailAndPassword(
+                                onTap: () async {
+                                  await FirebaseAuthUtils
+                                      .createAccount(
                                       context, controllerFirstname.text,
                                       controllerName.text, controllerEmail.text,
-                                      controllerPassword.text);
-                                  Navigator.of(context).pop();
-                                  // TODO: Sign up
+                                      controllerPassword.text, null);
                                 }
                               ),
                               const SizedBox(height: DimensionConstant.spaceVerticalRegister,),

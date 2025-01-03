@@ -76,7 +76,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                       ),
                                       const SizedBox(height: DimensionConstant.spaceVerticalLogin,),
                                       ButtonStandard(title: "Réinitialiser", onTap: (){
-                                          FirebaseAuthUtils.sendPasswordResetEmail(context, controllerEmail.text);
+                                          FirebaseAuthUtils.sendPasswordResetEmailAccount(context, controllerEmail.text);
                                         }
                                       ),
                                     ],

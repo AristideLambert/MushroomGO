@@ -8,4 +8,7 @@ class SettingConstant{
     "light",
     "dark"
   ];
+
+  // Profile
+  static String pathDefaultImageProfile = "assets/images/profile/default.jpg";
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/constant/navigation_constant.dart';
+import 'package:mushroom_go/constant/setting_constant.dart';
 import 'package:mushroom_go/provider/locale_provider.dart';
 import 'package:mushroom_go/provider/theme_provider.dart';
 import 'package:mushroom_go/screen/widget/button/setting/button_setting.dart';
@@ -37,9 +38,7 @@ class _SettingPageState extends State<SettingPage> {
             child: Column(
               children: [
                 ProfileContainer(
-                  image: const NetworkImage(
-                    'https://picsum.photos/seed/904/600',
-                  ),
+                  pathImage: FirebaseAuth.instance.currentUser?.photoURL ?? SettingConstant.pathDefaultImageProfile,
                   name: FirebaseAuth.instance.currentUser?.displayName ?? "Aristide LAMBERT",
                   mail: FirebaseAuth.instance.currentUser?.email ?? "aristide.lambert@student.hepl.be",
                   onTap: () {

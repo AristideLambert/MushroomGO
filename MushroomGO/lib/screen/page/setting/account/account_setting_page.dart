@@ -72,7 +72,7 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                         titleButtonStyle: TextStyleConstant.titleButtonButtonSettingAccountSettingPage
                     ),
                     onTap: () {
-                      FirebaseAuthUtils.signOut(context);
+                      FirebaseAuthUtils.signOutAccount(context);
                       Navigator.of(context).pop();
                     },
                   ),

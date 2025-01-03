@@ -8,13 +8,13 @@ import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileContainer extends StatefulWidget {
-  final ImageProvider<Object>? image;
+  final String pathImage;
   final String name;
   final String mail;
   final Function()? onTap;
   final ProfileContainerTheme? theme;
 
-  const ProfileContainer({super.key, required this.image, required this.name, required this.mail, this.onTap, this.theme});
+  const ProfileContainer({super.key, required this.pathImage, required this.name, required this.mail, this.onTap, this.theme});
 
   @override
   State<ProfileContainer> createState() => _ProfileContainerState();
@@ -59,7 +59,7 @@ class _ProfileContainerState extends State<ProfileContainer> {
                 children: [
                   CircleAvatar(
                     radius: theme.radiusCircleAvatar,
-                    backgroundImage: widget.image,
+                    backgroundImage: AssetImage(widget.pathImage),
                   ),
                   SizedBox(width: theme.space,),
                   Expanded(

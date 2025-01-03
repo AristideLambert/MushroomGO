@@ -99,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                             ButtonStandard(title: AppLocalizations.of(context)!.loginLogin, onTap: (){
                                 // TODO: Login
                                 print("Login");
-                                FirebaseAuthUtils.signInWithEmailAndPassword(context, controllerEmail.text, controllerPassword.text);
+                                FirebaseAuthUtils.signInAccount(context, controllerEmail.text, controllerPassword.text, null);
                               }
                             ),
                             const SizedBox(height: DimensionConstant.spaceVerticalLogin,),

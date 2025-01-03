@@ -24,21 +24,21 @@
     "description": "Tab home (News)"
   },
   "challengeMushrooms": "Mushrooms",
-    "@challengeMushrooms": {
-      "description": "Tab challenge (Mushrooms)"
-    },
-    "challengeMissions": "Missions",
-    "@challengeMissions": {
-      "description": "Tab challenge (Missions)"
-    },
+  "@challengeMushrooms": {
+    "description": "Tab challenge (Mushrooms)"
+  },
+  "challengeMissions": "Missions",
+  "@challengeMissions": {
+    "description": "Tab challenge (Missions)"
+  },
   "setting": "Settings",
   "@setting": {
     "description": "Settings"
   },
   "settingProfileLogin": "Login",
-    "@settingProfileLogin": {
-      "description": "Login (Profile)"
-    },
+  "@settingProfileLogin": {
+    "description": "Login (Profile)"
+  },
   "settingContentDisplay": "Content & Display",
   "@settingContentDisplay": {
     "description": "Content & Display"
@@ -82,41 +82,41 @@
   "settingAboutTermsAndConditions": "Terms and conditions",
   "@settingAboutTermsAndConditions": {
     "description": "Terms and conditions (Setting)"
-},
+  },
   "settingAccount": "Account",
-    "@settingAccount": {
+  "@settingAccount": {
     "description": "Account (Setting)"
- },
- "settingAccountFirstnameName": "Update firstname & name",
-    "@settingAccountFirstnameName": {
+  },
+  "settingAccountFirstnameName": "Update firstname & name",
+  "@settingAccountFirstnameName": {
     "description": "Setting Account Firstname & name (Setting)"
- },
- "settingAccountMail": "Update email address",
-   "@settingAccountMail": {
-   "description": "Setting Account Mail (Setting)"
-},
-   "settingAccountPassword": "Update password",
-     "@settingAccountPassword": {
-     "description": "Setting Account Password (Setting)"
-},
-    "settingAccountDelete": "Delete my account",
-      "@settingAccountDelete": {
-      "description": "Setting Account Delete (Setting)"
-},
-   "settingAccountLogout": "Log out",
-     "@settingAccountLogout": {
-     "description": "Setting Account Logout (Setting)"
-},
+  },
+  "settingAccountMail": "Update email address",
+  "@settingAccountMail": {
+    "description": "Setting Account Mail (Setting)"
+  },
+  "settingAccountPassword": "Update password",
+  "@settingAccountPassword": {
+    "description": "Setting Account Password (Setting)"
+  },
+  "settingAccountDelete": "Delete my account",
+  "@settingAccountDelete": {
+    "description": "Setting Account Delete (Setting)"
+  },
+  "settingAccountLogout": "Log out",
+  "@settingAccountLogout": {
+    "description": "Setting Account Logout (Setting)"
+  },
   "challengeMushroomsCommon": "Common",
-    "@challengeMushroomsCommon": {
+  "@challengeMushroomsCommon": {
     "description": "Challenge Mushrooms (Common)"
-},
+  },
   "challengeMushroomsRare": "Rare",
-    "@challengeMushroomsRare": {
+  "@challengeMushroomsRare": {
     "description": "Challenge Mushrooms (Rare)"
   },
   "challengeMushroomsEpic": "Epic",
-    "@challengeMushroomsEpic": {
+  "@challengeMushroomsEpic": {
     "description": "Challenge Mushrooms (Epic)"
   },
   "loginTitle": "Sign in to your account",
@@ -206,5 +206,189 @@
   "registerLogin": "Login",
   "@registerLogin": {
     "description": "Login (Register)"
+  },
+  "popupOK": "OK",
+  "@popupOK": {
+    "description": "OK option (Popup)"
+  },
+  "popupCancel": "Cancel",
+  "@popupCancel": {
+    "description": "Cancel option (Popup)"
+  },
+  "popupDelete": "Delete",
+  "@popupDelete": {
+    "description": "Delete option (Popup)"
+  },
+  "firebaseAuthUtilsErrorDefault": "An unexpected error occurred.\nPlease try again later or contact support if the issue persists.",
+  "@firebaseAuthUtilsErrorDefault": {
+    "description": "Default error (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorUser": "No users found",
+  "@firebaseAuthUtilsErrorUser": {
+    "description": "User error (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsCreateAccountInProgressTitle": "Signing up...",
+  "@firebaseAuthUtilsCreateAccountInProgressTitle": {
+    "description": "Create account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsCreateAccountTitle": "Sign up",
+  "@firebaseAuthUtilsCreateAccountTitle": {
+    "description": "Create account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorCreateAccountEmailAlreadyUse": "This email address is already associated with an existing account.",
+  "@firebaseAuthUtilsErrorCreateAccountEmailAlreadyUse": {
+    "description": "Create account error - email-already-in-use (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorCreateAccountInvalidEmail": "The email address entered is not valid.\nPlease check and try again.",
+  "@firebaseAuthUtilsErrorCreateAccountInvalidEmail": {
+    "description": "Create account error - invalid-email (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorCreateAccountOperationNotAllowed": "Email and password accounts are not enabled.\nPlease contact support for assistance.",
+  "@firebaseAuthUtilsErrorCreateAccountOperationNotAllowed": {
+    "description": "Create account error - operation-not-allowed (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorCreateAccountWeakPassword": "The password entered is too weak.\nPlease choose a stronger password.",
+  "@firebaseAuthUtilsErrorCreateAccountWeakPassword": {
+    "description": "Create account error - weak-password (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorCreateAccountTooManyRequests": "Too many attempts have been made.\nPlease wait a moment before trying again.",
+  "@firebaseAuthUtilsErrorCreateAccountTooManyRequests": {
+   "description": "Create account error - too-many-requests (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorCreateAccountUserTokenExpired": "Your session has expired.\nPlease log in again to continue.",
+  "@firebaseAuthUtilsErrorCreateAccountUserTokenExpired": {
+    "description": "Create account error - user-token-expired (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorCreateAccountNetworkRequestFailed": "A network error occurred.\nPlease check your internet connection and try again.",
+  "@firebaseAuthUtilsErrorCreateAccountNetworkRequestFailed": {
+    "description": "Create account error - network-request-failed (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsSignInAccountInProgressTitle": "Signing in...",
+  "@firebaseAuthUtilsErrorSignInAccountInProgressTitle": {
+    "description": "Sign in account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsSignInAccountTitle": "Sign in",
+  "@firebaseAuthUtilsErrorSignInAccountTitle": {
+    "description": "Sign in account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountInvalidEmail": "The email address entered is not valid.\nPlease check and try again.",
+  "@firebaseAuthUtilsErrorSignInAccountInvalidEmail": {
+    "description": "Sign in account error - invalid-email (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountUserDisabled": "This account has been disabled.\nPlease contact support for more information.",
+  "@firebaseAuthUtilsErrorSignInAccountUserDisabled": {
+    "description": "Sign in account error - user-disabled (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountUserNotFound": "No account is associated with this email address.\nPlease check or create an account.",
+  "@firebaseAuthUtilsErrorSignInAccountUserNotFound": {
+    "description": "Sign in account error - user-not-found (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountWrongPassword": "The password entered is incorrect, or this account does not have a password set.",
+  "@firebaseAuthUtilsErrorSignInAccountWrongPassword": {
+    "description": "Sign in account error - wrong-password (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountTooManyRequests": "Too many attempts have been made.\nPlease wait a moment before trying again.",
+  "@firebaseAuthUtilsErrorSignInAccountTooManyRequests": {
+    "description": "Sign in account error - too-many-requests (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountUserTokenExpired": "Your session has expired.\nPlease log in again to continue.",
+  "@firebaseAuthUtilsErrorSignInAccountUserTokenExpired": {
+    "description": "Sign in account error - user-token-expired (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountNetworkRequestFailed": "A network error occurred.\nPlease check your internet connection and try again.",
+  "@firebaseAuthUtilsErrorSignInAccountNetworkRequestFailed": {
+    "description": "Sign in account error - network-request-failed (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountInvalidCredential": "The login credentials provided are incorrect.\nPlease check your email and password.",
+  "@firebaseAuthUtilsErrorSignInAccountInvalidCredential": {
+    "description": "Sign in account error - invalid-credential (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountOperationNotAllowed": "Email and password accounts are not enabled.\nPlease contact support for assistance.",
+  "@firebaseAuthUtilsErrorSignInAccountOperationNotAllowed": {
+    "description": "Sign in account error - operation-not-allowed (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdatePasswordAccountInProgressTitle": "Updating password...",
+  "@firebaseAuthUtilsUpdatePasswordAccountInProgressTitle": {
+    "description": "Update password account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdatePasswordAccountTitle": "Update password",
+  "@firebaseAuthUtilsUpdatePasswordAccountTitle": {
+    "description": "Update password account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdatePasswordAccountDescription": "Password successfully updated",
+  "@firebaseAuthUtilsUpdatePasswordAccountDescription": {
+    "description": "Update password account description (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorUpdatePasswordAccountWeakPassword": "The password entered is too weak.\nPlease choose a stronger password.",
+  "@firebaseAuthUtilsErrorUpdatePasswordAccountWeakPassword": {
+    "description": "Update password account error - weak-password (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorUpdatePasswordAccountRequiresRecentLogin": "For security reasons, please log in again to perform this action.",
+  "@firebaseAuthUtilsErrorUpdatePasswordAccountRequiresRecentLogin": {
+    "description": "Update password account error - requires-recent-login (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsSendPasswordResetEmailAccountInProgressTitle": "Resetting password...",
+  "@firebaseAuthUtilsSendPasswordResetEmailAccountInProgressTitle": {
+    "description": "Send password reset email account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsSendPasswordResetEmailAccountTitle": "Reset password",
+  "@firebaseAuthUtilsSendPasswordResetEmailAccountTitle": {
+    "description": "Send password reset email account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsSendPasswordResetEmailAccountDescription": "A password reset email has been sent to your email address.\nPlease check your inbox and follow the instructions to reset your password.",
+  "@firebaseAuthUtilsSendPasswordResetEmailAccountDescription": {
+    "description": "Send password reset email account description (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthInvalidEmail": "The email address entered is invalid.\nPlease check and try again.",
+  "@firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthInvalidEmail": {
+    "description": "Send password reset email account error - auth/invalid-email (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthMissingAndroidPkgName": "An Android package name must be provided to proceed.\nPlease check your settings.",
+  "@firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthMissingAndroidPkgName": {
+    "description": "Send password reset email account error - auth/missing-android-pkg-name (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthMissingContinueUri": "A continue URL is required to perform this action.\nPlease contact support.",
+  "@firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthMissingContinueUri": {
+    "description": "Send password reset email account error - auth/missing-continue-uri (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthMissingIosBundleId": "An iOS bundle ID is required if an App Store ID is provided.\nPlease check your settings.",
+  "@firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthMissingIosBundleId": {
+    "description": "Send password reset email account error - auth/missing-ios-bundle-id (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthInvalidContinueUri": "The continue URL provided is invalid.\nPlease check and try again.",
+  "@firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthInvalidContinueUri": {
+    "description": "Send password reset email account error - auth/invalid-continue-uri (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthUnauthorizedContinueUri": "The domain of the continue URL is not authorized.\nPlease contact support or check your Firebase settings.",
+  "@firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthUnauthorizedContinueUri": {
+    "description": "Send password reset email account error - auth/unauthorized-continue-uri (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthUserNotFound": "No user found with this email address.\nPlease check or create a new account.",
+  "@firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthUserNotFound": {
+    "description": "Send password reset email account error - auth/user-not-found (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsVerifyPasswordResetCodeAccountInProgressTitle": "Verifying the reset code...",
+  "@firebaseAuthUtilsVerifyPasswordResetCodeAccountInProgressTitle": {
+    "description": "Verify password reset code account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsVerifyPasswordResetCodeAccountTitle": "Verify the reset code",
+  "@firebaseAuthUtilsVerifyPasswordResetCodeAccountTitle": {
+    "description": "Verify password reset code account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountExpiredActionCode": "The password reset link or code has expired.\nPlease request a new one.",
+  "@firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountExpiredActionCode": {
+    "description": "Verify password reset code account error - expired-action-code (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountInvalidActionCode": "The password reset link or code is invalid or has already been used.\nPlease request a new one.",
+  "@firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountInvalidActionCode": {
+    "description": "Verify password reset code account error - invalid-action-code (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountUserDisabled": "This account has been disabled.\nPlease contact support for assistance.",
+  "@firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountUserDisabled": {
+    "description": "Verify password reset code account error - user-disabled (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountUserNotFound": "No user found for this reset code.\nThe account may have been deleted.\nPlease check or contact support.",
+  "@firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountUserNotFound": {
+    "description": "Verify password reset code account error - user-not-found (FirebaseAuthUtils)"
   }
 }

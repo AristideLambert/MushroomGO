@@ -49,7 +49,7 @@ class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePassword
     _oobCode = ModalRoute.of(context)!.settings.arguments as String?;
     if(_oobCode != null && !_checkOobCode){
       _checkOobCode = true;
-      FirebaseAuthUtils.verifyPasswordResetCode(context, _oobCode!);
+      FirebaseAuthUtils.verifyPasswordResetCodeAccount(context, _oobCode!);
     }
   }
 
@@ -83,7 +83,7 @@ class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePassword
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
         child: ButtonStandard(title: _oobCode == null ? "Update password" : "Reset password", enabled: _isValid, onTap: () async {
-          _oobCode == null ? await FirebaseAuthUtils.updatePassword(context, _controllerOldPassword.text, _controllerNewPassword.text) : await FirebaseAuthUtils.confirmPasswordReset(context, _oobCode!, _controllerNewPassword.text);
+          _oobCode == null ? await FirebaseAuthUtils.updatePasswordAccount(context, _controllerOldPassword.text, _controllerNewPassword.text) : await FirebaseAuthUtils.confirmPasswordResetAccount(context, _oobCode!, _controllerNewPassword.text);
 
           DialogUtils.showPopupInformation(context, "Update password", "Successful update", "OK", (){
             Navigator.of(context).pop();
