@@ -69,11 +69,11 @@ class _MainPageState extends State<MainPage> {
           key: homeKey
       ),
       NavigationModel(
-          tab: const MapTab(),
+          tab: MapTab(mainContext: context,),
           key: mapKey
       ),
       NavigationModel(
-          tab: const ChallengeTab(),
+          tab: ChallengeTab(mainContext: context,),
           key: challengeKey
       ),
       NavigationModel(
@@ -106,8 +106,7 @@ class _MainPageState extends State<MainPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: NavigationItemCameraTabBottom(onTap: (){
-        Provider.of<LocaleProvider>(context, listen: false).setLocale(const Locale("en"));
-        Provider.of<ThemeProvider>(context, listen: false).setTheme(ThemeMode.dark);
+        Navigator.of(context).pushNamed(NavigationConstant.cameraPage);
       }),
     );
   }

@@ -29,37 +29,40 @@ class _BadgeDetailPageState extends State<BadgeDetailPage> {
       appBar: AppBar(
         title: Text(widget.mission.title),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
+      body: SafeArea(
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset(
-                widget.mission.badge,
-                fit: BoxFit.contain,
-                height: theme.heightImageDetail,
-              ),
-              SizedBox(height: theme.spaceBetweenText),
-              Text(
-                widget.mission.title,
-                style: theme.titleStyle,
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: theme.spaceBetweenText),
-              Text(
-                widget.mission.description,
-                style: theme.descriptionStyle,
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: theme.spaceBetweenText),
+          child: Container(
+            padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  widget.mission.badge,
+                  fit: BoxFit.contain,
+                  height: theme.heightImageDetail,
+                ),
+                SizedBox(height: theme.spaceBetweenText),
+                Text(
+                  widget.mission.title,
+                  style: theme.titleStyle,
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: theme.spaceBetweenText),
+                Text(
+                  widget.mission.description,
+                  style: theme.descriptionStyle,
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: theme.spaceBetweenText),
                 Text(
                   "${AppLocalizations.of(context)!.earnedBadge} ${DateFormat('dd MMM yyyy').format(widget.mission.earnedDate!)}.",
                   style: theme.textDateStyle,
                   textAlign: TextAlign.center,
                 ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

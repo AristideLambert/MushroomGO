@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:mushroom_go/models/mission.dart';
 import 'package:mushroom_go/theme/badge_tab_theme.dart';
 
-class BadgeTab extends StatefulWidget {
+class ProfileBadgeTab extends StatefulWidget {
+  final BuildContext mainContext;
   final BadgeTabTheme? theme;
-  const BadgeTab({super.key, this.theme});
+
+  const ProfileBadgeTab({super.key, required this.mainContext, this.theme});
 
   @override
-  State<BadgeTab> createState() => _BadgeTabState();
+  State<ProfileBadgeTab> createState() => _ProfileBadgeTabState();
 }
 
-class _BadgeTabState extends State<BadgeTab> {
+class _ProfileBadgeTabState extends State<ProfileBadgeTab> {
   late BadgeTabTheme theme;
 
   @override
@@ -61,25 +63,25 @@ class _BadgeTabState extends State<BadgeTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.all(theme.defaultPadding),
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: theme.gridDelegateCrossAxisCount,
-            crossAxisSpacing: theme.gridDelegateSpacing,
-            mainAxisSpacing: theme.gridDelegateSpacing,
-            childAspectRatio: theme.gridDelegateChildAspectRatio,
-          ),
-          itemCount: missions.length,
-          itemBuilder: (context, index) {
-            final mission = missions[index];
-            return Column(
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: theme.gridDelegateCrossAxisCount,
+          crossAxisSpacing: theme.gridDelegateSpacing,
+          mainAxisSpacing: theme.gridDelegateSpacing,
+          childAspectRatio: theme.gridDelegateChildAspectRatio,
+        ),
+        itemCount: missions.length,
+        itemBuilder: (context, index) {
+          final mission = missions[index];
+          return Padding(
+            padding: EdgeInsets.all(theme.defaultPadding),
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GestureDetector(
                   onTap: () {
                     Navigator.pushNamed(
-                      context,
+                      widget.mainContext,
                       '/BadgeDetailPage',
                       arguments: mission,
                     );
@@ -103,9 +105,9 @@ class _BadgeTabState extends State<BadgeTab> {
                   ),
                 ),
               ],
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

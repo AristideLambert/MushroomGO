@@ -4,15 +4,15 @@ import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/models/mushroom_scan.dart';
 import 'package:mushroom_go/theme/history_tab_theme.dart';
 
-class HistoryTab extends StatefulWidget {
+class ProfileHistoryTab extends StatefulWidget {
   final HistoryTabTheme? theme;
-  const HistoryTab({super.key, this.theme});
+  const ProfileHistoryTab({super.key, this.theme});
 
   @override
-  State<HistoryTab> createState() => _HistoryTabState();
+  State<ProfileHistoryTab> createState() => _ProfileHistoryTabState();
 }
 
-class _HistoryTabState extends State<HistoryTab> {
+class _ProfileHistoryTabState extends State<ProfileHistoryTab> {
   late HistoryTabTheme theme;
 
   @override
@@ -58,7 +58,7 @@ class _HistoryTabState extends State<HistoryTab> {
           },
           child: Card(
             color: theme.cardBackgroundColor,
-            margin: EdgeInsets.symmetric(vertical: theme.defaultPaddingMargin),
+            margin: EdgeInsets.only(top: index == 0 ? 0 : theme.defaultPaddingMargin),
             child: Padding(
               padding: EdgeInsets.all(theme.defaultPaddingMargin),
               child: Row(

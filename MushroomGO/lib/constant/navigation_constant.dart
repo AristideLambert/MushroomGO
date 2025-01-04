@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/models/mission.dart';
+import 'package:mushroom_go/screen/page/camera/camera_page.dart';
 import 'package:mushroom_go/screen/page/detail/badge_detail_page.dart';
 import 'package:mushroom_go/screen/page/detail/mushroom_detail_page.dart';
 import 'package:mushroom_go/screen/page/account/benefit_account_page.dart';
@@ -36,6 +37,7 @@ class NavigationConstant {
   static const String mushroomDetailPage = "/MushroomDetailPage";
   static const String webViewPage = "/WebViewPage";
   static const String badgeDetailPage = "/BadgeDetailPage";
+  static const String cameraPage = "/CameraPage";
 
 
   // Route
@@ -46,7 +48,7 @@ class NavigationConstant {
       case loginPage:
         return MaterialPageRoute(builder: (context) => LoginPage(), settings: settings);
       case benefitAccountPage:
-        return MaterialPageRoute(builder: (context) => const BenefitAccountPage(), settings: settings);
+        return MaterialPageRoute(builder: (context) => BenefitAccountPage(mainContext: context), settings: settings);
       case registrationPage:
         return MaterialPageRoute(builder: (context) => const RegistrationPage(), settings: settings);
       case forgotPasswordPage:
@@ -78,6 +80,8 @@ class NavigationConstant {
       case badgeDetailPage:
         final mission = settings.arguments as Mission;
         return MaterialPageRoute(builder: (context) => BadgeDetailPage(mission: mission), settings: settings);
+      case cameraPage:
+        return MaterialPageRoute(builder: (context) => CameraPage(), settings: settings);
       default:
         return MaterialPageRoute(builder: (context) => const MainPage(), settings: settings);
     }
