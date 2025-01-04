@@ -16,9 +16,6 @@ import 'package:mushroom_go/theme/navigation_tab_top_theme.dart';
 import 'package:mushroom_go/theme/profile_container_theme.dart';
 import 'package:mushroom_go/theme/search_result_theme.dart';
 import 'package:mushroom_go/theme/loading_container_theme.dart';
-import 'package:mushroom_go/theme/navigation_tab_bottom_theme.dart';
-import 'package:mushroom_go/theme/navigation_tab_top_theme.dart';
-import 'package:mushroom_go/theme/profile_container_theme.dart';
 import 'package:mushroom_go/theme/text_input_policy_theme.dart';
 import 'package:mushroom_go/theme/text_input_theme.dart';
 import 'package:mushroom_go/theme/text_output_theme.dart';
@@ -120,7 +117,7 @@ class ThemeConstant{
       ),
       const SearchResultTheme(
         titleStyle: TextStyleConstant.lightTitleSearchResultPage
-      )
+      ),
       const TextInputTheme(
         titleStyle: TextStyleConstant.lightTitleTextInput,
         placeHolderStyle: TextStyleConstant.lightPlaceHolderTextInput,

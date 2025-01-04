@@ -11,6 +11,7 @@ class MapTab extends StatefulWidget {
 }
 
 class _MapTabState extends State<MapTab> {
+  final MapController _mapController = MapController();
   LatLng? _currentPosition;
   bool _isLoading = true;
 
@@ -27,6 +28,9 @@ class _MapTabState extends State<MapTab> {
         _currentPosition = LatLng(position.latitude, position.longitude);
         _isLoading = false;
       });
+      if (_currentPosition != null) {
+        _mapController.move(_currentPosition!, 8.0);
+      }
     } catch (e) {
       debugPrint("Erreur lors de la récupération de la localisation : $e");
       setState(() {
@@ -45,15 +49,30 @@ class _MapTabState extends State<MapTab> {
 
     return Scaffold(
       body: FlutterMap(
+        mapController: _mapController,
         options: MapOptions(
-          center: _currentPosition,
-          zoom: 8.0,
+          initialZoom: 8.0,
         ),
         children: [
           TileLayer(
             urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
             subdomains: const ['a', 'b', 'c'],
           ),
+          if (_currentPosition != null)
+            MarkerLayer(
+              markers: [
+                Marker(
+                  point: LatLng(51.5, -0.09), // Remplacez par la position du marqueur
+                  width: 80,
+                  height: 80,
+                  child: const Icon(
+                    Icons.location_pin,
+                    color: Colors.red,
+                    size: 40.0,
+                  ),
+                ),
+              ],
+            ),
         ],
       ),
     );
