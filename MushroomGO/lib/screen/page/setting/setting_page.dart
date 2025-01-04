@@ -1,13 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/constant/navigation_constant.dart';
+import 'package:mushroom_go/constant/setting_constant.dart';
 import 'package:mushroom_go/provider/locale_provider.dart';
 import 'package:mushroom_go/provider/theme_provider.dart';
 import 'package:mushroom_go/screen/widget/button/setting/button_setting.dart';
 import 'package:mushroom_go/screen/widget/button/setting/button_setting_container.dart';
-import 'package:mushroom_go/screen/widget/container/profile_container.dart';
+import 'package:mushroom_go/screen/widget/container/profile/profile_container.dart';
 import 'package:mushroom_go/utils/setting/setting_utils.dart';
 import 'package:provider/provider.dart';
 
@@ -21,6 +23,21 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
+  late User? _user;
+
+  @override
+  void initState() {
+    super.initState();
+    _user = FirebaseAuth.instance.currentUser;
+  }
+
+  Future<void> _navigate(String routeName) async {
+    await Navigator.of(widget.mainContext).pushNamed(routeName);
+    setState(() {
+      _user = FirebaseAuth.instance.currentUser;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,16 +53,10 @@ class _SettingPageState extends State<SettingPage> {
             child: Column(
               children: [
                 ProfileContainer(
-                  image: const NetworkImage(
-                    'https://picsum.photos/seed/904/600',
-                  ),
-                  name: "Aristide LAMBERT",
-                  mail: "aristidelambert@yahoo.fr",
-                  onTap: () {
-                    Navigator.of(widget.mainContext).pushNamed(
-                        NavigationConstant.accountSettingPage
-                    );
-                  },
+                  pathImage: _user?.photoURL ?? SettingConstant.pathDefaultImageProfile,
+                  name: _user?.displayName ?? "Aristide LAMBERT",
+                  mail: _user?.email ?? "aristide.lambert@student.hepl.be",
+                  onTap: () => _navigate(_user == null ? NavigationConstant.loginPage : NavigationConstant.accountSettingPage),
                 ),
                 const SizedBox(height: DimensionConstant.spaceSetting),
                 ButtonSettingContainer(

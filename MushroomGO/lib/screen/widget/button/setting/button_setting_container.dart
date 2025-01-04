@@ -50,6 +50,7 @@ class _ButtonSettingContainerState extends State<ButtonSettingContainer> {
         centerTitle: button.centerTitle,
         initSwitch: button.initSwitch,
         initSelected: indexSelected != null ? initSelected : button.initSelected,
+        isDestructive: button.isDestructive,
         onTap: indexSelected != null ? (){
           if(indexSelected != null){
             setState(() {

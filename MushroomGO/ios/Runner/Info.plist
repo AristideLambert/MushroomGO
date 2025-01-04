@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>FlutterDeepLinkingEnabled</key>
+	<false/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -49,5 +51,20 @@
     <string>L'application utilise votre position pour afficher une carte centrée sur votre localisation.</string>
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
     <string>L'application utilise votre position pour des fonctionnalités de localisation avancées.</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>aristide.tom.mushroomGo</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>https</string>
+			</array>
+		</dict>
+	</array>
+	<key>AssociatedDomains</key>
+	<array>
+		<string>applinks:mushroomgo-9ed47.firebaseapp.com</string>
+	</array>
 </dict>
 </plist>

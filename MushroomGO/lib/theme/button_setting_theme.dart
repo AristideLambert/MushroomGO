@@ -6,6 +6,7 @@ import 'package:mushroom_go/constant/color_constant.dart';
 class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
   final Color backgroundColor;
   final Color splashColor;
+  final Color leftIconColor;
   final Color chevronColor;
   final Color checkColor;
   final double height;
@@ -17,11 +18,13 @@ class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
   final double space;
   final TextStyle titleStyle;
   final TextStyle titleButtonStyle;
+  final TextStyle titleButtonDestructibleStyle;
   final TextStyle dataStyle;
 
   const ButtonSettingTheme({
     this.backgroundColor = ColorConstant.lightBackgroundButtonSetting,
     this.splashColor = Colors.transparent,
+    this.leftIconColor = ColorConstant.lightLeftIconButtonSetting,
     this.chevronColor = ColorConstant.lightDataButtonSetting,
     this.checkColor = ColorConstant.checkButtonSetting,
     this.height = DimensionConstant.heightButtonSetting,
@@ -33,6 +36,7 @@ class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
     this.space = DimensionConstant.spaceButtonSetting,
     this.titleStyle = TextStyleConstant.lightTitleButtonSetting,
     this.titleButtonStyle = TextStyleConstant.lightTitleButtonButtonSetting,
+    this.titleButtonDestructibleStyle = TextStyleConstant.destructibleTitleButtonButtonSetting,
     this.dataStyle = TextStyleConstant.lightDataButtonSetting,
   });
 
@@ -40,6 +44,7 @@ class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
   ButtonSettingTheme copyWith({
     Color? backgroundColor,
     Color? splashColor,
+    Color? leftIconColor,
     Color? chevronColor,
     Color? checkColor,
     double? height,
@@ -51,11 +56,13 @@ class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
     double? space,
     TextStyle? titleStyle,
     TextStyle? titleButtonStyle,
+    TextStyle? titleButtonDestructibleStyle,
     TextStyle? dataStyle,
   }) {
     return ButtonSettingTheme(
       backgroundColor: backgroundColor ?? this.backgroundColor,
       splashColor: splashColor ?? this.splashColor,
+      leftIconColor: leftIconColor ?? this.leftIconColor,
       chevronColor: chevronColor ?? this.chevronColor,
       checkColor: checkColor ?? this.checkColor,
       height: height ?? this.height,
@@ -67,6 +74,7 @@ class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
       space: space ?? this.space,
       titleStyle: titleStyle ?? this.titleStyle,
       titleButtonStyle: titleButtonStyle ?? this.titleButtonStyle,
+      titleButtonDestructibleStyle: titleButtonDestructibleStyle ?? this.titleButtonDestructibleStyle,
       dataStyle: dataStyle ?? this.dataStyle,
     );
   }
@@ -77,6 +85,7 @@ class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
     return ButtonSettingTheme(
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t)!,
       splashColor: Color.lerp(splashColor, other.splashColor, t)!,
+      leftIconColor: Color.lerp(leftIconColor, other.leftIconColor, t)!,
       chevronColor: Color.lerp(chevronColor, other.chevronColor, t)!,
       checkColor: Color.lerp(checkColor, other.checkColor, t)!,
       height: height + (other.height - height) * t,
@@ -88,6 +97,7 @@ class ButtonSettingTheme extends ThemeExtension<ButtonSettingTheme> {
       space: space + (other.space - space) * t,
       titleStyle: TextStyle.lerp(titleStyle, other.titleStyle, t)!,
       titleButtonStyle: TextStyle.lerp(titleButtonStyle, other.titleButtonStyle, t)!,
+      titleButtonDestructibleStyle: TextStyle.lerp(titleButtonDestructibleStyle, other.titleButtonDestructibleStyle, t)!,
       dataStyle: TextStyle.lerp(dataStyle, other.dataStyle, t)!,
     );
   }

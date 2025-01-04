@@ -24,16 +24,20 @@
     "description": "Tab home (News)"
   },
   "challengeMushrooms": "Mushrooms",
-    "@challengeMushrooms": {
-      "description": "Tab challenge (Mushrooms)"
-    },
-    "challengeMissions": "Missions",
-    "@challengeMissions": {
-      "description": "Tab challenge (Missions)"
-    },
+  "@challengeMushrooms": {
+    "description": "Tab challenge (Mushrooms)"
+  },
+  "challengeMissions": "Missions",
+  "@challengeMissions": {
+    "description": "Tab challenge (Missions)"
+  },
   "setting": "Settings",
   "@setting": {
     "description": "Settings"
+  },
+  "settingProfileLogin": "Login",
+  "@settingProfileLogin": {
+    "description": "Login (Profile)"
   },
   "settingContentDisplay": "Content & Display",
   "@settingContentDisplay": {
@@ -44,31 +48,31 @@
     "description": "About us"
   },
   "settingLanguage": "Language",
-    "@settingLanguage": {
+  "@settingLanguage": {
     "description": "Language (Setting)"
   },
   "settingLanguageEN": "English",
-    "@settingEN": {
+  "@settingEN": {
     "description": "English language (Setting)"
   },
   "settingLanguageFR": "French",
-    "@settingFR": {
+  "@settingFR": {
     "description": "French language (Setting)"
   },
   "settingDisplay": "Display",
-    "@settingDisplay": {
+  "@settingDisplay": {
     "description": "Display (Setting)"
   },
   "settingDisplaySystem": "System",
-    "@settingSystem": {
+  "@settingSystem": {
     "description": "System theme (Setting)"
   },
   "settingDisplayLight": "Light",
-    "@settingLight": {
+  "@settingLight": {
     "description": "Light theme (Setting)"
   },
   "settingDisplayDark": "Dark",
-    "@settingDark": {
+  "@settingDark": {
     "description": "Dark theme (Setting)"
   },
   "settingAboutPrivacyPolicy": "Privacy policy",
@@ -78,93 +82,529 @@
   "settingAboutTermsAndConditions": "Terms and conditions",
   "@settingAboutTermsAndConditions": {
     "description": "Terms and conditions (Setting)"
-},
+  },
   "settingAccount": "Account",
-    "@settingAccount": {
+  "@settingAccount": {
     "description": "Account (Setting)"
- },
- "settingAccountMail": "Update email address",
-   "@settingAccountMail": {
-   "description": "Setting Account Mail (Setting)"
-},
-   "settingAccountPassword": "Update password",
-     "@settingAccountPassword": {
-     "description": "Setting Account Password (Setting)"
-},
-    "settingAccountDelete": "Delete my account",
-      "@settingAccountDelete": {
-      "description": "Setting Account Delete (Setting)"
-},
-   "settingAccountLogout": "Log out",
-     "@settingAccountLogout": {
-     "description": "Setting Account Logout (Setting)"
-},
+  },
+  "settingAccountFirstnameName": "Update firstname & name",
+  "@settingAccountFirstnameName": {
+    "description": "Setting Account Firstname & name (Setting)"
+  },
+  "settingAccountImageProfile": "Update profile image",
+  "@settingAccountMail": {
+    "description": "Setting Account Profile Image (Setting)"
+  },
+  "settingAccountPassword": "Update password",
+  "@settingAccountPassword": {
+    "description": "Setting Account Password (Setting)"
+  },
+  "settingAccountDelete": "Delete my account",
+  "@settingAccountDelete": {
+    "description": "Setting Account Delete (Setting)"
+  },
+  "settingAccountLogout": "Log out",
+  "@settingAccountLogout": {
+    "description": "Setting Account Logout (Setting)"
+  },
   "challengeMushroomsCommon": "Common",
-    "@challengeMushroomsCommon": {
+  "@challengeMushroomsCommon": {
     "description": "Challenge Mushrooms (Common)"
-},
+  },
   "challengeMushroomsRare": "Rare",
-    "@challengeMushroomsRare": {
+  "@challengeMushroomsRare": {
     "description": "Challenge Mushrooms (Rare)"
   },
   "challengeMushroomsEpic": "Epic",
-    "@challengeMushroomsEpic": {
+  "@challengeMushroomsEpic": {
     "description": "Challenge Mushrooms (Epic)"
   },
   "challengeMissionsWeakly": "Weekly Missions",
-      "@challengeMissionsWeakly": {
-      "description": "challenge Missions (Weakly)"
+  "@challengeMissionsWeakly": {
+    "description": "challenge Missions (Weakly)"
   },
   "challengeMissionsMonthly": "Monthly Missions",
-      "@challengeMissionsMonthly": {
-      "description": "challenge Missions (Monthly)"
+  "@challengeMissionsMonthly": {
+    "description": "challenge Missions (Monthly)"
   },
-    "mushroomDescription": "Description",
-    "@mushroomDescription": {
-      "description": "Mushroom detail page - description"
+  "mushroomDescription": "Description",
+  "@mushroomDescription": {
+    "description": "Mushroom detail page - description"
   },
-    "mushroomHabitat": "Habitat",
-    "@mushroomHabitat": {
-      "description": "Mushroom detail page - habitat"
+  "mushroomHabitat": "Habitat",
+  "@mushroomHabitat": {
+    "description": "Mushroom detail page - habitat"
   },
-    "notSpecified": "Not specified",
-    "@notSpecified": {
-      "description": "Placeholder for unspecified values"
+  "notSpecified": "Not specified",
+  "@notSpecified": {
+    "description": "Placeholder for unspecified values"
   },
-    "mushroomFamily": "Family",
-    "@mushroomFamily": {
-      "description": "Mushroom detail page - family classification"
+  "mushroomFamily": "Family",
+  "@mushroomFamily": {
+    "description": "Mushroom detail page - family classification"
   },
-    "mushroomOrder": "Order",
-    "@mushroomOrder": {
-      "description": "Mushroom detail page - order classification"
+  "mushroomOrder": "Order",
+  "@mushroomOrder": {
+    "description": "Mushroom detail page - order classification"
   },
-    "mushroomClass": "Class",
-    "@mushroomClass": {
-      "description": "Mushroom detail page - class classification"
+  "mushroomClass": "Class",
+  "@mushroomClass": {
+    "description": "Mushroom detail page - class classification"
   },
-    "mushroomPhylum": "Phylum",
-    "@mushroomPhylum": {
-      "description": "Mushroom detail page - phylum classification"
+  "mushroomPhylum": "Phylum",
+  "@mushroomPhylum": {
+    "description": "Mushroom detail page - phylum classification"
   },
   "scientificClassification": "Scientific Classification",
-      "@scientificClassification": {
-        "description": "Mushroom Scientific Classification"
+  "@scientificClassification": {
+    "description": "Mushroom Scientific Classification"
   },
-     "scientificName": "Scientific Name",
-         "@scientificName": {
-           "description": "Mushroom Scientific Name"
+  "scientificName": "Scientific Name",
+  "@scientificName": {
+    "description": "Mushroom Scientific Name"
   },
-    "earnedBadge": "You earned this badge on",
-        "@earnedBadge": {
-          "description": "Earned Badge"
+  "earnedBadge": "You earned this badge on",
+  "@earnedBadge": {
+    "description": "Earned Badge"
   },
   "culinaryInformation": "Culinary information",
-          "@culinaryInformation": {
-            "description": "culinary Information"
+  "@culinaryInformation": {
+    "description": "culinary Information"
   },
   "recipes": "Recipe(s)",
-            "@recipes": {
-              "description": "recipes"
+  "@recipes": {
+    "description": "recipes"
+  },
+  "loginTitle": "Sign in to your account",
+  "@loginTitle": {
+    "description": "Title (Login)"
+  },
+  "loginDescription": "Enter your email and password to log in",
+  "@loginDescription": {
+    "description": "Description (Login)"
+  },
+  "loginEmail": "Email",
+  "@loginEmail": {
+    "description": "Email (Login)"
+  },
+  "loginPassword": "Password",
+  "@loginPassword": {
+    "description": "Password (Login)"
+  },
+  "loginForgotPassword": "Forgot password ?",
+  "@loginForgotPassword": {
+    "description": "Forgot password (Login)"
+  },
+  "loginLogin": "Login",
+  "@loginLogin": {
+    "description": "Login (Login)"
+  },
+  "loginHaveAccount": "Don't have an account ?",
+  "@loginHaveAccount": {
+    "description": "Have account (Login)"
+  },
+  "loginSignUp": "Sign up",
+  "@loginSignUp": {
+    "description": "Sign up (Login)"
+  },
+  "loginSkip": "Skip",
+  "@loginSkip": {
+    "description": "Skip (Login)"
+  },
+  "textInputPasswordLength": "Least 12 characters",
+  "@textInputPasswordLength": {
+    "description": "Password length (Register)"
+  },
+  "textInputPasswordUpperCase": "Least one upper case character",
+  "@textInputPasswordUpperCase": {
+    "description": "Password upper case (Register)"
+  },
+  "textInputPasswordLowerCase": "Least one lower case character",
+  "@textInputPasswordLowerCase": {
+    "description": "Password lower case (Register)"
+  },
+  "textInputPasswordSpecialCharacter": "Least one special character",
+  "@textInputPasswordSpecialCharacter": {
+    "description": "Password special character (Register)"
+  },
+  "registerTitle": "Sign up",
+  "@registerTitle": {
+    "description": "Title (Register)"
+  },
+  "registerDescription": "Create an account to continue",
+  "@registerDescription": {
+    "description": "Description (Register)"
+  },
+  "registerFirstName": "First name",
+  "@registerFirstName": {
+    "description": "First name (Register)"
+  },
+  "registerName": "Name",
+  "@registerName": {
+    "description": "Name (Register)"
+  },
+  "registerEmail": "Email",
+  "@registerEmail": {
+    "description": "Email (Register)"
+  },
+  "registerPassword": "Password",
+  "@registerPassword": {
+    "description": "Password (Register)"
+  },
+  "registerSignUp": "Sign up",
+  "@registerSignUp": {
+    "description": "Sign up (Register)"
+  },
+  "registerHaveAccount": "Already have an account ?",
+  "@registerHaveAccount": {
+    "description": "Have account (Register)"
+  },
+  "registerLogin": "Login",
+  "@registerLogin": {
+    "description": "Login (Register)"
+  },
+  "forgotPasswordTitle": "Reset your password",
+  "@forgotPasswordTitle": {
+    "description": "Title (ForgotPassword)"
+  },
+  "forgotPasswordDescription": "Enter your email for reset password",
+  "@forgotPasswordDescription": {
+    "description": "Description (ForgotPassword)"
+  },
+  "forgotPasswordButton": "Reset",
+  "@forgotPasswordButton": {
+    "description": "Button (ForgotPassword)"
+  },
+  "accountDeleteSettingTitle": "Delete my account",
+  "@accountDeleteSettingTitle": {
+    "description": "Title (AccountDeleteSetting)"
+  },
+  "accountDeleteSettingTitlePassword": "Password",
+  "@accountDeleteSettingTitlePassword": {
+    "description": "Title password (AccountDeleteSetting)"
+  },
+  "accountDeleteSettingButton": "Delete",
+  "@accountDeleteSettingButton": {
+    "description": "Button (AccountDeleteSetting)"
+  },
+  "accountUpdateFirstnameNameSettingTitle": "Update firstname & name",
+  "@accountUpdateFirstnameNameSettingTitle": {
+    "description": "Title (AccountUpdateFirstnameNameSetting)"
+  },
+  "accountUpdateFirstnameNameSettingTitleFirstname": "Firstname",
+  "@accountUpdateFirstnameNameSettingTitleFirstname": {
+    "description": "Title firstname (AccountUpdateFirstnameNameSetting)"
+  },
+  "accountUpdateFirstnameNameSettingTitleName": "Name",
+  "@accountUpdateFirstnameNameSettingTitleName": {
+    "description": "Title name (AccountUpdateFirstnameNameSetting)"
+  },
+  "accountUpdateFirstnameNameSettingButton": "Save",
+  "@accountUpdateFirstnameNameSettingButton": {
+    "description": "Button (AccountUpdateFirstnameNameSetting)"
+  },
+  "accountUpdateImageProfileSettingTitle": "Update image profile",
+  "@accountUpdateImageProfileSettingTitle": {
+    "description": "Title (AccountUpdateImageProfileSettingTitle)"
+  },
+  "accountUpdateImageProfileSettingButton": "Save",
+  "@accountUpdateImageProfileSettingButton": {
+    "description": "Button (AccountUpdateImageProfileSettingTitle)"
+  },
+  "accountUpdatePasswordSettingTitleUpdate": "Update password",
+  "@accountUpdatePasswordSettingTitleUpdate": {
+    "description": "Title (AccountUpdatePasswordSetting)"
+  },
+  "accountUpdatePasswordSettingTitleReset": "Reset password",
+  "@accountUpdatePasswordSettingTitleReset": {
+    "description": "Title (AccountUpdatePasswordSetting)"
+  },
+  "accountUpdatePasswordSettingTitleOldPassword": "Old password",
+  "@accountUpdatePasswordSettingTitleOldPassword": {
+    "description": "Title old password (AccountUpdatePasswordSetting)"
+  },
+  "accountUpdatePasswordSettingTitleNewPassword": "New password",
+  "@accountUpdatePasswordSettingTitleNewPassword": {
+    "description": "Title new password (AccountUpdatePasswordSetting)"
+  },
+  "accountUpdatePasswordSettingButtonSave": "Save",
+  "@accountUpdatePasswordSettingButtonSave": {
+    "description": "Button save (AccountUpdatePasswordSetting)"
+  },
+  "accountUpdatePasswordSettingButtonReset": "Reset",
+  "@accountUpdatePasswordSettingButtonReset": {
+    "description": "Button reset (AccountUpdatePasswordSetting)"
+  },
+  "popupOK": "OK",
+  "@popupOK": {
+    "description": "OK option (Popup)"
+  },
+  "popupCancel": "Cancel",
+  "@popupCancel": {
+    "description": "Cancel option (Popup)"
+  },
+  "popupDelete": "Delete",
+  "@popupDelete": {
+    "description": "Delete option (Popup)"
+  },
+  "firebaseAuthUtilsLoadingDefault": "Loading...",
+  "@firebaseAuthUtilsLoadingDefault": {
+    "description": "Default loading (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorDefault": "An unexpected error occurred.\nPlease try again later or contact support if the issue persists.",
+  "@firebaseAuthUtilsErrorDefault": {
+    "description": "Default error (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorUser": "No users found",
+  "@firebaseAuthUtilsErrorUser": {
+    "description": "User error (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorData": "No data found",
+  "@firebaseAuthUtilsErrorData": {
+    "description": "Data error (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsCreateAccountInProgressTitle": "Signing up...",
+  "@firebaseAuthUtilsCreateAccountInProgressTitle": {
+    "description": "Create account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsCreateAccountTitle": "Sign up",
+  "@firebaseAuthUtilsCreateAccountTitle": {
+    "description": "Create account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorCreateAccountEmailAlreadyUse": "This email address is already associated with an existing account.",
+  "@firebaseAuthUtilsErrorCreateAccountEmailAlreadyUse": {
+    "description": "Create account error - email-already-in-use (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorCreateAccountInvalidEmail": "The email address entered is not valid.\nPlease check and try again.",
+  "@firebaseAuthUtilsErrorCreateAccountInvalidEmail": {
+    "description": "Create account error - invalid-email (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorCreateAccountOperationNotAllowed": "Email and password accounts are not enabled.\nPlease contact support for assistance.",
+  "@firebaseAuthUtilsErrorCreateAccountOperationNotAllowed": {
+    "description": "Create account error - operation-not-allowed (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorCreateAccountWeakPassword": "The password entered is too weak.\nPlease choose a stronger password.",
+  "@firebaseAuthUtilsErrorCreateAccountWeakPassword": {
+    "description": "Create account error - weak-password (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorCreateAccountTooManyRequests": "Too many attempts have been made.\nPlease wait a moment before trying again.",
+  "@firebaseAuthUtilsErrorCreateAccountTooManyRequests": {
+   "description": "Create account error - too-many-requests (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorCreateAccountUserTokenExpired": "Your session has expired.\nPlease log in again to continue.",
+  "@firebaseAuthUtilsErrorCreateAccountUserTokenExpired": {
+    "description": "Create account error - user-token-expired (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorCreateAccountNetworkRequestFailed": "A network error occurred.\nPlease check your internet connection and try again.",
+  "@firebaseAuthUtilsErrorCreateAccountNetworkRequestFailed": {
+    "description": "Create account error - network-request-failed (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsSignInAccountInProgressTitle": "Signing in...",
+  "@firebaseAuthUtilsErrorSignInAccountInProgressTitle": {
+    "description": "Sign in account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsSignInAccountTitle": "Sign in",
+  "@firebaseAuthUtilsErrorSignInAccountTitle": {
+    "description": "Sign in account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountInvalidEmail": "The email address entered is not valid.\nPlease check and try again.",
+  "@firebaseAuthUtilsErrorSignInAccountInvalidEmail": {
+    "description": "Sign in account error - invalid-email (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountUserDisabled": "This account has been disabled.\nPlease contact support for more information.",
+  "@firebaseAuthUtilsErrorSignInAccountUserDisabled": {
+    "description": "Sign in account error - user-disabled (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountUserNotFound": "No account is associated with this email address.\nPlease check or create an account.",
+  "@firebaseAuthUtilsErrorSignInAccountUserNotFound": {
+    "description": "Sign in account error - user-not-found (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountWrongPassword": "The password entered is incorrect, or this account does not have a password set.",
+  "@firebaseAuthUtilsErrorSignInAccountWrongPassword": {
+    "description": "Sign in account error - wrong-password (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountTooManyRequests": "Too many attempts have been made.\nPlease wait a moment before trying again.",
+  "@firebaseAuthUtilsErrorSignInAccountTooManyRequests": {
+    "description": "Sign in account error - too-many-requests (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountUserTokenExpired": "Your session has expired.\nPlease log in again to continue.",
+  "@firebaseAuthUtilsErrorSignInAccountUserTokenExpired": {
+    "description": "Sign in account error - user-token-expired (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountNetworkRequestFailed": "A network error occurred.\nPlease check your internet connection and try again.",
+  "@firebaseAuthUtilsErrorSignInAccountNetworkRequestFailed": {
+    "description": "Sign in account error - network-request-failed (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountInvalidCredential": "The login credentials provided are incorrect.\nPlease check your email and password.",
+  "@firebaseAuthUtilsErrorSignInAccountInvalidCredential": {
+    "description": "Sign in account error - invalid-credential (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSignInAccountOperationNotAllowed": "Email and password accounts are not enabled.\nPlease contact support for assistance.",
+  "@firebaseAuthUtilsErrorSignInAccountOperationNotAllowed": {
+    "description": "Sign in account error - operation-not-allowed (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdatePasswordAccountInProgressTitle": "Updating password...",
+  "@firebaseAuthUtilsUpdatePasswordAccountInProgressTitle": {
+    "description": "Update password account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdatePasswordAccountTitle": "Update password",
+  "@firebaseAuthUtilsUpdatePasswordAccountTitle": {
+    "description": "Update password account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdatePasswordAccountDescription": "Password successfully updated",
+  "@firebaseAuthUtilsUpdatePasswordAccountDescription": {
+    "description": "Update password account description (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorUpdatePasswordAccountWeakPassword": "The password entered is too weak.\nPlease choose a stronger password.",
+  "@firebaseAuthUtilsErrorUpdatePasswordAccountWeakPassword": {
+    "description": "Update password account error - weak-password (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorUpdatePasswordAccountRequiresRecentLogin": "For security reasons, please log in again to perform this action.",
+  "@firebaseAuthUtilsErrorUpdatePasswordAccountRequiresRecentLogin": {
+    "description": "Update password account error - requires-recent-login (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsSendPasswordResetEmailAccountInProgressTitle": "Resetting password...",
+  "@firebaseAuthUtilsSendPasswordResetEmailAccountInProgressTitle": {
+    "description": "Send password reset email account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsSendPasswordResetEmailAccountTitle": "Reset password",
+  "@firebaseAuthUtilsSendPasswordResetEmailAccountTitle": {
+    "description": "Send password reset email account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsSendPasswordResetEmailAccountDescription": "A password reset email has been sent to your email address.\nPlease check your inbox and follow the instructions to reset your password.",
+  "@firebaseAuthUtilsSendPasswordResetEmailAccountDescription": {
+    "description": "Send password reset email account description (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthInvalidEmail": "The email address entered is invalid.\nPlease check and try again.",
+  "@firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthInvalidEmail": {
+    "description": "Send password reset email account error - auth/invalid-email (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthMissingAndroidPkgName": "An Android package name must be provided to proceed.\nPlease check your settings.",
+  "@firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthMissingAndroidPkgName": {
+    "description": "Send password reset email account error - auth/missing-android-pkg-name (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthMissingContinueUri": "A continue URL is required to perform this action.\nPlease contact support.",
+  "@firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthMissingContinueUri": {
+    "description": "Send password reset email account error - auth/missing-continue-uri (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthMissingIosBundleId": "An iOS bundle ID is required if an App Store ID is provided.\nPlease check your settings.",
+  "@firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthMissingIosBundleId": {
+    "description": "Send password reset email account error - auth/missing-ios-bundle-id (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthInvalidContinueUri": "The continue URL provided is invalid.\nPlease check and try again.",
+  "@firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthInvalidContinueUri": {
+    "description": "Send password reset email account error - auth/invalid-continue-uri (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthUnauthorizedContinueUri": "The domain of the continue URL is not authorized.\nPlease contact support or check your Firebase settings.",
+  "@firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthUnauthorizedContinueUri": {
+    "description": "Send password reset email account error - auth/unauthorized-continue-uri (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthUserNotFound": "No user found with this email address.\nPlease check or create a new account.",
+  "@firebaseAuthUtilsErrorSendPasswordResetEmailAccountAuthUserNotFound": {
+    "description": "Send password reset email account error - auth/user-not-found (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsVerifyPasswordResetCodeAccountInProgressTitle": "Verifying the reset code...",
+  "@firebaseAuthUtilsVerifyPasswordResetCodeAccountInProgressTitle": {
+    "description": "Verify password reset code account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsVerifyPasswordResetCodeAccountTitle": "Verify the reset code",
+  "@firebaseAuthUtilsVerifyPasswordResetCodeAccountTitle": {
+    "description": "Verify password reset code account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountExpiredActionCode": "The password reset link or code has expired.\nPlease request a new one.",
+  "@firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountExpiredActionCode": {
+    "description": "Verify password reset code account error - expired-action-code (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountInvalidActionCode": "The password reset link or code is invalid or has already been used.\nPlease request a new one.",
+  "@firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountInvalidActionCode": {
+    "description": "Verify password reset code account error - invalid-action-code (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountUserDisabled": "This account has been disabled.\nPlease contact support for assistance.",
+  "@firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountUserDisabled": {
+    "description": "Verify password reset code account error - user-disabled (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountUserNotFound": "No user found for this reset code.\nThe account may have been deleted.\nPlease check or contact support.",
+  "@firebaseAuthUtilsErrorVerifyPasswordResetCodeAccountUserNotFound": {
+    "description": "Verify password reset code account error - user-not-found (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsConfirmPasswordResetAccountInProgressTitle": "Resetting password...",
+  "@firebaseAuthUtilsConfirmPasswordResetAccountInProgressTitle": {
+    "description": "Confirm password reset account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsConfirmPasswordResetAccountTitle": "Reset password",
+  "@firebaseAuthUtilsConfirmPasswordResetAccountTitle": {
+    "description": "Confirm password reset account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsConfirmPasswordResetAccountDescription": "Password successfully reset",
+  "@firebaseAuthUtilsConfirmPasswordResetAccountDescription": {
+    "description": "Confirm password reset account description (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorConfirmPasswordResetAccountExpiredActionCode": "The action code has expired.\nPlease request a new code.",
+  "@firebaseAuthUtilsErrorConfirmPasswordResetAccountExpiredActionCode": {
+    "description": "Confirm password reset account error - expired-action-code (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorConfirmPasswordResetAccountInvalidActionCode": "The action code is invalid.\nEnsure it is correct or request a new one.",
+  "@firebaseAuthUtilsErrorConfirmPasswordResetAccountInvalidActionCode": {
+    "description": "Confirm password reset account error - invalid-action-code (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorConfirmPasswordResetAccountUserDisabled": "This account has been disabled.\nPlease contact support for assistance.",
+  "@firebaseAuthUtilsErrorConfirmPasswordResetAccountUserDisabled": {
+    "description": "Confirm password reset account error - user-disabled (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorConfirmPasswordResetAccountUserNotFound": "No user was found for this action code.\nThe user might have been deleted.",
+  "@firebaseAuthUtilsErrorConfirmPasswordResetAccountUserNotFound": {
+    "description": "Confirm password reset account error - user-not-found (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorConfirmPasswordResetAccountWeakPassword": "The new password is too weak.\nPlease choose a stronger password.",
+  "@firebaseAuthUtilsErrorConfirmPasswordResetAccountWeakPassword": {
+    "description": "Confirm password reset account error - weak-password (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsGetFullNameAccountTitle": "Load names",
+  "@firebaseAuthUtilsGetFullNameAccountTitle": {
+    "description": "Get full name account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdateFullNameAccountInProgressTitle": "Updating names...",
+  "@firebaseAuthUtilsUpdateFullNameAccountInProgressTitle": {
+    "description": "Update full name account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdateFullNameAccountTitle": "Update names",
+  "@firebaseAuthUtilsUpdateFullNameAccountTitle": {
+    "description": "Update full name account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdateFullNameAccountDescription": "Names successfully updated",
+  "@firebaseAuthUtilsUpdateFullNameAccountDescription": {
+    "description": "Update full name account description (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsDeleteAccountInProgressTitle": "Deleting account...",
+  "@firebaseAuthUtilsDeleteAccountInProgressTitle": {
+    "description": "Delete account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsDeleteAccountTitle": "Delete account",
+  "@firebaseAuthUtilsDeleteAccountTitle": {
+    "description": "Delete account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsDeleteAccountDescription": "Account successfully deleted",
+  "@firebaseAuthUtilsDeleteAccountDescription": {
+    "description": "Delete account description (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsDeleteAccountAskDescription": "Do you really want to delete your account ?\nAll your data will be lost.",
+  "@firebaseAuthUtilsDeleteAccountAskDescription": {
+    "description": "Delete account ask description (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsErrorDeleteAccountRequiresRecentLogin": "For security reasons, please log in again to perform this action.",
+  "@firebaseAuthUtilsErrorDeleteAccountRequiresRecentLogin": {
+    "description": "Delete account error - requires-recent-login (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdateImageProfileAccountInProgressTitle": "Updating profile image...",
+  "@firebaseAuthUtilsUpdateImageProfileAccountInProgressTitle": {
+    "description": "Update image profile account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdateImageProfileAccountTitle": "Update profile image",
+  "@firebaseAuthUtilsUpdateImageProfileAccountTitle": {
+    "description": "Update image profile account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdateImageProfileAccountDescription": "Profile image successfully updated",
+  "@firebaseAuthUtilsUpdateImageProfileAccountDescription": {
+    "description": "Update image profile account description (FirebaseAuthUtils)"
   }
 }

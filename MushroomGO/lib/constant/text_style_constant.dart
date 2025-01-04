@@ -56,6 +56,20 @@ class TextStyleConstant {
     color: ColorConstant.darkUnselectedNavigationTabTop,
   );
 
+  // LoadingContainer
+  static const TextStyle lightTitleLoadingContainer = TextStyle(
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.normal,
+    color: ColorConstant.lightTitleLoadingContainer,
+    decoration: TextDecoration.none,
+  );
+  static const TextStyle darkTitleLoadingContainer = TextStyle(
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.normal,
+    color: ColorConstant.darkTitleLoadingContainer,
+    decoration: TextDecoration.none,
+  );
+
   // ButtonStandard
   static const TextStyle lightTitleButtonStandard = TextStyle(
     color: ColorConstant.lightTitleButtonStandard,
@@ -89,6 +103,11 @@ class TextStyleConstant {
     fontSize: DimensionConstant.titleSmall,
     fontWeight: FontWeight.w500,
   );
+  static const TextStyle destructibleTitleButtonButtonSetting = TextStyle(
+    color: ColorConstant.destructibleTitleButtonButtonSetting,
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.w500,
+  );
   static const TextStyle lightDataButtonSetting = TextStyle(
     fontSize: DimensionConstant.titleSmall,
     color: ColorConstant.lightDataButtonSetting,
@@ -96,12 +115,6 @@ class TextStyleConstant {
   static const TextStyle darkDataButtonSetting = TextStyle(
     fontSize: DimensionConstant.titleSmall,
     color: ColorConstant.darkDataButtonSetting,
-  );
-  // ButtonSetting - AccountSettingPage
-  static const TextStyle titleButtonButtonSettingAccountSettingPage = TextStyle(
-    color: ColorConstant.warningColor,
-    fontSize: DimensionConstant.titleSmall,
-    fontWeight: FontWeight.w500,
   );
 
   // ButtonSettingContainer
@@ -341,4 +354,87 @@ class TextStyleConstant {
       fontStyle: FontStyle.italic
   );
 
+  // TextInput
+  static const TextStyle lightTitleTextInput = TextStyle(
+    color: ColorConstant.lightTitleTextInput,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle darkTitleTextInput = TextStyle(
+    color: ColorConstant.darkTitleTextInput,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle lightPlaceHolderTextInput = TextStyle(
+    color: ColorConstant.lightPlaceHolderTextInput,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.normal,
+  );
+  static const TextStyle darkPlaceHolderTextInput = TextStyle(
+    color: ColorConstant.darkPlaceHolderTextInput,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.normal,
+  );
+  static const TextStyle lightInputTextInput = TextStyle(
+    color: ColorConstant.lightInputTextInput,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.normal,
+  );
+  static const TextStyle darkInputTextInput = TextStyle(
+    color: ColorConstant.darkInputTextInput,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.normal,
+  );
+
+  // TextInputPolicy
+  static const TextStyle lightPolicyTextInputPolicy = TextStyle(
+    color: ColorConstant.lightPolicyTextInputPolicy,
+    fontSize: DimensionConstant.captionText,
+  );
+  static const TextStyle darkPolicyTextInputPolicy = TextStyle(
+    color: ColorConstant.darkPolicyTextInputPolicy,
+    fontSize: DimensionConstant.captionText,
+  );
+
+  // TextOutput
+  static const TextStyle lightBodyTextOutput = TextStyle(
+    color: ColorConstant.lightTextOutput,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.normal,
+  );
+  static const TextStyle darkBodyTextOutput = TextStyle(
+    color: ColorConstant.darkTextOutput,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.normal,
+  );
+  static const TextStyle lightSmallTitleTextOutput = TextStyle(
+    color: ColorConstant.lightTextOutput,
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle darkSmallTitleTextOutput = TextStyle(
+    color: ColorConstant.darkTextOutput,
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle lightMediumTitleTextOutput = TextStyle(
+    color: ColorConstant.lightTextOutput,
+    fontSize: DimensionConstant.titleMedium,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle darkMediumTitleTextOutput = TextStyle(
+    color: ColorConstant.darkTextOutput,
+    fontSize: DimensionConstant.titleMedium,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle lightLargeTitleTextOutput = TextStyle(
+    color: ColorConstant.lightTextOutput,
+    fontSize: DimensionConstant.titleLarge,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle darkLargeTitleTextOutput = TextStyle(
+    color: ColorConstant.darkTextOutput,
+    fontSize: DimensionConstant.titleLarge,
+    fontWeight: FontWeight.bold,
+  );
 }

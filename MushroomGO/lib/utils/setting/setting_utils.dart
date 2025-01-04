@@ -10,10 +10,12 @@ class SettingUtils{
     final prefs = await SharedPreferences.getInstance();
     return stringToLocale(prefs.getString("language") ?? SettingConstant.languages.first);
   }
+
   static void setLanguageSharedPreferences(Locale locale) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString("language", locale.languageCode);
   }
+
   static String getLanguage(BuildContext context, String language){
     switch(language){
       case "en": return AppLocalizations.of(context)!.settingLanguageEN;
@@ -21,6 +23,7 @@ class SettingUtils{
       default: return AppLocalizations.of(context)!.settingLanguageEN;
     }
   }
+
   static Locale stringToLocale(String language){
     switch(language){
       case "en": return const Locale("en");
@@ -28,6 +31,7 @@ class SettingUtils{
       default: return const Locale("en");
     }
   }
+
   static int getIndexLanguage(List<String> languages, Locale locale){
     for(int i = 0; i < languages.length; i++){
       if(languages[i].toLowerCase() == locale.languageCode.toLowerCase()){
@@ -36,14 +40,17 @@ class SettingUtils{
     }
     return 0;
   }
+
   static Future<ThemeMode> getDisplaySharedPreferences() async {
     final prefs = await SharedPreferences.getInstance();
     return stringToThemeMode(prefs.getString("display") ?? SettingConstant.displays.first);
   }
+
   static void setDisplaySharedPreferences(ThemeMode themeMode) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString("display", themeModeToString(themeMode));
   }
+
   static String getDisplay(BuildContext context, String display){
     switch(display){
       case "system": return AppLocalizations.of(context)!.settingDisplaySystem;
@@ -52,6 +59,7 @@ class SettingUtils{
       default: return AppLocalizations.of(context)!.settingDisplaySystem;
     }
   }
+
   static ThemeMode stringToThemeMode(String display){
     switch(display){
       case "system": return ThemeMode.system;
@@ -60,6 +68,7 @@ class SettingUtils{
       default: return ThemeMode.system;
     }
   }
+
   static String themeModeToString(ThemeMode themeMode){
     switch(themeMode){
       case ThemeMode.system: return "system";
@@ -68,6 +77,7 @@ class SettingUtils{
       default: return "system";
     }
   }
+
   static int getIndexDisplay(List<String> displays, ThemeMode themeMode){
     for(int i = 0; i < displays.length; i++){
       if(displays[i].toLowerCase() == themeMode.name.toLowerCase()){
@@ -75,5 +85,18 @@ class SettingUtils{
       }
     }
     return 0;
+  }
+
+  static int getIndexImageProfile(String pathImage){
+    switch(pathImage){
+      case "assets/images/profile/default.jpg":
+        return 0;
+      case "assets/images/profile/profile1.jpg":
+        return 1;
+      case "assets/images/profile/profile2.jpg":
+        return 2;
+      default:
+        return 0;
+    }
   }
 }
