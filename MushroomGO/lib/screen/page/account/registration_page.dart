@@ -22,10 +22,26 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
-  TextEditingController controllerFirstname = TextEditingController();
-  TextEditingController controllerName = TextEditingController();
-  TextEditingController controllerEmail = TextEditingController();
-  TextEditingController controllerPassword = TextEditingController();
+  late final TextEditingController _controllerFirstname;
+  late final TextEditingController _controllerName;
+  late final TextEditingController _controllerEmail;
+  late final TextEditingController _controllerPassword;
+  late Function()? _nextAction;
+
+  @override
+  void initState() {
+    super.initState();
+    _controllerFirstname = TextEditingController();
+    _controllerName = TextEditingController();
+    _controllerEmail = TextEditingController();
+    _controllerPassword = TextEditingController();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _nextAction = ModalRoute.of(context)!.settings.arguments as Function()?;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +104,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                   Expanded(
                                     flex: 5,
                                     child: TextInput(
-                                      controller: controllerFirstname,
+                                      controller: _controllerFirstname,
                                       textInputAction: TextInputAction.next,
                                       keyboardType: TextInputType.text,
                                       placeHolder: "Aristide",
@@ -100,7 +116,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                   Expanded(
                                     flex: 5,
                                     child: TextInput(
-                                      controller: controllerName,
+                                      controller: _controllerName,
                                       textInputAction: TextInputAction.next,
                                       keyboardType: TextInputType.text,
                                       placeHolder: "LAMBERT",
@@ -112,7 +128,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               ),
                               const SizedBox(height: DimensionConstant.spaceVerticalRegister,),
                               TextInput(
-                                controller: controllerEmail,
+                                controller: _controllerEmail,
                                 textInputAction: TextInputAction.next,
                                 keyboardType: TextInputType.emailAddress,
                                 placeHolder: "aristide.lambert@student.hepl.be",
@@ -121,7 +137,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               ),
                               const SizedBox(height: DimensionConstant.spaceVerticalRegister,),
                               TextInput(
-                                controller: controllerPassword,
+                                controller: _controllerPassword,
                                 textInputAction: TextInputAction.done,
                                 keyboardType: TextInputType.visiblePassword,
                                 placeHolder: "••••••••••••••",
@@ -135,9 +151,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 onTap: () async {
                                   await FirebaseAuthUtils
                                       .createAccount(
-                                      context, controllerFirstname.text,
-                                      controllerName.text, controllerEmail.text,
-                                      controllerPassword.text, null);
+                                      context, _controllerFirstname.text,
+                                      _controllerName.text, _controllerEmail.text,
+                                      _controllerPassword.text, _nextAction);
                                 }
                               ),
                               const SizedBox(height: DimensionConstant.spaceVerticalRegister,),
@@ -151,8 +167,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                     fontColor: ColorConstant.textOnTapRegister,
                                     fontWeight: FontWeight.bold,
                                     onTap: (){
-                                      Navigator.of(context).pushNamed(NavigationConstant.registrationPage);
-                                      // TODO: Register
+                                      Navigator.of(context).pop();
                                     },
                                   )
                                 ],
@@ -174,7 +189,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 top: DimensionConstant.marginRegister
               ),
               // TODO: Update icon
-              child: const Icon(Icons.arrow_back_outlined, color: Colors.white,)
+              child: GestureDetector(child: const Icon(Icons.arrow_back_outlined, color: Colors.white,),
+              onTap: (){
+                Navigator.of(context).pop();
+              },)
             )
           ),
         ]

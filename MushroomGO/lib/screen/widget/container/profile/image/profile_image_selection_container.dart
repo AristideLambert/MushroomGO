@@ -24,7 +24,7 @@ class _ProfileImageSelectionContainerState extends State<ProfileImageSelectionCo
       widgets.add(ProfileImageSelection(path: profileImages[i].path, selected: i == _selectedIndex, width: _imageSize, onTap: (){
         setState(() {
           _selectedIndex = i;
-          widget.onChange(profileImages[i].path).call();
+          widget.onChange(profileImages[i].path)?.call();
         });
       },));
       if(i != profileImages.length - 1){

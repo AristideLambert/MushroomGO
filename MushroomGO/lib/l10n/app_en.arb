@@ -91,9 +91,9 @@
   "@settingAccountFirstnameName": {
     "description": "Setting Account Firstname & name (Setting)"
   },
-  "settingAccountMail": "Update email address",
+  "settingAccountImageProfile": "Update profile image",
   "@settingAccountMail": {
-    "description": "Setting Account Mail (Setting)"
+    "description": "Setting Account Profile Image (Setting)"
   },
   "settingAccountPassword": "Update password",
   "@settingAccountPassword": {
@@ -431,10 +431,6 @@
   "@firebaseAuthUtilsErrorConfirmPasswordResetAccountWeakPassword": {
     "description": "Confirm password reset account error - weak-password (FirebaseAuthUtils)"
   },
-  "firebaseAuthUtilsSignOutAccountInProgressTitle": "Signing out...",
-  "@firebaseAuthUtilsSignOutAccountInProgressTitle": {
-    "description": "Sign out account in progress title (FirebaseAuthUtils)"
-  },
   "firebaseAuthUtilsGetFullNameAccountTitle": "Load names",
   "@firebaseAuthUtilsGetFullNameAccountTitle": {
     "description": "Get full name account title (FirebaseAuthUtils)"
@@ -470,5 +466,17 @@
   "firebaseAuthUtilsErrorDeleteAccountRequiresRecentLogin": "For security reasons, please log in again to perform this action.",
   "@firebaseAuthUtilsErrorDeleteAccountRequiresRecentLogin": {
     "description": "Delete account error - requires-recent-login (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdateImageProfileAccountInProgressTitle": "Updating profile image...",
+  "@firebaseAuthUtilsUpdateImageProfileAccountInProgressTitle": {
+    "description": "Update image profile account in progress title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdateImageProfileAccountTitle": "Update profile image",
+  "@firebaseAuthUtilsUpdateImageProfileAccountTitle": {
+    "description": "Update image profile account title (FirebaseAuthUtils)"
+  },
+  "firebaseAuthUtilsUpdateImageProfileAccountDescription": "Profile image successfully updated",
+  "@firebaseAuthUtilsUpdateImageProfileAccountDescription": {
+    "description": "Update image profile account description (FirebaseAuthUtils)"
   }
 }

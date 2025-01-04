@@ -102,9 +102,7 @@ class _ProfileContainerState extends State<ProfileContainer> {
                         borderRadius: BorderRadius.circular(theme.radius),
                       ),
                       alignment: Alignment.center,
-                      child: ButtonStandard(title: AppLocalizations.of(context)!.settingProfileLogin, icon: MushroomGOFontUtils.profile, widthContent: true, onTap: (){
-                        Navigator.of(context).pushNamed(NavigationConstant.loginPage);
-                      })
+                      child: ButtonStandard(title: AppLocalizations.of(context)!.settingProfileLogin, icon: MushroomGOFontUtils.profile, widthContent: true, onTap: widget.onTap)
                     ),
                   ),
                 ),

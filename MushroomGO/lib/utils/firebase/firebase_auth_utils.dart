@@ -32,6 +32,8 @@ class FirebaseAuthUtils{
       }
       if (context.mounted) {
         Navigator.of(context).pop();
+        Navigator.of(context).pop();
+        Navigator.of(context).pop();
         next?.call();
       }
     } on FirebaseAuthException catch (e) {
@@ -73,7 +75,7 @@ class FirebaseAuthUtils{
     }
   }
 
-  static Future<bool> signInAccount(BuildContext context, String email, String password, Function()? next) async {
+  static Future<bool> signInAccount(BuildContext context, String email, String password, Function()? next, {bool pop = true}) async {
     try {
       if (context.mounted) {
         DialogUtils.showLoading(context, AppLocalizations.of(context)!.firebaseAuthUtilsSignInAccountInProgressTitle);
@@ -81,6 +83,9 @@ class FirebaseAuthUtils{
       await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
       if (context.mounted) {
         Navigator.of(context).pop();
+        if(pop){
+          Navigator.of(context).pop();
+        }
         next?.call();
       }
       return true;
@@ -132,7 +137,7 @@ class FirebaseAuthUtils{
   static Future<void> updatePasswordAccount(BuildContext context, String oldPassword, String newPassword) async {
     try {
       User user = _getUser(context);
-      if(await signInAccount(context, user.email!, oldPassword, null)){
+      if(await signInAccount(context, user.email!, oldPassword, null, pop: false)){
         if (context.mounted) {
           DialogUtils.showLoading(context, AppLocalizations.of(context)!.firebaseAuthUtilsUpdatePasswordAccountInProgressTitle);
           user = _getUser(context);
@@ -292,12 +297,8 @@ class FirebaseAuthUtils{
   }
 
   static Future<void> signOutAccount(BuildContext context) async {
-    if (context.mounted) {
-      DialogUtils.showLoading(context, AppLocalizations.of(context)!.firebaseAuthUtilsSignOutAccountInProgressTitle);
-    }
     await FirebaseAuth.instance.signOut();
     if (context.mounted) {
-      Navigator.of(context).pop();
       Navigator.of(context).pop();
     }
   }
@@ -337,7 +338,7 @@ class FirebaseAuthUtils{
     return null;
   }
 
-  static Future<Person?> updateFullNameAccount(BuildContext context, String firstname, String name) async {
+  static Future<Person?> updateFullNameAccount(BuildContext context, String firstname, String name, Function()? next) async {
     try {
       if (context.mounted) {
         DialogUtils.showLoading(context, AppLocalizations.of(context)!.firebaseAuthUtilsUpdateFullNameAccountInProgressTitle);
@@ -356,6 +357,7 @@ class FirebaseAuthUtils{
         Navigator.of(context).pop();
         DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.firebaseAuthUtilsUpdateFullNameAccountTitle, AppLocalizations.of(context)!.firebaseAuthUtilsUpdateFullNameAccountDescription, AppLocalizations.of(context)!.popupOK, (){
           Navigator.of(context).pop();
+          next?.call();
         }, false);
       }
       return Person(firstname: firstname, name: name);
@@ -368,10 +370,31 @@ class FirebaseAuthUtils{
     }
   }
 
+  static Future<void> updateImageProfileAccount(BuildContext context, String pathImage) async {
+    try {
+      if (context.mounted) {
+        DialogUtils.showLoading(context, AppLocalizations.of(context)!.firebaseAuthUtilsUpdateImageProfileAccountInProgressTitle);
+        User user = _getUser(context);
+        await user.updatePhotoURL(pathImage);
+      }
+      if (context.mounted) {
+        Navigator.of(context).pop();
+        DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.firebaseAuthUtilsUpdateImageProfileAccountTitle, AppLocalizations.of(context)!.firebaseAuthUtilsUpdateImageProfileAccountDescription, AppLocalizations.of(context)!.popupOK, (){
+          Navigator.of(context).pop();
+        }, false);
+      }
+    } catch (e) {
+      if (context.mounted) {
+        Navigator.of(context).pop();
+        DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.firebaseAuthUtilsUpdateImageProfileAccountTitle, e.toString().contains('Exception:') ? e.toString().split('Exception:').last.trim() : e.toString(), AppLocalizations.of(context)!.popupOK, null, false);
+      }
+    }
+  }
+
   static Future<void> deleteAccount(BuildContext context, String password) async {
     try {
       User user = _getUser(context);
-      if(await signInAccount(context, user.email!, password, null)){
+      if(await signInAccount(context, user.email!, password, null, pop: false)){
         if(context.mounted){
           DialogUtils.showPopup(context, AppLocalizations.of(context)!.firebaseAuthUtilsDeleteAccountTitle, AppLocalizations.of(context)!.firebaseAuthUtilsDeleteAccountAskDescription, AppLocalizations.of(context)!.popupDelete, () async {
             if(context.mounted){

@@ -23,6 +23,7 @@ class NavigationConstant{
   static const String settingPage = "/SettingPage";
   static const String accountSettingPage = "/AccountSettingPage";
   static const String accountUpdateFirstnameNameSettingPage = "/AccountUpdateFirstnameNameSettingPage";
+  static const String accountUpdateImageProfileSettingPage = "/AccountUpdateImageProfileSettingPage";
   static const String accountUpdatePasswordSettingPage = "/AccountUpdatePasswordSettingPage";
   static const String accountDeleteSettingPage = "/AccountDeleteSettingPage";
   static const String displaySettingPage = "/DisplaySettingPage";
@@ -47,6 +48,8 @@ class NavigationConstant{
         return MaterialPageRoute(builder: (context) => const AccountSettingPage(), settings: settings);
       case accountUpdateFirstnameNameSettingPage:
         return MaterialPageRoute(builder: (context) => const AccountUpdateFirstnameNameSettingPage(), settings: settings);
+      case accountUpdateImageProfileSettingPage:
+        return MaterialPageRoute(builder: (context) => const AccountUpdateImageProfileSettingPage(), settings: settings);
       case accountUpdatePasswordSettingPage:
         return MaterialPageRoute(builder: (context) => const AccountUpdatePasswordSettingPage(), settings: settings);
       case accountDeleteSettingPage:

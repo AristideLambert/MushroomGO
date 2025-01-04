@@ -1,18 +1,10 @@
-import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
-import 'package:mushroom_go/constant/text_style_constant.dart';
 import 'package:mushroom_go/screen/widget/button/standard/button_standard.dart';
 import 'package:mushroom_go/screen/widget/textfield/text_input.dart';
-import 'package:mushroom_go/theme/button_setting_theme.dart';
-import 'package:mushroom_go/screen/widget/button/setting/button_setting.dart';
-import 'package:mushroom_go/screen/widget/button/setting/button_setting_container.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:mushroom_go/utils/dialog/dialog_utils.dart';
 import 'package:mushroom_go/utils/firebase/firebase_auth_utils.dart';
-import 'package:mushroom_go/utils/text/password_utils.dart';
 
 class AccountDeleteSettingPage extends StatefulWidget {
   const AccountDeleteSettingPage({super.key});
@@ -54,7 +46,7 @@ class _AccountDeleteSettingPageState extends State<AccountDeleteSettingPage> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                TextInput(controller: _controllerPassword, textInputAction: TextInputAction.done, keyboardType: TextInputType.visiblePassword, placeHolder: "••••••••••••••", password: true, passwordPolicy: true, title: "Password",)
+                TextInput(controller: _controllerPassword, textInputAction: TextInputAction.done, keyboardType: TextInputType.visiblePassword, placeHolder: "••••••••••••••", password: true, title: "Password",)
               ],
             ),
           ),

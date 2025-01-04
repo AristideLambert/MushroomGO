@@ -43,15 +43,20 @@ class _AccountUpdateFirstnameNameSettingPageState extends State<AccountUpdateFir
     _person = Person(firstname: "firstname", name: "name");
     _controllerFirstname.addListener(() {
       setState(() {
-        _isSame = _controllerFirstname.text == _person.firstname && _controllerName.text == _person.name;
+        _isSame = _controllerFirstname.text == _person.firstname && _controllerName.text == _person.name || _controllerFirstname.text.isEmpty || _controllerName.text.isEmpty;
       });
     });
     _controllerName.addListener(() {
       setState(() {
-        _isSame = _controllerFirstname.text == _person.firstname && _controllerName.text == _person.name;
+        _isSame = _controllerFirstname.text == _person.firstname && _controllerName.text == _person.name || _controllerFirstname.text.isEmpty || _controllerName.text.isEmpty;
       });
     });
     _isSame = true;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     _loadData();
   }
 
@@ -83,10 +88,9 @@ class _AccountUpdateFirstnameNameSettingPageState extends State<AccountUpdateFir
         floatingActionButton: Padding(
           padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
           child: ButtonStandard(title: "Update full name", enabled: !_isSame, onTap: () async {
-            await FirebaseAuthUtils.updateFullNameAccount(context, _controllerFirstname.text, _controllerName.text);
-            DialogUtils.showPopupInformation(context, "Update firstname & name", "Successful update", "OK", (){
-              Navigator.of(context).pop();
-            }, false);
+            await FirebaseAuthUtils.updateFullNameAccount(context, _controllerFirstname.text, _controllerName.text, (){
+              _loadData();
+            });
           }),
         )
     );

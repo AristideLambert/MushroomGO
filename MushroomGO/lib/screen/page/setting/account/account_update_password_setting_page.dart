@@ -33,9 +33,14 @@ class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePassword
     super.initState();
     _controllerOldPassword = TextEditingController();
     _controllerNewPassword = TextEditingController();
+    _controllerOldPassword.addListener((){
+      setState(() {
+        _isValid = PasswordUtils.checkValid(_controllerNewPassword.text) && _controllerOldPassword.text.isNotEmpty;
+      });
+    });
     _controllerNewPassword.addListener(() {
       setState(() {
-        _isValid = PasswordUtils.checkValid(_controllerNewPassword.text);
+        _isValid = PasswordUtils.checkValid(_controllerNewPassword.text) && _controllerOldPassword.text.isNotEmpty;
       });
     });
     _isValid = false;
@@ -84,10 +89,6 @@ class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePassword
         padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
         child: ButtonStandard(title: _oobCode == null ? "Update password" : "Reset password", enabled: _isValid, onTap: () async {
           _oobCode == null ? await FirebaseAuthUtils.updatePasswordAccount(context, _controllerOldPassword.text, _controllerNewPassword.text) : await FirebaseAuthUtils.confirmPasswordResetAccount(context, _oobCode!, _controllerNewPassword.text);
-
-          DialogUtils.showPopupInformation(context, "Update password", "Successful update", "OK", (){
-            Navigator.of(context).pop();
-          }, false);
         }),
       )
     );

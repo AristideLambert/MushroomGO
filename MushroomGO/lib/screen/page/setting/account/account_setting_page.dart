@@ -40,8 +40,11 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                   ),
                   ButtonSetting(
                     type: Type.standard,
-                    title: AppLocalizations.of(context)!.settingAccountMail,
-                    leftIcon: CupertinoIcons.at,
+                    title: AppLocalizations.of(context)!.settingAccountImageProfile,
+                    leftIcon: CupertinoIcons.photo_camera_solid,
+                    onTap: (){
+                      Navigator.of(context).pushNamed(NavigationConstant.accountUpdateImageProfileSettingPage);
+                    },
                   ),
                   ButtonSetting(
                     type: Type.standard,
@@ -71,8 +74,8 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
                     theme: Theme.of(context).extension<ButtonSettingTheme>()!.copyWith(
                         titleButtonStyle: TextStyleConstant.titleButtonButtonSettingAccountSettingPage
                     ),
-                    onTap: () {
-                      FirebaseAuthUtils.signOutAccount(context);
+                    onTap: () async {
+                      await FirebaseAuthUtils.signOutAccount(context);
                     },
                   ),
                 ]

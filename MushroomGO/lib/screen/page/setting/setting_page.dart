@@ -23,6 +23,21 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
+  late User? _user;
+
+  @override
+  void initState() {
+    super.initState();
+    _user = FirebaseAuth.instance.currentUser;
+  }
+
+  Future<void> _navigate(String routeName) async {
+    await Navigator.of(widget.mainContext).pushNamed(routeName);
+    setState(() {
+      _user = FirebaseAuth.instance.currentUser;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,14 +53,10 @@ class _SettingPageState extends State<SettingPage> {
             child: Column(
               children: [
                 ProfileContainer(
-                  pathImage: FirebaseAuth.instance.currentUser?.photoURL ?? SettingConstant.pathDefaultImageProfile,
-                  name: FirebaseAuth.instance.currentUser?.displayName ?? "Aristide LAMBERT",
-                  mail: FirebaseAuth.instance.currentUser?.email ?? "aristide.lambert@student.hepl.be",
-                  onTap: () {
-                    Navigator.of(widget.mainContext).pushNamed(
-                        NavigationConstant.accountSettingPage
-                    );
-                  },
+                  pathImage: _user?.photoURL ?? SettingConstant.pathDefaultImageProfile,
+                  name: _user?.displayName ?? "Aristide LAMBERT",
+                  mail: _user?.email ?? "aristide.lambert@student.hepl.be",
+                  onTap: () => _navigate(_user == null ? NavigationConstant.loginPage : NavigationConstant.accountSettingPage),
                 ),
                 const SizedBox(height: DimensionConstant.spaceSetting),
                 ButtonSettingContainer(

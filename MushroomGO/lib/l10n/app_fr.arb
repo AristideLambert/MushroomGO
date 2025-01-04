@@ -22,7 +22,7 @@
   "settingAboutTermsAndConditions": "Conditions générales",
   "settingAccount": "Compte",
   "settingAccountFirstnameName": "Modifier le prénom et le nom",
-  "settingAccountMail": "Modifier l'adresse email",
+  "settingAccountImageProfile": "Modifier la photo de profil",
   "settingAccountPassword": "Modifier le mot de passe",
   "settingAccountDelete": "Supprimer mon compte",
   "settingAccountLogout": "Déconnecter",
@@ -107,7 +107,6 @@
   "firebaseAuthUtilsErrorConfirmPasswordResetAccountUserDisabled": "Ce compte a été désactivé.\nVeuillez contacter le support pour plus d'informations.",
   "firebaseAuthUtilsErrorConfirmPasswordResetAccountUserNotFound": "Aucun utilisateur correspondant à ce code d'action n'a été trouvé.\nL'utilisateur peut avoir été supprimé.",
   "firebaseAuthUtilsErrorConfirmPasswordResetAccountWeakPassword": "Le nouveau mot de passe est trop faible.\nVeuillez choisir un mot de passe plus sécurisé.",
-  "firebaseAuthUtilsSignOutAccountInProgressTitle": "Déconnexion en cours...",
   "firebaseAuthUtilsGetFullNameAccountTitle": "Chargement des noms",
   "firebaseAuthUtilsUpdateFullNameAccountInProgressTitle": "Mise à jour des noms en cours...",
   "firebaseAuthUtilsUpdateFullNameAccountTitle": "Mise à jour des noms",
@@ -116,5 +115,8 @@
   "firebaseAuthUtilsDeleteAccountTitle": "Suppression du compte",
   "firebaseAuthUtilsDeleteAccountDescription": "Compte supprimé avec succès",
   "firebaseAuthUtilsDeleteAccountAskDescription": "Voulez-vous vraiment supprimer votre compte ?\nToutes vos données seront perdues.",
-  "firebaseAuthUtilsErrorDeleteAccountRequiresRecentLogin": "Pour des raisons de sécurité, veuillez vous reconnecter pour effectuer cette action."
+  "firebaseAuthUtilsErrorDeleteAccountRequiresRecentLogin": "Pour des raisons de sécurité, veuillez vous reconnecter pour effectuer cette action.",
+  "firebaseAuthUtilsUpdateImageProfileAccountInProgressTitle": "Mise à jour de l'image de profil en cours...",
+  "firebaseAuthUtilsUpdateImageProfileAccountTitle": "Mise à jour de l'image de profil",
+  "firebaseAuthUtilsUpdateImageProfileAccountDescription": "Image de profil mise à jour avec succès"
 }
