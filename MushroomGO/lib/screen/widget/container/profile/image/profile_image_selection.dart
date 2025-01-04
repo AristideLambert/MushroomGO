@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mushroom_go/constant/color_constant.dart';
+import 'package:mushroom_go/constant/dimension_constant.dart';
 
 class ProfileImageSelection extends StatelessWidget {
   final String path;
@@ -15,27 +17,32 @@ class ProfileImageSelection extends StatelessWidget {
         GestureDetector(
           onTap: onTap,
           child: ClipRRect(
-              borderRadius: BorderRadius.circular(selected ? 10 : 0),
-              child: Image.asset(path, width: width, height: width,)),
+            borderRadius: BorderRadius.circular(selected ? DimensionConstant.radiusProfileImageSelection : 0),
+            child: Image.asset(path, width: width, height: width,)
+          ),
         ),
         if(selected) ... [
           Container(
             decoration: BoxDecoration(
-              border: Border.all(width: 2.0, color: Colors.red),
-              borderRadius: BorderRadius.circular(10), // Rayon des coins
+              border: Border.all(width: DimensionConstant.borderProfileImageSelection, color: ColorConstant.selectionProfileImageSelection),
+              borderRadius: BorderRadius.circular(DimensionConstant.radiusProfileImageSelection),
             ),
             width: width,
             height: width,
             child: Align(
               alignment: Alignment.topRight,
               child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.only(topRight: Radius.circular(5), bottomLeft: Radius.circular(5)), // Rayon des coins
+                decoration: const BoxDecoration(
+                  color: ColorConstant.selectionProfileImageSelection,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(DimensionConstant.radiusProfileImageSelection / 2),
+                    bottomLeft: Radius.circular(DimensionConstant.radiusProfileImageSelection / 2)
+                  ), // Rayon des coins
                 ),
-                width: 35,
-                height: 20,
-                child: Icon(Icons.check, color: Colors.white, size: 15,),
+                width: DimensionConstant.selectionWidthProfileImageSelection,
+                height: DimensionConstant.selectionHeightProfileImageSelection,
+                // TODO: Update icon
+                child: const Icon(Icons.check, color: ColorConstant.textPrimaryColor, size: DimensionConstant.iconSizeProfileImageSelection,),
               ),
             ),
           )

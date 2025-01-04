@@ -16,6 +16,7 @@ class ButtonSetting extends StatefulWidget {
   final bool centerTitle;
   final bool initSwitch;
   final bool initSelected;
+  final bool isDestructive;
   final Function()? onTap;
   final bool Function(bool)? onChanged;
   final ButtonSettingTheme? theme;
@@ -32,6 +33,7 @@ class ButtonSetting extends StatefulWidget {
         this.centerTitle = false,
         this.initSwitch = false,
         this.initSelected = false,
+        this.isDestructive = false,
         this.onTap,
         this.onChanged,
         this.theme});
@@ -98,7 +100,7 @@ class _ButtonSettingState extends State<ButtonSetting> {
                       children: [
                         Text(
                           widget.title,
-                          style: widget.type == Type.button ? theme.titleButtonStyle : theme.titleStyle,
+                          style: widget.type == Type.button ? (!widget.isDestructive ? theme.titleButtonStyle : theme.titleButtonDestructibleStyle) : theme.titleStyle,
                         ),
                         if(widget.data != null && widget.type != Type.toogle && widget.type != Type.selected && widget.type != Type.button)
                           SizedBox(

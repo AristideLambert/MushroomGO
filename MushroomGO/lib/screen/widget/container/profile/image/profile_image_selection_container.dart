@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
-
 import 'profile_image_selection.dart';
 
 class ProfileImageSelectionContainer extends StatefulWidget {
@@ -21,14 +20,21 @@ class _ProfileImageSelectionContainerState extends State<ProfileImageSelectionCo
   List<Widget> _rebuild(List<ProfileImageSelection> profileImages){
     List<Widget> widgets = [];
     for(int i = 0; i < profileImages.length; i++){
-      widgets.add(ProfileImageSelection(path: profileImages[i].path, selected: i == _selectedIndex, width: _imageSize, onTap: (){
-        setState(() {
-          _selectedIndex = i;
-          widget.onChange(profileImages[i].path)?.call();
-        });
-      },));
+      widgets.add(
+        ProfileImageSelection(
+          path: profileImages[i].path,
+          selected: i == _selectedIndex,
+          width: _imageSize,
+          onTap: (){
+            setState(() {
+              _selectedIndex = i;
+              widget.onChange(profileImages[i].path)?.call();
+            });
+          },
+        )
+      );
       if(i != profileImages.length - 1){
-        widgets.add(SizedBox(width: 16.0,));
+        widgets.add(const SizedBox(width: DimensionConstant.defaultPadding,));
       }
     }
     return widgets;
@@ -43,7 +49,7 @@ class _ProfileImageSelectionContainerState extends State<ProfileImageSelectionCo
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _imageSize = (MediaQuery.of(context).size.width - (2 * DimensionConstant.defaultPadding) - (16 * 4)) / 3;
+    _imageSize = (MediaQuery.of(context).size.width - (DimensionConstant.defaultPadding * (4 + widget.profileImageSelections.length - 1))) /  widget.profileImageSelections.length;
   }
 
   @override

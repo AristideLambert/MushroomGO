@@ -1,18 +1,10 @@
-import 'dart:ffi';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
-import 'package:mushroom_go/constant/text_style_constant.dart';
 import 'package:mushroom_go/screen/widget/button/standard/button_standard.dart';
-import 'package:mushroom_go/screen/widget/textfield/text_input.dart';
-import 'package:mushroom_go/theme/button_setting_theme.dart';
-import 'package:mushroom_go/screen/widget/button/setting/button_setting.dart';
-import 'package:mushroom_go/screen/widget/button/setting/button_setting_container.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:mushroom_go/utils/dialog/dialog_utils.dart';
+import 'package:mushroom_go/screen/widget/textField/text_input.dart';
 import 'package:mushroom_go/utils/firebase/firebase_auth_utils.dart';
 import 'package:mushroom_go/utils/text/password_utils.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AccountUpdatePasswordSettingPage extends StatefulWidget {
   const AccountUpdatePasswordSettingPage({super.key});
@@ -62,7 +54,7 @@ class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePassword
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(_oobCode == null ? "Update password" : "Reset password")
+          title: Text(_oobCode == null ? AppLocalizations.of(context)!.accountUpdatePasswordSettingTitleUpdate : AppLocalizations.of(context)!.accountUpdatePasswordSettingTitleReset)
       ),
       body: Container(
         padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
@@ -70,16 +62,36 @@ class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePassword
           padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
           decoration: BoxDecoration(
             color: Theme.of(context).appBarTheme.backgroundColor,
-            borderRadius: const BorderRadius.all(Radius.circular(DimensionConstant.radiusBorderInputTextInput))
+            borderRadius: const BorderRadius.all(Radius.circular(DimensionConstant.radiusAccountSetting))
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               if(_oobCode == null) ... [
-                TextInput(controller: _controllerOldPassword, textInputAction: TextInputAction.next, keyboardType: TextInputType.visiblePassword, placeHolder: "••••••••••••••", password: true, title: "Old password",),
-                const SizedBox(height: 20,),
+                TextInput(
+                  controller: _controllerOldPassword,
+                  textInputAction: TextInputAction.next,
+                  keyboardType: TextInputType.visiblePassword,
+                  placeHolder: "••••••••••••••",
+                  password: true,
+                  title: AppLocalizations.of(context)!.accountUpdatePasswordSettingTitleOldPassword,
+                  autocorrect: false,
+                  suggestions: false,
+                ),
+                const SizedBox(height: DimensionConstant.spaceAccountSetting,),
               ],
-              TextInput(controller: _controllerNewPassword, textInputAction: TextInputAction.done, keyboardType: TextInputType.visiblePassword, placeHolder: "••••••••••••••", password: true, passwordPolicy: true, title: "New password",)
+              TextInput(
+                controller: _controllerNewPassword,
+                textInputAction: TextInputAction.done,
+                keyboardType: TextInputType.visiblePassword,
+                placeHolder: "••••••••••••••",
+                password: true,
+                passwordPolicy:
+                true,
+                title: AppLocalizations.of(context)!.accountUpdatePasswordSettingTitleNewPassword,
+                autocorrect: false,
+                suggestions: false,
+              )
             ],
           ),
         ),
@@ -87,9 +99,13 @@ class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePassword
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-        child: ButtonStandard(title: _oobCode == null ? "Update password" : "Reset password", enabled: _isValid, onTap: () async {
-          _oobCode == null ? await FirebaseAuthUtils.updatePasswordAccount(context, _controllerOldPassword.text, _controllerNewPassword.text) : await FirebaseAuthUtils.confirmPasswordResetAccount(context, _oobCode!, _controllerNewPassword.text);
-        }),
+        child: ButtonStandard(
+          title: _oobCode == null ? AppLocalizations.of(context)!.accountUpdatePasswordSettingButtonSave : AppLocalizations.of(context)!.accountUpdatePasswordSettingButtonReset,
+          enabled: _isValid,
+          onTap: () async {
+            _oobCode == null ? await FirebaseAuthUtils.updatePasswordAccount(context, _controllerOldPassword.text, _controllerNewPassword.text) : await FirebaseAuthUtils.confirmPasswordResetAccount(context, _oobCode!, _controllerNewPassword.text);
+          }
+        ),
       )
     );
   }

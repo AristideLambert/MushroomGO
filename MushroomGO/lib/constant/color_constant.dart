@@ -5,6 +5,8 @@ class ColorConstant{
   // Default
   static const Color primaryColor = Colors.red;
   static const Color warningColor = CupertinoColors.systemRed;
+  static const Color textPrimaryColor = CupertinoColors.white;
+  static const Color textScaffoldBackgroundColor = primaryColor;
 
   // Login
   static const Color textLogin = CupertinoColors.white;
@@ -22,6 +24,14 @@ class ColorConstant{
   static const Color lightUnselectedNavigationTabTop = CupertinoColors.black;
   static const Color darkUnselectedNavigationTabTop = CupertinoColors.white;
 
+  // LoadingContainer
+  static const Color lightBackgroundLoadingContainer = CupertinoColors.white;
+  static const Color darkBackgroundLoadingContainer = CupertinoColors.darkBackgroundGray;
+  static const Color lightIconLoadingContainer = CupertinoColors.black;
+  static const Color darkIconLoadingContainer = CupertinoColors.white;
+  static const Color lightTitleLoadingContainer = CupertinoColors.black;
+  static const Color darkTitleLoadingContainer = CupertinoColors.white;
+
   // ButtonStandard
   static const Color lightTitleButtonStandard = CupertinoColors.white;
   static const Color darkTitleButtonStandard = CupertinoColors.white;
@@ -29,12 +39,13 @@ class ColorConstant{
   static const Color darkIconButtonStandard = CupertinoColors.white;
 
   // ButtonSetting
-  static const Color lightBackgroundButtonSetting = CupertinoColors.systemBackground;
+  static const Color lightBackgroundButtonSetting = CupertinoColors.white;
   static const Color darkBackgroundButtonSetting = CupertinoColors.darkBackgroundGray;
   static const Color lightTitleButtonSetting = CupertinoColors.black;
   static const Color darkTitleButtonSetting = CupertinoColors.white;
   static const Color lightTitleButtonButtonSetting = CupertinoColors.systemBlue;
   static const Color darkTitleButtonButtonSetting = CupertinoColors.systemBlue;
+  static const Color destructibleTitleButtonButtonSetting = CupertinoColors.destructiveRed;
   static const Color lightLeftIconButtonSetting = CupertinoColors.black;
   static const Color darkLeftIconButtonSetting = CupertinoColors.white;
   static const Color lightDataButtonSetting = CupertinoColors.systemGrey;
@@ -46,15 +57,18 @@ class ColorConstant{
   static const Color darkTitleButtonSettingContainer = CupertinoColors.white;
 
   // ProfileContainer
-  static const Color lightBackgroundProfileContainer = CupertinoColors.systemBackground;
+  static const Color lightBackgroundProfileContainer = CupertinoColors.white;
   static const Color darkBackgroundProfileContainer = CupertinoColors.darkBackgroundGray;
   static const Color lightNameProfileContainer = CupertinoColors.black;
   static const Color darkNameProfileContainer = CupertinoColors.white;
   static const Color lightMailProfileContainer = CupertinoColors.systemGrey;
   static const Color darkMailProfileContainer = CupertinoColors.systemGrey;
 
+  // ProfileImageSelection
+  static const Color selectionProfileImageSelection = primaryColor;
+
   // ChallengeMushroomsList
-  static const Color lightBackgroundChallengeMushroomsList = CupertinoColors.systemBackground;
+  static const Color lightBackgroundChallengeMushroomsList = CupertinoColors.white;
   static const Color darkBackgroundChallengeMushroomsList = CupertinoColors.darkBackgroundGray;
   static const Color lightTitleChallengeMushroomsList = CupertinoColors.black;
   static const Color darkTitleChallengeMushroomsList = CupertinoColors.white;

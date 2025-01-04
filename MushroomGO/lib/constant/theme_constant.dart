@@ -5,6 +5,7 @@ import 'package:mushroom_go/theme/button_setting_container_theme.dart';
 import 'package:mushroom_go/theme/button_setting_theme.dart';
 import 'package:mushroom_go/theme/button_standard_theme.dart';
 import 'package:mushroom_go/theme/challenge_mushrooms_list_theme.dart';
+import 'package:mushroom_go/theme/loading_container_theme.dart';
 import 'package:mushroom_go/theme/navigation_tab_bottom_theme.dart';
 import 'package:mushroom_go/theme/navigation_tab_top_theme.dart';
 import 'package:mushroom_go/theme/profile_container_theme.dart';
@@ -20,16 +21,16 @@ class ThemeConstant{
     scaffoldBackgroundColor: CupertinoColors.lightBackgroundGray,
     brightness: Brightness.light,
     appBarTheme: const AppBarTheme(
-        backgroundColor: CupertinoColors.systemBackground,
-        foregroundColor: CupertinoColors.label
+      backgroundColor: CupertinoColors.systemBackground,
+      foregroundColor: CupertinoColors.label
     ),
     bottomAppBarTheme: const BottomAppBarTheme(
-        color: CupertinoColors.systemBackground
+      color: CupertinoColors.systemBackground
     ),
     textSelectionTheme: TextSelectionThemeData(
-        selectionHandleColor: ColorConstant.primaryColor,
-        cursorColor: ColorConstant.primaryColor,
-        selectionColor: ColorConstant.primaryColor.withOpacity(0.3)
+      selectionHandleColor: ColorConstant.primaryColor,
+      cursorColor: ColorConstant.primaryColor,
+      selectionColor: ColorConstant.primaryColor.withValues(alpha: 0.3)
     ),
     cupertinoOverrideTheme: const CupertinoThemeData(
       brightness: Brightness.light,
@@ -37,8 +38,13 @@ class ThemeConstant{
     )
   ).copyWith(
     extensions: [
+      const LoadingContainerTheme(
+        backgroundColor: ColorConstant.lightBackgroundLoadingContainer,
+        iconColor: ColorConstant.lightIconLoadingContainer,
+        titleStyle: TextStyleConstant.lightTitleLoadingContainer
+      ),
       const ButtonStandardTheme(
-          titleStyle: TextStyleConstant.lightTitleButtonStandard
+        titleStyle: TextStyleConstant.lightTitleButtonStandard
       ),
       const ButtonSettingTheme(
         leftIconColor: ColorConstant.lightLeftIconButtonSetting,
@@ -69,9 +75,9 @@ class ThemeConstant{
         titleItemStyle: TextStyleConstant.lightTitleItemChallengeMushroomsList
       ),
       const TextInputTheme(
-          titleStyle: TextStyleConstant.lightTitleTextInput,
-          placeHolderStyle: TextStyleConstant.lightPlaceHolderTextInput,
-          inputStyle: TextStyleConstant.lightInputTextInput
+        titleStyle: TextStyleConstant.lightTitleTextInput,
+        placeHolderStyle: TextStyleConstant.lightPlaceHolderTextInput,
+        inputStyle: TextStyleConstant.lightInputTextInput
       ),
       const TextInputPolicyTheme(
         policyStyle: TextStyleConstant.lightPolicyTextInputPolicy
@@ -93,64 +99,69 @@ class ThemeConstant{
       foregroundColor: Colors.white
     ),
     bottomAppBarTheme: const BottomAppBarTheme(
-        color: CupertinoColors.darkBackgroundGray
+      color: CupertinoColors.darkBackgroundGray
     ),
     textSelectionTheme: TextSelectionThemeData(
-        selectionHandleColor: ColorConstant.primaryColor,
-        cursorColor: ColorConstant.primaryColor,
-        selectionColor: ColorConstant.primaryColor.withOpacity(0.3)
+      selectionHandleColor: ColorConstant.primaryColor,
+      cursorColor: ColorConstant.primaryColor,
+      selectionColor: ColorConstant.primaryColor.withValues(alpha: 0.3)
     ),
     cupertinoOverrideTheme: const CupertinoThemeData(
       brightness: Brightness.dark,
       primaryColor: ColorConstant.primaryColor
     )
   ).copyWith(
-      extensions: [
-        const ButtonStandardTheme(
-            titleStyle: TextStyleConstant.darkTitleButtonStandard
-        ),
-        const ButtonSettingTheme(
-          leftIconColor: ColorConstant.darkLeftIconButtonSetting,
-          titleStyle: TextStyleConstant.darkTitleButtonSetting,
-          dataStyle: TextStyleConstant.darkDataButtonSetting,
-          backgroundColor: ColorConstant.darkBackgroundButtonSetting
-        ),
-        const ButtonSettingContainerTheme(
-            titleStyle: TextStyleConstant.darkTitleButtonSettingContainer
-        ),
-        const NavigationTabBottomTheme(
-          unselectedColor: ColorConstant.darkUnselectedNavigationTabBottom,
-          titleSelectedStyle: TextStyleConstant.darkTitleSelectedNavigationTabBottom,
-          titleUnselectedStyle: TextStyleConstant.darkTitleUnselectedNavigationTabBottom
-        ),
-        const NavigationTabTopTheme(
-          titleSelectedStyle: TextStyleConstant.darkTitleSelectedNavigationTabTop,
-          titleUnselectedStyle: TextStyleConstant.darkTitleUnselectedNavigationTabTop
-        ),
-        const ProfileContainerTheme(
-          backgroundColor: ColorConstant.darkBackgroundProfileContainer,
-          nameStyle: TextStyleConstant.darkNameProfileContainer,
-          mailStyle: TextStyleConstant.darkMailProfileContainer
-        ),
-        const ChallengeMushroomsListTheme(
-          backgroundColor: ColorConstant.darkBackgroundChallengeMushroomsList,
-          titleStyle: TextStyleConstant.darkTitleChallengeMushroomsList,
-          titleItemStyle: TextStyleConstant.darkTitleItemChallengeMushroomsList
-        ),
-        const TextInputTheme(
-          titleStyle: TextStyleConstant.darkTitleTextInput,
-          placeHolderStyle: TextStyleConstant.darkPlaceHolderTextInput,
-          inputStyle: TextStyleConstant.darkInputTextInput
-        ),
-        const TextInputPolicyTheme(
-            policyStyle: TextStyleConstant.darkPolicyTextInputPolicy
-        ),
-        const TextOutputTheme(
-          bodyStyle: TextStyleConstant.darkBodyTextOutput,
-          smallTitleStyle: TextStyleConstant.darkSmallTitleTextOutput,
-          mediumTitleStyle: TextStyleConstant.darkMediumTitleTextOutput,
-          largeTitleStyle: TextStyleConstant.darkLargeTitleTextOutput,
-        )
-      ]
+    extensions: [
+      const LoadingContainerTheme(
+        backgroundColor: ColorConstant.darkBackgroundLoadingContainer,
+        iconColor: ColorConstant.darkIconLoadingContainer,
+        titleStyle: TextStyleConstant.darkTitleLoadingContainer
+      ),
+      const ButtonStandardTheme(
+        titleStyle: TextStyleConstant.darkTitleButtonStandard
+      ),
+      const ButtonSettingTheme(
+        leftIconColor: ColorConstant.darkLeftIconButtonSetting,
+        titleStyle: TextStyleConstant.darkTitleButtonSetting,
+        dataStyle: TextStyleConstant.darkDataButtonSetting,
+        backgroundColor: ColorConstant.darkBackgroundButtonSetting
+      ),
+      const ButtonSettingContainerTheme(
+        titleStyle: TextStyleConstant.darkTitleButtonSettingContainer
+      ),
+      const NavigationTabBottomTheme(
+        unselectedColor: ColorConstant.darkUnselectedNavigationTabBottom,
+        titleSelectedStyle: TextStyleConstant.darkTitleSelectedNavigationTabBottom,
+        titleUnselectedStyle: TextStyleConstant.darkTitleUnselectedNavigationTabBottom
+      ),
+      const NavigationTabTopTheme(
+        titleSelectedStyle: TextStyleConstant.darkTitleSelectedNavigationTabTop,
+        titleUnselectedStyle: TextStyleConstant.darkTitleUnselectedNavigationTabTop
+      ),
+      const ProfileContainerTheme(
+        backgroundColor: ColorConstant.darkBackgroundProfileContainer,
+        nameStyle: TextStyleConstant.darkNameProfileContainer,
+        mailStyle: TextStyleConstant.darkMailProfileContainer
+      ),
+      const ChallengeMushroomsListTheme(
+        backgroundColor: ColorConstant.darkBackgroundChallengeMushroomsList,
+        titleStyle: TextStyleConstant.darkTitleChallengeMushroomsList,
+        titleItemStyle: TextStyleConstant.darkTitleItemChallengeMushroomsList
+      ),
+      const TextInputTheme(
+        titleStyle: TextStyleConstant.darkTitleTextInput,
+        placeHolderStyle: TextStyleConstant.darkPlaceHolderTextInput,
+        inputStyle: TextStyleConstant.darkInputTextInput
+      ),
+      const TextInputPolicyTheme(
+          policyStyle: TextStyleConstant.darkPolicyTextInputPolicy
+      ),
+      const TextOutputTheme(
+        bodyStyle: TextStyleConstant.darkBodyTextOutput,
+        smallTitleStyle: TextStyleConstant.darkSmallTitleTextOutput,
+        mediumTitleStyle: TextStyleConstant.darkMediumTitleTextOutput,
+        largeTitleStyle: TextStyleConstant.darkLargeTitleTextOutput,
+      )
+    ]
   );
 }

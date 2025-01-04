@@ -22,25 +22,43 @@ class DimensionConstant {
   // Setting
   static const double spaceSetting = 16.0;
 
+  // AccountBackground
+  static const int flexTopAccountBackground = 9;
+  static const int flexBottomAccountBackground = 11;
+
+  // AccountSetting
+  static const double radiusAccountSetting = 10.0;
+  static const double spaceAccountSetting = 16.0;
+
+  // AccountUpdateImageProfile
+  static const double sizeImageAccountUpdateImageProfile = 70.0;
+
   // Login
-  static const int flexTopBackgroundLogin = 9;
-  static const int flexBottomBackgroundLogin = 11;
   static const double spaceVerticalLogin = 20.0;
   static const double spaceHorizontalLogin = 5.0;
+  static const double ratioLogoLogin = 0.2;
   static const double elevationLogin = 0.0;
   static const double marginLogin = 20.0;
   static const double paddingLogin = 20.0;
   static const double radiusLogin = 10.0;
 
   // Register
-  static const int flexTopBackgroundRegister = 9;
-  static const int flexBottomBackgroundRegister = 11;
   static const double spaceVerticalRegister = 20.0;
   static const double spaceHorizontalRegister = 5.0;
+  static const double ratioLogoRegister = 0.2;
   static const double elevationRegister = 0.0;
   static const double marginRegister = 20.0;
   static const double paddingRegister = 20.0;
   static const double radiusRegister = 10.0;
+  static const int flexNameRegister = 5;
+
+  // ForgotPassword
+  static const double spaceVerticalForgotPassword = 20.0;
+  static const double ratioLogoForgotPassword = 0.2;
+  static const double elevationForgotPassword = 0.0;
+  static const double marginForgotPassword = 20.0;
+  static const double paddingForgotPassword = 20.0;
+  static const double radiusForgotPassword = 10.0;
 
   // NavigationTabBottom
   static const double heightNavigationTabBottom = 56.0;
@@ -57,6 +75,12 @@ class DimensionConstant {
   static const double heightIndicatorNavigationTabTop = 3.0;
   static const double marginIndicatorNavigationTabTop = 4.0;
   static const double dividerHeightNavigationTabTop = 0.0;
+
+  // LoadingContainer
+  static const double paddingLoadingContainer = 16.0;
+  static const double radiusLoadingContainer = 10.0;
+  static const double iconSizeLoadingContainer = 35.0;
+  static const double spaceLoadingContainer = 16.0;
 
   // ButtonStandard
   static const double radiusButtonStandard = 15.0;
@@ -87,6 +111,13 @@ class DimensionConstant {
   static const double blurProfileContainer = 10.0;
   static const double chevronSizeProfileContainer = 16.0;
 
+  // ProfileImageSelection
+  static const double radiusProfileImageSelection = 10.0;
+  static const double borderProfileImageSelection = 2.0;
+  static const double selectionWidthProfileImageSelection = 35.0;
+  static const double selectionHeightProfileImageSelection = 20.0;
+  static const double iconSizeProfileImageSelection = 15.0;
+
   // ChallengeMushroomsList
   static const double identTitleChallengeMushroomsList = 16.0;
   static const double paddingBetweenItemChallengeMushroomsList = 8.0;
@@ -114,6 +145,6 @@ class DimensionConstant {
   static const double topPaddingPolicyTextInput = 5.0;
 
   // TextInputPolicy
-  static const double sizeIconTextInputPolicy = captionText;
+  static const double iconSizeTextInputPolicy = captionText;
   static const double spaceTextInputPolicy = 5.0;
 }

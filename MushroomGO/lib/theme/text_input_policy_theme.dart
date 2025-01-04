@@ -13,7 +13,7 @@ class TextInputPolicyTheme extends ThemeExtension<TextInputPolicyTheme> {
   const TextInputPolicyTheme({
     this.respectColor = ColorConstant.respectIconTextInputPolicy,
     this.notRespectColor = ColorConstant.notRespectIconTextInputPolicy,
-    this.sizeIcon = DimensionConstant.sizeIconTextInputPolicy,
+    this.sizeIcon = DimensionConstant.iconSizeTextInputPolicy,
     this.space = DimensionConstant.spaceTextInputPolicy,
     this.policyStyle = TextStyleConstant.lightPolicyTextInputPolicy,
   });

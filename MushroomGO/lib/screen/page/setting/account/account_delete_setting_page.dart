@@ -1,10 +1,9 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/screen/widget/button/standard/button_standard.dart';
-import 'package:mushroom_go/screen/widget/textfield/text_input.dart';
+import 'package:mushroom_go/screen/widget/textField/text_input.dart';
 import 'package:mushroom_go/utils/firebase/firebase_auth_utils.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AccountDeleteSettingPage extends StatefulWidget {
   const AccountDeleteSettingPage({super.key});
@@ -32,32 +31,45 @@ class _AccountDeleteSettingPageState extends State<AccountDeleteSettingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            title: Text("Delete account")
-        ),
-        body: Container(
+      appBar: AppBar(
+          title: Text(AppLocalizations.of(context)!.accountDeleteSettingTitle)
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
+        child: Container(
           padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-          child: Container(
-            padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-            decoration: BoxDecoration(
-                color: Theme.of(context).appBarTheme.backgroundColor,
-                borderRadius: const BorderRadius.all(Radius.circular(DimensionConstant.radiusBorderInputTextInput))
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextInput(controller: _controllerPassword, textInputAction: TextInputAction.done, keyboardType: TextInputType.visiblePassword, placeHolder: "••••••••••••••", password: true, title: "Password",)
-              ],
-            ),
+          decoration: BoxDecoration(
+            color: Theme.of(context).appBarTheme.backgroundColor,
+            borderRadius: const BorderRadius.all(Radius.circular(DimensionConstant.radiusAccountSetting))
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextInput(
+                controller: _controllerPassword,
+                textInputAction: TextInputAction.done,
+                keyboardType: TextInputType.visiblePassword,
+                placeHolder: "••••••••••••••",
+                password: true,
+                title: AppLocalizations.of(context)!.accountDeleteSettingTitlePassword,
+                autocorrect: false,
+                suggestions: false,
+              )
+            ],
           ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-          child: ButtonStandard(title: "Delete account", enabled: _isValid, onTap: () async {
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
+        child: ButtonStandard(
+          title: AppLocalizations.of(context)!.accountDeleteSettingButton,
+          enabled: _isValid,
+          onTap: () async {
             await FirebaseAuthUtils.deleteAccount(context, _controllerPassword.text);
-          }),
-        )
+          }
+        ),
+      )
     );
   }
 }

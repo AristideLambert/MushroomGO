@@ -175,7 +175,7 @@
   "@registerTitle": {
     "description": "Title (Register)"
   },
-  "registerDescription": "Create an account to continue !",
+  "registerDescription": "Create an account to continue",
   "@registerDescription": {
     "description": "Description (Register)"
   },
@@ -206,6 +206,78 @@
   "registerLogin": "Login",
   "@registerLogin": {
     "description": "Login (Register)"
+  },
+  "forgotPasswordTitle": "Reset your password",
+  "@forgotPasswordTitle": {
+    "description": "Title (ForgotPassword)"
+  },
+  "forgotPasswordDescription": "Enter your email for reset password",
+  "@forgotPasswordDescription": {
+    "description": "Description (ForgotPassword)"
+  },
+  "forgotPasswordButton": "Reset",
+  "@forgotPasswordButton": {
+    "description": "Button (ForgotPassword)"
+  },
+  "accountDeleteSettingTitle": "Delete my account",
+  "@accountDeleteSettingTitle": {
+    "description": "Title (AccountDeleteSetting)"
+  },
+  "accountDeleteSettingTitlePassword": "Password",
+  "@accountDeleteSettingTitlePassword": {
+    "description": "Title password (AccountDeleteSetting)"
+  },
+  "accountDeleteSettingButton": "Delete",
+  "@accountDeleteSettingButton": {
+    "description": "Button (AccountDeleteSetting)"
+  },
+  "accountUpdateFirstnameNameSettingTitle": "Update firstname & name",
+  "@accountUpdateFirstnameNameSettingTitle": {
+    "description": "Title (AccountUpdateFirstnameNameSetting)"
+  },
+  "accountUpdateFirstnameNameSettingTitleFirstname": "Firstname",
+  "@accountUpdateFirstnameNameSettingTitleFirstname": {
+    "description": "Title firstname (AccountUpdateFirstnameNameSetting)"
+  },
+  "accountUpdateFirstnameNameSettingTitleName": "Name",
+  "@accountUpdateFirstnameNameSettingTitleName": {
+    "description": "Title name (AccountUpdateFirstnameNameSetting)"
+  },
+  "accountUpdateFirstnameNameSettingButton": "Save",
+  "@accountUpdateFirstnameNameSettingButton": {
+    "description": "Button (AccountUpdateFirstnameNameSetting)"
+  },
+  "accountUpdateImageProfileSettingTitle": "Update image profile",
+  "@accountUpdateImageProfileSettingTitle": {
+    "description": "Title (AccountUpdateImageProfileSettingTitle)"
+  },
+  "accountUpdateImageProfileSettingButton": "Save",
+  "@accountUpdateImageProfileSettingButton": {
+    "description": "Button (AccountUpdateImageProfileSettingTitle)"
+  },
+  "accountUpdatePasswordSettingTitleUpdate": "Update password",
+  "@accountUpdatePasswordSettingTitleUpdate": {
+    "description": "Title (AccountUpdatePasswordSetting)"
+  },
+  "accountUpdatePasswordSettingTitleReset": "Reset password",
+  "@accountUpdatePasswordSettingTitleReset": {
+    "description": "Title (AccountUpdatePasswordSetting)"
+  },
+  "accountUpdatePasswordSettingTitleOldPassword": "Old password",
+  "@accountUpdatePasswordSettingTitleOldPassword": {
+    "description": "Title old password (AccountUpdatePasswordSetting)"
+  },
+  "accountUpdatePasswordSettingTitleNewPassword": "New password",
+  "@accountUpdatePasswordSettingTitleNewPassword": {
+    "description": "Title new password (AccountUpdatePasswordSetting)"
+  },
+  "accountUpdatePasswordSettingButtonSave": "Save",
+  "@accountUpdatePasswordSettingButtonSave": {
+    "description": "Button save (AccountUpdatePasswordSetting)"
+  },
+  "accountUpdatePasswordSettingButtonReset": "Reset",
+  "@accountUpdatePasswordSettingButtonReset": {
+    "description": "Button reset (AccountUpdatePasswordSetting)"
   },
   "popupOK": "OK",
   "@popupOK": {

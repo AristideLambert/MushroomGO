@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mushroom_go/constant/color_constant.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/constant/text_style_constant.dart';
@@ -22,63 +23,61 @@ class _AccountSettingPageState extends State<AccountSettingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(AppLocalizations.of(context)!.settingAccount)
+        title: Text(AppLocalizations.of(context)!.settingAccount)
       ),
       body: Container(
         padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
         child: Column(
           children: [
             ButtonSettingContainer(
-                buttons: [
-                  ButtonSetting(
-                    type: Type.standard,
-                    title: AppLocalizations.of(context)!.settingAccountFirstnameName,
-                    leftIcon: MushroomGOFontUtils.profile,
-                    onTap: (){
-                      Navigator.of(context).pushNamed(NavigationConstant.accountUpdateFirstnameNameSettingPage);
-                    },
-                  ),
-                  ButtonSetting(
-                    type: Type.standard,
-                    title: AppLocalizations.of(context)!.settingAccountImageProfile,
-                    leftIcon: CupertinoIcons.photo_camera_solid,
-                    onTap: (){
-                      Navigator.of(context).pushNamed(NavigationConstant.accountUpdateImageProfileSettingPage);
-                    },
-                  ),
-                  ButtonSetting(
-                    type: Type.standard,
-                    title: AppLocalizations.of(context)!.settingAccountPassword,
-                    leftIcon: CupertinoIcons.lock_fill,
-                    onTap: (){
-                      Navigator.of(context).pushNamed(NavigationConstant.accountUpdatePasswordSettingPage);
-                    },
-                  ),
-                  ButtonSetting(
-                    type: Type.standard,
-                    title: AppLocalizations.of(context)!.settingAccountDelete,
-                    leftIcon: CupertinoIcons.delete_solid,
-                    onTap: (){
-                      Navigator.of(context).pushNamed(NavigationConstant.accountDeleteSettingPage);
-                    },
-                  )
-                ]
+              buttons: [
+                ButtonSetting(
+                  type: Type.standard,
+                  title: AppLocalizations.of(context)!.settingAccountFirstnameName,
+                  leftIcon: MushroomGOFontUtils.profile,
+                  onTap: (){
+                    Navigator.of(context).pushNamed(NavigationConstant.accountUpdateFirstnameNameSettingPage);
+                  },
+                ),
+                ButtonSetting(
+                  type: Type.standard,
+                  title: AppLocalizations.of(context)!.settingAccountImageProfile,
+                  leftIcon: CupertinoIcons.photo_camera_solid,
+                  onTap: (){
+                    Navigator.of(context).pushNamed(NavigationConstant.accountUpdateImageProfileSettingPage);
+                  },
+                ),
+                ButtonSetting(
+                  type: Type.standard,
+                  title: AppLocalizations.of(context)!.settingAccountPassword,
+                  leftIcon: CupertinoIcons.lock_fill,
+                  onTap: (){
+                    Navigator.of(context).pushNamed(NavigationConstant.accountUpdatePasswordSettingPage);
+                  },
+                ),
+                ButtonSetting(
+                  type: Type.standard,
+                  title: AppLocalizations.of(context)!.settingAccountDelete,
+                  leftIcon: CupertinoIcons.delete_solid,
+                  onTap: (){
+                    Navigator.of(context).pushNamed(NavigationConstant.accountDeleteSettingPage);
+                  },
+                )
+              ]
             ),
             const SizedBox(height: DimensionConstant.defaultPadding,),
             ButtonSettingContainer(
-                buttons: [
-                  ButtonSetting(
-                    type: Type.button,
-                    title: AppLocalizations.of(context)!.settingAccountLogout,
-                    centerTitle: true,
-                    theme: Theme.of(context).extension<ButtonSettingTheme>()!.copyWith(
-                        titleButtonStyle: TextStyleConstant.titleButtonButtonSettingAccountSettingPage
-                    ),
-                    onTap: () async {
-                      await FirebaseAuthUtils.signOutAccount(context);
-                    },
-                  ),
-                ]
+              buttons: [
+                ButtonSetting(
+                  type: Type.button,
+                  title: AppLocalizations.of(context)!.settingAccountLogout,
+                  centerTitle: true,
+                  isDestructive: true,
+                  onTap: () async {
+                    await FirebaseAuthUtils.signOutAccount(context);
+                  },
+                ),
+              ]
             )
           ],
         ),

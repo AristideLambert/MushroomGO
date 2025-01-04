@@ -56,6 +56,20 @@ class TextStyleConstant {
     color: ColorConstant.darkUnselectedNavigationTabTop,
   );
 
+  // LoadingContainer
+  static const TextStyle lightTitleLoadingContainer = TextStyle(
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.normal,
+    color: ColorConstant.lightTitleLoadingContainer,
+    decoration: TextDecoration.none,
+  );
+  static const TextStyle darkTitleLoadingContainer = TextStyle(
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.normal,
+    color: ColorConstant.darkTitleLoadingContainer,
+    decoration: TextDecoration.none,
+  );
+
   // ButtonStandard
   static const TextStyle lightTitleButtonStandard = TextStyle(
     color: ColorConstant.lightTitleButtonStandard,
@@ -89,6 +103,11 @@ class TextStyleConstant {
     fontSize: DimensionConstant.titleSmall,
     fontWeight: FontWeight.w500,
   );
+  static const TextStyle destructibleTitleButtonButtonSetting = TextStyle(
+    color: ColorConstant.destructibleTitleButtonButtonSetting,
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.w500,
+  );
   static const TextStyle lightDataButtonSetting = TextStyle(
     fontSize: DimensionConstant.titleSmall,
     color: ColorConstant.lightDataButtonSetting,
@@ -96,12 +115,6 @@ class TextStyleConstant {
   static const TextStyle darkDataButtonSetting = TextStyle(
     fontSize: DimensionConstant.titleSmall,
     color: ColorConstant.darkDataButtonSetting,
-  );
-  // ButtonSetting - AccountSettingPage
-  static const TextStyle titleButtonButtonSettingAccountSettingPage = TextStyle(
-    color: ColorConstant.warningColor,
-    fontSize: DimensionConstant.titleSmall,
-    fontWeight: FontWeight.w500,
   );
 
   // ButtonSettingContainer

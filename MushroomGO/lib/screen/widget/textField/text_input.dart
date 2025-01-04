@@ -16,6 +16,8 @@ class TextInput extends StatefulWidget {
   final bool password;
   final bool clearText;
   final bool passwordPolicy;
+  final bool suggestions;
+  final bool autocorrect;
   final TextInputTheme? theme;
 
   const TextInput(
@@ -29,6 +31,8 @@ class TextInput extends StatefulWidget {
       this.password = false,
       this.clearText = false,
       this.passwordPolicy = false,
+      this.suggestions = true,
+      this.autocorrect = true,
       this.theme
     });
 
@@ -99,6 +103,9 @@ class _TextInputState extends State<TextInput> {
                       obscureText: !_passwordVisible,
                       placeholder: widget.placeHolder,
                       placeholderStyle: _theme.placeHolderStyle,
+                      enableSuggestions: widget.suggestions,
+                      autocorrect: widget.autocorrect,
+                      keyboardAppearance: Theme.of(context).brightness,
                       keyboardType: widget.keyboardType,
                       textInputAction: widget.textInputAction,
                       style: _theme.inputStyle,

@@ -9,6 +9,7 @@ class TextOutput extends StatefulWidget {
   final double? fontSize;
   final Color? fontColor;
   final FontWeight? fontWeight;
+  final TextAlign? textAlign;
   final Function()? onTap;
   final TextOutputTheme? theme;
 
@@ -19,6 +20,7 @@ class TextOutput extends StatefulWidget {
     this.fontSize,
     this.fontColor,
     this.fontWeight,
+    this.textAlign,
     this.onTap,
     this.theme
   });
@@ -52,6 +54,7 @@ class _TextOutputState extends State<TextOutput> {
           fontWeight: _fontWeight,
           decoration: TextDecoration.none
         ),
+        textAlign: widget.textAlign,
       ),
     );
   }

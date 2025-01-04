@@ -6,6 +6,7 @@ import 'package:mushroom_go/screen/widget/container/profile/image/profile_image_
 import 'package:mushroom_go/screen/widget/container/profile/image/profile_image_selection_container.dart';
 import 'package:mushroom_go/utils/firebase/firebase_auth_utils.dart';
 import 'package:mushroom_go/utils/setting/setting_utils.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AccountUpdateImageProfileSettingPage extends StatefulWidget {
   const AccountUpdateImageProfileSettingPage({super.key});
@@ -36,29 +37,29 @@ class _AccountUpdateImageProfileSettingPageState extends State<AccountUpdateImag
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text("Update image")
+        title: Text(AppLocalizations.of(context)!.accountUpdateImageProfileSettingTitle)
       ),
       body: Container(
-        padding: EdgeInsets.all(DimensionConstant.defaultPadding),
+        padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
         child: Container(
           padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
           decoration: BoxDecoration(
-              color: Theme.of(context).appBarTheme.backgroundColor,
-              borderRadius: const BorderRadius.all(Radius.circular(DimensionConstant.radiusBorderInputTextInput))
+            color: Theme.of(context).appBarTheme.backgroundColor,
+            borderRadius: const BorderRadius.all(Radius.circular(DimensionConstant.radiusAccountSetting))
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               CircleAvatar(
-                radius: 70,
+                radius: DimensionConstant.sizeImageAccountUpdateImageProfile,
                 backgroundImage: AssetImage(_pathSelectedImage),
               ),
-              SizedBox(height: DimensionConstant.defaultPadding,),
+              const SizedBox(height: DimensionConstant.spaceAccountSetting,),
               ProfileImageSelectionContainer(
                 profileImageSelections: const [
                   ProfileImageSelection(path: "assets/images/profile/default.jpg", selected: false, width: 100),
                   ProfileImageSelection(path: "assets/images/profile/profile1.jpg", selected: false, width: 100),
-                  ProfileImageSelection(path: "assets/images/profile/profile2.jpg", selected: false, width: 100)
+                  ProfileImageSelection(path: "assets/images/profile/profile2.jpg", selected: false, width: 100),
                 ],
                 onChange: (newPath){
                   setState(() {
@@ -72,14 +73,18 @@ class _AccountUpdateImageProfileSettingPageState extends State<AccountUpdateImag
           ),
         ),
       ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-          child: ButtonStandard(title: "Choose image", enabled: _isValid, onTap: () async {
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
+        child: ButtonStandard(
+          title: AppLocalizations.of(context)!.accountUpdateImageProfileSettingButton,
+          enabled: _isValid,
+          onTap: () async {
             await FirebaseAuthUtils.updateImageProfileAccount(context, _pathSelectedImage);
             _pathImageProfile = _pathSelectedImage;
-          }),
-        )
+          }
+        ),
+      )
     );
   }
 }

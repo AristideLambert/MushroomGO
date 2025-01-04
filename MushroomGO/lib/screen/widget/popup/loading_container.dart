@@ -1,30 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:mushroom_go/constant/dimension_constant.dart';
+import 'package:mushroom_go/theme/loading_container_theme.dart';
 import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 
-class LoadingContainer extends StatelessWidget {
+class LoadingContainer extends StatefulWidget {
   final String message;
-  const LoadingContainer({super.key, required this.message});
+  final LoadingContainerTheme? theme;
+
+  const LoadingContainer({super.key, required this.message, this.theme});
+
+  @override
+  State<LoadingContainer> createState() => _LoadingContainerState();
+}
+
+class _LoadingContainerState extends State<LoadingContainer> {
+  late LoadingContainerTheme theme;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    theme = widget.theme ?? Theme.of(context).extension<LoadingContainerTheme>()!;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
+        padding: EdgeInsets.all(theme.padding),
         decoration: BoxDecoration(
-          color: Theme.of(context).appBarTheme.backgroundColor,
-          borderRadius: BorderRadius.circular(DimensionConstant.radiusBorderInputTextInput),
+          color: theme.backgroundColor,
+          borderRadius: BorderRadius.circular(theme.radius),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(MushroomGOFontUtils.logo, color: Colors.white, size: 35,),
-            SizedBox(height: DimensionConstant.defaultPadding,),
-            Text(message, style: TextStyle(
-              fontSize: DimensionConstant.bodyText,
-              color: Colors.white,
-              decoration: TextDecoration.none
-            ),)
+            Icon(MushroomGOFontUtils.logo, color: theme.iconColor, size: theme.iconSize,),
+            SizedBox(height: theme.space),
+            Text(
+              widget.message,
+              style: theme.titleStyle
+            )
           ],
         ),
       ),
