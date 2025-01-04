@@ -32,7 +32,11 @@ class _AccountUpdatePasswordSettingPageState extends State<AccountUpdatePassword
     });
     _controllerNewPassword.addListener(() {
       setState(() {
-        _isValid = PasswordUtils.checkValid(_controllerNewPassword.text) && _controllerOldPassword.text.isNotEmpty;
+        if(!_checkOobCode) {
+          _isValid = PasswordUtils.checkValid(_controllerNewPassword.text) && _controllerOldPassword.text.isNotEmpty;
+        } else {
+          _isValid = PasswordUtils.checkValid(_controllerNewPassword.text);
+        }
       });
     });
     _isValid = false;

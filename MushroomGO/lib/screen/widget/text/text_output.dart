@@ -46,15 +46,18 @@ class _TextOutputState extends State<TextOutput> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: widget.onTap,
-      child: Text(
-        widget.text,
-        style: TextStyle(
-          fontSize: _fontSize,
-          color: _fontColor,
-          fontWeight: _fontWeight,
-          decoration: TextDecoration.none
+      child: Material(
+        color: Colors.transparent,
+        child: Text(
+          widget.text,
+          style: TextStyle(
+            fontSize: _fontSize,
+            color: _fontColor,
+            fontWeight: _fontWeight,
+            decoration: TextDecoration.none
+          ),
+          textAlign: widget.textAlign,
         ),
-        textAlign: widget.textAlign,
       ),
     );
   }
