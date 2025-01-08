@@ -46,64 +46,114 @@ class _SearchResultPageState extends State<SearchResultPage> {
       scientificName: "Auricularia auricula-judae",
       description: "A gelatinous brown fungus often found on elder trees.",
       imageUrl: "https://media.istockphoto.com/id/1442686543/fr/photo/closup-de-deux-champignons-jelly-ear.jpg?s=612x612&w=0&k=20&c=1PznxDXWfSH0m_iT8XScYnDjHqLgJfifzKKsrx45l6E=",
+    ),Mushroom(
+      name: "Jelly ear (Jew's ear)",
+      scientificName: "Auricularia auricula-judae",
+      description: "A gelatinous brown fungus often found on elder trees.",
+      imageUrl: "https://media.istockphoto.com/id/1442686543/fr/photo/closup-de-deux-champignons-jelly-ear.jpg?s=612x612&w=0&k=20&c=1PznxDXWfSH0m_iT8XScYnDjHqLgJfifzKKsrx45l6E=",
+    ),Mushroom(
+      name: "Jelly ear (Jew's ear)",
+      scientificName: "Auricularia auricula-judae",
+      description: "A gelatinous brown fungus often found on elder trees.",
+      imageUrl: "https://media.istockphoto.com/id/1442686543/fr/photo/closup-de-deux-champignons-jelly-ear.jpg?s=612x612&w=0&k=20&c=1PznxDXWfSH0m_iT8XScYnDjHqLgJfifzKKsrx45l6E=",
+    ),Mushroom(
+      name: "Jelly ear (Jew's ear)",
+      scientificName: "Auricularia auricula-judae",
+      description: "A gelatinous brown fungus often found on elder trees.",
+      imageUrl: "https://media.istockphoto.com/id/1442686543/fr/photo/closup-de-deux-champignons-jelly-ear.jpg?s=612x612&w=0&k=20&c=1PznxDXWfSH0m_iT8XScYnDjHqLgJfifzKKsrx45l6E=",
+    ),Mushroom(
+      name: "Jelly ear (Jew's ear)",
+      scientificName: "Auricularia auricula-judae",
+      description: "A gelatinous brown fungus often found on elder trees.",
+      imageUrl: "https://media.istockphoto.com/id/1442686543/fr/photo/closup-de-deux-champignons-jelly-ear.jpg?s=612x612&w=0&k=20&c=1PznxDXWfSH0m_iT8XScYnDjHqLgJfifzKKsrx45l6E=",
+    ),Mushroom(
+      name: "Jelly ear (Jew's ear)",
+      scientificName: "Auricularia auricula-judae",
+      description: "A gelatinous brown fungus often found on elder trees.",
+      imageUrl: "https://media.istockphoto.com/id/1442686543/fr/photo/closup-de-deux-champignons-jelly-ear.jpg?s=612x612&w=0&k=20&c=1PznxDXWfSH0m_iT8XScYnDjHqLgJfifzKKsrx45l6E=",
+    ),Mushroom(
+      name: "Jelly ear (Jew's ear)",
+      scientificName: "Auricularia auricula-judae",
+      description: "A gelatinous brown fungus often found on elder trees.",
+      imageUrl: "https://media.istockphoto.com/id/1442686543/fr/photo/closup-de-deux-champignons-jelly-ear.jpg?s=612x612&w=0&k=20&c=1PznxDXWfSH0m_iT8XScYnDjHqLgJfifzKKsrx45l6E=",
+    ),Mushroom(
+      name: "Jelly ear (Jew's ear)",
+      scientificName: "Auricularia auricula-judae",
+      description: "A gelatinous brown fungus often found on elder trees.",
+      imageUrl: "https://media.istockphoto.com/id/1442686543/fr/photo/closup-de-deux-champignons-jelly-ear.jpg?s=612x612&w=0&k=20&c=1PznxDXWfSH0m_iT8XScYnDjHqLgJfifzKKsrx45l6E=",
+    ),Mushroom(
+      name: "Jelly ear (Jew's ear)",
+      scientificName: "Auricularia auricula-judae",
+      description: "A gelatinous brown fungus often found on elder trees.",
+      imageUrl: "https://media.istockphoto.com/id/1442686543/fr/photo/closup-de-deux-champignons-jelly-ear.jpg?s=612x612&w=0&k=20&c=1PznxDXWfSH0m_iT8XScYnDjHqLgJfifzKKsrx45l6E=",
+    ),Mushroom(
+      name: "Jelly ear (Jew's ear)",
+      scientificName: "Auricularia auricula-judae",
+      description: "A gelatinous brown fungus often found on elder trees.",
+      imageUrl: "https://media.istockphoto.com/id/1442686543/fr/photo/closup-de-deux-champignons-jelly-ear.jpg?s=612x612&w=0&k=20&c=1PznxDXWfSH0m_iT8XScYnDjHqLgJfifzKKsrx45l6E=",
+    ),Mushroom(
+      name: "Jelly ear (Jew's ear)",
+      scientificName: "Auricularia auricula-judae",
+      description: "A gelatinous brown fungus often found on elder trees.",
+      imageUrl: "https://media.istockphoto.com/id/1442686543/fr/photo/closup-de-deux-champignons-jelly-ear.jpg?s=612x612&w=0&k=20&c=1PznxDXWfSH0m_iT8XScYnDjHqLgJfifzKKsrx45l6E=",
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-        child: ListView.builder(
-          itemCount: mushrooms.length,
-          itemBuilder: (BuildContext context, int index) {
-            final mushroom = mushrooms[index];
-            return GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  NavigationConstant.mushroomDetailPage,
-                  arguments: mushroom,
-                );
-              },
-              child: Container(
-                padding:EdgeInsets.symmetric(vertical: theme.defaultPadding),
-                child: Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(theme.radiusItem),
-                      child: Image.network(
-                        mushroom.imageUrl,
-                        width: theme.imageWidthHeight,
-                        height: theme.imageWidthHeight,
-                        fit: BoxFit.cover,
-                      ),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: DimensionConstant.defaultPadding),
+      child: ListView.builder(
+        itemCount: mushrooms.length,
+        itemBuilder: (BuildContext context, int index) {
+          final mushroom = mushrooms[index];
+          return GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                NavigationConstant.mushroomDetailPage,
+                arguments: mushroom,
+              );
+            },
+            child: Container(
+              padding:EdgeInsets.only(
+                  top: index == 0 ? 0 : theme.defaultPadding,
+                  bottom: theme.defaultPadding),
+              child: Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(theme.radiusItem),
+                    child: Image.network(
+                      mushroom.imageUrl,
+                      width: theme.imageWidthHeight,
+                      height: theme.imageWidthHeight,
+                      fit: BoxFit.cover,
                     ),
-                    SizedBox(width: theme.spaceBetweenItem),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            mushroom.name,
-                            style:theme.titleStyle,
-                          ),
-                          SizedBox(height: theme.heightBetweenNameScientificName),
-                          Text(
-                            mushroom.scientificName,
-                            style: theme.scientificNameStyle,
-                          ),
-                        ],
-                      ),
+                  ),
+                  SizedBox(width: theme.spaceBetweenItem),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          mushroom.name,
+                          style:theme.titleStyle,
+                        ),
+                        SizedBox(height: theme.heightBetweenNameScientificName),
+                        Text(
+                          mushroom.scientificName,
+                          style: theme.scientificNameStyle,
+                        ),
+                      ],
                     ),
-                    const Icon(Icons.chevron_right, color: ColorConstant.primaryColor),
-                  ],
-                ),
+                  ),
+                  const Icon(Icons.chevron_right, color: ColorConstant.primaryColor),
+                ],
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

@@ -127,6 +127,7 @@ class ThemeConstant{
         policyStyle: TextStyleConstant.lightPolicyTextInputPolicy
       ),
       const TextOutputTheme(
+        captionStyle: TextStyleConstant.lightCaptionTextOutput,
         bodyStyle: TextStyleConstant.lightBodyTextOutput,
         smallTitleStyle: TextStyleConstant.lightSmallTitleTextOutput,
         mediumTitleStyle: TextStyleConstant.lightMediumTitleTextOutput,
@@ -238,6 +239,7 @@ class ThemeConstant{
         policyStyle: TextStyleConstant.darkPolicyTextInputPolicy
       ),
       const TextOutputTheme(
+        captionStyle: TextStyleConstant.darkCaptionTextOutput,
         bodyStyle: TextStyleConstant.darkBodyTextOutput,
         smallTitleStyle: TextStyleConstant.darkSmallTitleTextOutput,
         mediumTitleStyle: TextStyleConstant.darkMediumTitleTextOutput,

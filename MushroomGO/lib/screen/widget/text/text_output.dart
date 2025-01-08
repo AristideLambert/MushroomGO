@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/theme/text_output_theme.dart';
 
-enum Type { largeTitle, mediumTitle, smallTitle, body }
+enum Type { largeTitle, mediumTitle, smallTitle, body, caption }
 
 class TextOutput extends StatefulWidget {
   final String text;
@@ -70,6 +70,7 @@ class _TextOutputState extends State<TextOutput> {
 
   TextStyle _getTextStyleTheme(){
     switch(widget.type){
+      case Type.caption: return _theme.captionStyle;
       case Type.body: return _theme.bodyStyle;
       case Type.smallTitle: return _theme.smallTitleStyle;
       case Type.mediumTitle: return _theme.mediumTitleStyle;

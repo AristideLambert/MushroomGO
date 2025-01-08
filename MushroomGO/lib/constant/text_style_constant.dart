@@ -397,6 +397,16 @@ class TextStyleConstant {
   );
 
   // TextOutput
+  static const TextStyle lightCaptionTextOutput = TextStyle(
+    color: ColorConstant.lightTextOutput,
+    fontSize: DimensionConstant.captionText,
+    fontWeight: FontWeight.normal,
+  );
+  static const TextStyle darkCaptionTextOutput = TextStyle(
+    color: ColorConstant.darkTextOutput,
+    fontSize: DimensionConstant.captionText,
+    fontWeight: FontWeight.normal,
+  );
   static const TextStyle lightBodyTextOutput = TextStyle(
     color: ColorConstant.lightTextOutput,
     fontSize: DimensionConstant.bodyText,
