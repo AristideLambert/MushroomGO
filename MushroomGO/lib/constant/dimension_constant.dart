@@ -177,6 +177,7 @@ class DimensionConstant {
   static const double spaceBetweenTextMushroomDetail = 8.0;
   static const double paddingClassificationMushroomDetail = 4.0;
   static const double widthTableBorderMushroomDetail = 1.0;
+  static const double sizeLoadImageMushroomDetail = 100.0;
 
   // BadgeTab
   static const int gridDelegateCrossAxisCountBadgeTab = 3;

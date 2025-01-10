@@ -17,7 +17,6 @@ import 'package:mushroom_go/screen/page/setting/account/account_update_password_
 import 'package:mushroom_go/screen/page/setting/display_setting_page.dart';
 import 'package:mushroom_go/screen/page/setting/language_setting_page.dart';
 import 'package:mushroom_go/screen/page/setting/setting_page.dart';
-import 'package:mushroom_go/models/mushroom.dart';
 import 'package:mushroom_go/screen/page/web/web_view_page.dart';
 
 class NavigationConstant {
@@ -72,8 +71,7 @@ class NavigationConstant {
       case languageSettingPage:
         return MaterialPageRoute(builder: (context) => const LanguageSettingPage(), settings: settings);
       case mushroomDetailPage:
-        final mushroom = settings.arguments as Mushroom;
-        return MaterialPageRoute(builder: (context) => MushroomDetailPage(mushroom: mushroom), settings: settings);
+        return MaterialPageRoute(builder: (context) => MushroomDetailPage(), settings: settings);
       case webViewPage:
         final args = settings.arguments as Map<String, String>;
         final url = args['url']!;

@@ -8,6 +8,7 @@ import 'package:mushroom_go/screen/widget/text/text_output.dart';
 import 'package:mushroom_go/utils/dialog/dialog_utils.dart';
 import 'package:mushroom_go/utils/firebase/firestore_utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mushroom_go/utils/models/models_utils.dart';
 
 class SearchResultPage extends StatefulWidget {
   final TextEditingController controllerSearch;
@@ -52,6 +53,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
         _hasMore = result.result.isNotEmpty && result.result.length > 9;
         if (result.result.isNotEmpty) {
           mushrooms.addAll(result.result);
+          mushrooms = ModelsUtils.removeDuplicate(mushrooms);
           _lastSearchResult = result;
         }
       });

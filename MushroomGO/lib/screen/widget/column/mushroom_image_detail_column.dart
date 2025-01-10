@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
+import 'package:mushroom_go/screen/widget/image/loading_image.dart';
 import 'package:mushroom_go/theme/mushroom_detail_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -45,6 +46,27 @@ class _MushroomImageDetailColumnState extends State<MushroomImageDetailColumn> {
               fit: BoxFit.cover,
               height: theme.imageHeight,
               width: double.infinity,
+              loadingBuilder: ((context, image, event){
+                if (event == null) {
+                  return image;
+                }
+                return SizedBox(
+                  height: theme.imageHeight,
+                  width: double.infinity,
+                  child: Center(
+                    child: LoadingImage(size: theme.sizeLoadImage),
+                  ),
+                );
+              }),
+              errorBuilder: (context, error, stackTrace) {
+                return SizedBox(
+                  height: theme.imageHeight,
+                  width: double.infinity,
+                  child: Center(
+                    child: LoadingImage(size: theme.sizeLoadImage),
+                  ),
+                );
+              },
             ),
           ),
           SizedBox(height: theme.spaceBetweenImageText),

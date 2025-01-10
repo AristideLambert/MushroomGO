@@ -14,6 +14,7 @@ class MushroomDetailTheme extends ThemeExtension<MushroomDetailTheme> {
   final double paddingClassification;
   final double sizeIcon;
   final double widthTableBorder;
+  final double sizeLoadImage;
   final Color backgroundColor;
   final TextStyle nameStyle;
   final TextStyle scientificNameText;
@@ -32,6 +33,7 @@ class MushroomDetailTheme extends ThemeExtension<MushroomDetailTheme> {
     this.paddingClassification = DimensionConstant.paddingClassificationMushroomDetail,
     this.sizeIcon = DimensionConstant.sizeIconMushroomDetail,
     this.widthTableBorder = DimensionConstant.widthTableBorderMushroomDetail,
+    this.sizeLoadImage = DimensionConstant.sizeLoadImageMushroomDetail,
     this.backgroundColor = ColorConstant.lightBackgroundMushroomDetail,
     this.nameStyle = TextStyleConstant.lightNameMushroomDetail,
     this.scientificNameText = TextStyleConstant.scientificNameTextMushroomDetail,
@@ -52,6 +54,7 @@ class MushroomDetailTheme extends ThemeExtension<MushroomDetailTheme> {
     double? paddingClassification,
     double? sizeIcon,
     double? widthTableBorder,
+    double? sizeLoadImage,
     Color? backgroundColor,
     TextStyle? nameStyle,
     TextStyle? scientificNameText,
@@ -70,6 +73,7 @@ class MushroomDetailTheme extends ThemeExtension<MushroomDetailTheme> {
       paddingClassification: paddingClassification ?? this.paddingClassification,
       sizeIcon: sizeIcon ?? this.sizeIcon,
       widthTableBorder: widthTableBorder ?? this.widthTableBorder,
+      sizeLoadImage: sizeLoadImage ?? this.sizeLoadImage,
       backgroundColor: backgroundColor ?? this.backgroundColor,
       nameStyle: nameStyle ?? this.nameStyle,
       scientificNameText: scientificNameText ?? this.scientificNameText,
@@ -93,6 +97,7 @@ class MushroomDetailTheme extends ThemeExtension<MushroomDetailTheme> {
       paddingClassification: paddingClassification + (other.paddingClassification - paddingClassification) * t,
       sizeIcon: sizeIcon + (other.sizeIcon - sizeIcon) * t,
       widthTableBorder: widthTableBorder + (other.widthTableBorder - widthTableBorder) * t,
+      sizeLoadImage: sizeLoadImage + (other.sizeLoadImage - sizeLoadImage) * t,
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t)!,
       nameStyle: TextStyle.lerp(nameStyle, other.nameStyle, t)!,
       scientificNameText: TextStyle.lerp(scientificNameText, other.scientificNameText, t)!,

@@ -13,21 +13,21 @@ class FirestoreUtils{
       List<String>? lastName;
       List<String>? lastNameScientific;
       Query queryName = FirebaseFirestore.instance
-          .collection("mushroom")
-          .where("name", arrayContains: mushroom.toLowerCase())
-          .where("name", isLessThan: '${mushroom.toLowerCase()}\uf8ff')
-          .orderBy("name")
-          .limit(limit);
+        .collection("mushroom")
+        .where("name", isGreaterThanOrEqualTo: mushroom.toLowerCase())
+        .where("name", isLessThan: '${mushroom.toLowerCase()}\uf8ff')
+        .orderBy("name")
+        .limit(limit);
       if (lastResultName != null) {
         queryName = queryName.startAfter(lastResultName);
       }
       QuerySnapshot snapshotName = await queryName.get();
       Query queryNameScientific = FirebaseFirestore.instance
-          .collection("mushroom")
-          .where("name_scientific", isGreaterThanOrEqualTo: mushroom.toLowerCase())
-          .where("name_scientific", isLessThan: '${mushroom.toLowerCase()}\uf8ff')
-          .orderBy("name_scientific")
-          .limit(limit);
+        .collection("mushroom")
+        .where("name_scientific", isGreaterThanOrEqualTo: mushroom.toLowerCase())
+        .where("name_scientific", isLessThan: '${mushroom.toLowerCase()}\uf8ff')
+        .orderBy("name_scientific")
+        .limit(limit);
       if (lastResultNameScientific != null) {
         queryNameScientific = queryNameScientific.startAfter(lastResultNameScientific);
       }
@@ -56,5 +56,24 @@ class FirestoreUtils{
       }
     }
     return FirestorePagination<Mushroom>(limit: limit, result: [], lastResult: []);
+  }
+
+  static Future<Mushroom?> getMushroomNameScientific(BuildContext context, String mushroom) async {
+    try {
+      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+                                            .collection("mushroom")
+                                            .where("name_scientific", isEqualTo: mushroom.toLowerCase())
+                                            .get();
+      if (querySnapshot.docs.isNotEmpty) {
+        return Mushroom.fromMap(querySnapshot.docs.first.data() as Map<String, Object?>);
+      } else {
+        return null;
+      }
+    } catch (e) {
+      if(context.mounted){
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle, AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError);
+      }
+    }
+    return null;
   }
 }
