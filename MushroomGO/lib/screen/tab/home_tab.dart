@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
+import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/screen/tab/home_for_you_tab.dart';
 import 'package:mushroom_go/screen/tab/home_news_tab.dart';
 import 'package:mushroom_go/screen/tab/navigation/top/navigation_bar_tab_top.dart';
 import 'package:mushroom_go/screen/tab/navigation/top/navigation_view_tab_top.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 
 class HomeTab extends StatefulWidget {
   final BuildContext mainPageContext;
@@ -43,6 +45,17 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
           tabController: _tabController,
           tabs: _tabTitle,
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
+            child: GestureDetector(
+              onTap: (){
+                Navigator.of(widget.mainPageContext).pushNamed(NavigationConstant.searchPage);
+              },
+              child: Icon(MushroomGOFontUtils.search, size: DimensionConstant.titleMedium),
+            ),
+          )
+        ],
       ),
       body: NavigationViewTabTop(
         tabController: _tabController,

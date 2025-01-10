@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mushroom_go/screen/widget/image/loading_image.dart';
 import 'package:mushroom_go/theme/loading_container_theme.dart';
 import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 
@@ -33,7 +34,8 @@ class _LoadingContainerState extends State<LoadingContainer> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(MushroomGOFontUtils.logo, color: theme.iconColor, size: theme.iconSize,),
+            //Icon(MushroomGOFontUtils.logo, color: theme.iconColor, size: theme.iconSize,),
+            LoadingImage(size: 40),
             SizedBox(height: theme.space),
             Text(
               widget.message,

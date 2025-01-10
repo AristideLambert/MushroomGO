@@ -335,6 +335,30 @@
   "@accountUpdatePasswordSettingButtonReset": {
     "description": "Button reset (AccountUpdatePasswordSetting)"
   },
+  "searchHistoryTitleNoHistory": "No history",
+  "@searchHistoryTitleNoHistory": {
+    "description": "Title no history (SearchHistory)"
+  },
+  "searchHistoryButtonDelete": "Clear",
+  "@searchHistoryButtonDelete": {
+    "description": "Button delete (SearchHistory)"
+  },
+  "searchResultTitleNoResult": "No result",
+  "@searchResultTitleNoResult": {
+    "description": "Title no result (SearchResult)"
+  },
+  "searchResultInProgressTitle": "Loading...",
+  "@searchResultInProgressTitle": {
+    "description": "Title in progress (SearchResult)"
+  },
+  "searchTextInputPlaceHolder": "Search a mushroom",
+  "@searchTextInputPlaceHolder": {
+    "description": "TextInput place holder (Search)"
+  },
+  "searchButtonCancel": "Cancel",
+  "@searchButtonCancel": {
+    "description": "Button cancel (Search)"
+  },
   "popupOK": "OK",
   "@popupOK": {
     "description": "OK option (Popup)"
@@ -606,5 +630,13 @@
   "firebaseAuthUtilsUpdateImageProfileAccountDescription": "Profile image successfully updated",
   "@firebaseAuthUtilsUpdateImageProfileAccountDescription": {
     "description": "Update image profile account description (FirebaseAuthUtils)"
+  },
+  "firestoreUtilsSearchMushroomTitle": "Search mushroom",
+  "@firestoreUtilsSearchMushroomTitle": {
+    "description": "Search mushroom title (FirestoreUtils)"
+  },
+  "firestoreUtilsSearchMushroomError": "Unable to load results.\nPlease try again later",
+  "@firestoreUtilsSearchMushroomError": {
+    "description": "Search mushroom error - unable to load results (FirestoreUtils)"
   }
 }

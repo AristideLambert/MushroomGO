@@ -233,6 +233,24 @@ class TextStyleConstant {
     fontSize: DimensionConstant.titleSmall,
     fontWeight: FontWeight.bold,
   );
+
+  // SearchResultList
+  static const TextStyle darkTitleSearchResultList = TextStyle(
+      color: ColorConstant.darkTextSearchResultList,
+      fontSize: DimensionConstant.titleSmall,
+      fontWeight: FontWeight.bold
+  );
+  static const TextStyle lightTitleSearchResultList = TextStyle(
+      color: ColorConstant.lightTextSearchResultList,
+      fontSize: DimensionConstant.titleSmall,
+      fontWeight: FontWeight.bold
+  );
+  static const TextStyle scientificNameSearchResultList = TextStyle(
+      color: ColorConstant.primaryColor,
+      fontSize: DimensionConstant.bodyText,
+      fontStyle: FontStyle.italic
+  );
+
   // MushroomDetail
   static const TextStyle lightNameMushroomDetail = TextStyle(
     color: ColorConstant.lightNameMushroomDetail,
@@ -336,22 +354,6 @@ class TextStyleConstant {
     color: ColorConstant.lightTextHistoryTab,
     fontSize: DimensionConstant.bodyText,
     fontWeight: FontWeight.bold
-  );
-  // SearchResultPage
-  static const TextStyle darkTitleSearchResultPage = TextStyle(
-      color: ColorConstant.darkTextSearchResultPage,
-      fontSize: DimensionConstant.titleSmall,
-      fontWeight: FontWeight.bold
-  );
-  static const TextStyle lightTitleSearchResultPage = TextStyle(
-      color: ColorConstant.lightTextSearchResultPage,
-      fontSize: DimensionConstant.titleSmall,
-      fontWeight: FontWeight.bold
-  );
-  static const TextStyle scientificNameSearchResultPage = TextStyle(
-      color: ColorConstant.primaryColor,
-      fontSize: DimensionConstant.bodyText,
-      fontStyle: FontStyle.italic
   );
 
   // TextInput

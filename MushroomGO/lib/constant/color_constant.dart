@@ -95,6 +95,15 @@ class ColorConstant{
   static const Color lightTitleHomeNewsList = CupertinoColors.label;
   static const Color darkTitleHomeNewsList = CupertinoColors.white;
 
+  //SearchResultList
+  static const Color lightTextSearchResultList = CupertinoColors.label;
+  static const Color darkTextSearchResultList = CupertinoColors.white;
+  static const Color rightIconSearchResultList = CupertinoColors.systemGrey;
+
+  //SearchHistoryList
+  static const Color leftIconSearchHistoryList = CupertinoColors.systemGrey;
+  static const Color rightIconSearchHistoryList = CupertinoColors.systemGrey;
+
   // HomeForYou
   static const Color lightBackgroundHomeForYou = CupertinoColors.systemBackground;
   static const Color darkBackgroundHomeForYou = CupertinoColors.darkBackgroundGray;
@@ -119,10 +128,6 @@ class ColorConstant{
   static const Color darkTextHistoryTab = CupertinoColors.white;
   static const Color lightBackgroundHistoryTab = CupertinoColors.systemBackground;
   static const Color darkBackgroundHistoryTab = CupertinoColors.darkBackgroundGray;
-
-  //SearchResultPage
-  static const Color lightTextSearchResultPage = CupertinoColors.label;
-  static const Color darkTextSearchResultPage = CupertinoColors.white;
 
   // TextInput
   static const Color lightTitleTextInput = CupertinoColors.black;

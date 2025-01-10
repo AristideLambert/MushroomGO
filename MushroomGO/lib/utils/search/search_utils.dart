@@ -10,17 +10,23 @@ class SearchUtils {
     await prefs.setStringList(_key, history);
   }
 
+  static Future<bool> hasHistory() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.containsKey(_key);
+  }
+
   static Future<List<String>> getHistory() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getStringList(_key) ?? [];
   }
 
-  static Future<void> addToHistory(String query) async {
+  static Future<void> addToHistory(String item) async {
     final history = await getHistory();
-    if (!history.contains(query)) {
-      history.add(query);
-      await saveHistory(history);
+    if (history.contains(item)) {
+      await removeHistory(item);
     }
+    history.add(item);
+    await saveHistory(history);
   }
 
   static Future<void> removeHistory(String item) async {

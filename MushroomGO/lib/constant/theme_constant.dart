@@ -14,7 +14,8 @@ import 'package:mushroom_go/theme/mushroom_detail_theme.dart';
 import 'package:mushroom_go/theme/navigation_tab_bottom_theme.dart';
 import 'package:mushroom_go/theme/navigation_tab_top_theme.dart';
 import 'package:mushroom_go/theme/profile_container_theme.dart';
-import 'package:mushroom_go/theme/search_result_theme.dart';
+import 'package:mushroom_go/theme/search_history_list_theme.dart';
+import 'package:mushroom_go/theme/search_result_list_theme.dart';
 import 'package:mushroom_go/theme/loading_container_theme.dart';
 import 'package:mushroom_go/theme/text_input_policy_theme.dart';
 import 'package:mushroom_go/theme/text_input_theme.dart';
@@ -98,6 +99,10 @@ class ThemeConstant{
         titleStyle: TextStyleConstant.lightTitleHomeForYouList,
         titleItemStyle: TextStyleConstant.lightTitleItemHomeForYouList
       ),
+      const SearchResultListTheme(
+        titleStyle: TextStyleConstant.lightTitleSearchResultList
+      ),
+      const SearchHistoryListTheme(),
       const MushroomDetailTheme(
         backgroundColor: ColorConstant.lightBackgroundMushroomDetail,
         titleStyle: TextStyleConstant.lightTitleMushroomDetail,
@@ -114,9 +119,6 @@ class ThemeConstant{
         textStyle: TextStyleConstant.lightTextHistoryTab,
         titleStyle: TextStyleConstant.lightTitleHistoryTab,
         cardBackgroundColor: ColorConstant.lightBackgroundHistoryTab
-      ),
-      const SearchResultTheme(
-        titleStyle: TextStyleConstant.lightTitleSearchResultPage
       ),
       const TextInputTheme(
         titleStyle: TextStyleConstant.lightTitleTextInput,
@@ -210,6 +212,10 @@ class ThemeConstant{
         titleStyle: TextStyleConstant.darkTitleHomeForYouList,
         titleItemStyle: TextStyleConstant.darkTitleItemHomeForYouList
       ),
+      const SearchResultListTheme(
+        titleStyle: TextStyleConstant.darkTitleSearchResultList
+      ),
+      const SearchHistoryListTheme(),
       const MushroomDetailTheme(
         backgroundColor: ColorConstant.darkBackgroundMushroomDetail,
         titleStyle: TextStyleConstant.darkTitleMushroomDetail,
@@ -226,9 +232,6 @@ class ThemeConstant{
         textStyle: TextStyleConstant.darkTextHistoryTab,
         titleStyle: TextStyleConstant.darkTitleHistoryTab,
         cardBackgroundColor: ColorConstant.darkBackgroundHistoryTab
-      ),
-      const SearchResultTheme(
-        titleStyle: TextStyleConstant.darkTitleSearchResultPage
       ),
       const TextInputTheme(
         titleStyle: TextStyleConstant.darkTitleTextInput,

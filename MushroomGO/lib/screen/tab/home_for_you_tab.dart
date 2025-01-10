@@ -62,7 +62,9 @@ class _HomeForYouTabState extends State<HomeForYouTab> {
                     description: "A popular edible mushroom.",
                     scientificName: "Lentinula edodes",
                     imageUrl: "https://freestylefarm.ca/wp-content/uploads/2012/03/Mushroomshitake-1674.jpg",
-                    culinaryInfo: "Comestible et savoureux, utilisé dans la cuisine asiatique.",
+                    culinaryInformation: "Comestible et savoureux, utilisé dans la cuisine asiatique.",
+                    location: "Europe",
+                    family: "Family",
                     recipes: [
                       Recipe(
                         title: "Shiitake Stir Fry",
@@ -82,7 +84,9 @@ class _HomeForYouTabState extends State<HomeForYouTab> {
                     scientificName: "Pleurotus ostreatus",
                     imageUrl:
                     "https://images.squarespace-cdn.com/content/v1/5e4ecb5e9b47827d217b203c/bedb7bbe-24d8-4148-9f6f-81f77037b41d/mycoremediation+of+mushrooms.jpg",
-                    culinaryInfo: "Toxique mortel, à éviter absolument."
+                    culinaryInformation: "Toxique mortel, à éviter absolument.",
+                    location: "Europe",
+                    family: "Family",
                   ),
                   Mushroom(
                     name: "Porcini",
@@ -90,7 +94,9 @@ class _HomeForYouTabState extends State<HomeForYouTab> {
                     scientificName: "Boletus edulis",
                     imageUrl:
                     "https://www.thespruceeats.com/thmb/Oe-EfLAp_AkCYN7ZSwq25n800i8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-475150545-1a11dccd4c804c859d1f1a2d3f525070.jpg",
-                    culinaryInfo: "Toxique, contient des substances dangereuses pour le système nerveux."
+                    culinaryInformation: "Toxique, contient des substances dangereuses pour le système nerveux.",
+                    location: "Europe",
+                    family: "Family",
                   ),
                   Mushroom(
                     name: "Morel",
@@ -98,7 +104,9 @@ class _HomeForYouTabState extends State<HomeForYouTab> {
                     scientificName: "Morchella esculenta",
                     imageUrl:
                     "https://media.istockphoto.com/id/505505411/photo/common-morel-fungus.jpg?s=612x612&w=0&k=20&c=tgu9fIMGu5J7fRO5Wh4kryJHZqOc_EXKeVF0Jz9Zuxo=",
-                    culinaryInfo: "Comestible et apprécié pour son goût unique."
+                    culinaryInformation: "Comestible et apprécié pour son goût unique.",
+                    location: "Europe",
+                    family: "Family",
                   ),
                 ],
                 itemBuilder: (context, Mushroom mushroom, index, theme) {

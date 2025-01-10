@@ -80,7 +80,7 @@ class DimensionConstant {
   static const double paddingLoadingContainer = 16.0;
   static const double radiusLoadingContainer = 10.0;
   static const double iconSizeLoadingContainer = 35.0;
-  static const double spaceLoadingContainer = 16.0;
+  static const double spaceLoadingContainer = 8.0;
 
   // ButtonStandard
   static const double radiusButtonStandard = 15.0;
@@ -153,6 +153,19 @@ class DimensionConstant {
   static const double textPaddingHomeForYouList = 8.0;
   static const double textOpacityHomeForYouList = 0.9;
 
+  // SearchResultList
+  static const double defaultPaddingSearchResultList = 8.0;
+  static const double itemRadiusSearchResultList = 8.0;
+  static const double imageWidthHeightSearchResultList = 60.0;
+  static const double spaceBetweenItemSearchResultList = 16.0;
+  static const double heightBetweenNameScientificNameSearchResultList = 4.0;
+  static const double sizeLoadingImageSearchResultList = 50.0;
+
+  //SearchHistoryList
+  static const double paddingSearchHistoryList = 8.0;
+  static const double sizeLeftIconSearchHistoryList = 12.0;
+  static const double sizeRightIconSearchHistoryList = 12.0;
+
   // MushroomDetail
   static const double radiusItemMushroomDetail = 8.0;
   static const double imageHeightMushroomDetail = 200.0;
@@ -184,13 +197,6 @@ class DimensionConstant {
   static const double imageWidthHeightHistoryTab = 80.0;
   static const double spaceBetweenTextHistoryTab = 4.0;
 
-  // SearchResultPage
-  static const double defaultPaddingSearchResultPage = 8.0;
-  static const double itemRadiusSearchResultPage = 8.0;
-  static const double imageWidthHeightSearchResultPage = 60.0;
-  static const double spaceBetweenItemSearchResultPage = 16.0;
-  static const double heightBetweenNameScientificNameSearchResultPage = 4.0;
-
   // TextInput
   static const double leftPaddingTitleTextInput = 10.0;
   static const double bottomPaddingTitleTextInput = 5.0;
@@ -211,4 +217,7 @@ class DimensionConstant {
   // TextInputPolicy
   static const double iconSizeTextInputPolicy = captionText;
   static const double spaceTextInputPolicy = 5.0;
+
+  // LoadingImage
+  static const double radiusLoadingImage = 5.0;
 }

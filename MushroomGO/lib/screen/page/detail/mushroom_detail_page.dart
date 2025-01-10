@@ -61,7 +61,7 @@ class _MushroomDetailPageState extends State<MushroomDetailPage> {
               MushroomDetailColumn(
                 sectionType: SectionType.culinaryInfo,
                 title: AppLocalizations.of(context)!.culinaryInformation,
-                content: widget.mushroom.culinaryInfo ?? AppLocalizations.of(context)!.notSpecified,
+                content: widget.mushroom.culinaryInformation ?? AppLocalizations.of(context)!.notSpecified,
               ),
               const SizedBox(height: DimensionConstant.defaultPadding),
               if (widget.mushroom.recipes != null && widget.mushroom.recipes!.isNotEmpty)

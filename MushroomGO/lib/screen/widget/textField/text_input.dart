@@ -18,6 +18,8 @@ class TextInput extends StatefulWidget {
   final bool passwordPolicy;
   final bool suggestions;
   final bool autocorrect;
+  final Function(String)? onTapOutside;
+  final Function(String)? onSubmitted;
   final TextInputTheme? theme;
 
   const TextInput(
@@ -33,6 +35,8 @@ class TextInput extends StatefulWidget {
       this.passwordPolicy = false,
       this.suggestions = true,
       this.autocorrect = true,
+      this.onTapOutside,
+      this.onSubmitted,
       this.theme
     });
 
@@ -122,6 +126,11 @@ class _TextInputState extends State<TextInput> {
                           _specialCharacter = PasswordUtils.checkSpecialCharacter(password);
                         });
                       } : null,
+                      onTapOutside: (_){
+                        FocusScope.of(context).unfocus();
+                        widget.onTapOutside?.call(_controller.text);
+                      },
+                      onSubmitted: widget.onSubmitted,
                     ),
                   ),
                 ),

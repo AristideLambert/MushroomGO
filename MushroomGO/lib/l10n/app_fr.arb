@@ -83,6 +83,12 @@
   "accountUpdatePasswordSettingTitleNewPassword": "Nouveau mot de passe",
   "accountUpdatePasswordSettingButtonSave": "Enregistrer",
   "accountUpdatePasswordSettingButtonReset": "Réinitialiser",
+  "searchHistoryTitleNoHistory": "Aucun historique",
+  "searchHistoryButtonDelete": "Effacer",
+  "searchResultTitleNoResult": "Aucun résultat",
+  "searchResultInProgressTitle": "Chargement en cours...",
+  "searchTextInputPlaceHolder": "Rechercher un champignon",
+  "searchButtonCancel": "Annuler",
   "popupOK": "OK",
   "popupCancel": "Annuler",
   "popupDelete": "Supprimer",
@@ -150,5 +156,7 @@
   "firebaseAuthUtilsErrorDeleteAccountRequiresRecentLogin": "Pour des raisons de sécurité, veuillez vous reconnecter pour effectuer cette action.",
   "firebaseAuthUtilsUpdateImageProfileAccountInProgressTitle": "Mise à jour de l'image de profil en cours...",
   "firebaseAuthUtilsUpdateImageProfileAccountTitle": "Mise à jour de l'image de profil",
-  "firebaseAuthUtilsUpdateImageProfileAccountDescription": "Image de profil mise à jour avec succès"
+  "firebaseAuthUtilsUpdateImageProfileAccountDescription": "Image de profil mise à jour avec succès",
+  "firestoreUtilsSearchMushroomTitle": "Recherche de champignons",
+  "firestoreUtilsSearchMushroomError": "Impossible de charger les résultats.\nVeuillez réessayer plus tard"
 }

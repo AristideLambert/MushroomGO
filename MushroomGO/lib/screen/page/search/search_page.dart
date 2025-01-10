@@ -5,6 +5,8 @@ import 'package:mushroom_go/screen/page/search/search_result_page.dart';
 import 'package:mushroom_go/screen/widget/text/text_output.dart';
 import 'package:mushroom_go/screen/widget/textField/text_input.dart';
 import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
+import 'package:mushroom_go/utils/search/search_utils.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -36,30 +38,41 @@ class _SearchPageState extends State<SearchPage> {
               padding: EdgeInsets.only(
                 left: DimensionConstant.defaultPadding,
                 right: DimensionConstant.defaultPadding,
-                bottom: 12
+                bottom: DimensionConstant.defaultPadding - DimensionConstant.defaultPadding / 4
               ),
               child: Row(
                 children: [
                   Expanded(
-                      child: TextInput(
-                          controller: _controllerSearch,
-                          textInputAction: TextInputAction.search,
-                          keyboardType: TextInputType.text,
-                          placeHolder: "Rechercher un champignon",
-                        leftIcon: MushroomGOFontUtils.search,
-                        clearText: true,
-
-                      )
+                    child: TextInput(
+                      controller: _controllerSearch,
+                      textInputAction: TextInputAction.search,
+                      keyboardType: TextInputType.text,
+                      placeHolder: AppLocalizations.of(context)!.searchTextInputPlaceHolder,
+                      leftIcon: MushroomGOFontUtils.search,
+                      clearText: true,
+                      onTapOutside: (search){
+                        SearchUtils.addToHistory(search);
+                      },
+                      onSubmitted: (search){
+                        SearchUtils.addToHistory(search);
+                      },
+                    )
                   ),
                   SizedBox(width: DimensionConstant.defaultPadding,),
-                  TextOutput(text: "Annuler", fontColor: Theme.of(context).primaryColor,)
+                  TextOutput(
+                    text: AppLocalizations.of(context)!.searchButtonCancel,
+                    fontColor: Theme.of(context).primaryColor,
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    }
+                  )
                 ],
               ),
             ),
             if(_controllerSearch.text.isEmpty) ... [
               Expanded(child: SearchHistoryPage(controllerSearch: _controllerSearch))
             ] else ... [
-              Expanded(child: SearchResultPage())
+              Expanded(child: SearchResultPage(controllerSearch: _controllerSearch))
             ]
           ],
         ),

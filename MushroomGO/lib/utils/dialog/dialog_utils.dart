@@ -20,28 +20,31 @@ class DialogUtils{
     });
   }
 
-  static Future showPopup(BuildContext context, String title, String content, String titlePositive, Function()? onTapPositive, bool isDestructiveActionPositive, String titleNegative, Function()? onTapNegative, bool isDestructiveActionNegative){
-    return Platform.isIOS ? _iosPopup(context, title, content, titlePositive, onTapPositive, isDestructiveActionPositive, titleNegative, onTapNegative, isDestructiveActionNegative) : _androidPopup(context, title, content, titlePositive, onTapPositive, isDestructiveActionPositive, titleNegative, onTapNegative, isDestructiveActionNegative);
+  static void showPopup(BuildContext context, String title, String content, String titlePositive, Function()? onTapPositive, bool isDestructiveActionPositive, String titleNegative, Function()? onTapNegative, bool isDestructiveActionNegative){
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Platform.isIOS ? _iosPopup(context, title, content, titlePositive, onTapPositive, isDestructiveActionPositive, titleNegative, onTapNegative, isDestructiveActionNegative) : _androidPopup(context, title, content, titlePositive, onTapPositive, isDestructiveActionPositive, titleNegative, onTapNegative, isDestructiveActionNegative);
+    });
   }
 
-  static Future showPopupInformation(BuildContext context, String title, String content, String titlePositive, Function()? onTapPositive, bool isDestructiveActionPositive){
-    return Platform.isIOS ? _iosPopup(context, title, content, titlePositive, onTapPositive, isDestructiveActionPositive, null, null, false) : _androidPopup(context, title, content, titlePositive, onTapPositive, isDestructiveActionPositive, null, null, false);
+  static void showPopupInformation(BuildContext context, String title, String content, String titlePositive, Function()? onTapPositive, bool isDestructiveActionPositive){
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Platform.isIOS ? _iosPopup(context, title, content, titlePositive, onTapPositive, isDestructiveActionPositive, null, null, false) : _androidPopup(context, title, content, titlePositive, onTapPositive, isDestructiveActionPositive, null, null, false);
+    });
   }
 
   static Future _iosPopup(BuildContext context, String title, String content, String titlePositive, Function()? onTapPositive, bool isDestructiveActionPositive, String? titleNegative, Function()? onTapNegative, bool isDestructiveActionNegative){
-
     return showCupertinoDialog(
       context: context,
       builder: (BuildContext context) {
         return IosPopup(
-          title: title,
-          content: content,
-          titlePositive: titlePositive,
-          onTapPositive: onTapPositive,
-          isDestructiveActionPositive: isDestructiveActionPositive,
-          titleNegative: titleNegative,
-          onTapNegative: onTapNegative,
-          isDestructiveActionNegative: isDestructiveActionNegative
+            title: title,
+            content: content,
+            titlePositive: titlePositive,
+            onTapPositive: onTapPositive,
+            isDestructiveActionPositive: isDestructiveActionPositive,
+            titleNegative: titleNegative,
+            onTapNegative: onTapNegative,
+            isDestructiveActionNegative: isDestructiveActionNegative
         );
       }
     );

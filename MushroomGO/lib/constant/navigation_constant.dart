@@ -39,13 +39,14 @@ class NavigationConstant {
   static const String webViewPage = "/WebViewPage";
   static const String badgeDetailPage = "/BadgeDetailPage";
   static const String cameraPage = "/CameraPage";
+  static const String searchPage = "/SearchPage";
 
 
   // Route
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case mainPage:
-        return MaterialPageRoute(builder: (context) => const SearchPage(), settings: settings);
+        return MaterialPageRoute(builder: (context) => const MainPage(), settings: settings);
       case loginPage:
         return MaterialPageRoute(builder: (context) => LoginPage(), settings: settings);
       case benefitAccountPage:
@@ -83,6 +84,8 @@ class NavigationConstant {
         return MaterialPageRoute(builder: (context) => BadgeDetailPage(mission: mission), settings: settings);
       case cameraPage:
         return MaterialPageRoute(builder: (context) => CameraPage(), settings: settings);
+      case searchPage:
+        return MaterialPageRoute(builder: (context) => SearchPage(), settings: settings);
       default:
         return MaterialPageRoute(builder: (context) => const MainPage(), settings: settings);
     }
