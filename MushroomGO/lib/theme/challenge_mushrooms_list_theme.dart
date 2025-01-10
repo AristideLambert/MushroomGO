@@ -11,6 +11,8 @@ class ChallengeMushroomsListTheme extends ThemeExtension<ChallengeMushroomsListT
   final double heightTitleItem;
   final double radiusItem;
   final double space;
+  final double lockerSize;
+  final double alphaColor;
   final Color backgroundColor;
   final TextStyle titleStyle;
   final TextStyle titleItemStyle;
@@ -22,6 +24,8 @@ class ChallengeMushroomsListTheme extends ThemeExtension<ChallengeMushroomsListT
     this.sizeImageItem = DimensionConstant.sizeImageItemChallengeMushroomsList,
     this.heightTitleItem = DimensionConstant.heightTitleItemChallengeMushroomsList,
     this.radiusItem = DimensionConstant.radiusItemChallengeMushroomsList,
+    this.lockerSize = DimensionConstant.lockerSizeChallengeMushroomsList,
+    this.alphaColor = DimensionConstant.alphaColorChallengeMushroomsList,
     this.titleItemStyle = TextStyleConstant.lightTitleItemChallengeMushroomsList,
     this.titleStyle = TextStyleConstant.lightTitleChallengeMushroomsList,
     this.backgroundColor = ColorConstant.lightBackgroundChallengeMushroomsList,

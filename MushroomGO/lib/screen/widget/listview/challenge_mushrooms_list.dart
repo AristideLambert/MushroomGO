@@ -42,7 +42,8 @@ class _ChallengeMushroomsListTabState extends State<ChallengeMushroomsListTab> {
             padding: EdgeInsets.zero,
             clipBehavior: Clip.none,
             itemBuilder: (context, index) {
-              return ChallengeMushroomsListItem(index: index, theme: theme);
+              bool isUnlocked = index % 2 == 0;
+              return ChallengeMushroomsListItem(index: index, isUnlocked: isUnlocked, theme: theme);
             },
           ),
         ),

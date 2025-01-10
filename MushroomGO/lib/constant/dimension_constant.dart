@@ -126,6 +126,8 @@ class DimensionConstant {
   static const double heightTitleItemChallengeMushroomsList = 35.0;
   static const double radiusItemChallengeMushroomsList = 16.0;
   static const double spaceChallengeMushroomsList = 5.0;
+  static const double lockerSizeChallengeMushroomsList = 50.0;
+  static const double alphaColorChallengeMushroomsList = 0.7;
 
   // ChallengeMissionsList
   static const double identTitleChallengeMissionsList = 16.0;
