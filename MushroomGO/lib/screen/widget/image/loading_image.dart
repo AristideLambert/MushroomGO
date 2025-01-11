@@ -8,9 +8,18 @@ class LoadingImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(DimensionConstant.radiusLoadingImage),
-      child: Image.asset("assets/images/logo_loading.gif", height: size, width: size,)
+    return SizedBox(
+      height: size,
+      width: size,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(DimensionConstant.radiusLoadingImage),
+        child: Image.asset(
+          "assets/images/logo_loading.gif",
+          fit: BoxFit.fitHeight,
+          height: size,
+          width: size,
+        ),
+      ),
     );
   }
 }

@@ -76,4 +76,52 @@ class FirestoreUtils{
     }
     return null;
   }
+  static Future<List<Mushroom>> fetchChallengeMushrooms(BuildContext context) async {
+    try {
+      final querySnapshot = await FirebaseFirestore.instance.collection("challenge_mushroom").get();
+
+      List<Mushroom> challengeMushrooms = [];
+      for (var doc in querySnapshot.docs) {
+        final challengeData = doc.data();
+        final mushroomId = challengeData["mushroom_id"];
+        if (mushroomId != null) {
+          final mushroomSnapshot = await FirebaseFirestore.instance
+              .collection("mushroom")
+              .doc(mushroomId)
+              .get();
+
+          if (mushroomSnapshot.exists) {
+            final String rarityString = challengeData["rarity"];
+            final Rarity rarity;
+            switch (rarityString) {
+              case "rare":
+                rarity = Rarity.rare;
+                break;
+              case "common":
+                rarity = Rarity.common;
+                break;
+              case "epic":
+                rarity = Rarity.epic;
+                break;
+              default:
+                rarity = Rarity.common;
+            }
+
+            final Mushroom mushroom = Mushroom.fromMap(mushroomSnapshot.data() as Map<String, Object?>, id: doc.id, rarity: rarity);
+            challengeMushrooms.add(mushroom);
+          }
+        }
+      }
+      return challengeMushrooms;
+    } catch (e) {
+      if (context.mounted) {
+        throw LoadingException(
+          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle,
+          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError,
+        );
+      }
+      return [];
+    }
+  }
+
 }

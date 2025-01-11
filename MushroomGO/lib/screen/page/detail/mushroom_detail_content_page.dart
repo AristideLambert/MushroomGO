@@ -44,11 +44,11 @@ class MushroomDetailContentPage extends StatelessWidget {
                 MushroomDetailColumn(
                   sectionType: SectionType.habitat,
                   title: AppLocalizations.of(context)!.mushroomHabitat,
-                  content: mushroom.habitat ?? AppLocalizations.of(context)!.notSpecified,
+                  content: mushroom.location,
                 ),
                 MushroomClassificationColumn(
                   classification: {
-                    AppLocalizations.of(context)!.mushroomFamily: mushroom.family ?? AppLocalizations.of(context)!.notSpecified,
+                    AppLocalizations.of(context)!.mushroomFamily: mushroom.family,
                     AppLocalizations.of(context)!.mushroomOrder: mushroom.order ?? AppLocalizations.of(context)!.notSpecified,
                     AppLocalizations.of(context)!.mushroomClass: mushroom.classification ?? AppLocalizations.of(context)!.notSpecified,
                     AppLocalizations.of(context)!.mushroomPhylum: mushroom.phylum ?? AppLocalizations.of(context)!.notSpecified,

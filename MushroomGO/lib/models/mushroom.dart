@@ -1,51 +1,56 @@
 import 'package:mushroom_go/utils/text/string_utils.dart';
-
 import 'recipe.dart';
 
+enum Rarity {rare, common, epic}
+
 class Mushroom {
+  final String? id;
   final String name;
   final String scientificName;
   final String description;
   final String imageUrl;
   final String location;
   final String family;
-  final String? habitat;
   final String? order;
   final String? classification;
   final String? phylum;
   final String? culinaryInformation;
   final String? edible;
+  final Rarity? rarity;
   final List<Recipe>? recipes;
 
   Mushroom({
+    this.id,
     required this.name,
     required this.scientificName,
     required this.description,
     required this.imageUrl,
     required this.location,
     required this.family,
-    this.habitat,
     this.order,
     this.classification,
     this.phylum,
     this.culinaryInformation,
     this.edible,
+    this.rarity,
     this.recipes,
   });
 
-  factory Mushroom.fromMap(Map<String, Object?> data) {
+  factory Mushroom.fromMap(Map<String, Object?> data, {String? id, Rarity? rarity}) {
     return Mushroom(
-      name: StringUtils.capitalizeEachWord(data['name'].toString() ?? 'Name'),
-      scientificName: StringUtils.capitalizeEachWord(data['name_scientific'].toString() ?? 'Scientific name'),
-      description: data['description'].toString() ?? 'Description',
-      imageUrl: data['image_url'].toString() ?? 'Image url',
-      location: data['location'].toString() ?? 'Location',
-      family: data['family'].toString() ?? 'Family',
-      order: data['order'].toString() ?? 'Order',
-      classification: data['class'].toString() ?? 'Classification',
-      phylum: data['phylum'].toString() ?? 'Phylum',
-      culinaryInformation: data['culinary_information'].toString()?? 'Culinary information',
-      edible: data['edible'].toString() ?? 'Edible'
+        id: id,
+        name: StringUtils.capitalizeEachWord(data['name'].toString()),
+        scientificName: StringUtils.capitalizeEachWord(data['name_scientific'].toString()),
+        description: data['description'].toString(),
+        imageUrl: data['image_url'].toString(),
+        location: data['location'].toString(),
+        family: data['family'].toString(),
+        order: data['order'].toString(),
+        classification: data['class'].toString(),
+        phylum: data['phylum'].toString(),
+        culinaryInformation: data['culinary_information'].toString(),
+        edible: data['edible'].toString(),
+        rarity: rarity
     );
   }
 

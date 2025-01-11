@@ -1,16 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mushroom_go/models/mushroom.dart';
+import 'package:mushroom_go/screen/widget/image/loading_image.dart';
 import 'package:mushroom_go/theme/challenge_mushrooms_list_theme.dart';
 
 class ChallengeMushroomsListItem extends StatefulWidget {
   final int index;
   final bool isUnlocked;
+  final Mushroom mushroom;
   final ChallengeMushroomsListTheme? theme;
 
   const ChallengeMushroomsListItem({
     super.key,
     required this.index,
     required this.isUnlocked,
+    required this.mushroom,
     this.theme,
   });
 
@@ -35,7 +39,7 @@ class _ChallengeMushroomsListItemState extends State<ChallengeMushroomsListItem>
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: widget.index == 0 ? EdgeInsets.zero : EdgeInsets.only(left: theme.paddingBetweenItem),
+      margin: EdgeInsets.only(right: theme.paddingBetweenItem),
       width: theme.widthItem,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(theme.radiusItem),
@@ -48,13 +52,30 @@ class _ChallengeMushroomsListItemState extends State<ChallengeMushroomsListItem>
                 width: theme.sizeImageItem,
                 height: theme.sizeImageItem,
                 decoration: BoxDecoration(
-                  image: const DecorationImage(
-                    image: NetworkImage('https://www.shutterstock.com/image-photo/boletus-mushrooms-growing-green-moss-600nw-2488892297.jpg'),
-                    fit: BoxFit.cover,
-                  ),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(theme.radiusItem),
                     topRight: Radius.circular(theme.radiusItem),
+                  ),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(theme.radiusItem),
+                    topRight: Radius.circular(theme.radiusItem),
+                  ),
+                  child: Image.network(
+                    widget.mushroom.imageUrl,
+                    width: theme.sizeImageItem,
+                    height:theme.sizeImageItem,
+                    fit: BoxFit.cover,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) {
+                        return child;
+                      }
+                      return LoadingImage(size: theme.sizeImageItem);
+                    },
+                    errorBuilder: (context, error, stackTrace) {
+                      return LoadingImage(size: theme.sizeImageItem);
+                    },
                   ),
                 ),
               ),
@@ -70,7 +91,7 @@ class _ChallengeMushroomsListItemState extends State<ChallengeMushroomsListItem>
                 ),
                 child: Center(
                   child: Text(
-                    'Champignon ${widget.index + 1}',
+                    widget.mushroom.name,
                     textAlign: TextAlign.center,
                     style: theme.titleItemStyle,
                   ),

@@ -158,5 +158,8 @@
   "firebaseAuthUtilsUpdateImageProfileAccountTitle": "Mise à jour de l'image de profil",
   "firebaseAuthUtilsUpdateImageProfileAccountDescription": "Image de profil mise à jour avec succès",
   "firestoreUtilsSearchMushroomTitle": "Recherche de champignons",
-  "firestoreUtilsSearchMushroomError": "Impossible de charger les résultats.\nVeuillez réessayer plus tard"
+  "firestoreUtilsSearchMushroomError": "Impossible de charger les résultats.\nVeuillez réessayer plus tard",
+  "challengeMushroomsLoadingData": "Chargement des données...",
+  "challengeMushroomsErrorLoadingData": "Erreur lors du chargement des données",
+  "loadingErrorContainerReload": "Actualiser"
 }

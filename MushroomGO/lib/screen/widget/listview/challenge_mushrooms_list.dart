@@ -1,36 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:mushroom_go/models/mushroom.dart';
 import 'package:mushroom_go/screen/widget/listview/challenge_mushrooms_list_item.dart';
 import 'package:mushroom_go/theme/challenge_mushrooms_list_theme.dart';
 
-class ChallengeMushroomsListTab extends StatefulWidget {
-
+class ChallengeMushroomsListTab extends StatelessWidget {
   final String category;
-  final int itemCount;
+  final List<Mushroom> mushrooms;
   final ChallengeMushroomsListTheme? theme;
 
-  const ChallengeMushroomsListTab({super.key, required this.category, required this.itemCount, this.theme});
+  const ChallengeMushroomsListTab({
+    super.key,
+    required this.category,
+    required this.mushrooms,
+    this.theme,
+  });
 
-  @override
-  State<ChallengeMushroomsListTab> createState() => _ChallengeMushroomsListTabState();
-}
-
-class _ChallengeMushroomsListTabState extends State<ChallengeMushroomsListTab> {
-  late ChallengeMushroomsListTheme theme;
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    theme = (widget.theme ?? Theme.of(context).extension<ChallengeMushroomsListTheme>())!;
-  }
   @override
   Widget build(BuildContext context) {
+    final theme = this.theme ?? Theme.of(context).extension<ChallengeMushroomsListTheme>()!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           margin: EdgeInsets.only(left: theme.identTitle),
           child: Text(
-            widget.category,
-            style: theme.titleStyle
+            category,
+            style: theme.titleStyle,
           ),
         ),
         SizedBox(height: theme.space),
@@ -38,12 +33,21 @@ class _ChallengeMushroomsListTabState extends State<ChallengeMushroomsListTab> {
           height: theme.heightTitleItem + theme.sizeImageItem,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: widget.itemCount,
+            itemCount: mushrooms.length,
             padding: EdgeInsets.zero,
             clipBehavior: Clip.none,
             itemBuilder: (context, index) {
-              bool isUnlocked = index % 2 == 0;
-              return ChallengeMushroomsListItem(index: index, isUnlocked: isUnlocked, theme: theme);
+              final mushroom = mushrooms[index];
+              final isUnlocked = index % 2 == 0;
+              return SizedBox(
+                width: theme.widthItem,
+                child: ChallengeMushroomsListItem(
+                  index: index,
+                  isUnlocked: isUnlocked,
+                  theme: theme,
+                  mushroom: mushroom,
+                ),
+              );
             },
           ),
         ),
@@ -51,3 +55,4 @@ class _ChallengeMushroomsListTabState extends State<ChallengeMushroomsListTab> {
     );
   }
 }
+

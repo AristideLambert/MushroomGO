@@ -638,5 +638,17 @@
   "firestoreUtilsSearchMushroomError": "Unable to load results.\nPlease try again later",
   "@firestoreUtilsSearchMushroomError": {
     "description": "Search mushroom error - unable to load results (FirestoreUtils)"
+  },
+ "challengeMushroomsLoadingData": "Loading data...",
+ "@challengeMushroomsLoadingData": {
+   "description": "Loading Data"
+  },
+    "challengeMushroomsErrorLoadingData": "Error loading data",
+    "@challengeMushroomsErrorLoadingData": {
+      "description": "Error Loading Data"
+  },
+    "loadingErrorContainerReload": "Reload",
+    "@loadingErrorContainerReload": {
+      "description": "Reload"
   }
 }
