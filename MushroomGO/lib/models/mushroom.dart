@@ -17,6 +17,7 @@ class Mushroom {
   final String? culinaryInformation;
   final String? edible;
   final Rarity? rarity;
+  bool? isUnlock;
   final List<Recipe>? recipes;
 
   Mushroom({
@@ -33,6 +34,7 @@ class Mushroom {
     this.culinaryInformation,
     this.edible,
     this.rarity,
+    this.isUnlock,
     this.recipes,
   });
 

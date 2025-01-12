@@ -21,12 +21,12 @@ class _ChallengeMushroomsTabState extends State<ChallengeMushroomsTab> {
   @override
   void initState() {
     super.initState();
-    _challengeMushrooms = FirestoreUtils.fetchChallengeMushrooms(context);
+    _challengeMushrooms = FirestoreUtils.fetchChallengeMushroomsWithUnlockState(context);
   }
 
   void _reloadData() {
     setState(() {
-      _challengeMushrooms = FirestoreUtils.fetchChallengeMushrooms(context);
+      _challengeMushrooms = FirestoreUtils.fetchChallengeMushroomsWithUnlockState(context);
     });
   }
 

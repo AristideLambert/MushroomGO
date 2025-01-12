@@ -38,12 +38,12 @@ class ChallengeMushroomsListTab extends StatelessWidget {
             clipBehavior: Clip.none,
             itemBuilder: (context, index) {
               final mushroom = mushrooms[index];
-              final isUnlocked = index % 2 == 0;
+              final isUnlocked = mushroom.isUnlock;
               return SizedBox(
                 width: theme.widthItem,
                 child: ChallengeMushroomsListItem(
                   index: index,
-                  isUnlocked: isUnlocked,
+                  isUnlocked: isUnlocked??false,
                   theme: theme,
                   mushroom: mushroom,
                 ),

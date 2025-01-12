@@ -189,7 +189,7 @@ class FirestoreUtils{
                 rarity = Rarity.common;
             }
 
-            final Mushroom mushroom = Mushroom.fromMap(mushroomSnapshot.data() as Map<String, Object?>, id: doc.id, rarity: rarity);
+            final Mushroom mushroom = Mushroom.fromMap(mushroomSnapshot.data() as Map<String, Object?>, id: mushroomId, rarity: rarity);
             challengeMushrooms.add(mushroom);
           }
         }
@@ -197,6 +197,39 @@ class FirestoreUtils{
       return challengeMushrooms;
     } catch (e) {
       if (context.mounted) {
+        // TODO: change string (LoadingException)
+        throw LoadingException(
+          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle,
+          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError,
+        );
+      }
+      return [];
+    }
+  }
+  static Future<List<Mushroom>> fetchChallengeMushroomsWithUnlockState(BuildContext context) async {
+    try {
+      final List<Mushroom> challengeMushrooms = await fetchChallengeMushrooms(context);
+
+      final userId = FirebaseAuth.instance.currentUser!.uid;
+      final scanMushroomsSnapshot = await FirebaseFirestore.instance
+          .collection("scan_mushroom")
+          .where("user", isEqualTo: userId)
+          .get();
+
+      final scannedMushroomIds = scanMushroomsSnapshot.docs
+          .map((doc) => doc.data()["mushroom_id"] as String?)
+          .toSet();
+      final List<Mushroom> challengeMushroomsUnlockState = [];
+      Mushroom mushroom;
+      for (mushroom in challengeMushrooms) {
+        mushroom.isUnlock = scannedMushroomIds.contains(mushroom.id);
+        challengeMushroomsUnlockState.add(mushroom);
+      }
+
+      return challengeMushroomsUnlockState;
+    } catch (e) {
+      if (context.mounted) {
+        // TODO: change string (LoadingException)
         throw LoadingException(
           AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle,
           AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError,
