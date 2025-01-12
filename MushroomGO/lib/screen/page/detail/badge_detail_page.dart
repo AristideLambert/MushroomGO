@@ -25,43 +25,47 @@ class _BadgeDetailPageState extends State<BadgeDetailPage> {
   }
   @override
   Widget build(BuildContext context) {
+    final appBarHeight = AppBar().preferredSize.height;
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.mission.title),
       ),
       body: SafeArea(
-        child: Center(
-          child: Container(
-            padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(
-                  widget.mission.badge,
-                  fit: BoxFit.contain,
-                  height: theme.heightImageDetail,
-                ),
-                SizedBox(height: theme.spaceBetweenText),
-                Text(
-                  widget.mission.title,
-                  style: theme.titleStyle,
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: theme.spaceBetweenText),
-                Text(
-                  widget.mission.description,
-                  style: theme.descriptionStyle,
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: theme.spaceBetweenText),
-                Text(
-                  "${AppLocalizations.of(context)!.earnedBadge} ${DateFormat('dd MMM yyyy').format(widget.mission.earnedDate!)}.",
-                  style: theme.textDateStyle,
-                  textAlign: TextAlign.center,
-                ),
-              ],
+        child: Transform.translate(
+          offset: Offset(0, -appBarHeight),
+          child: Center(
+            child: Container(
+              padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    widget.mission.badge,
+                    fit: BoxFit.contain,
+                    height: theme.heightImageDetail,
+                  ),
+                  SizedBox(height: theme.spaceBetweenText),
+                  Text(
+                    widget.mission.title,
+                    style: theme.titleStyle,
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: theme.spaceBetweenText),
+                  Text(
+                    widget.mission.description,
+                    style: theme.descriptionStyle,
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: theme.spaceBetweenText),
+                  Text(
+                    "${AppLocalizations.of(context)!.earnedBadge} ${DateFormat('dd MMM yyyy').format(widget.mission.earnedDate!)}.",
+                    style: theme.textDateStyle,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/models/mission.dart';
+import 'package:mushroom_go/screen/page/camera/camera_check_image_page.dart';
 import 'package:mushroom_go/screen/page/camera/camera_page.dart';
 import 'package:mushroom_go/screen/page/detail/badge_detail_page.dart';
 import 'package:mushroom_go/screen/page/detail/mushroom_detail_page.dart';
@@ -38,6 +39,7 @@ class NavigationConstant {
   static const String webViewPage = "/WebViewPage";
   static const String badgeDetailPage = "/BadgeDetailPage";
   static const String cameraPage = "/CameraPage";
+  static const String cameraCheckImagePage = "/CameraCheckImagePage";
   static const String searchPage = "/SearchPage";
 
 
@@ -82,6 +84,8 @@ class NavigationConstant {
         return MaterialPageRoute(builder: (context) => BadgeDetailPage(mission: mission), settings: settings);
       case cameraPage:
         return MaterialPageRoute(builder: (context) => CameraPage(), settings: settings);
+      case cameraCheckImagePage:
+        return MaterialPageRoute(builder: (context) => CameraCheckImagePage(), settings: settings);
       case searchPage:
         return MaterialPageRoute(builder: (context) => SearchPage(), settings: settings);
       default:

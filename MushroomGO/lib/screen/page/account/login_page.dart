@@ -21,7 +21,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   late final TextEditingController _controllerEmail;
   late final TextEditingController _controllerPassword;
-  late Function()? _nextAction;
   late bool _isBack;
   late bool _isValid;
 
@@ -47,8 +46,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _nextAction = ModalRoute.of(context)!.settings.arguments as Function()?;
-    _isBack = _nextAction == null;
+    _isBack = ModalRoute.of(context)!.settings.arguments as bool? ?? false;
   }
 
   @override
@@ -142,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                                   title: AppLocalizations.of(context)!.loginLogin,
                                   enabled: _isValid,
                                   onTap: () async {
-                                    await FirebaseAuthUtils.signInAccount(context, _controllerEmail.text, _controllerPassword.text, _nextAction);
+                                    await FirebaseAuthUtils.signInAccount(context, _controllerEmail.text, _controllerPassword.text);
                                   }
                                 ),
                                 const SizedBox(height: DimensionConstant.spaceVerticalLogin,),
@@ -155,8 +153,8 @@ class _LoginPageState extends State<LoginPage> {
                                       text: AppLocalizations.of(context)!.loginSignUp,
                                       fontColor: ColorConstant.textOnTapLogin,
                                       fontWeight: FontWeight.bold,
-                                      onTap: (){
-                                        Navigator.of(context).pushNamed(NavigationConstant.registrationPage);
+                                      onTap: () async {
+                                        await Navigator.of(context).pushNamed(NavigationConstant.registrationPage);
                                       },
                                     )
                                   ],
@@ -179,7 +177,9 @@ class _LoginPageState extends State<LoginPage> {
                     text: AppLocalizations.of(context)!.loginSkip,
                     type: Type.mediumTitle,
                     fontColor: ColorConstant.textOnTapLogin,
-                    onTap: _nextAction,
+                    onTap: (){
+                      Navigator.of(context).pop();
+                    },
                   ),
                 )
               )

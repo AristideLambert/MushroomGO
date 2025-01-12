@@ -3,7 +3,7 @@ import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/models/mushroom.dart';
 import 'package:mushroom_go/screen/widget/image/loading_image.dart';
 import 'package:mushroom_go/theme/search_result_list_theme.dart';
-import 'package:mushroom_go/utils/search/search_utils.dart';
+import 'package:mushroom_go/utils/search/history/search_history_utils.dart';
 
 class SearchResultListItem extends StatelessWidget {
   final int index;
@@ -17,7 +17,7 @@ class SearchResultListItem extends StatelessWidget {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
-        SearchUtils.addToHistory(mushroom.name);
+        SearchHistoryUtils.addToHistory(mushroom.name);
         Navigator.pushNamed(
           context,
           NavigationConstant.mushroomDetailPage,

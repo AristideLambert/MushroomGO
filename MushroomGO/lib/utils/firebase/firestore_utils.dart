@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mushroom_go/exception/loading_exception.dart';
 import 'package:mushroom_go/models/firestore_pagination.dart';
 import 'package:mushroom_go/models/mushroom.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mushroom_go/models/mushroom_scan.dart';
+import 'package:mushroom_go/models/mushroom_scan_image.dart';
 
 class FirestoreUtils{
   FirestoreUtils._();
@@ -58,24 +61,103 @@ class FirestoreUtils{
     return FirestorePagination<Mushroom>(limit: limit, result: [], lastResult: []);
   }
 
-  static Future<Mushroom?> getMushroomNameScientific(BuildContext context, String mushroom) async {
+  static Future<Mushroom?> getMushroomNameScientific(BuildContext context, String mushroom, {bool isThrow = true}) async {
     try {
       final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
                                             .collection("mushroom")
                                             .where("name_scientific", isEqualTo: mushroom.toLowerCase())
                                             .get();
       if (querySnapshot.docs.isNotEmpty) {
-        return Mushroom.fromMap(querySnapshot.docs.first.data() as Map<String, Object?>);
+        return Mushroom.fromMap(querySnapshot.docs.first.data() as Map<String, Object?>, id: querySnapshot.docs.first.id);
       } else {
         return null;
       }
     } catch (e) {
-      if(context.mounted){
+      if(context.mounted && isThrow){
         throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle, AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError);
       }
     }
     return null;
   }
+
+  static Future<Mushroom?> getMushroomId(BuildContext context, String? id, {bool isThrow = true}) async {
+    try {
+      if(id == null || id.isEmpty) return null;
+      final querySnapshot = await FirebaseFirestore.instance
+          .collection("mushroom")
+          .doc(id)
+          .get();
+      return Mushroom.fromMap(querySnapshot.data() as Map<String, Object?>, id: querySnapshot.id);
+    } catch (e) {
+      if(context.mounted && isThrow){
+        // TODO: change string (LoadingException)
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle, AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError);
+      }
+    }
+    return null;
+  }
+
+  static Future<void> addMushroomHistory(BuildContext context, String mushroom, MushroomScanImage mushroomScanImage) async {
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      final String? mushroomId = (await getMushroomNameScientific(context, mushroom, isThrow: false))?.id;
+      await FirebaseFirestore.instance
+        .collection("scan_mushroom")
+        .doc()
+        .set({
+          "name_scientific": mushroom.toLowerCase(),
+          "mushroom_id": mushroomId,
+          "latitude": mushroomScanImage.position?.latitude,
+          "longitude": mushroomScanImage.position?.longitude,
+          "date": mushroomScanImage.dateTime.toUtc(),
+          "user": user!.uid
+      });
+    } catch (e) {
+      // TODO: change string (LoadingException)
+      if(context.mounted){
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle, AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError);
+      }
+    }
+  }
+
+  static Future<FirestorePagination<MushroomScan>> getMushroomHistory(BuildContext context, int limit, List<DateTime>? lastResultDateTime) async {
+    try {
+      List<DateTime>? lastDateTime;
+      List<MushroomScan> result = [];
+      final user = FirebaseAuth.instance.currentUser;
+      Query queryHistory = FirebaseFirestore.instance
+          .collection("scan_mushroom")
+          .where("user", isEqualTo: user!.uid)
+          .orderBy("date", descending: true)
+          .limit(limit);
+      if (lastResultDateTime != null) {
+        queryHistory = queryHistory.startAfter(lastResultDateTime);
+      }
+      QuerySnapshot snapshotHistory = await queryHistory.get();
+      if (snapshotHistory.docs.isNotEmpty) {
+        if(context.mounted){
+          for(var doc in snapshotHistory.docs){
+            Map<String, Object?> data = doc.data() as Map<String, Object?>;
+            result.add(MushroomScan.fromMap(data, await getMushroomId(context, data["mushroom_id"] as String?)));
+          }
+          lastDateTime = [result.last.dateTime.toUtc()];
+        }
+      } else {
+        lastDateTime = lastResultDateTime;
+      }
+      List<Map<String, List<DateTime>?>> lastResult = [
+        {"lastDateTime": lastDateTime}
+      ];
+      return FirestorePagination<MushroomScan>(limit: limit, result: result, lastResultDateTime: lastResult);
+    } catch (e) {
+      // TODO: change string (LoadingException)
+      if(context.mounted){
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle, AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError);
+      }
+    }
+    return FirestorePagination<MushroomScan>(limit: limit, result: [], lastResult: []);
+  }
+
   static Future<List<Mushroom>> fetchChallengeMushrooms(BuildContext context) async {
     try {
       final querySnapshot = await FirebaseFirestore.instance.collection("challenge_mushroom").get();
@@ -123,5 +205,4 @@ class FirestoreUtils{
       return [];
     }
   }
-
 }

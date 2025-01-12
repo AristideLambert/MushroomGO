@@ -31,7 +31,7 @@ class _MapTabState extends State<MapTab> {
     try {
       final position = await LocationUtils.getCurrentLocation();
       setState(() {
-        _currentPosition = LatLng(position.latitude, position.longitude);
+        _currentPosition = LatLng(position!.latitude, position.longitude);
         _isLoading = false;
       });
       if (_currentPosition != null) {

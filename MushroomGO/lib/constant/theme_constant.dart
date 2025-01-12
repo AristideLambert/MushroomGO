@@ -7,13 +7,13 @@ import 'package:mushroom_go/theme/button_setting_container_theme.dart';
 import 'package:mushroom_go/theme/button_setting_theme.dart';
 import 'package:mushroom_go/theme/button_standard_theme.dart';
 import 'package:mushroom_go/theme/challenge_mushrooms_list_theme.dart';
-import 'package:mushroom_go/theme/history_tab_theme.dart';
 import 'package:mushroom_go/theme/home_for_you_list_theme.dart';
 import 'package:mushroom_go/theme/home_news_list_theme.dart';
 import 'package:mushroom_go/theme/mushroom_detail_theme.dart';
 import 'package:mushroom_go/theme/navigation_tab_bottom_theme.dart';
 import 'package:mushroom_go/theme/navigation_tab_top_theme.dart';
 import 'package:mushroom_go/theme/profile_container_theme.dart';
+import 'package:mushroom_go/theme/profile_history_list_theme.dart';
 import 'package:mushroom_go/theme/search_history_list_theme.dart';
 import 'package:mushroom_go/theme/search_result_list_theme.dart';
 import 'package:mushroom_go/theme/loading_container_theme.dart';
@@ -103,6 +103,10 @@ class ThemeConstant{
         titleStyle: TextStyleConstant.lightTitleSearchResultList
       ),
       const SearchHistoryListTheme(),
+      const ProfileHistoryListTheme(
+        textStyle: TextStyleConstant.lightTextProfileHistoryList,
+        titleStyle: TextStyleConstant.lightTitleProfileHistoryList,
+      ),
       const MushroomDetailTheme(
         backgroundColor: ColorConstant.lightBackgroundMushroomDetail,
         titleStyle: TextStyleConstant.lightTitleMushroomDetail,
@@ -114,11 +118,6 @@ class ThemeConstant{
         textStyle: TextStyleConstant.lightTextBadgeTab,
         titleStyle: TextStyleConstant.lightTitleBadgeTab,
         descriptionStyle: TextStyleConstant.lightDescriptionBadgeTab,
-      ),
-      const HistoryTabTheme(
-        textStyle: TextStyleConstant.lightTextHistoryTab,
-        titleStyle: TextStyleConstant.lightTitleHistoryTab,
-        cardBackgroundColor: ColorConstant.lightBackgroundHistoryTab
       ),
       const TextInputTheme(
         titleStyle: TextStyleConstant.lightTitleTextInput,
@@ -216,6 +215,10 @@ class ThemeConstant{
         titleStyle: TextStyleConstant.darkTitleSearchResultList
       ),
       const SearchHistoryListTheme(),
+      const ProfileHistoryListTheme(
+        textStyle: TextStyleConstant.darkTextProfileHistoryList,
+        titleStyle: TextStyleConstant.darkTitleProfileHistoryList,
+      ),
       const MushroomDetailTheme(
         backgroundColor: ColorConstant.darkBackgroundMushroomDetail,
         titleStyle: TextStyleConstant.darkTitleMushroomDetail,
@@ -227,11 +230,6 @@ class ThemeConstant{
         textStyle: TextStyleConstant.darkTextBadgeTab,
         titleStyle: TextStyleConstant.darkTitleBadgeTab,
         descriptionStyle: TextStyleConstant.darkDescriptionBadgeTab,
-      ),
-      const HistoryTabTheme(
-        textStyle: TextStyleConstant.darkTextHistoryTab,
-        titleStyle: TextStyleConstant.darkTitleHistoryTab,
-        cardBackgroundColor: ColorConstant.darkBackgroundHistoryTab
       ),
       const TextInputTheme(
         titleStyle: TextStyleConstant.darkTitleTextInput,

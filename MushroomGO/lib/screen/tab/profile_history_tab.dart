@@ -1,113 +1,119 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/color_constant.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
+import 'package:mushroom_go/exception/loading_exception.dart';
+import 'package:mushroom_go/models/firestore_pagination.dart';
 import 'package:mushroom_go/models/mushroom_scan.dart';
-import 'package:mushroom_go/theme/history_tab_theme.dart';
+import 'package:mushroom_go/screen/widget/listview/profile/profile_history_list.dart';
+import 'package:mushroom_go/screen/widget/popup/loading_container.dart';
+import 'package:mushroom_go/screen/widget/popup/loading_error_container.dart';
+import 'package:mushroom_go/screen/widget/text/text_output.dart';
+import 'package:mushroom_go/utils/firebase/firestore_utils.dart';
 
 class ProfileHistoryTab extends StatefulWidget {
-  final HistoryTabTheme? theme;
-  const ProfileHistoryTab({super.key, this.theme});
+  const ProfileHistoryTab({super.key});
 
   @override
   State<ProfileHistoryTab> createState() => _ProfileHistoryTabState();
 }
 
 class _ProfileHistoryTabState extends State<ProfileHistoryTab> {
-  late HistoryTabTheme theme;
+  late final int _limit;
+  late bool _isLoading;
+  late bool _hasMore;
+  late List<MushroomScan> _mushroomScans;
+  late FirestorePagination<MushroomScan> _lastHistoryResult;
+  late Future<FirestorePagination<MushroomScan>>? _historyResult;
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    theme = (widget.theme ?? Theme.of(context).extension<HistoryTabTheme>())!;
+  void _clearHistory(){
+    _lastHistoryResult = FirestorePagination(limit: _limit, result: [], lastResultDateTime: []);
+    _mushroomScans = [];
+    _isLoading = false;
+    _hasMore = false;
   }
 
-  final List<MushroomScan> scans = [
-    MushroomScan(
-      imageUrl: "assets/images/mushroom_test.png",
-      name: "Amanita phalloides",
-      dateTime: DateTime(2024, 10, 23, 9, 10),
-      location: "Forêt des Ardennes",
-      distance: 25.0,
-    ),
-    MushroomScan(
-      imageUrl: "assets/images/mushroom_test.png",
-      name: "Boletus edulis",
-      dateTime: DateTime(2024, 10, 22, 9, 20),
-      location: "Bois de Compiègne",
-      distance: 25.0,
-    ),
-    MushroomScan(
-      imageUrl: "assets/images/mushroom_test.png",
-      name: "Cantharellus cibarius",
-      dateTime: DateTime(2024, 10, 21, 9, 50),
-      location: "Jura",
-      distance: 13.0,
-    ),
-  ];
+  void _loadHistory(){
+    if (!mounted) return;
+    if (_isLoading) return;
+    setState(() {
+      _isLoading = true;
+      _historyResult = FirestoreUtils.getMushroomHistory(
+        context,
+        _limit,
+        _lastHistoryResult.lastResultDateTime!.firstWhere((map) => map.containsKey('lastDateTime'), orElse: () => {})["lastDateTime"],
+      );
+    });
+    _historyResult!.then((result) {
+      if (!mounted) return;
+      setState(() {
+        _isLoading = false;
+        _hasMore = result.result.isNotEmpty && result.result.length > _limit / 2;
+        if (result.result.isNotEmpty) {
+          _mushroomScans.addAll(result.result);
+          _lastHistoryResult = result;
+        }
+      });
+    }).catchError((error) {
+      if (!mounted) return;
+      setState(() {
+        _isLoading = false;
+      });
+      print(error);
+      if(error is LoadingException){
+        /*DialogUtils.showPopupInformation(context, error.title, error.content, AppLocalizations.of(context)!.popupOK, (){
+          widget.controllerSearch.clear();
+        }, false);*/
+      }
+    });
+  }
+
+  Future<void> _onRefresh() async {
+    _clearHistory();
+    _loadHistory();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _limit = 8;
+    _clearHistory();
+    _loadHistory();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-      itemCount: scans.length,
-      itemBuilder: (context, index) {
-        final scan = scans[index];
-        return GestureDetector(
-          onTap: () {
-            // TODO: Naviguer vers la page de détail pour ce scan
+    return RefreshIndicator(
+      color: Theme.of(context).primaryColor,
+      elevation: 0.0,
+      onRefresh: _onRefresh,
+      child: NotificationListener<ScrollNotification>(
+        onNotification: (scrollInfo) {
+          if (scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent && !_isLoading) {
+            _loadHistory();
+          }
+          return false;
+        },
+        child: FutureBuilder<FirestorePagination<MushroomScan>>(
+          future: _historyResult,
+          builder: (BuildContext context, AsyncSnapshot<FirestorePagination<MushroomScan>> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting && _mushroomScans.isEmpty) {
+              return LoadingContainer(message: /*AppLocalizations.of(context)!.searchResultInProgressTitle*/"");
+            } else if (snapshot.hasError) {
+              // TODO: Page error
+              return LoadingErrorContainer(message: "Error", onReload: _onRefresh);
+            } else if (!snapshot.hasData || (snapshot.data!.result.isEmpty && _mushroomScans.isEmpty)) {
+              return Center(
+                  child: TextOutput(
+                      text: /*AppLocalizations.of(context)!.searchResultTitleNoResult*/"",
+                      type: Type.mediumTitle
+                  )
+              );
+            } else {
+              return ProfileHistoryList(mushroomScans: _mushroomScans, loadIcon: _hasMore);
+            }
           },
-          child: Card(
-            color: theme.cardBackgroundColor,
-            margin: EdgeInsets.only(top: index == 0 ? 0 : theme.defaultPaddingMargin),
-            child: Padding(
-              padding: EdgeInsets.all(theme.defaultPaddingMargin),
-              child: Row(
-                children: [
-                  // Image
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(theme.itemRadius),
-                    child: Image.asset(
-                      scan.imageUrl,
-                      width: theme.imageWidthHeight,
-                      height: theme.imageWidthHeight,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  SizedBox(width: theme.spaceBetweenImageText),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          scan.name,
-                          style: theme.titleStyle,
-                        ),
-                        SizedBox(height: theme.spaceBetweenText),
-                        Text(
-                          "${scan.dateTime.day}/${scan.dateTime.month}/${scan.dateTime.year} "
-                              "${scan.dateTime.hour}:${scan.dateTime.minute.toString().padLeft(2, '0')}",
-                          style: theme.textDateStyle
-                        ),
-                      ],
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      const Icon(Icons.location_pin, color: ColorConstant.primaryColor),
-                      SizedBox(height: theme.spaceBetweenText),
-                      Text(
-                        "${scan.distance.toStringAsFixed(0)} KM",
-                        style: theme.textStyle,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

@@ -1,0 +1,49 @@
+import 'package:flutter/material.dart';
+import 'package:mushroom_go/constant/dimension_constant.dart';
+import 'package:mushroom_go/models/mushroom_scan.dart';
+import 'package:mushroom_go/screen/widget/image/loading_image.dart';
+import 'package:mushroom_go/screen/widget/listview/profile/profile_history_item.dart';
+import 'package:mushroom_go/theme/profile_history_list_theme.dart';
+
+class ProfileHistoryList extends StatefulWidget {
+  final List<MushroomScan> mushroomScans;
+  final bool loadIcon;
+  final ProfileHistoryListTheme? theme;
+
+  const ProfileHistoryList({super.key, required this.mushroomScans, required this.loadIcon, this.theme});
+
+  @override
+  State<ProfileHistoryList> createState() => _ProfileHistoryListState();
+}
+
+class _ProfileHistoryListState extends State<ProfileHistoryList> {
+  late ProfileHistoryListTheme _theme;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _theme = widget.theme ?? Theme.of(context).extension<ProfileHistoryListTheme>()!;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
+      itemCount: widget.mushroomScans.length + (widget.loadIcon ? 1 : 0),
+      itemBuilder: (context, index) {
+        return index < widget.mushroomScans.length ?
+          ProfileHistoryItem(
+            index: index,
+            indexEnd: widget.mushroomScans.length,
+            mushroomScan: widget.mushroomScans[index],
+            theme: _theme
+          ) : Padding(
+          padding: EdgeInsets.only(
+              bottom: DimensionConstant.defaultPadding * 1.1
+          ),
+          child: LoadingImage(size: _theme.imageWidthHeight),
+        );
+      },
+    );
+  }
+}

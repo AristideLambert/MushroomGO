@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:app_links/app_links.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/provider/locale_provider.dart';
 import 'package:mushroom_go/provider/theme_provider.dart';
@@ -13,6 +14,7 @@ import 'package:mushroom_go/screen/tab/navigation/bottom/navigation_item_camera_
 import 'package:mushroom_go/screen/tab/navigation/bottom/navigation_model.dart';
 import 'package:mushroom_go/screen/tab/profile_tab.dart';
 import 'package:mushroom_go/utils/dialog/dialog_utils.dart';
+import 'package:mushroom_go/utils/map/location_utils.dart';
 import 'package:provider/provider.dart';
 
 class MainPage extends StatefulWidget {
@@ -105,7 +107,7 @@ class _MainPageState extends State<MainPage> {
           }
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: NavigationItemCameraTabBottom(onTap: (){
+      floatingActionButton: NavigationItemCameraTabBottom(onTap: () async {
         Navigator.of(context).pushNamed(NavigationConstant.cameraPage);
       }),
     );

@@ -75,7 +75,7 @@ class FirebaseAuthUtils{
     }
   }
 
-  static Future<bool> signInAccount(BuildContext context, String email, String password, Function()? next, {bool pop = true}) async {
+  static Future<bool> signInAccount(BuildContext context, String email, String password, {bool pop = true}) async {
     try {
       if (context.mounted) {
         DialogUtils.showLoading(context, AppLocalizations.of(context)!.firebaseAuthUtilsSignInAccountInProgressTitle);
@@ -86,7 +86,6 @@ class FirebaseAuthUtils{
         if(pop){
           Navigator.of(context).pop();
         }
-        next?.call();
       }
       return true;
     } on FirebaseAuthException catch (e) {
@@ -137,7 +136,7 @@ class FirebaseAuthUtils{
   static Future<void> updatePasswordAccount(BuildContext context, String oldPassword, String newPassword) async {
     try {
       User user = _getUser(context);
-      if(await signInAccount(context, user.email!, oldPassword, null, pop: false)){
+      if(await signInAccount(context, user.email!, oldPassword, pop: false)){
         if (context.mounted) {
           DialogUtils.showLoading(context, AppLocalizations.of(context)!.firebaseAuthUtilsUpdatePasswordAccountInProgressTitle);
           user = _getUser(context);
@@ -394,7 +393,7 @@ class FirebaseAuthUtils{
   static Future<void> deleteAccount(BuildContext context, String password) async {
     try {
       User user = _getUser(context);
-      if(await signInAccount(context, user.email!, password, null, pop: false)){
+      if(await signInAccount(context, user.email!, password, pop: false)){
         if(context.mounted){
           DialogUtils.showPopup(context, AppLocalizations.of(context)!.firebaseAuthUtilsDeleteAccountTitle, AppLocalizations.of(context)!.firebaseAuthUtilsDeleteAccountAskDescription, AppLocalizations.of(context)!.popupDelete, () async {
             if(context.mounted){

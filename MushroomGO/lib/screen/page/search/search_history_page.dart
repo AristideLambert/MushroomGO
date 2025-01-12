@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/screen/widget/listview/search/search_history_list.dart';
 import 'package:mushroom_go/screen/widget/text/text_output.dart';
-import 'package:mushroom_go/utils/search/search_utils.dart';
+import 'package:mushroom_go/utils/search/history/search_history_utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SearchHistoryPage extends StatefulWidget {
@@ -19,7 +19,7 @@ class _SearchHistoryPageState extends State<SearchHistoryPage> {
 
   void _loadHistory(){
     setState(() {
-      _history = SearchUtils.getHistory();
+      _history = SearchHistoryUtils.getHistory();
     });
   }
 
@@ -53,7 +53,7 @@ class _SearchHistoryPageState extends State<SearchHistoryPage> {
                     type: Type.caption,
                     fontColor: Theme.of(context).primaryColor,
                     onTap: () async {
-                      await SearchUtils.clearHistory();
+                      await SearchHistoryUtils.clearHistory();
                       _loadHistory();
                     },
                   ),

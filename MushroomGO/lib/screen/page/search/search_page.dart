@@ -5,7 +5,7 @@ import 'package:mushroom_go/screen/page/search/search_result_page.dart';
 import 'package:mushroom_go/screen/widget/text/text_output.dart';
 import 'package:mushroom_go/screen/widget/textField/text_input.dart';
 import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
-import 'package:mushroom_go/utils/search/search_utils.dart';
+import 'package:mushroom_go/utils/search/history/search_history_utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SearchPage extends StatefulWidget {
@@ -51,10 +51,10 @@ class _SearchPageState extends State<SearchPage> {
                       leftIcon: MushroomGOFontUtils.search,
                       clearText: true,
                       onTapOutside: (search){
-                        SearchUtils.addToHistory(search);
+                        SearchHistoryUtils.addToHistory(search);
                       },
                       onSubmitted: (search){
-                        SearchUtils.addToHistory(search);
+                        SearchHistoryUtils.addToHistory(search);
                       },
                     )
                   ),

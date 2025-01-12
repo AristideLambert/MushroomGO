@@ -22,13 +22,13 @@ class SearchResultPage extends StatefulWidget {
 class _SearchResultPageState extends State<SearchResultPage> {
   late bool _isLoading;
   late bool _hasMore;
-  late List<Mushroom> mushrooms;
+  late List<Mushroom> _mushrooms;
   late FirestorePagination<Mushroom> _lastSearchResult;
   late Future<FirestorePagination<Mushroom>>? _searchResult;
 
   void _clearSearch(){
     _lastSearchResult = FirestorePagination(limit: 15, result: [], lastResult: []);
-    mushrooms = [];
+    _mushrooms = [];
     _isLoading = false;
     _hasMore = false;
   }
@@ -42,8 +42,8 @@ class _SearchResultPageState extends State<SearchResultPage> {
         context,
         widget.controllerSearch.text,
         15,
-        _lastSearchResult.lastResult.firstWhere((map) => map.containsKey('lastResultName'), orElse: () => {})["lastResultName"],
-        _lastSearchResult.lastResult.firstWhere((map) => map.containsKey('lastResultNameScientific'), orElse: () => {})["lastResultNameScientific"],
+        _lastSearchResult.lastResult!.firstWhere((map) => map.containsKey('lastResultName'), orElse: () => {})["lastResultName"],
+        _lastSearchResult.lastResult!.firstWhere((map) => map.containsKey('lastResultNameScientific'), orElse: () => {})["lastResultNameScientific"],
       );
     });
     _searchResult!.then((result) {
@@ -52,8 +52,8 @@ class _SearchResultPageState extends State<SearchResultPage> {
         _isLoading = false;
         _hasMore = result.result.isNotEmpty && result.result.length > 9;
         if (result.result.isNotEmpty) {
-          mushrooms.addAll(result.result);
-          mushrooms = ModelsUtils.removeDuplicate(mushrooms);
+          _mushrooms.addAll(result.result);
+          _mushrooms = ModelsUtils.removeDuplicate(_mushrooms);
           _lastSearchResult = result;
         }
       });
@@ -95,11 +95,11 @@ class _SearchResultPageState extends State<SearchResultPage> {
       child: FutureBuilder<FirestorePagination<Mushroom>>(
         future: _searchResult,
         builder: (BuildContext context, AsyncSnapshot<FirestorePagination<Mushroom>> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting && mushrooms.isEmpty) {
+          if (snapshot.connectionState == ConnectionState.waiting && _mushrooms.isEmpty) {
             return LoadingContainer(message: AppLocalizations.of(context)!.searchResultInProgressTitle);
           } else if (snapshot.hasError) {
             return Container();
-          } else if (!snapshot.hasData || (snapshot.data!.result.isEmpty && mushrooms.isEmpty)) {
+          } else if (!snapshot.hasData || (snapshot.data!.result.isEmpty && _mushrooms.isEmpty)) {
             return Center(
               child: TextOutput(
                 text: AppLocalizations.of(context)!.searchResultTitleNoResult,
@@ -107,7 +107,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
               )
             );
           } else {
-            return SearchResultList(mushrooms: mushrooms, loadIcon: _hasMore);
+            return SearchResultList(mushrooms: _mushrooms, loadIcon: _hasMore);
           }
         },
       ),

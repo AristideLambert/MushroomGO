@@ -251,6 +251,31 @@ class TextStyleConstant {
       fontStyle: FontStyle.italic
   );
 
+  // ProfileHistoryList
+  static const TextStyle darkTitleProfileHistoryList = TextStyle(
+      color: ColorConstant.darkTextProfileHistoryList,
+      fontSize: DimensionConstant.titleMedium,
+      fontWeight: FontWeight.bold
+  );
+  static const TextStyle lightTitleProfileHistoryList = TextStyle(
+      color: ColorConstant.lightTextProfileHistoryList,
+      fontSize: DimensionConstant.titleMedium,
+      fontWeight: FontWeight.bold
+  );
+  static const TextStyle textDateProfileHistoryList = TextStyle(
+    color: ColorConstant.primaryColor,
+    fontSize: DimensionConstant.bodyText,
+  );
+  static const TextStyle darkTextProfileHistoryList = TextStyle(
+    color: ColorConstant.darkTextProfileHistoryList,
+    fontSize: DimensionConstant.bodyText,
+  );
+  static const TextStyle lightTextProfileHistoryList = TextStyle(
+      color: ColorConstant.lightTextProfileHistoryList,
+      fontSize: DimensionConstant.bodyText,
+      fontWeight: FontWeight.bold
+  );
+
   // MushroomDetail
   static const TextStyle lightNameMushroomDetail = TextStyle(
     color: ColorConstant.lightNameMushroomDetail,
@@ -329,31 +354,6 @@ class TextStyleConstant {
   static const TextStyle lightDescriptionBadgeTab = TextStyle(
     color: ColorConstant.lightTextBadgeTab,
     fontSize: DimensionConstant.titleSmall,
-  );
-
-// HistoryTab
-  static const TextStyle darkTitleHistoryTab = TextStyle(
-      color: ColorConstant.darkTextHistoryTab,
-      fontSize: DimensionConstant.titleMedium,
-      fontWeight: FontWeight.bold
-  );
-  static const TextStyle lightTitleHistoryTab = TextStyle(
-      color: ColorConstant.lightTextHistoryTab,
-      fontSize: DimensionConstant.titleMedium,
-      fontWeight: FontWeight.bold
-  );
-  static const TextStyle textDateHistoryTab = TextStyle(
-    color: ColorConstant.primaryColor,
-    fontSize: DimensionConstant.bodyText,
-  );
-  static const TextStyle darkTextHistoryTab = TextStyle(
-    color: ColorConstant.darkTextHistoryTab,
-    fontSize: DimensionConstant.bodyText,
-  );
-  static const TextStyle lightTextHistoryTab = TextStyle(
-    color: ColorConstant.lightTextHistoryTab,
-    fontSize: DimensionConstant.bodyText,
-    fontWeight: FontWeight.bold
   );
 
   // TextInput

@@ -1,7 +1,8 @@
 class FirestorePagination<T>{
   final int limit;
   List<T> result;
-  final List<Map<String, List<String>?>> lastResult;
+  List<Map<String, List<String>?>>? lastResult;
+  List<Map<String, List<DateTime>?>>? lastResultDateTime;
 
-  FirestorePagination({required this.limit ,required this.result, required this.lastResult});
+  FirestorePagination({required this.limit ,required this.result, this.lastResult, this.lastResultDateTime});
 }

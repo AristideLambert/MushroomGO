@@ -31,8 +31,8 @@ class _SettingPageState extends State<SettingPage> {
     _user = FirebaseAuth.instance.currentUser;
   }
 
-  Future<void> _navigate(String routeName) async {
-    await Navigator.of(widget.mainContext).pushNamed(routeName);
+  Future<void> _navigate(String routeName, {Object? arguments}) async {
+    await Navigator.of(widget.mainContext).pushNamed(routeName, arguments: arguments);
     setState(() {
       _user = FirebaseAuth.instance.currentUser;
     });
@@ -56,7 +56,7 @@ class _SettingPageState extends State<SettingPage> {
                   pathImage: _user?.photoURL ?? SettingConstant.pathDefaultImageProfile,
                   name: _user?.displayName ?? "Aristide LAMBERT",
                   mail: _user?.email ?? "aristide.lambert@student.hepl.be",
-                  onTap: () => _navigate(_user == null ? NavigationConstant.loginPage : NavigationConstant.accountSettingPage),
+                  onTap: () => _navigate(_user == null ? NavigationConstant.loginPage : NavigationConstant.accountSettingPage, arguments: _user == null ? true : null),
                 ),
                 const SizedBox(height: DimensionConstant.spaceSetting),
                 ButtonSettingContainer(

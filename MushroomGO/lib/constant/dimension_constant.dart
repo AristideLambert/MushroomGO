@@ -60,6 +60,10 @@ class DimensionConstant {
   static const double paddingForgotPassword = 20.0;
   static const double radiusForgotPassword = 10.0;
 
+  // Camera
+  static const double iconSizeCamera = 100.0;
+  static const double iconPaddingCamera = 30.0;
+
   // NavigationTabBottom
   static const double heightNavigationTabBottom = 56.0;
   static const double iconSizeNavigationTabBottom = 24.0;
@@ -168,6 +172,12 @@ class DimensionConstant {
   static const double sizeLeftIconSearchHistoryList = 12.0;
   static const double sizeRightIconSearchHistoryList = 12.0;
 
+  // ProfileHistoryList
+  static const double radiusProfileHistoryList = 8.0;
+  static const double spaceBetweenImageProfileHistoryList = 16.0;
+  static const double imageWidthHeightProfileHistoryList = 80.0;
+  static const double spaceBetweenTextProfileHistoryList = 4.0;
+
   // MushroomDetail
   static const double radiusItemMushroomDetail = 8.0;
   static const double imageHeightMushroomDetail = 200.0;
@@ -192,13 +202,6 @@ class DimensionConstant {
   static const double defaultPaddingBadgeTab = 16.0;
   static const double heightImageBadgeDetail = 200.0;
   static const double spaceBetweenTextBadgeDetail = 20.0;
-
-  // HistoryTab
-  static const double itemRadiusHistoryTab = 8.0;
-  static const double spaceBetweenImageTextHistoryTab = 16.0;
-  static const double defaultPaddingMarginHistoryTab = 16.0;
-  static const double imageWidthHeightHistoryTab = 80.0;
-  static const double spaceBetweenTextHistoryTab = 4.0;
 
   // TextInput
   static const double leftPaddingTitleTextInput = 10.0;

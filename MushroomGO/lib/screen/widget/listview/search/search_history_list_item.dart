@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mushroom_go/screen/widget/text/text_output.dart';
 import 'package:mushroom_go/theme/search_history_list_theme.dart';
 import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
-import 'package:mushroom_go/utils/search/search_utils.dart';
+import 'package:mushroom_go/utils/search/history/search_history_utils.dart';
 
 class SearchHistoryListItem extends StatelessWidget {
   final int index;
@@ -46,7 +46,7 @@ class SearchHistoryListItem extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              SearchUtils.removeHistory(title).then((_)=> reloadHistory.call());
+              SearchHistoryUtils.removeHistory(title).then((_)=> reloadHistory.call());
             },
             child: Icon(
               MushroomGOFontUtils.close,

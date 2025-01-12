@@ -25,6 +25,7 @@ class LoadingErrorContainer extends StatelessWidget {
             type: Type.smallTitle,
           ),
           const SizedBox(height: DimensionConstant.defaultPadding),
+          // TODO: Update icon
           ButtonStandard(
             title: AppLocalizations.of(context)!.loadingErrorContainerReload,
             widthContent: true,

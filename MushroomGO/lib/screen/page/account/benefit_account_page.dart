@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/color_constant.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
@@ -18,14 +19,19 @@ class BenefitAccountPage extends StatefulWidget {
 
 class _BenefitAccountPageState extends State<BenefitAccountPage> {
   // TODO: check benefit
-  late Function()? _nextAction;
+  late bool _isBack;
   late double _containerHeight = 0;
   final GlobalKey _containerKey = GlobalKey();
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _nextAction = ModalRoute.of(context)!.settings.arguments as Function()?;
+    _isBack = ModalRoute.of(context)!.settings.arguments as bool? ?? false;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if(FirebaseAuth.instance.currentUser != null){
+        Navigator.of(context).pop();
+      }
+    });
   }
 
   @override
@@ -90,8 +96,12 @@ class _BenefitAccountPageState extends State<BenefitAccountPage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ButtonStandard(title: "Se connecter", onTap: (){
-              Navigator.of(widget.mainContext).pushNamed(NavigationConstant.loginPage, arguments: _nextAction);
+            ButtonStandard(title: "Se connecter", onTap: () async {
+              await Navigator.of(widget.mainContext).pushNamed(NavigationConstant.loginPage, arguments: true);
+              if(!context.mounted) return;
+              if(FirebaseAuth.instance.currentUser != null){
+                Navigator.of(context).pop();
+              }
             }, theme: Theme.of(context).extension<ButtonStandardTheme>()!.copyWith(
                 backgroundColor: Colors.white,
                 titleStyle: const TextStyle(
@@ -100,10 +110,10 @@ class _BenefitAccountPageState extends State<BenefitAccountPage> {
                   fontWeight: FontWeight.w700,
                 )
             ),),
-            SizedBox(height: _nextAction != null ? 10.0 : 35,),
-            if(_nextAction != null) ... [
+            SizedBox(height: _isBack ? 10.0 : 35,),
+            if(_isBack) ... [
               TextOutput(text: "Passer", type: Type.smallTitle, fontColor: Colors.white, onTap: (){
-                _nextAction?.call();
+                Navigator.of(context).pop();
               },)
             ]
           ],

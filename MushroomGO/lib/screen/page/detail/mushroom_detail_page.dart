@@ -1,19 +1,10 @@
-import 'dart:async';
 import 'dart:core';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:mushroom_go/constant/dimension_constant.dart';
-import 'package:mushroom_go/enum/section_type.dart';
+import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/exception/loading_exception.dart';
 import 'package:mushroom_go/models/mushroom.dart';
-import 'package:mushroom_go/models/recipe.dart';
 import 'package:mushroom_go/screen/page/detail/mushroom_detail_content_page.dart';
-import 'package:mushroom_go/screen/widget/column/mushroom_image_detail_column.dart';
-import 'package:mushroom_go/screen/widget/column/mushroom_detail_column.dart';
-import 'package:mushroom_go/screen/widget/column/mushroom_classification_column.dart';
-import 'package:mushroom_go/screen/widget/listview/home_for_you_item.dart';
-import 'package:mushroom_go/screen/widget/listview/home_for_you_list.dart';
 import 'package:mushroom_go/screen/widget/popup/loading_container.dart';
 import 'package:mushroom_go/screen/widget/text/text_output.dart';
 import 'package:mushroom_go/utils/dialog/dialog_utils.dart';
@@ -27,6 +18,7 @@ class MushroomDetailPage extends StatefulWidget {
 }
 
 class _MushroomDetailPageState extends State<MushroomDetailPage> {
+  late bool _isScan;
   late String _name;
   late Mushroom _mushroom;
   late Future<Mushroom?> _loadMushroom;
@@ -73,11 +65,13 @@ class _MushroomDetailPageState extends State<MushroomDetailPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    _isScan = false;
     Object? argument = ModalRoute.of(context)!.settings.arguments;
     if(argument is Mushroom){
       _name = argument.name;
       _loadLocalMushroom(argument);
     } else if(argument is String) {
+      _isScan = true;
       _name = "";
       _loadDBMushroom(argument);
     } else {

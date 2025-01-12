@@ -359,6 +359,46 @@
   "@searchButtonCancel": {
     "description": "Button cancel (Search)"
   },
+  "cameraTitle": "Camera",
+  "@cameraTitle": {
+    "description": "Title (Camera)"
+  },
+  "cameraInProgressTitle": "Loading the camera...",
+  "@cameraInProgressTitle": {
+    "description": "Title in progress (Camera)"
+  },
+  "cameraErrorLoadTitle": "Camera loading error",
+  "@cameraErrorLoadTitle": {
+    "description": "Title error - load (Camera)"
+  },
+  "cameraErrorTakeTitle": "Unable to take photo",
+  "@cameraErrorTakeTitle": {
+    "description": "Title error - take (Camera)"
+  },
+  "cameraErrorLocationDeniedTitle": "Please allow access to your location",
+  "@cameraErrorLocationDeniedTitle": {
+    "description": "Title error - location denied (Camera)"
+  },
+  "cameraErrorLocationDeniedForeverTitle": "Please enable location in the settings",
+  "@cameraErrorLocationDeniedForeverTitle": {
+    "description": "Title error - location denied forever (Camera)"
+  },
+  "cameraCheckImageTitle": "Check image",
+  "@cameraCheckImageTitle": {
+    "description": "Title (CameraCheckImage)"
+  },
+  "cameraCheckImageErrorTitle": "Image cannot be loaded",
+  "@cameraCheckImageErrorTitle": {
+    "description": "Title error (CameraCheckImage)"
+  },
+  "cameraCheckImageButtonAnalyze": "Analyze",
+  "@cameraCheckImageButtonAnalyze": {
+    "description": "Button analyze (CameraCheckImage)"
+  },
+  "cameraCheckImageButtonRetry": "Retry",
+  "@cameraCheckImageButtonRetry": {
+    "description": "Button retry (CameraCheckImage)"
+  },
   "popupOK": "OK",
   "@popupOK": {
     "description": "OK option (Popup)"
@@ -639,16 +679,36 @@
   "@firestoreUtilsSearchMushroomError": {
     "description": "Search mushroom error - unable to load results (FirestoreUtils)"
   },
- "challengeMushroomsLoadingData": "Loading data...",
- "@challengeMushroomsLoadingData": {
-   "description": "Loading Data"
+  "challengeMushroomsLoadingData": "Loading data...",
+  "@challengeMushroomsLoadingData": {
+    "description": "Loading Data"
   },
-    "challengeMushroomsErrorLoadingData": "Error loading data",
-    "@challengeMushroomsErrorLoadingData": {
-      "description": "Error Loading Data"
+  "challengeMushroomsErrorLoadingData": "Error loading data",
+  "@challengeMushroomsErrorLoadingData": {
+    "description": "Error Loading Data"
   },
-    "loadingErrorContainerReload": "Reload",
-    "@loadingErrorContainerReload": {
-      "description": "Reload"
+  "loadingErrorContainerReload": "Reload",
+  "@loadingErrorContainerReload": {
+    "description": "Reload"
+  },
+  "mushroomIdentificationUtilsIdentifyMushroomInProgressTitle": "Mushroom analysis in progress...",
+  "@mushroomIdentificationUtilsIdentifyMushroomInProgressTitle": {
+    "description": "Identify mushroom in progress title (MushroomIdentificationUtils)"
+  },
+  "mushroomIdentificationUtilsIdentifyMushroomTitle": "Mushroom analysis",
+  "@mushroomIdentificationUtilsIdentifyMushroomTitle": {
+    "description": "Identify mushroom title (MushroomIdentificationUtils)"
+  },
+  "mushroomIdentificationUtilsIdentifyMushroomNoResult": "Mushroom not recognized",
+  "@mushroomIdentificationUtilsIdentifyMushroomNoResult": {
+    "description": "Identify mushroom title - no result (MushroomIdentificationUtils)"
+  },
+  "mushroomIdentificationUtilsErrorIdentifyMushroom": "Unable to communicate with the API.\nPlease try again later",
+  "@mushroomIdentificationUtilsErrorIdentifyMushroom": {
+    "description": "Identify mushroom error - api error (MushroomIdentificationUtils)"
+  },
+  "locationUtilsHere": "here",
+  "@locationUtilsHere": {
+    "description": "Here (LocationUtils)"
   }
 }

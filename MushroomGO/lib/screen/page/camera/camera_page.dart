@@ -1,6 +1,16 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:mushroom_go/constant/dimension_constant.dart';
+import 'package:mushroom_go/constant/navigation_constant.dart';
+import 'package:mushroom_go/models/mushroom_scan_image.dart';
+import 'package:mushroom_go/screen/widget/popup/loading_container.dart';
+import 'package:mushroom_go/utils/dialog/dialog_utils.dart';
+import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mushroom_go/utils/map/location_utils.dart';
 
 class CameraPage extends StatefulWidget {
   const CameraPage({super.key});
@@ -11,73 +21,216 @@ class CameraPage extends StatefulWidget {
 
 class _CameraPageState extends State<CameraPage> {
   late CameraController _controller;
-  late Future<void> _initializeControllerFuture;
+  late FlashMode _flashMode;
+  late Future<void> _initializeController;
+  late bool _isLocation;
+  late bool _isInitialize;
 
-  @override
-  void initState() {
-    super.initState();
-    setup();
-  }
-
-  Future<void> setup() async {
+  Future<void> _setup() async {
     try {
       final cameras = await availableCameras();
-      // Sélectionner la caméra arrière
-      final firstCamera = cameras.first;
+      final camera = cameras.first;
+      _flashMode = FlashMode.auto;
+      _isInitialize = false;
       _controller = CameraController(
-        firstCamera,
+        camera,
         ResolutionPreset.high,
       );
-      _initializeControllerFuture = _controller.initialize();
-      setState(() {}); // Met à jour l'interface une fois la caméra initialisée
+      await _controller.initialize();
+      if (!mounted) return;
+      _controller.lockCaptureOrientation(DeviceOrientation.portraitUp);
+      _controller.setFlashMode(_flashMode);
+      _isInitialize = true;
+      setState(() {});
     } catch (e) {
-      print('Erreur lors de l\'initialisation de la caméra : $e');
+      if(!mounted) return;
+      DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.cameraTitle, AppLocalizations.of(context)!.cameraErrorLoadTitle, AppLocalizations.of(context)!.popupOK, (){
+        Navigator.of(context).pop();
+      }, false);
     }
+  }
+
+  void _setupFlashMode(){
+    switch(_flashMode){
+      case FlashMode.auto:
+        _flashMode = FlashMode.always;
+        break;
+      case FlashMode.always:
+        _flashMode = FlashMode.off;
+        break;
+      case FlashMode.off:
+        _flashMode = FlashMode.auto;
+        break;
+      default:
+        _flashMode = FlashMode.auto;
+    }
+    _controller.setFlashMode(_flashMode);
+    setState(() {});
+  }
+
+  Future<void> _setupLocation() async {
+    if(_isLocation){
+      _isLocation = false;
+    } else {
+      if (await LocationUtils.isEnable()) {
+        bool permission = true;
+        String error;
+        switch (await LocationUtils.checkPermission()) {
+          case LocationPermission.deniedForever:
+            if(!mounted) return;
+            error = AppLocalizations.of(context)!.cameraErrorLocationDeniedForeverTitle;
+            permission = false;
+            break;
+          case LocationPermission.denied:
+            if(!mounted) return;
+            error = AppLocalizations.of(context)!.cameraErrorLocationDeniedTitle;
+            permission = false;
+            break;
+          default:
+            error = "";
+            permission = true;
+        }
+        if (permission) {
+          _isLocation = true;
+        } else {
+          if(!mounted) return;
+          DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.cameraTitle, error, AppLocalizations.of(context)!.popupOK, (){
+            Navigator.of(context).pop();
+          }, false);
+        }
+      } else {
+        if(!mounted) return;
+        DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.cameraTitle, AppLocalizations.of(context)!.cameraErrorLocationDeniedTitle, AppLocalizations.of(context)!.popupOK, (){
+          Navigator.of(context).pop();
+        }, false);
+      }
+    }
+    setState(() {});
   }
 
   Future<void> _takePicture() async {
     try {
-      await _initializeControllerFuture;
-
-      final image = await _controller.takePicture();
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Photo capturée : ${image.path}')),
-      );
+      Navigator.of(context).pushNamed(NavigationConstant.cameraCheckImagePage, arguments: MushroomScanImage(xFile: await _controller.takePicture(), dateTime: DateTime.now(), position: _isLocation ? await LocationUtils.getCurrentLocation() : null));
+      if(!mounted) return;
     } catch (e) {
-      print('Erreur lors de la capture de la photo : $e');
+      if(!mounted) return;
+      DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.cameraTitle, AppLocalizations.of(context)!.cameraErrorTakeTitle, AppLocalizations.of(context)!.popupOK, (){
+        Navigator.of(context).pop();
+      }, false);
     }
   }
 
   @override
+  void initState() {
+    super.initState();
+    _isInitialize = false;
+  }
+
+  @override
+  Future<void> didChangeDependencies() async {
+    super.didChangeDependencies();
+    if (!_isInitialize) {
+      _initializeController = _setup();
+    }
+    final locationPermission = await LocationUtils.checkPermission();
+    _isLocation = locationPermission != LocationPermission.denied && locationPermission != LocationPermission.deniedForever;
+  }
+
+  @override
   void dispose() {
-    _controller.dispose(); // Libérer les ressources de la caméra
+    if (_controller.value.isInitialized) {
+      _controller.dispose();
+    }
+    _isInitialize = false;
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _initializeControllerFuture == null
-          ? const Center(child: CircularProgressIndicator())
-          : FutureBuilder<void>(
-        future: _initializeControllerFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return Stack(children:[
-              Center(child: CameraPreview(_controller,)),
-              SafeArea(child: Icon(Icons.camera))
-            ] );
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        },
+      body: SafeArea(
+        child: Stack(
+          alignment: Alignment.topLeft,
+          children: [
+            FutureBuilder<void>(
+              future: _initializeController,
+              builder: (BuildContext context, AsyncSnapshot<void> snapshot){
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return LoadingContainer(message: AppLocalizations.of(context)!.cameraInProgressTitle);
+                } else if (snapshot.hasError || !_isInitialize) {
+                  return Container();
+                } else {
+                  return Stack(
+                    alignment: Alignment.topRight,
+                    children: [
+                      Center(
+                        child: CameraPreview(
+                          _controller,
+                        ),
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: DimensionConstant.defaultPadding),
+                            // TODO: Update icon
+                            child: GestureDetector(
+                                onTap: (){
+                                  _setupLocation();
+                                },
+                                child: Icon(
+                                    _isLocation ?
+                                    CupertinoIcons.location_fill :
+                                    CupertinoIcons.location_slash_fill
+                                )
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: DimensionConstant.defaultPadding),
+                            // TODO: Update icon
+                            child: GestureDetector(
+                                onTap: (){
+                                  _setupFlashMode();
+                                },
+                                child: Icon(
+                                    _flashMode == FlashMode.auto ?
+                                    CupertinoIcons.lightbulb :
+                                    _flashMode == FlashMode.always ?
+                                    CupertinoIcons.lightbulb_fill :
+                                    CupertinoIcons.lightbulb_slash_fill
+                                )
+                            ),
+                          )
+                        ],
+                      )
+                    ]
+                  );
+                }
+              }
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: DimensionConstant.defaultPadding),
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.of(context).pop();
+                },
+                child: Icon(MushroomGOFontUtils.close)
+              ),
+            )
+          ]
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: _takePicture,
-        child: Icon(CupertinoIcons.camera_fill),
-      ),
+      floatingActionButton: _isInitialize ? Padding(
+        padding: const EdgeInsets.all(DimensionConstant.iconPaddingCamera),
+        // TODO: Update icon
+        child: GestureDetector(
+          onTap: () async {
+            await _takePicture();
+          },
+            child: Icon(Icons.camera, size: DimensionConstant.iconSizeCamera,)
+        ),
+      ) : null,
     );
   }
 }

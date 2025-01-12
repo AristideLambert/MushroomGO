@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SearchUtils {
-  SearchUtils._();
+class SearchHistoryUtils {
+  SearchHistoryUtils._();
 
   static const _key = 'search_history';
 
