@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/models/mission.dart';
 import 'package:mushroom_go/screen/widget/listview/challenge_missions_list.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mushroom_go/screen/widget/popup/loading_container.dart';
+import 'package:mushroom_go/screen/widget/popup/loading_error_container.dart';
+import 'package:mushroom_go/utils/firebase/firestore_utils.dart';
 
 class ChallengeMissionsTab extends StatefulWidget {
   const ChallengeMissionsTab({super.key});
@@ -11,78 +15,71 @@ class ChallengeMissionsTab extends StatefulWidget {
 }
 
 class _ChallengeMissionsTabState extends State<ChallengeMissionsTab> {
-  late List<Map<String, dynamic>> missionCategories;
+  late Future<Map<String, List<Mission>>> _missionCategories;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    missionCategories = [
-      {
-        'category': AppLocalizations.of(context)!.challengeMissionsWeakly,
-        'missions': [
-          Mission(
-            title: "Pick up 200 Coins",
-            description: "Collect 200 coins in a single run.",
-            currentProgress: 50,
-            goal: 200,
-            badge: 'assets/images/rare_mushroom_collector.png',
-              isEarned: false
-          ),
-          Mission(
-            title: "Pick up 3 Magnets",
-            description: "Collect 3 magnets during your runs.",
-            currentProgress: 2,
-            goal: 3,
-            badge: 'assets/images/rare_mushroom_collector.png',
-              isEarned: false
-          ),
-          Mission(
-            title: "Pick up 5 Rockets",
-            description: "Collect 5 Rockets during your runs.",
-            currentProgress: 2,
-            goal: 5,
-            badge: 'assets/images/rare_mushroom_collector.png',
-              isEarned: false
-          ),
-        ],
-      },
-      {
-        'category': AppLocalizations.of(context)!.challengeMissionsMonthly,
-        'missions': [
-          Mission(
-            title: "Score 10,000 Points",
-            description: "Reach 10,000 points in one run.",
-            currentProgress: 5000,
-            goal: 10000,
-            badge: 'assets/images/rare_mushroom_collector.png',
-              isEarned: false
-          ),
-          Mission(
-            title: "Win 5 Games",
-            description: "Play and win 5 games.",
-            currentProgress: 3,
-            goal: 5,
-            badge: 'assets/images/rare_mushroom_collector.png',
-            isEarned: false
-          ),
-        ],
-      },
-    ];
+  void initState() {
+    super.initState();
+    _reloadData();
+  }
+
+  void _reloadData() {
+    setState(() {
+      _missionCategories = FirestoreUtils.fetchMissionsWithUserProgress(context)
+          .then((missions) {
+        final categories = <String, List<Mission>>{};
+        for (var mission in missions) {
+          categories.putIfAbsent(mission.frequency, () => []).add(mission);
+        }
+        return categories;
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final appBarHeight = AppBar().preferredSize.height;
+
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: List.generate(
-            missionCategories.length,
-                (index) => ChallengeMissionListTab(
-              category: missionCategories[index]['category'],
-              missions: missionCategories[index]['missions'],
-              index: index, // Pass index dynamically
-            ),
-          ),
+      body: Padding(
+        padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
+        child: FutureBuilder<Map<String, List<Mission>>>(
+          future: _missionCategories,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Transform.translate(
+                offset: Offset(0, -appBarHeight),
+                child: LoadingContainer(
+                  message: AppLocalizations.of(context)!.challengeMissionsLoadingData,
+                ),
+              );
+            } else if (snapshot.hasError) {
+              return LoadingErrorContainer(
+                message: AppLocalizations.of(context)!.challengeMissionsErrorLoadingData,
+                onReload: _reloadData,
+              );
+            }
+
+            final missionCategories = snapshot.data ?? {};
+            return SingleChildScrollView(
+              child: Column(
+                children: List.generate(
+                  missionCategories.keys.length,
+                      (index) {
+                    final category = missionCategories.keys.elementAt(index);
+                    final missions = missionCategories[category] ?? [];
+                    return ChallengeMissionListTab(
+                      category: category == "weekly"
+                          ? AppLocalizations.of(context)!.challengeMissionsWeakly
+                          : AppLocalizations.of(context)!.challengeMissionsMonthly,
+                      missions: missions,
+                      index: index,
+                    );
+                  },
+                ),
+              ),
+            );
+          },
         ),
       ),
     );

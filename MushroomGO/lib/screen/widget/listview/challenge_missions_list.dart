@@ -60,7 +60,7 @@ class _ChallengeMissionListTabState extends State<ChallengeMissionListTab> {
               return ChallengeMissionItem(
                 title: mission.title,
                 description: mission.description,
-                currentProgress: mission.currentProgress,
+                currentProgress: mission.currentProgress ?? 0,
                 goal: mission.goal,
                 theme: theme,
               );

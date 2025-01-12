@@ -42,7 +42,7 @@ class _BadgeDetailPageState extends State<BadgeDetailPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
-                    widget.mission.badge,
+                    widget.mission.badgeFile,
                     fit: BoxFit.contain,
                     height: theme.heightImageDetail,
                   ),

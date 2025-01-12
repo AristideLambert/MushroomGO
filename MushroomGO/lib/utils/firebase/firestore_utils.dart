@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mushroom_go/exception/loading_exception.dart';
 import 'package:mushroom_go/models/firestore_pagination.dart';
+import 'package:mushroom_go/models/mission.dart';
 import 'package:mushroom_go/models/mushroom.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mushroom_go/models/mushroom_scan.dart';
@@ -238,4 +239,66 @@ class FirestoreUtils{
       return [];
     }
   }
+  static Future<List<Mission>> fetchMissionsWithUserProgress(BuildContext context) async {
+    try {
+      final userId = FirebaseAuth.instance.currentUser!.uid;
+      final missionSnapshot = await FirebaseFirestore.instance.collection("mission").get();
+
+      final userMissionSnapshot = await FirebaseFirestore.instance
+          .collection("mission_user")
+          .where("user_id", isEqualTo: userId)
+          .get();
+
+      final userMissionMap = {
+        for (var doc in userMissionSnapshot.docs)
+          doc.data()["mission_id"]: doc.data()
+      };
+
+      final missions = <Mission>[];
+      for (var missionDoc in missionSnapshot.docs) {
+        final missionData = missionDoc.data();
+        final missionId = missionDoc.id;
+
+        final mission = Mission.fromMap(missionData, id: missionId);
+
+        final userMissionData = userMissionMap[missionId];
+
+        final enrichedMission = mission.copyWith(
+          currentProgress: userMissionData?['progress'] as int? ?? 0,
+          isEarned: userMissionData?['earned_date'] != null,
+          earnedDate: userMissionData?['earned_date'] != null
+              ? (userMissionData!['earned_date'] as Timestamp).toDate()
+              : null,
+        );
+        missions.add(enrichedMission);
+      }
+      return missions;
+    } catch (e) {
+      if (context.mounted) {
+        throw LoadingException(
+          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle,
+          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError,
+        );
+      }
+      return [];
+    }
+  }
+  static Future<String?> getRarityForMushroom(BuildContext context, String mushroomId) async {
+    try {
+      final querySnapshot = await FirebaseFirestore.instance
+          .collection("challenge_mushroom")
+          .where("mushroom_id", isEqualTo: mushroomId)
+          .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        return querySnapshot.docs.first.data()["rarity"] as String?;
+      }
+      return null;
+    } catch (e) {
+      debugPrint('Error fetching rarity for mushroom: $e');
+      return null;
+    }
+  }
+
+
 }

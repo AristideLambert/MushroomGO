@@ -710,5 +710,13 @@
   "locationUtilsHere": "here",
   "@locationUtilsHere": {
     "description": "Here (LocationUtils)"
+  },
+     "challengeMissionsLoadingData": "Loading data...",
+     "@challengeMissionsLoadingData": {
+       "description": "Loading Data"
+  },
+     "challengeMissionsErrorLoadingData": "Error loading data",
+     "@challengeMissionsErrorLoadingData": {
+       "description": "Error Loading Data"
   }
 }

@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:camera/camera.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
@@ -11,6 +10,7 @@ import 'package:mushroom_go/utils/dialog/dialog_utils.dart';
 import 'package:mushroom_go/utils/firebase/firestore_utils.dart';
 import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mushroom_go/utils/mission/mission_utils.dart';
 
 class CameraCheckImagePage extends StatefulWidget {
   const CameraCheckImagePage({super.key});
@@ -30,9 +30,11 @@ class _CameraCheckImagePageState extends State<CameraCheckImagePage> {
         await Navigator.of(context).pushNamed(NavigationConstant.benefitAccountPage, arguments: true);
         if (!mounted) return;
       }
-      if(FirebaseAuth.instance.currentUser != null){
-        await FirestoreUtils.addMushroomHistory(context, mushroom, _mushroomScanImage);
-        // TODO: check mission
+      if (FirebaseAuth.instance.currentUser != null) {
+        await MissionUtils.checkMission(mushroom, context);
+        if (mounted) {
+          await FirestoreUtils.addMushroomHistory(context, mushroom, _mushroomScanImage);
+        }
       }
       if (!mounted) return;
       Navigator.of(context).pop();

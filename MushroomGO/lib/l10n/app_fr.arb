@@ -171,6 +171,8 @@
   "firestoreUtilsSearchMushroomError": "Impossible de charger les résultats.\nVeuillez réessayer plus tard",
   "challengeMushroomsLoadingData": "Chargement des données...",
   "challengeMushroomsErrorLoadingData": "Erreur lors du chargement des données",
+  "challengeMissionsLoadingData": "Chargement des données...",
+  "challengeMissionsErrorLoadingData": "Erreur lors du chargement des données",
   "loadingErrorContainerReload": "Actualiser",
   "mushroomIdentificationUtilsIdentifyMushroomInProgressTitle": "Analyse du champignon en cours...",
   "mushroomIdentificationUtilsIdentifyMushroomTitle": "Analyse du champignon",
