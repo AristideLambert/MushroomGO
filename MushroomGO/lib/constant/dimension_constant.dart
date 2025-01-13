@@ -33,6 +33,17 @@ class DimensionConstant {
   // AccountUpdateImageProfile
   static const double sizeImageAccountUpdateImageProfile = 70.0;
 
+  // BenefitAccount
+  static const double spaceVerticalBenefitAccount = 20.0;
+  static const double spaceLargeVerticalBenefitAccount = 35.0;
+  static const double spaceSmallVerticalBenefitAccount = 10.0;
+  static const double ratioLogoBenefitAccount= 0.2;
+  static const double paddingBenefitAccount = 20.0;
+
+  // BenefitContainer
+  static const double iconSizeBenefitContainer = 60.0;
+  static const double spaceBenefitContainer = 10.0;
+
   // Login
   static const double spaceVerticalLogin = 20.0;
   static const double spaceHorizontalLogin = 5.0;
@@ -62,7 +73,7 @@ class DimensionConstant {
 
   // Camera
   static const double iconSizeCamera = 100.0;
-  static const double iconPaddingCamera = 30.0;
+  static const double iconPaddingCamera = 20.0;
 
   // NavigationTabBottom
   static const double heightNavigationTabBottom = 56.0;
@@ -83,7 +94,7 @@ class DimensionConstant {
   // LoadingContainer
   static const double paddingLoadingContainer = 16.0;
   static const double radiusLoadingContainer = 10.0;
-  static const double iconSizeLoadingContainer = 35.0;
+  static const double iconSizeLoadingContainer = 40.0;
   static const double spaceLoadingContainer = 8.0;
 
   // ButtonStandard
@@ -181,15 +192,17 @@ class DimensionConstant {
   // MushroomDetail
   static const double radiusItemMushroomDetail = 8.0;
   static const double imageHeightMushroomDetail = 200.0;
-  static const double spaceBetweenImageTextMushroomDetail = 16.0;
   static const double heightBetweenNameScientificNameMushroomDetail = 3;
   static const double widthBetweenNameScientificNameMushroomDetail = 8;
-  static const double detailMarginNameMushroomDetail = 8.0;
   static const double sizeIconMushroomDetail = 19.0;
   static const double spaceBetweenTextMushroomDetail = 8.0;
   static const double paddingClassificationMushroomDetail = 4.0;
   static const double widthTableBorderMushroomDetail = 1.0;
   static const double sizeLoadImageMushroomDetail = 100.0;
+  static const double spaceBetweenTextMapMushroomDetail = 13.0;
+  static const double mapInitialZoomMushroomDetail = 16.0;
+  static const double heightMapMushroomDetail = 200.0;
+  static const double sizeMarkerMapMushroomDetail = 40.0;
 
   // BadgeTab
   static const int gridDelegateCrossAxisCountBadgeTab = 3;

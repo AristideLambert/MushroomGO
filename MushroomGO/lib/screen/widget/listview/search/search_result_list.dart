@@ -35,11 +35,12 @@ class _SearchResultListState extends State<SearchResultList> {
           return index < widget.mushrooms.length ?
             SearchResultListItem(
               index: index,
+              indexEnd: widget.mushrooms.length - 1,
               mushroom: widget.mushrooms[index],
               theme: _theme
             ) : Padding(
               padding: EdgeInsets.only(
-                top: _theme.defaultPadding
+                bottom: DimensionConstant.defaultPadding
               ),
               child: LoadingImage(size: _theme.sizeLoadingImage),
             );

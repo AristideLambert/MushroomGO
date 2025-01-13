@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/screen/widget/image/loading_image.dart';
+import 'package:mushroom_go/screen/widget/text/text_output.dart';
 import 'package:mushroom_go/theme/loading_container_theme.dart';
-import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 
 class LoadingContainer extends StatefulWidget {
   final String message;
@@ -28,19 +28,15 @@ class _LoadingContainerState extends State<LoadingContainer> {
       child: Container(
         padding: EdgeInsets.all(theme.padding),
         decoration: BoxDecoration(
-          color: theme.backgroundColor,
+          color: Theme.of(context).appBarTheme.backgroundColor,
           borderRadius: BorderRadius.circular(theme.radius),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            //Icon(MushroomGOFontUtils.logo, color: theme.iconColor, size: theme.iconSize,),
-            LoadingImage(size: 40),
+            LoadingImage(size: theme.iconSize),
             SizedBox(height: theme.space),
-            Text(
-              widget.message,
-              style: theme.titleStyle
-            )
+            TextOutput(text: widget.message)
           ],
         ),
       ),

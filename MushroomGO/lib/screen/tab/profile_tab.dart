@@ -92,8 +92,8 @@ class _ProfileTabState extends State<ProfileTab> with TickerProviderStateMixin {
         child: NavigationViewTabTop(
         tabController: _tabController,
         tabs: [
-          ProfileHistoryTab(),
-          ProfileBadgeTab(mainContext: widget.mainContext,)
+          ProfileHistoryTab(mainContext: widget.mainContext),
+          ProfileBadgeTab(mainContext: widget.mainContext)
         ],
         ),
       ),

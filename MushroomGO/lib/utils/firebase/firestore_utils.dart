@@ -98,27 +98,21 @@ class FirestoreUtils{
     return null;
   }
 
-  static Future<void> addMushroomHistory(BuildContext context, String mushroom, MushroomScanImage mushroomScanImage) async {
+  static Future<MushroomScan?> addMushroomHistory(BuildContext context, String mushroom, MushroomScanImage mushroomScanImage) async {
     try {
-      final user = FirebaseAuth.instance.currentUser;
-      final String? mushroomId = (await getMushroomNameScientific(context, mushroom, isThrow: false))?.id;
+      final MushroomScan mushroomScan = MushroomScan(scientificName: mushroom.toLowerCase(), mushroom: await getMushroomNameScientific(context, mushroom, isThrow: false), position: mushroomScanImage.position, dateTime: mushroomScanImage.dateTime);
       await FirebaseFirestore.instance
         .collection("scan_mushroom")
         .doc()
-        .set({
-          "name_scientific": mushroom.toLowerCase(),
-          "mushroom_id": mushroomId,
-          "latitude": mushroomScanImage.position?.latitude,
-          "longitude": mushroomScanImage.position?.longitude,
-          "date": mushroomScanImage.dateTime.toUtc(),
-          "user": user!.uid
-      });
+        .set(mushroomScan.toMap());
+      return mushroomScan;
     } catch (e) {
       // TODO: change string (LoadingException)
       if(context.mounted){
         throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle, AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError);
       }
     }
+    return null;
   }
 
   static Future<FirestorePagination<MushroomScan>> getMushroomHistory(BuildContext context, int limit, List<DateTime>? lastResultDateTime) async {

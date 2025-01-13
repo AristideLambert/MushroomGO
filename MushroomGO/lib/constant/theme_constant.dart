@@ -46,11 +46,7 @@ class ThemeConstant{
     )
   ).copyWith(
     extensions: [
-      const LoadingContainerTheme(
-        backgroundColor: ColorConstant.lightBackgroundLoadingContainer,
-        iconColor: ColorConstant.lightIconLoadingContainer,
-        titleStyle: TextStyleConstant.lightTitleLoadingContainer
-      ),
+      const LoadingContainerTheme(),
       const ButtonStandardTheme(
         titleStyle: TextStyleConstant.lightTitleButtonStandard
       ),
@@ -108,7 +104,6 @@ class ThemeConstant{
         titleStyle: TextStyleConstant.lightTitleProfileHistoryList,
       ),
       const MushroomDetailTheme(
-        backgroundColor: ColorConstant.lightBackgroundMushroomDetail,
         titleStyle: TextStyleConstant.lightTitleMushroomDetail,
         textStyle: TextStyleConstant.lightTextMushroomDetail,
         nameStyle: TextStyleConstant.lightNameMushroomDetail,
@@ -158,11 +153,7 @@ class ThemeConstant{
     )
   ).copyWith(
     extensions: [
-      const LoadingContainerTheme(
-        backgroundColor: ColorConstant.darkBackgroundLoadingContainer,
-        iconColor: ColorConstant.darkIconLoadingContainer,
-        titleStyle: TextStyleConstant.darkTitleLoadingContainer
-      ),
+      const LoadingContainerTheme(),
       const ButtonStandardTheme(
         titleStyle: TextStyleConstant.darkTitleButtonStandard
       ),
@@ -220,7 +211,6 @@ class ThemeConstant{
         titleStyle: TextStyleConstant.darkTitleProfileHistoryList,
       ),
       const MushroomDetailTheme(
-        backgroundColor: ColorConstant.darkBackgroundMushroomDetail,
         titleStyle: TextStyleConstant.darkTitleMushroomDetail,
         textStyle: TextStyleConstant.darkTextMushroomDetail,
         nameStyle: TextStyleConstant.darkNameMushroomDetail,

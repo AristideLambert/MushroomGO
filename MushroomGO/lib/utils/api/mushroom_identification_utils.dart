@@ -7,7 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MushroomIdentificationUtils {
   static const String _apiUrl = "https://mushroom.kindwise.com/api/v1/identification";
-  static const String _apiKey = "GzLAZTuJtghThBZmmojt1hMVzPcII1hw3NBEHhECA9zmciY1vh";
+  static const String _apiKey = "4EfErxKJlUzD7a5VsXBPNJMiktCVQFIZaXB8YWs9pzX032m41w";
 
   static Future<String?> identifyMushroom(BuildContext context, XFile xFile, {bool isPop = true}) async {
     try {

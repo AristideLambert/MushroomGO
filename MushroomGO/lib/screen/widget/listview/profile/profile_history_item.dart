@@ -1,8 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
+import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/models/mushroom_scan.dart';
 import 'package:mushroom_go/screen/widget/image/loading_image.dart';
 import 'package:mushroom_go/theme/profile_history_list_theme.dart';
@@ -13,9 +13,10 @@ class ProfileHistoryItem extends StatefulWidget {
   final int index;
   final int indexEnd;
   final MushroomScan mushroomScan;
+  final BuildContext mainContext;
   final ProfileHistoryListTheme theme;
 
-  const ProfileHistoryItem({super.key, required this.index, required this.indexEnd, required this.mushroomScan, required this.theme});
+  const ProfileHistoryItem({super.key, required this.index, required this.indexEnd, required this.mushroomScan, required this.mainContext, required this.theme});
 
   @override
   State<ProfileHistoryItem> createState() => _ProfileHistoryItemState();
@@ -41,17 +42,25 @@ class _ProfileHistoryItemState extends State<ProfileHistoryItem> {
     });
   }
 
+  void _stopDistance(){
+    if(_timer != null){
+      if(_timer!.isActive){
+        _timer?.cancel();
+      }
+      _timer == null;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     _distance = "";
-    _loadDistance();
+    _timer = null;
   }
 
   @override
   void dispose() {
-    _timer?.cancel();
-    _timer = null;
+    _stopDistance();
     super.dispose();
   }
 
@@ -61,18 +70,20 @@ class _ProfileHistoryItemState extends State<ProfileHistoryItem> {
       onVisibilityChanged: (visibilityInfo) {
         final visiblePercentage = visibilityInfo.visibleFraction * 100;
         if (visiblePercentage == 0) {
-          _timer?.cancel();
-          _timer = null;
+          _stopDistance();
         } else {
-          if(_timer == null){
-            _loadDistance();
-          }
+          _loadDistance();
         }
       },
       key: widget.key ?? UniqueKey(),
       child: GestureDetector(
         onTap: () {
-          // TODO: Naviguer vers la page de détail pour ce scan
+          if(widget.mushroomScan.mushroom != null){
+            Navigator.of(widget.mainContext).pushNamed(
+              NavigationConstant.mushroomDetailPage,
+              arguments: widget.mushroomScan,
+            );
+          }
         },
         child: Card(
           color: Theme.of(context).appBarTheme.backgroundColor,
@@ -137,6 +148,7 @@ class _ProfileHistoryItemState extends State<ProfileHistoryItem> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    // TODO: Update icon
                     Icon(widget.mushroomScan.position == null ? CupertinoIcons.location_slash_fill : CupertinoIcons.location_fill, color: Theme.of(context).primaryColor),
                     SizedBox(
                         width: widget.theme.imageWidthHeight,

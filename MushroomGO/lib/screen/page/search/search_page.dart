@@ -36,6 +36,7 @@ class _SearchPageState extends State<SearchPage> {
           children: [
             Container(
               padding: EdgeInsets.only(
+                top: DimensionConstant.defaultPadding,
                 left: DimensionConstant.defaultPadding,
                 right: DimensionConstant.defaultPadding,
                 bottom: DimensionConstant.defaultPadding - DimensionConstant.defaultPadding / 4

@@ -6,16 +6,17 @@ import 'package:mushroom_go/constant/text_style_constant.dart';
 class MushroomDetailTheme extends ThemeExtension<MushroomDetailTheme> {
   final double radiusItem;
   final double imageHeight;
-  final double spaceBetweenImageText;
   final double heightBetweenNameScientificName;
   final double widthBetweenNameScientificName;
-  final double detailMargin;
   final double spaceBetweenText;
   final double paddingClassification;
   final double sizeIcon;
   final double widthTableBorder;
   final double sizeLoadImage;
-  final Color backgroundColor;
+  final double spaceBetweenTextMap;
+  final double mapInitialZoom;
+  final double heightMap;
+  final double sizeMarkerMap;
   final TextStyle nameStyle;
   final TextStyle scientificNameText;
   final TextStyle scientificName;
@@ -25,16 +26,17 @@ class MushroomDetailTheme extends ThemeExtension<MushroomDetailTheme> {
   const MushroomDetailTheme({
     this.radiusItem = DimensionConstant.radiusItemMushroomDetail,
     this.imageHeight = DimensionConstant.imageHeightMushroomDetail,
-    this.spaceBetweenImageText = DimensionConstant.spaceBetweenImageTextMushroomDetail,
     this.heightBetweenNameScientificName = DimensionConstant.heightBetweenNameScientificNameMushroomDetail,
     this.widthBetweenNameScientificName = DimensionConstant.widthBetweenNameScientificNameMushroomDetail,
-    this.detailMargin = DimensionConstant.detailMarginNameMushroomDetail,
     this.spaceBetweenText = DimensionConstant.spaceBetweenTextMushroomDetail,
     this.paddingClassification = DimensionConstant.paddingClassificationMushroomDetail,
     this.sizeIcon = DimensionConstant.sizeIconMushroomDetail,
     this.widthTableBorder = DimensionConstant.widthTableBorderMushroomDetail,
     this.sizeLoadImage = DimensionConstant.sizeLoadImageMushroomDetail,
-    this.backgroundColor = ColorConstant.lightBackgroundMushroomDetail,
+    this.spaceBetweenTextMap = DimensionConstant.spaceBetweenTextMapMushroomDetail,
+    this.mapInitialZoom = DimensionConstant.mapInitialZoomMushroomDetail,
+    this.heightMap = DimensionConstant.heightMapMushroomDetail,
+    this.sizeMarkerMap = DimensionConstant.sizeMarkerMapMushroomDetail,
     this.nameStyle = TextStyleConstant.lightNameMushroomDetail,
     this.scientificNameText = TextStyleConstant.scientificNameTextMushroomDetail,
     this.scientificName = TextStyleConstant.lightScientificNameMushroomDetail,
@@ -46,16 +48,17 @@ class MushroomDetailTheme extends ThemeExtension<MushroomDetailTheme> {
   MushroomDetailTheme copyWith({
     double? radiusItem,
     double? imageHeight,
-    double? spaceBetweenImageText,
     double? heightBetweenNameScientificName,
     double? widthBetweenNameScientificName,
-    double? detailMargin,
     double? spaceBetweenText,
     double? paddingClassification,
     double? sizeIcon,
     double? widthTableBorder,
     double? sizeLoadImage,
-    Color? backgroundColor,
+    double? spaceBetweenTextMap,
+    double? mapInitialZoom,
+    double? heightMap,
+    double? sizeMarkerMap,
     TextStyle? nameStyle,
     TextStyle? scientificNameText,
     TextStyle? scientificName,
@@ -65,16 +68,17 @@ class MushroomDetailTheme extends ThemeExtension<MushroomDetailTheme> {
     return MushroomDetailTheme(
       radiusItem: radiusItem ?? this.radiusItem,
       imageHeight: imageHeight ?? this.imageHeight,
-      spaceBetweenImageText: spaceBetweenImageText ?? this.spaceBetweenImageText,
       heightBetweenNameScientificName: heightBetweenNameScientificName ?? this.heightBetweenNameScientificName,
       widthBetweenNameScientificName: widthBetweenNameScientificName ?? this.widthBetweenNameScientificName,
-      detailMargin: detailMargin ?? this.detailMargin,
       spaceBetweenText: spaceBetweenText ?? this.spaceBetweenText,
       paddingClassification: paddingClassification ?? this.paddingClassification,
       sizeIcon: sizeIcon ?? this.sizeIcon,
       widthTableBorder: widthTableBorder ?? this.widthTableBorder,
       sizeLoadImage: sizeLoadImage ?? this.sizeLoadImage,
-      backgroundColor: backgroundColor ?? this.backgroundColor,
+      spaceBetweenTextMap: spaceBetweenTextMap ?? this.spaceBetweenTextMap,
+      mapInitialZoom: mapInitialZoom ?? this.mapInitialZoom,
+      heightMap: heightMap ?? this.heightMap,
+      sizeMarkerMap: sizeMarkerMap ?? this.sizeMarkerMap,
       nameStyle: nameStyle ?? this.nameStyle,
       scientificNameText: scientificNameText ?? this.scientificNameText,
       scientificName: scientificName ?? this.scientificName,
@@ -89,16 +93,17 @@ class MushroomDetailTheme extends ThemeExtension<MushroomDetailTheme> {
     return MushroomDetailTheme(
       radiusItem: radiusItem + (other.radiusItem - radiusItem) * t,
       imageHeight: imageHeight + (other.imageHeight - imageHeight) * t,
-      spaceBetweenImageText: spaceBetweenImageText + (other.spaceBetweenImageText - spaceBetweenImageText) * t,
       heightBetweenNameScientificName: heightBetweenNameScientificName + (other.heightBetweenNameScientificName - heightBetweenNameScientificName) * t,
       widthBetweenNameScientificName: widthBetweenNameScientificName + (other.widthBetweenNameScientificName - widthBetweenNameScientificName) * t,
-      detailMargin: detailMargin + (other.detailMargin - detailMargin) * t,
       spaceBetweenText: spaceBetweenText + (other.spaceBetweenText - spaceBetweenText) * t,
       paddingClassification: paddingClassification + (other.paddingClassification - paddingClassification) * t,
       sizeIcon: sizeIcon + (other.sizeIcon - sizeIcon) * t,
       widthTableBorder: widthTableBorder + (other.widthTableBorder - widthTableBorder) * t,
       sizeLoadImage: sizeLoadImage + (other.sizeLoadImage - sizeLoadImage) * t,
-      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t)!,
+      spaceBetweenTextMap: spaceBetweenTextMap + (other.spaceBetweenTextMap - spaceBetweenTextMap) * t,
+      mapInitialZoom: mapInitialZoom + (other.mapInitialZoom - mapInitialZoom) * t,
+      heightMap: heightMap + (other.heightMap - heightMap) * t,
+      sizeMarkerMap: sizeMarkerMap + (other.sizeMarkerMap - sizeMarkerMap) * t,
       nameStyle: TextStyle.lerp(nameStyle, other.nameStyle, t)!,
       scientificNameText: TextStyle.lerp(scientificNameText, other.scientificNameText, t)!,
       scientificName: TextStyle.lerp(scientificName, other.scientificName, t)!,

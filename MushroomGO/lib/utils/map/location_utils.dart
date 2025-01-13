@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LocationUtils {
 
@@ -63,5 +64,13 @@ class LocationUtils {
     } else {
       return "+999 km";
     }
+  }
+
+  static Future<void> openGoogleMaps(BuildContext context, double latitude, double longitude) async {
+    final url = 'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
+    await launchUrl(
+      Uri.parse(url),
+      mode: LaunchMode.externalApplication,
+    );
   }
 }

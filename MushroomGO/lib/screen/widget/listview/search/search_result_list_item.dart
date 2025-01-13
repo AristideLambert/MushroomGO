@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/models/mushroom.dart';
 import 'package:mushroom_go/screen/widget/image/loading_image.dart';
@@ -7,10 +8,11 @@ import 'package:mushroom_go/utils/search/history/search_history_utils.dart';
 
 class SearchResultListItem extends StatelessWidget {
   final int index;
+  final int indexEnd;
   final Mushroom mushroom;
   final SearchResultListTheme theme;
 
-  const SearchResultListItem({super.key, required this.index, required this.mushroom, required this.theme});
+  const SearchResultListItem({super.key, required this.index, required this.indexEnd, required this.mushroom, required this.theme});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,9 @@ class SearchResultListItem extends StatelessWidget {
       },
       child: Container(
         padding:EdgeInsets.only(
-            top: index == 0 ? 0 : theme.defaultPadding,
-            bottom: theme.defaultPadding),
+          top: index == 0 ? 0 : theme.defaultPadding,
+          bottom: index == indexEnd ? DimensionConstant.defaultPadding : theme.defaultPadding
+        ),
         child: Row(
           children: [
             ClipRRect(

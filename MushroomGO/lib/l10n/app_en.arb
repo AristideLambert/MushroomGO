@@ -175,6 +175,42 @@
   "@recipes": {
     "description": "recipes"
   },
+  "benefitAccountTitle": "Why create an account ?",
+  "@benefitAccountTitle": {
+    "description": "Title (BenefitAccount)"
+  },
+  "benefitAccountMapTitle": "Map",
+  "@benefitAccountMapTitle": {
+    "description": "Title map (BenefitAccount)"
+  },
+  "benefitAccountMapDescription": "Access to the collaborative map",
+  "@benefitAccountMapDescription": {
+    "description": "Description map (BenefitAccount)"
+  },
+  "benefitAccountHistoryTitle": "History",
+  "@benefitAccountHistoryTitle": {
+    "description": "Title history (BenefitAccount)"
+  },
+  "benefitAccountHistoryDescription": "Access to the full scan history",
+  "@benefitAccountHistoryDescription": {
+    "description": "Description history (BenefitAccount)"
+  },
+  "benefitAccountChallengeTitle": "Challenge",
+  "@benefitAccountChallengeTitle": {
+    "description": "Title challenge (BenefitAccount)"
+  },
+  "benefitAccountChallengeDescription": "Access to a series of challenges",
+  "@benefitAccountChallengeDescription": {
+    "description": "Description challenge (BenefitAccount)"
+  },
+  "benefitAccountChallengeButtonLogin": "Login",
+  "@benefitAccountChallengeButtonLogin": {
+    "description": "Button Login (BenefitAccount)"
+  },
+  "benefitAccountChallengeButtonSkip": "Skip",
+  "@benefitAccountChallengeButtonSkip": {
+    "description": "Button skip (BenefitAccount)"
+  },
   "loginTitle": "Sign in to your account",
   "@loginTitle": {
     "description": "Title (Login)"
@@ -391,6 +427,10 @@
   "@cameraCheckImageErrorTitle": {
     "description": "Title error (CameraCheckImage)"
   },
+  "cameraCheckImageErrorAnalyzeTitle": "The analysis could not be completed.\nPlease try again later",
+  "@cameraCheckImageErrorAnalyzeTitle": {
+    "description": "Title analyze error (CameraCheckImage)"
+  },
   "cameraCheckImageButtonAnalyze": "Analyze",
   "@cameraCheckImageButtonAnalyze": {
     "description": "Button analyze (CameraCheckImage)"
@@ -398,6 +438,38 @@
   "cameraCheckImageButtonRetry": "Retry",
   "@cameraCheckImageButtonRetry": {
     "description": "Button retry (CameraCheckImage)"
+  },
+  "mushroomDetailInProgressTitle": "Loading information...",
+  "@mushroomDetailInProgressTitle": {
+    "description": "Title in progress (MushroomDetail)"
+  },
+  "mushroomDetailTitle": "Mushroom details",
+  "@mushroomDetailTitle": {
+    "description": "Title (MushroomDetail)"
+  },
+  "mushroomDetailErrorNotFoundTitle": "No data available for this mushroom in our database",
+  "@mushroomDetailErrorNotFoundTitle": {
+    "description": "Title error - not found (MushroomDetail)"
+  },
+  "mushroomDetailErrorNotLoadTitle": "Unable to load the data",
+  "@mushroomDetailErrorNotLoadTitle": {
+    "description": "Title error - not load (MushroomDetail)"
+  },
+  "mushroomScanColumnHistory": "History",
+  "@mushroomScanColumnHistory": {
+    "description": "History (MushroomScanColumn)"
+  },
+  "profileHistoryInProgressTitle": "Loading history...",
+  "@profileHistoryInProgressTitle": {
+    "description": "Title in progress (ProfileHistory)"
+  },
+  "profileHistoryNoHistoryTitle": "No history",
+  "@profileHistoryNoHistoryTitle": {
+    "description": "Title no history (ProfileHistory)"
+  },
+  "profileHistoryErrorTitle": "Unable to load the history",
+  "@profileHistoryErrorTitle": {
+    "description": "Title error (ProfileHistory)"
   },
   "popupOK": "OK",
   "@popupOK": {

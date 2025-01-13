@@ -8,9 +8,12 @@ import 'package:mushroom_go/theme/profile_history_list_theme.dart';
 class ProfileHistoryList extends StatefulWidget {
   final List<MushroomScan> mushroomScans;
   final bool loadIcon;
+  final Future<void> Function() onRefresh;
+  final bool Function(ScrollNotification)? onNotification;
+  final BuildContext mainContext;
   final ProfileHistoryListTheme? theme;
 
-  const ProfileHistoryList({super.key, required this.mushroomScans, required this.loadIcon, this.theme});
+  const ProfileHistoryList({super.key, required this.mushroomScans, required this.loadIcon, required this.onRefresh, required this.onNotification, required this.mainContext, this.theme});
 
   @override
   State<ProfileHistoryList> createState() => _ProfileHistoryListState();
@@ -27,23 +30,32 @@ class _ProfileHistoryListState extends State<ProfileHistoryList> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-      itemCount: widget.mushroomScans.length + (widget.loadIcon ? 1 : 0),
-      itemBuilder: (context, index) {
-        return index < widget.mushroomScans.length ?
-          ProfileHistoryItem(
-            index: index,
-            indexEnd: widget.mushroomScans.length,
-            mushroomScan: widget.mushroomScans[index],
-            theme: _theme
-          ) : Padding(
-          padding: EdgeInsets.only(
-              bottom: DimensionConstant.defaultPadding * 1.1
-          ),
-          child: LoadingImage(size: _theme.imageWidthHeight),
-        );
-      },
+    return NotificationListener<ScrollNotification>(
+      onNotification: widget.onNotification,
+      child: RefreshIndicator(
+        color: Theme.of(context).primaryColor,
+        elevation: DimensionConstant.defaultElevation,
+        onRefresh: widget.onRefresh,
+        child: ListView.builder(
+          padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
+          itemCount: widget.mushroomScans.length + (widget.loadIcon ? 1 : 0),
+          itemBuilder: (context, index) {
+            return index < widget.mushroomScans.length ?
+              ProfileHistoryItem(
+                index: index,
+                indexEnd: widget.mushroomScans.length,
+                mushroomScan: widget.mushroomScans[index],
+                mainContext: widget.mainContext,
+                theme: _theme
+              ) : Padding(
+              padding: EdgeInsets.only(
+                  bottom: DimensionConstant.defaultPadding * 1.1
+              ),
+              child: LoadingImage(size: _theme.imageWidthHeight),
+            );
+          },
+        ),
+      ),
     );
   }
 }

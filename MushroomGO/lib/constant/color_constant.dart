@@ -8,6 +8,10 @@ class ColorConstant{
   static const Color textPrimaryColor = CupertinoColors.white;
   static const Color textScaffoldBackgroundColor = primaryColor;
 
+  // BenefitAccount
+  static const Color buttonBackgroundBenefitAccount = CupertinoColors.white;
+  static const Color buttonTitleBackgroundBenefitAccount = CupertinoColors.black;
+
   // Login
   static const Color textLogin = CupertinoColors.white;
   static const Color textOnTapLogin = primaryColor;
@@ -16,6 +20,13 @@ class ColorConstant{
   static const Color textRegister = CupertinoColors.white;
   static const Color textOnTapRegister = primaryColor;
 
+  // Camera
+  static const Color backgroundCamera = CupertinoColors.black;
+  static const Color iconCamera = CupertinoColors.white;
+
+  // CameraCheckImage
+  static const Color backgroundCameraCheckImage = CupertinoColors.black;
+
   // NavigationTabBottom
   static const Color lightUnselectedNavigationTabBottom = CupertinoColors.black;
   static const Color darkUnselectedNavigationTabBottom = CupertinoColors.white;
@@ -23,14 +34,6 @@ class ColorConstant{
   // NavigationTabTop
   static const Color lightUnselectedNavigationTabTop = CupertinoColors.black;
   static const Color darkUnselectedNavigationTabTop = CupertinoColors.white;
-
-  // LoadingContainer
-  static const Color lightBackgroundLoadingContainer = CupertinoColors.white;
-  static const Color darkBackgroundLoadingContainer = CupertinoColors.darkBackgroundGray;
-  static const Color lightIconLoadingContainer = CupertinoColors.black;
-  static const Color darkIconLoadingContainer = CupertinoColors.white;
-  static const Color lightTitleLoadingContainer = CupertinoColors.black;
-  static const Color darkTitleLoadingContainer = CupertinoColors.white;
 
   // ButtonStandard
   static const Color lightTitleButtonStandard = CupertinoColors.white;
@@ -118,8 +121,6 @@ class ColorConstant{
   static const Color lightItemHomeForYou = CupertinoColors.white;
 
   // MushroomDetail
-  static const Color lightBackgroundMushroomDetail = CupertinoColors.systemBackground;
-  static const Color darkBackgroundMushroomDetail = CupertinoColors.darkBackgroundGray;
   static const Color lightNameMushroomDetail = CupertinoColors.label;
   static const Color darkNameMushroomDetail = CupertinoColors.white;
 

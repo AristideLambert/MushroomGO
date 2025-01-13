@@ -85,6 +85,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
 
   @override
   Widget build(BuildContext context) {
+    final appBarHeight = AppBar().preferredSize.height;
     return NotificationListener<ScrollNotification>(
       onNotification: (scrollInfo) {
         if (scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent && !_isLoading) {
@@ -100,11 +101,14 @@ class _SearchResultPageState extends State<SearchResultPage> {
           } else if (snapshot.hasError) {
             return Container();
           } else if (!snapshot.hasData || (snapshot.data!.result.isEmpty && _mushrooms.isEmpty)) {
-            return Center(
-              child: TextOutput(
-                text: AppLocalizations.of(context)!.searchResultTitleNoResult,
-                type: Type.mediumTitle
-              )
+            return Transform.translate(
+              offset: Offset(0, -appBarHeight),
+              child: Center(
+                child: TextOutput(
+                  text: AppLocalizations.of(context)!.searchResultTitleNoResult,
+                  type: Type.mediumTitle
+                )
+              ),
             );
           } else {
             return SearchResultList(mushrooms: _mushrooms, loadIcon: _hasMore);

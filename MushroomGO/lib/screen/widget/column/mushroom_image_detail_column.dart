@@ -35,7 +35,7 @@ class _MushroomImageDetailColumnState extends State<MushroomImageDetailColumn> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: DimensionConstant.defaultMargin),
+      margin: EdgeInsets.only(top: DimensionConstant.defaultPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -50,18 +50,20 @@ class _MushroomImageDetailColumnState extends State<MushroomImageDetailColumn> {
                 if (event == null) {
                   return image;
                 }
-                return SizedBox(
+                return Container(
                   height: theme.imageHeight,
                   width: double.infinity,
+                  color: Theme.of(context).appBarTheme.backgroundColor,
                   child: Center(
                     child: LoadingImage(size: theme.sizeLoadImage),
                   ),
                 );
               }),
               errorBuilder: (context, error, stackTrace) {
-                return SizedBox(
+                return Container(
                   height: theme.imageHeight,
                   width: double.infinity,
+                  color: Theme.of(context).appBarTheme.backgroundColor,
                   child: Center(
                     child: LoadingImage(size: theme.sizeLoadImage),
                   ),
@@ -69,12 +71,12 @@ class _MushroomImageDetailColumnState extends State<MushroomImageDetailColumn> {
               },
             ),
           ),
-          SizedBox(height: theme.spaceBetweenImageText),
+          SizedBox(height: DimensionConstant.defaultPadding),
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
             decoration: BoxDecoration(
-              color: theme.backgroundColor,
+              color: Theme.of(context).appBarTheme.backgroundColor,
               borderRadius: BorderRadius.circular(theme.radiusItem)
             ),
             child: Column(

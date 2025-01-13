@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mushroom_go/constant/color_constant.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
-import 'package:mushroom_go/enum/section_type.dart';
 import 'package:mushroom_go/theme/mushroom_detail_theme.dart';
+
+enum SectionType {description, culinaryInfo, habitat, other}
 
 class MushroomDetailColumn extends StatefulWidget {
   final SectionType sectionType;
@@ -33,25 +33,26 @@ class _MushroomDetailColumnState extends State<MushroomDetailColumn> {
   }
 
   Icon _getIcon(SectionType sectionType) {
+    // TODO: Update icon
     switch (sectionType) {
       case SectionType.description:
-        return Icon(CupertinoIcons.doc_text_fill, color: ColorConstant.primaryColor, size: theme.sizeIcon);
+        return Icon(CupertinoIcons.doc_text_fill, color: Theme.of(context).primaryColor, size: theme.sizeIcon);
       case SectionType.culinaryInfo:
-        return Icon(Icons.dining, color: ColorConstant.primaryColor, size: theme.sizeIcon);
+        return Icon(Icons.dining, color: Theme.of(context).primaryColor, size: theme.sizeIcon);
       case SectionType.habitat:
-        return Icon(CupertinoIcons.tree, color: ColorConstant.primaryColor, size: theme.sizeIcon);
+        return Icon(CupertinoIcons.tree, color: Theme.of(context).primaryColor, size: theme.sizeIcon);
       default:
-        return Icon(CupertinoIcons.info_circle, color: ColorConstant.primaryColor, size: theme.sizeIcon);
+        return Icon(CupertinoIcons.info_circle, color: Theme.of(context).primaryColor, size: theme.sizeIcon);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: theme.detailMargin),
+      margin: EdgeInsets.only(top: DimensionConstant.defaultPadding),
       padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
       decoration: BoxDecoration(
-        color: theme.backgroundColor,
+        color: Theme.of(context).appBarTheme.backgroundColor,
         borderRadius: BorderRadius.circular(theme.radiusItem),
       ),
       child: Row(
@@ -82,4 +83,3 @@ class _MushroomDetailColumnState extends State<MushroomDetailColumn> {
     );
   }
 }
-

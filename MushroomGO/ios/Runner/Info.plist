@@ -33,8 +33,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -53,8 +51,6 @@
 	<string>L&apos;application utilise votre position pour des fonctionnalités de localisation avancées.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>We need access to the camera for capturing photos and videos.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>We need access to the microphone for recording audio.</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -70,5 +66,10 @@
 	<array>
 		<string>applinks:mushroomgo-9ed47.firebaseapp.com</string>
 	</array>
+	<key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>http</string>
+        <string>https</string>
+    </array>
 </dict>
 </plist>

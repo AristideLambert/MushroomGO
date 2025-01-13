@@ -31,17 +31,21 @@ class _SearchHistoryPageState extends State<SearchHistoryPage> {
 
   @override
   Widget build(BuildContext context) {
+    final appBarHeight = AppBar().preferredSize.height;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: DimensionConstant.defaultPadding),
       child: FutureBuilder<List<String>>(
         future: _history,
         builder: (BuildContext context, AsyncSnapshot<List<String>> snapshot) {
           if (snapshot.hasError || !snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(
-              child: TextOutput(
-                text: AppLocalizations.of(context)!.searchHistoryTitleNoHistory,
-                type: Type.mediumTitle
-              )
+            return Transform.translate(
+              offset: Offset(0, -appBarHeight),
+              child: Center(
+                child: TextOutput(
+                  text: AppLocalizations.of(context)!.searchHistoryTitleNoHistory,
+                  type: Type.mediumTitle
+                )
+              ),
             );
           } else {
             return Column(

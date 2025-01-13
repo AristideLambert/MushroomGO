@@ -16,6 +16,13 @@ class TextStyleConstant {
     color: Colors.white
   );
 
+  // BenefitAccount
+  static const TextStyle buttonTitleBenefitAccount = TextStyle(
+    color: ColorConstant.buttonTitleBackgroundBenefitAccount,
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.w700,
+  );
+
   // NavigationTabBottom
   static const TextStyle lightTitleSelectedNavigationTabBottom = TextStyle(
     fontSize: DimensionConstant.menuText,
@@ -54,20 +61,6 @@ class TextStyleConstant {
     fontSize: DimensionConstant.titleSmall,
     fontWeight: FontWeight.normal,
     color: ColorConstant.darkUnselectedNavigationTabTop,
-  );
-
-  // LoadingContainer
-  static const TextStyle lightTitleLoadingContainer = TextStyle(
-    fontSize: DimensionConstant.bodyText,
-    fontWeight: FontWeight.normal,
-    color: ColorConstant.lightTitleLoadingContainer,
-    decoration: TextDecoration.none,
-  );
-  static const TextStyle darkTitleLoadingContainer = TextStyle(
-    fontSize: DimensionConstant.bodyText,
-    fontWeight: FontWeight.normal,
-    color: ColorConstant.darkTitleLoadingContainer,
-    decoration: TextDecoration.none,
   );
 
   // ButtonStandard

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:mushroom_go/constant/color_constant.dart';
-import 'package:mushroom_go/constant/dimension_constant.dart';
-import 'package:mushroom_go/exception/loading_exception.dart';
 import 'package:mushroom_go/models/firestore_pagination.dart';
 import 'package:mushroom_go/models/mushroom_scan.dart';
 import 'package:mushroom_go/screen/widget/listview/profile/profile_history_list.dart';
 import 'package:mushroom_go/screen/widget/popup/loading_container.dart';
 import 'package:mushroom_go/screen/widget/popup/loading_error_container.dart';
-import 'package:mushroom_go/screen/widget/text/text_output.dart';
+import 'package:mushroom_go/screen/widget/popup/loading_no_data_container.dart';
 import 'package:mushroom_go/utils/firebase/firestore_utils.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileHistoryTab extends StatefulWidget {
-  const ProfileHistoryTab({super.key});
+  final BuildContext mainContext;
+  const ProfileHistoryTab({super.key, required this.mainContext});
 
   @override
   State<ProfileHistoryTab> createState() => _ProfileHistoryTabState();
@@ -58,12 +57,6 @@ class _ProfileHistoryTabState extends State<ProfileHistoryTab> {
       setState(() {
         _isLoading = false;
       });
-      print(error);
-      if(error is LoadingException){
-        /*DialogUtils.showPopupInformation(context, error.title, error.content, AppLocalizations.of(context)!.popupOK, (){
-          widget.controllerSearch.clear();
-        }, false);*/
-      }
     });
   }
 
@@ -82,38 +75,41 @@ class _ProfileHistoryTabState extends State<ProfileHistoryTab> {
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      color: Theme.of(context).primaryColor,
-      elevation: 0.0,
-      onRefresh: _onRefresh,
-      child: NotificationListener<ScrollNotification>(
-        onNotification: (scrollInfo) {
-          if (scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent && !_isLoading) {
-            _loadHistory();
-          }
-          return false;
-        },
-        child: FutureBuilder<FirestorePagination<MushroomScan>>(
-          future: _historyResult,
-          builder: (BuildContext context, AsyncSnapshot<FirestorePagination<MushroomScan>> snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting && _mushroomScans.isEmpty) {
-              return LoadingContainer(message: /*AppLocalizations.of(context)!.searchResultInProgressTitle*/"");
-            } else if (snapshot.hasError) {
-              // TODO: Page error
-              return LoadingErrorContainer(message: "Error", onReload: _onRefresh);
-            } else if (!snapshot.hasData || (snapshot.data!.result.isEmpty && _mushroomScans.isEmpty)) {
-              return Center(
-                  child: TextOutput(
-                      text: /*AppLocalizations.of(context)!.searchResultTitleNoResult*/"",
-                      type: Type.mediumTitle
-                  )
-              );
-            } else {
-              return ProfileHistoryList(mushroomScans: _mushroomScans, loadIcon: _hasMore);
-            }
-          },
-        ),
-      ),
+    return FutureBuilder<FirestorePagination<MushroomScan>>(
+      future: _historyResult,
+      builder: (BuildContext context, AsyncSnapshot<FirestorePagination<MushroomScan>> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting && _mushroomScans.isEmpty) {
+          return Center(
+            child: LoadingContainer(
+              message: AppLocalizations.of(context)!.profileHistoryInProgressTitle
+            )
+          );
+        } else if (snapshot.hasError) {
+          return Center(
+            child: LoadingErrorContainer(
+              message: AppLocalizations.of(context)!.profileHistoryErrorTitle,
+              onReload: _onRefresh
+            )
+          );
+        } else if (!snapshot.hasData || (snapshot.data!.result.isEmpty && _mushroomScans.isEmpty)) {
+          return LoadingNoDataContainer(
+            title: AppLocalizations.of(context)!.profileHistoryNoHistoryTitle,
+            onReload: _onRefresh
+          );
+        } else {
+          return ProfileHistoryList(mushroomScans: _mushroomScans,
+            loadIcon: _hasMore,
+            onRefresh: _onRefresh,
+            onNotification: (scrollInfo) {
+              if (scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent && !_isLoading) {
+                _loadHistory();
+              }
+              return false;
+            },
+            mainContext: widget.mainContext
+          );
+        }
+      },
     );
   }
 }

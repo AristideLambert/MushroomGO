@@ -30,10 +30,10 @@ class _MushroomClassificationColumnState extends State<MushroomClassificationCol
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: theme.detailMargin),
+      margin: EdgeInsets.only(top: DimensionConstant.defaultPadding),
       padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
       decoration: BoxDecoration(
-        color: theme.backgroundColor,
+        color: Theme.of(context).appBarTheme.backgroundColor,
         borderRadius: BorderRadius.circular(theme.radiusItem)
       ),
       child: Column(

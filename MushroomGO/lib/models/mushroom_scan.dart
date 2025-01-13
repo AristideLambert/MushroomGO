@@ -28,11 +28,11 @@ class MushroomScan {
 
   Map<String, dynamic> toMap() {
     return {
-      'date': dateTime.toUtc(),
+      'name_scientific': scientificName,
+      'mushroom_id': mushroom?.id,
       'latitude': position?.latitude,
       'longitude': position?.longitude,
-      'mushroom_id': mushroom?.id,
-      'name_scientific': scientificName,
+      'date': dateTime.toUtc(),
       'user': FirebaseAuth.instance.currentUser!.uid
     };
   }

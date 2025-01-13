@@ -14,16 +14,19 @@ class MapTab extends StatefulWidget {
 }
 
 class _MapTabState extends State<MapTab> {
-  final MapController _mapController = MapController();
+  late final MapController _mapController;
   LatLng? _currentPosition;
   bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    _getUserLocation();
+    _mapController = MapController();
     FirebaseAuth.instance.authStateChanges().listen((User? user){
       setState(() {});
+    });
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await _getUserLocation();
     });
   }
 
@@ -64,8 +67,7 @@ class _MapTabState extends State<MapTab> {
           ),
           children: [
             TileLayer(
-              urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-              subdomains: const ['a', 'b', 'c'],
+              urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
             ),
             if (_currentPosition != null)
               MarkerLayer(

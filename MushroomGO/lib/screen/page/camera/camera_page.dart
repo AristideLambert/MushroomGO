@@ -1,8 +1,10 @@
+import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:mushroom_go/constant/color_constant.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/models/mushroom_scan_image.dart';
@@ -11,6 +13,7 @@ import 'package:mushroom_go/utils/dialog/dialog_utils.dart';
 import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mushroom_go/utils/map/location_utils.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 class CameraPage extends StatefulWidget {
   const CameraPage({super.key});
@@ -21,6 +24,7 @@ class CameraPage extends StatefulWidget {
 
 class _CameraPageState extends State<CameraPage> {
   late CameraController _controller;
+  late double _cameraAspectRatio;
   late FlashMode _flashMode;
   late Future<void> _initializeController;
   late bool _isLocation;
@@ -35,11 +39,14 @@ class _CameraPageState extends State<CameraPage> {
       _controller = CameraController(
         camera,
         ResolutionPreset.high,
+        enableAudio: false
       );
       await _controller.initialize();
+      await _controller.lockCaptureOrientation(DeviceOrientation.portraitUp);
+      await _controller.setFlashMode(_flashMode);
       if (!mounted) return;
-      _controller.lockCaptureOrientation(DeviceOrientation.portraitUp);
-      _controller.setFlashMode(_flashMode);
+      final size = _controller.value.previewSize!;
+      _cameraAspectRatio = Platform.isAndroid ? size.width / size.height : size.height / size.width;
       _isInitialize = true;
       setState(() {});
     } catch (e) {
@@ -111,7 +118,6 @@ class _CameraPageState extends State<CameraPage> {
   Future<void> _takePicture() async {
     try {
       Navigator.of(context).pushNamed(NavigationConstant.cameraCheckImagePage, arguments: MushroomScanImage(xFile: await _controller.takePicture(), dateTime: DateTime.now(), position: _isLocation ? await LocationUtils.getCurrentLocation() : null));
-      if(!mounted) return;
     } catch (e) {
       if(!mounted) return;
       DialogUtils.showPopupInformation(context, AppLocalizations.of(context)!.cameraTitle, AppLocalizations.of(context)!.cameraErrorTakeTitle, AppLocalizations.of(context)!.popupOK, (){
@@ -147,90 +153,110 @@ class _CameraPageState extends State<CameraPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          alignment: Alignment.topLeft,
-          children: [
-            FutureBuilder<void>(
-              future: _initializeController,
-              builder: (BuildContext context, AsyncSnapshot<void> snapshot){
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return LoadingContainer(message: AppLocalizations.of(context)!.cameraInProgressTitle);
-                } else if (snapshot.hasError || !_isInitialize) {
-                  return Container();
-                } else {
-                  return Stack(
-                    alignment: Alignment.topRight,
-                    children: [
-                      Center(
-                        child: CameraPreview(
-                          _controller,
+    return VisibilityDetector(
+      onVisibilityChanged: (visibilityInfo) {
+        final visiblePercentage = visibilityInfo.visibleFraction * 100;
+        if (visiblePercentage > 0) {
+          SystemChrome.setSystemUIOverlayStyle(
+            const SystemUiOverlayStyle(
+              statusBarColor: Colors.black,
+              statusBarIconBrightness: Brightness.light,
+              statusBarBrightness: Brightness.dark,
+            ),
+          );
+        }
+      },
+      key: widget.key ?? UniqueKey(),
+      child: Scaffold(
+        backgroundColor: ColorConstant.backgroundCamera,
+        body: SafeArea(
+          child: FutureBuilder<void>(
+            future: _initializeController,
+            builder: (BuildContext context, AsyncSnapshot<void> snapshot){
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return LoadingContainer(message: AppLocalizations.of(context)!.cameraInProgressTitle);
+              } else if (snapshot.hasError || !_isInitialize) {
+                return Container();
+              } else {
+                return Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(DimensionConstant.defaultPadding),
+                      child: Row(
+                        children: [
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.of(context).pop();
+                            },
+                            child: Icon(
+                              MushroomGOFontUtils.close,
+                              color: ColorConstant.iconCamera,
+                            )
+                          ),
+                          Spacer(),
+                          GestureDetector(
+                            onTap: (){
+                              _setupLocation();
+                            },
+                              // TODO: Update icon
+                            child: Icon(
+                              _isLocation ?
+                              CupertinoIcons.location_fill :
+                              CupertinoIcons.location_slash_fill,
+                              color: ColorConstant.iconCamera,
+                            )
+                          ),
+                          SizedBox(width: DimensionConstant.defaultPadding),
+                          GestureDetector(
+                            onTap: (){
+                              _setupFlashMode();
+                            },
+                              // TODO: Update icon
+                            child: Icon(
+                              _flashMode == FlashMode.auto ?
+                              CupertinoIcons.lightbulb :
+                              _flashMode == FlashMode.always ?
+                              CupertinoIcons.lightbulb_fill :
+                              CupertinoIcons.lightbulb_slash_fill,
+                              color: ColorConstant.iconCamera,
+                            )
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: RotatedBox(
+                        quarterTurns: Platform.isAndroid ? 1 : 0,
+                        child: AspectRatio(
+                          aspectRatio: _cameraAspectRatio,
+                          child: CameraPreview(
+                            _controller,
+                          ),
                         ),
                       ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: DimensionConstant.defaultPadding),
-                            // TODO: Update icon
-                            child: GestureDetector(
-                                onTap: (){
-                                  _setupLocation();
-                                },
-                                child: Icon(
-                                    _isLocation ?
-                                    CupertinoIcons.location_fill :
-                                    CupertinoIcons.location_slash_fill
-                                )
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: DimensionConstant.defaultPadding),
-                            // TODO: Update icon
-                            child: GestureDetector(
-                                onTap: (){
-                                  _setupFlashMode();
-                                },
-                                child: Icon(
-                                    _flashMode == FlashMode.auto ?
-                                    CupertinoIcons.lightbulb :
-                                    _flashMode == FlashMode.always ?
-                                    CupertinoIcons.lightbulb_fill :
-                                    CupertinoIcons.lightbulb_slash_fill
-                                )
-                            ),
-                          )
-                        ],
-                      )
-                    ]
-                  );
-                }
+                    ),
+                  ]
+                );
               }
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: DimensionConstant.defaultPadding),
-              child: GestureDetector(
-                onTap: (){
-                  Navigator.of(context).pop();
-                },
-                child: Icon(MushroomGOFontUtils.close)
-              ),
+            }
+          )
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: _isInitialize ? Padding(
+          padding: const EdgeInsets.all(DimensionConstant.iconPaddingCamera),
+          // TODO: Update icon
+          child: GestureDetector(
+            onTap: () async {
+              _takePicture();
+            },
+            child: Icon(
+              Icons.camera,
+              size: DimensionConstant.iconSizeCamera,
+              color: ColorConstant.iconCamera,
             )
-          ]
-        ),
+          ),
+        ) : null,
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: _isInitialize ? Padding(
-        padding: const EdgeInsets.all(DimensionConstant.iconPaddingCamera),
-        // TODO: Update icon
-        child: GestureDetector(
-          onTap: () async {
-            await _takePicture();
-          },
-            child: Icon(Icons.camera, size: DimensionConstant.iconSizeCamera,)
-        ),
-      ) : null,
     );
   }
 }
