@@ -158,6 +158,7 @@ class DimensionConstant {
   static const double imageHeightHomeNewsList = 180.0;
   static const double cardMarginHomeNewsList = 8.0;
   static const double cardPaddingHomeNewsList = 12.0;
+  static const double loadingImageHomeNewsList = 50;
 
   // HomeForYouList
   static const double identTitleHomeForYouList = 16.0;

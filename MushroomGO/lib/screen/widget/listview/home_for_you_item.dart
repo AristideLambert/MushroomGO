@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/models/mushroom.dart';
 import 'package:mushroom_go/models/recipe.dart';
+import 'package:mushroom_go/screen/widget/image/loading_image.dart';
 import 'package:mushroom_go/theme/home_for_you_list_theme.dart';
 
 class HomeForYouItem<T> extends StatefulWidget {
@@ -79,11 +80,23 @@ class _HomeForYouItemState<T> extends State<HomeForYouItem<T>> {
               width: theme.widthItem,
               height: theme.sizeImageItem,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(widget.getImageUrl(widget.item)),
-                  fit: BoxFit.cover,
-                ),
                 borderRadius: BorderRadius.circular(theme.radiusItem),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(theme.radiusItem),
+                child: Image.network(
+                  widget.getImageUrl(widget.item),
+                  fit: BoxFit.cover,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) {
+                      return child;
+                    }
+                    return LoadingImage(size: theme.sizeImageItem);
+                  },
+                  errorBuilder: (context, error, stackTrace) {
+                    return LoadingImage(size: theme.sizeImageItem);
+                  },
+                ),
               ),
             ),
             Container(
@@ -101,7 +114,7 @@ class _HomeForYouItemState<T> extends State<HomeForYouItem<T>> {
                     end: Alignment.bottomCenter,
                     colors: [
                       Colors.transparent,
-                      Colors.black.withOpacity(theme.textOpacity),
+                      Colors.black.withValues(alpha: theme.textOpacity),
                     ],
                   ),
                 ),

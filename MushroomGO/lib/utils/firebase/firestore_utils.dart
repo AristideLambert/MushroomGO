@@ -2,12 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mushroom_go/exception/loading_exception.dart';
+import 'package:mushroom_go/models/article.dart';
 import 'package:mushroom_go/models/firestore_pagination.dart';
 import 'package:mushroom_go/models/mission.dart';
 import 'package:mushroom_go/models/mushroom.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mushroom_go/models/mushroom_scan.dart';
 import 'package:mushroom_go/models/mushroom_scan_image.dart';
+import 'package:mushroom_go/models/recipe.dart';
 
 class FirestoreUtils{
   FirestoreUtils._();
@@ -268,6 +270,7 @@ class FirestoreUtils{
       }
       return missions;
     } catch (e) {
+      // TODO: change string (LoadingException)
       if (context.mounted) {
         throw LoadingException(
           AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle,
@@ -289,8 +292,78 @@ class FirestoreUtils{
       }
       return null;
     } catch (e) {
+      // TODO: change string (LoadingException)
       debugPrint('Error fetching rarity for mushroom: $e');
       return null;
+    }
+  }
+
+  static Future<List<Recipe>> fetchRecipes(BuildContext context) async {
+    try {
+      final recipeSnapshot = await FirebaseFirestore.instance.collection("recipe").get();
+      final recipes = recipeSnapshot.docs
+          .map((doc) => Recipe.fromMap(doc.data() as Map<String, Object?>))
+          .toList();
+      return recipes;
+    } catch (e) {
+      if (context.mounted) {
+        // TODO: change string (LoadingException)
+        throw LoadingException(
+          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle,
+          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError,
+        );
+      }
+      return [];
+    }
+  }
+
+  static Future<List<Article>> fetchArticles(BuildContext context) async {
+    try {
+      final recipeSnapshot = await FirebaseFirestore.instance.collection("article").get();
+      final articles = recipeSnapshot.docs
+          .map((doc) => Article.fromMap(doc.data() as Map<String, Object?>))
+          .toList();
+      return articles;
+    } catch (e) {
+      if (context.mounted) {
+        // TODO: change string (LoadingException)
+        throw LoadingException(
+          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle,
+          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError,
+        );
+      }
+      return [];
+    }
+  }
+
+  static Future<List<Mushroom>> fetchMonthMushrooms(BuildContext context) async {
+    try {
+      final monthMushroomSnapshot = await FirebaseFirestore.instance.collection("month_mushroom").get();
+
+      final List<Mushroom> monthMushrooms = [];
+
+      for (var doc in monthMushroomSnapshot.docs) {
+        final data = doc.data();
+        final mushroomId = data['mushroom_id'] as String;
+
+        final mushroomSnapshot = await FirebaseFirestore.instance.collection("mushroom").doc(mushroomId).get();
+
+        if (mushroomSnapshot.exists) {
+          final mushroom = Mushroom.fromMap(mushroomSnapshot.data() as Map<String, Object?>, id: mushroomSnapshot.id);
+          monthMushrooms.add(mushroom);
+        }
+      }
+
+      return monthMushrooms;
+    } catch (e) {
+      if (context.mounted) {
+        // TODO: change string (LoadingException)
+        throw LoadingException(
+          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle,
+          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError,
+        );
+      }
+      return [];
     }
   }
 

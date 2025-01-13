@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/models/article.dart';
 import 'package:mushroom_go/screen/widget/listview/home_news_list.dart';
+import 'package:mushroom_go/screen/widget/popup/loading_container.dart';
+import 'package:mushroom_go/screen/widget/popup/loading_error_container.dart';
+import 'package:mushroom_go/utils/firebase/firestore_utils.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeNewsTab extends StatefulWidget {
   final BuildContext buildContext;
@@ -11,39 +16,56 @@ class HomeNewsTab extends StatefulWidget {
 }
 
 class _HomeNewsTabState extends State<HomeNewsTab> {
+  late Future<List<Article>> _articlesFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _reloadData();
+  }
+
+  void _reloadData() {
+    setState(() {
+      _articlesFuture = FirestoreUtils.fetchArticles(context);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HomeNewsList(
-              articles: [
-                Article(
-                  title: "Discover the Hidden Forests",
-                  imageUrl: "https://u4d2z7k9.rocketcdn.me/wp-content/uploads/2022/01/rsz_1rsz_screen_shot_2022-01-21_at_124538_pm.jpg",
-                  url: "https://producemadesimple.ca/produce/mushrooms/",
-                ),
-                Article(
-                  title: "Mushroom Hunting Tips",
-                  imageUrl: "https://bokashiliving.com/wp-content/uploads/2023/01/pexels-egor-kamelev-757292-1024x676.jpg",
-                  url: "https://producemadesimple.ca/produce/mushrooms/",
-                ),
-                Article(
-                  title: "New Species Found",
-                  imageUrl: "https://www.incrediblemushrooms.com/images/turkey-mush-800.jpg",
-                  url: "https://producemadesimple.ca/produce/mushrooms/",
-                ),
-                Article(
-                  title: "New Species Found",
-                  imageUrl: "https://www.incrediblemushrooms.com/images/turkey-mush-800.jpg",
-                  url: "https://producemadesimple.ca/produce/mushrooms/",
+    final appBarHeight = Scaffold.of(context).appBarMaxHeight ?? kToolbarHeight;
+
+    return Padding(
+      padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
+      child: FutureBuilder<List<Article>>(
+        future: _articlesFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Transform.translate(
+              offset: Offset(0, -appBarHeight),
+              child: LoadingContainer(
+                message: AppLocalizations.of(context)!
+                    .homeNewsLoadingData,
+              ),
+            );
+          } else if (snapshot.hasError) {
+            return LoadingErrorContainer(
+              message: AppLocalizations.of(context)!
+                  .homeNewsErrorLoadingData,
+              onReload: _reloadData,
+            );
+          }
+          final articles = snapshot.data ?? [];
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                HomeNewsList(
+                  articles: articles,
+                  buildContext: widget.buildContext,
                 ),
               ],
-              buildContext: widget.buildContext,
-            )
-          ],
-        ),
+            ),
+          );
+        },
       ),
     );
   }

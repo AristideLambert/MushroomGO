@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/navigation_constant.dart';
+import 'package:mushroom_go/screen/widget/image/loading_image.dart';
 import 'package:mushroom_go/theme/home_news_list_theme.dart';
 
 class HomeNewsListItem extends StatefulWidget {
@@ -30,6 +31,7 @@ class _HomeNewsListItemState extends State<HomeNewsListItem> {
     super.didChangeDependencies();
     theme = (widget.theme ?? Theme.of(context).extension<HomeNewsListTheme>())!;
   }
+
   @override
   void didUpdateWidget(HomeNewsListItem oldWidget) {
     super.didUpdateWidget(oldWidget);
@@ -49,7 +51,6 @@ class _HomeNewsListItemState extends State<HomeNewsListItem> {
           },
         );
       },
-
       child: Card(
         margin: EdgeInsets.symmetric(vertical: theme.cardMargin),
         shape: RoundedRectangleBorder(
@@ -66,6 +67,15 @@ class _HomeNewsListItemState extends State<HomeNewsListItem> {
                 height: theme.imageHeight,
                 width: double.infinity,
                 fit: BoxFit.cover,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) {
+                    return child;
+                  }
+                  return SizedBox(height: theme.imageHeight, width: double.infinity, child: Center(child: LoadingImage(size: theme.loadingImage)));
+                },
+                errorBuilder: (context, error, stackTrace) {
+                  return SizedBox(height: theme.imageHeight, width: double.infinity, child: Center(child: LoadingImage(size: theme.loadingImage)));
+                },
               ),
             ),
             Padding(

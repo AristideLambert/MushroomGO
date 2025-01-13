@@ -4,124 +4,107 @@ import 'package:mushroom_go/models/mushroom.dart';
 import 'package:mushroom_go/models/recipe.dart';
 import 'package:mushroom_go/screen/widget/listview/home_for_you_item.dart';
 import 'package:mushroom_go/screen/widget/listview/home_for_you_list.dart';
+import 'package:mushroom_go/screen/widget/popup/loading_container.dart';
+import 'package:mushroom_go/screen/widget/popup/loading_error_container.dart';
+import 'package:mushroom_go/utils/firebase/firestore_utils.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeForYouTab extends StatefulWidget {
   final BuildContext buildContext;
-  const HomeForYouTab({super.key, required this.buildContext });
+
+  const HomeForYouTab({super.key, required this.buildContext});
 
   @override
   State<HomeForYouTab> createState() => _HomeForYouTabState();
 }
 
 class _HomeForYouTabState extends State<HomeForYouTab> {
+  late Future<Map<String, dynamic>> _dataFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _reloadData();
+  }
+
+  void _reloadData() {
+    setState(() {
+      _dataFuture = Future.wait([
+        FirestoreUtils.fetchRecipes(context),
+        FirestoreUtils.fetchMonthMushrooms(context),
+      ]).then((values) =>
+      {
+        "recipes": values[0],
+        "mushrooms": values[1],
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final appBarHeight = Scaffold
+        .of(context)
+        .appBarMaxHeight ?? kToolbarHeight;
+
     return Padding(
       padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              HomeForYouList<Recipe>(
-                title: "Recettes",
-                items: [
-                  Recipe(
-                    title: "Sautéed Mushroom Recipe",
-                    imageUrl:
-                    "https://weekendatthecottage.com/wp-content/uploads/2024/05/SauteedMushroomRecipe6.jpeg",
-                    url: "https://www.allrecipes.com/recipe/222795/superb-sauteed-mushrooms/"
-                  ),
-                  Recipe(
-                    title: "Mushroom Hunting Tips",
-                    imageUrl:
-                    "https://realfood.tesco.com/media/images/Mushroom-Stewl-6fda57ea-e430-4a58-a92b-08639bda60b3-0-1400x919.jpg",
-                    url: "https://www.allrecipes.com/recipe/222795/superb-sauteed-mushrooms/"
-                  ),
-                  Recipe(
-                    title: "Mushroom Stew",
-                    imageUrl:
-                    "https://holycowvegan.net/wp-content/uploads/2017/10/mushroom-stew-recipe-1.jpg",
-                    url: "https://www.allrecipes.com/recipe/222795/superb-sauteed-mushrooms/"
-                  ),
-                ],
-                itemBuilder: (context, Recipe recipe, index, theme) {
-                  return HomeForYouItem<Recipe>(
-                    item: recipe,
-                    buildContext: widget.buildContext,
-                    index: index,
-                    getTitle: (Recipe item) => item.title,
-                    getImageUrl: (Recipe item) => item.imageUrl,
-                  );
-                },
+      child: FutureBuilder<Map<String, dynamic>>(
+        future: _dataFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Transform.translate(
+              offset: Offset(0, -appBarHeight),
+              child: LoadingContainer(
+                message: AppLocalizations.of(context)!
+                    .homeForYouLoadingData,
               ),
-              HomeForYouList<Mushroom>(
-                title: "Champignons de décembre",
-                items: [
-                  Mushroom(
-                    name: "Shiitake",
-                    description: "A popular edible mushroom.",
-                    scientificName: "Lentinula edodes",
-                    imageUrl: "https://freestylefarm.ca/wp-content/uploads/2012/03/Mushroomshitake-1674.jpg",
-                    culinaryInformation: "Comestible et savoureux, utilisé dans la cuisine asiatique.",
-                    location: "Europe",
-                    family: "Family",
-                    recipes: [
-                      Recipe(
-                        title: "Shiitake Stir Fry",
-                        imageUrl: "https://weekendatthecottage.com/wp-content/uploads/2024/05/SauteedMushroomRecipe6.jpeg",
-                        url: "https://www.allrecipes.com/recipe/222795/superb-sauteed-mushrooms/",
-                      ),
-                      Recipe(
-                        title: "Shiitake Soup",
-                        imageUrl: "https://holycowvegan.net/wp-content/uploads/2017/10/mushroom-stew-recipe-1.jpg",
-                        url: "https://www.allrecipes.com/recipe/222795/superb-sauteed-mushrooms/",
-                      ),
-                    ],
-                  ),
-                  Mushroom(
-                    name: "Oyster Mushroom",
-                    description: "An easy-to-cultivate mushroom.",
-                    scientificName: "Pleurotus ostreatus",
-                    imageUrl:
-                    "https://images.squarespace-cdn.com/content/v1/5e4ecb5e9b47827d217b203c/bedb7bbe-24d8-4148-9f6f-81f77037b41d/mycoremediation+of+mushrooms.jpg",
-                    culinaryInformation: "Toxique mortel, à éviter absolument.",
-                    location: "Europe",
-                    family: "Family",
-                  ),
-                  Mushroom(
-                    name: "Porcini",
-                    description: "Known for its earthy and nutty flavor.",
-                    scientificName: "Boletus edulis",
-                    imageUrl:
-                    "https://www.thespruceeats.com/thmb/Oe-EfLAp_AkCYN7ZSwq25n800i8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-475150545-1a11dccd4c804c859d1f1a2d3f525070.jpg",
-                    culinaryInformation: "Toxique, contient des substances dangereuses pour le système nerveux.",
-                    location: "Europe",
-                    family: "Family",
-                  ),
-                  Mushroom(
-                    name: "Morel",
-                    description: "A prized mushroom with a honeycomb appearance.",
-                    scientificName: "Morchella esculenta",
-                    imageUrl:
-                    "https://media.istockphoto.com/id/505505411/photo/common-morel-fungus.jpg?s=612x612&w=0&k=20&c=tgu9fIMGu5J7fRO5Wh4kryJHZqOc_EXKeVF0Jz9Zuxo=",
-                    culinaryInformation: "Comestible et apprécié pour son goût unique.",
-                    location: "Europe",
-                    family: "Family",
-                  ),
-                ],
-                itemBuilder: (context, Mushroom mushroom, index, theme) {
-                  return HomeForYouItem<Mushroom>(
-                    item: mushroom,
-                    buildContext: widget.buildContext,
-                    index: index,
-                    getTitle: (Mushroom item) => item.name,
-                    getImageUrl: (Mushroom item) => item.imageUrl,
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
+            );
+          } else if (snapshot.hasError) {
+            return LoadingErrorContainer(
+              message: AppLocalizations.of(context)!
+                  .homeForYouErrorLoadingData,
+              onReload: _reloadData,
+            );
+          }
+
+          final recipes = snapshot.data!["recipes"] as List<Recipe>;
+          final mushrooms = snapshot.data!["mushrooms"] as List<Mushroom>;
+
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                HomeForYouList<Recipe>(
+                  title: AppLocalizations.of(context)!
+                      .homeForYouRecipes,
+                  items: recipes,
+                  itemBuilder: (context, Recipe recipe, index, theme) {
+                    return HomeForYouItem<Recipe>(
+                      item: recipe,
+                      buildContext: widget.buildContext,
+                      index: index,
+                      getTitle: (Recipe item) => item.title,
+                      getImageUrl: (Recipe item) => item.imageUrl,
+                    );
+                  },
+                ),
+                HomeForYouList<Mushroom>(
+                  title: AppLocalizations.of(context)!
+                      .homeForYouMonthMushrooms,
+                  items: mushrooms,
+                  itemBuilder: (context, Mushroom mushroom, index, theme) {
+                    return HomeForYouItem<Mushroom>(
+                      item: mushroom,
+                      buildContext: widget.buildContext,
+                      index: index,
+                      getTitle: (Mushroom item) => item.name,
+                      getImageUrl: (Mushroom item) => item.imageUrl,
+                    );
+                  },
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

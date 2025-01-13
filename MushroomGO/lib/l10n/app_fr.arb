@@ -196,5 +196,11 @@
   "mushroomIdentificationUtilsIdentifyMushroomTitle": "Analyse du champignon",
   "mushroomIdentificationUtilsIdentifyMushroomNoResult": "Champignon non reconnu",
   "mushroomIdentificationUtilsErrorIdentifyMushroom": "Impossible de communiquer avec l'API.\nVeuillez réessayer plus tard",
-  "locationUtilsHere": "ici"
+  "locationUtilsHere": "ici",
+  "homeForYouErrorLoadingData" : "Erreur lors du chargement des données",
+  "homeForYouLoadingData" : "Chargement des données...",
+  "homeForYouMonthMushrooms" : "Champignons du mois",
+  "homeForYouRecipes": "Recettes",
+  "homeNewsErrorLoadingData" : "Erreur lors du chargement des données",
+  "homeNewsLoadingData" : "Chargement des données..."
 }

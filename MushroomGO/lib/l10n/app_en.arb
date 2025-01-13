@@ -790,5 +790,29 @@
      "challengeMissionsErrorLoadingData": "Error loading data",
      "@challengeMissionsErrorLoadingData": {
        "description": "Error Loading Data"
+  },
+        "homeForYouErrorLoadingData": "Error loading data",
+        "@homeForYouErrorLoadingData": {
+          "description": "Error Loading Data"
+  },
+        "homeForYouLoadingData": "Loading data...",
+        "@homeForYouLoadingData": {
+          "description": "Loading Data"
+  },
+       "homeForYouMonthMushrooms": "Mushrooms of the month",
+       "@homeForYouMonthMushrooms": {
+         "description": "Mushrooms of the month"
+  },
+      "homeForYouRecipes": "Recipes",
+      "@homeForYouRecipes": {
+        "description": "Recipes"
+  },
+     "homeNewsErrorLoadingData": "Error loading data",
+     "@homeNewsErrorLoadingData": {
+       "description": "Error Loading Data"
+  },
+    "homeNewsLoadingData": "Loading data...",
+    "@homeNewsLoadingData": {
+      "description": "Loading Data"
   }
 }

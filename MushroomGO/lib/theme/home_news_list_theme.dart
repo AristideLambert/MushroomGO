@@ -8,6 +8,7 @@ class HomeNewsListTheme extends ThemeExtension<HomeNewsListTheme> {
   final double cardMargin;
   final double radiusItem;
   final double cardPadding;
+  final double loadingImage;
   final Color cardBackgroundColor;
   final TextStyle titleStyle;
 
@@ -16,6 +17,7 @@ class HomeNewsListTheme extends ThemeExtension<HomeNewsListTheme> {
     this.imageHeight = DimensionConstant.imageHeightHomeNewsList,
     this.cardMargin = DimensionConstant.cardMarginHomeNewsList,
     this.cardPadding = DimensionConstant.cardPaddingHomeNewsList,
+    this.loadingImage = DimensionConstant.loadingImageHomeNewsList,
     this.cardBackgroundColor = ColorConstant.lightBackgroundHomeNewsList,
     this.titleStyle = TextStyleConstant.lightTitleChallengeMissionsList,
   });
