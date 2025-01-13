@@ -5,6 +5,28 @@ import 'dimension_constant.dart';
 class TextStyleConstant {
   // Default
 
+  // ProfileTab
+  static const TextStyle lightSelectedItemProfileTab = TextStyle(
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.w800,
+    color: ColorConstant.primaryColor,
+  );
+  static const TextStyle darkSelectedItemProfileTab = TextStyle(
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.w800,
+    color: ColorConstant.primaryColor,
+  );
+  static const TextStyle lightUnselectedItemProfileTab = TextStyle(
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.normal,
+    color: ColorConstant.lightUnselectedItemProfileTab,
+  );
+  static const TextStyle darkUnselectedItemProfileTab = TextStyle(
+    fontSize: DimensionConstant.titleSmall,
+    fontWeight: FontWeight.normal,
+    color: ColorConstant.darkUnselectedItemProfileTab,
+  );
+
   // Home
   static const TextStyle tabBarLabelStyleHome = TextStyle(
     fontSize: DimensionConstant.titleSmall,
@@ -246,14 +268,14 @@ class TextStyleConstant {
 
   // ProfileHistoryList
   static const TextStyle darkTitleProfileHistoryList = TextStyle(
-      color: ColorConstant.darkTextProfileHistoryList,
-      fontSize: DimensionConstant.titleMedium,
-      fontWeight: FontWeight.bold
+    color: ColorConstant.darkTextProfileHistoryList,
+    fontSize: DimensionConstant.titleMedium,
+    fontWeight: FontWeight.bold
   );
   static const TextStyle lightTitleProfileHistoryList = TextStyle(
-      color: ColorConstant.lightTextProfileHistoryList,
-      fontSize: DimensionConstant.titleMedium,
-      fontWeight: FontWeight.bold
+    color: ColorConstant.lightTextProfileHistoryList,
+    fontSize: DimensionConstant.titleMedium,
+    fontWeight: FontWeight.bold
   );
   static const TextStyle textDateProfileHistoryList = TextStyle(
     color: ColorConstant.primaryColor,
@@ -264,9 +286,41 @@ class TextStyleConstant {
     fontSize: DimensionConstant.bodyText,
   );
   static const TextStyle lightTextProfileHistoryList = TextStyle(
-      color: ColorConstant.lightTextProfileHistoryList,
-      fontSize: DimensionConstant.bodyText,
+    color: ColorConstant.lightTextProfileHistoryList,
+    fontSize: DimensionConstant.bodyText,
+    fontWeight: FontWeight.bold
+  );
+
+  // ProfileBadgeGrid
+  static const TextStyle darkTextProfileBadgeGrid = TextStyle(
+    color: ColorConstant.darkTextProfileBadgeGrid,
+    fontSize: DimensionConstant.bodyText,
+  );
+  static const TextStyle lightTextProfileBadgeGrid = TextStyle(
+    color: ColorConstant.lightTextProfileBadgeGrid,
+    fontSize: DimensionConstant.bodyText,
+  );
+  static const TextStyle textDateProfileBadgeGrid = TextStyle(
+    color: ColorConstant.primaryColor,
+    fontSize: DimensionConstant.bodyText,
+  );
+  static const TextStyle darkTitleProfileBadgeGrid = TextStyle(
+      color: ColorConstant.darkTextProfileBadgeGrid,
+      fontSize: DimensionConstant.titleLarge,
       fontWeight: FontWeight.bold
+  );
+  static const TextStyle lightTitleProfileBadgeGrid = TextStyle(
+      color: ColorConstant.lightTextProfileBadgeGrid,
+      fontSize: DimensionConstant.titleLarge,
+      fontWeight: FontWeight.bold
+  );
+  static const TextStyle darkDescriptionProfileBadgeGrid = TextStyle(
+    color: ColorConstant.darkTextProfileBadgeGrid,
+    fontSize: DimensionConstant.titleSmall,
+  );
+  static const TextStyle lightDescriptionProfileBadgeGrid = TextStyle(
+    color: ColorConstant.lightTextProfileBadgeGrid,
+    fontSize: DimensionConstant.titleSmall,
   );
 
   // MushroomDetail
@@ -275,28 +329,24 @@ class TextStyleConstant {
     fontSize: DimensionConstant.titleMedium,
     fontWeight: FontWeight.bold,
   );
-
   static const TextStyle darkNameMushroomDetail = TextStyle(
     color: ColorConstant.darkNameMushroomDetail,
     fontSize: DimensionConstant.titleMedium,
     fontWeight: FontWeight.bold,
   );
-
   static const TextStyle scientificNameTextMushroomDetail = TextStyle(
     color: ColorConstant.primaryColor,
     fontSize: DimensionConstant.bodyText
   );
-
   static const TextStyle lightScientificNameMushroomDetail = TextStyle(
-      color: ColorConstant.lightNameMushroomDetail,
-      fontSize: DimensionConstant.bodyText,
-      fontStyle: FontStyle.italic
+    color: ColorConstant.lightNameMushroomDetail,
+    fontSize: DimensionConstant.bodyText,
+    fontStyle: FontStyle.italic
   );
-
   static const TextStyle darkScientificNameMushroomDetail = TextStyle(
-      color: ColorConstant.darkNameMushroomDetail,
-      fontSize: DimensionConstant.bodyText,
-      fontStyle: FontStyle.italic
+    color: ColorConstant.darkNameMushroomDetail,
+    fontSize: DimensionConstant.bodyText,
+    fontStyle: FontStyle.italic
   );
   static const TextStyle lightTitleMushroomDetail = TextStyle(
     color: ColorConstant.lightNameMushroomDetail,
@@ -309,44 +359,12 @@ class TextStyleConstant {
     fontWeight: FontWeight.bold
   );
   static const TextStyle lightTextMushroomDetail = TextStyle(
-      color: ColorConstant.lightNameMushroomDetail,
-      fontSize: DimensionConstant.bodyText,
+    color: ColorConstant.lightNameMushroomDetail,
+    fontSize: DimensionConstant.bodyText,
   );
   static const TextStyle darkTextMushroomDetail = TextStyle(
     color: ColorConstant.darkNameMushroomDetail,
     fontSize: DimensionConstant.bodyText,
-  );
-
-  // BadgeTab
-  static const TextStyle darkTextBadgeTab = TextStyle(
-    color: ColorConstant.darkTextBadgeTab,
-    fontSize: DimensionConstant.bodyText,
-  );
-  static const TextStyle lightTextBadgeTab = TextStyle(
-    color: ColorConstant.lightTextBadgeTab,
-    fontSize: DimensionConstant.bodyText,
-  );
-  static const TextStyle textDateBadgeTab = TextStyle(
-    color: ColorConstant.primaryColor,
-    fontSize: DimensionConstant.bodyText,
-  );
-  static const TextStyle darkTitleBadgeTab = TextStyle(
-    color: ColorConstant.darkTextBadgeTab,
-    fontSize: DimensionConstant.titleLarge,
-    fontWeight: FontWeight.bold
-  );
-  static const TextStyle lightTitleBadgeTab = TextStyle(
-    color: ColorConstant.lightTextBadgeTab,
-    fontSize: DimensionConstant.titleLarge,
-    fontWeight: FontWeight.bold
-  );
-  static const TextStyle darkDescriptionBadgeTab = TextStyle(
-    color: ColorConstant.darkTextBadgeTab,
-    fontSize: DimensionConstant.titleSmall,
-  );
-  static const TextStyle lightDescriptionBadgeTab = TextStyle(
-    color: ColorConstant.lightTextBadgeTab,
-    fontSize: DimensionConstant.titleSmall,
   );
 
   // TextInput

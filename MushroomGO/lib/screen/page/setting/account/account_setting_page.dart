@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mushroom_go/constant/color_constant.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/constant/navigation_constant.dart';
-import 'package:mushroom_go/constant/text_style_constant.dart';
-import 'package:mushroom_go/theme/button_setting_theme.dart';
 import 'package:mushroom_go/screen/widget/button/setting/button_setting.dart';
 import 'package:mushroom_go/screen/widget/button/setting/button_setting_container.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

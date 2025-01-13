@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mushroom_go/constant/color_constant.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/constant/text_style_constant.dart';
 

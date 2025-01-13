@@ -38,12 +38,7 @@ class _SearchResultListState extends State<SearchResultList> {
               indexEnd: widget.mushrooms.length - 1,
               mushroom: widget.mushrooms[index],
               theme: _theme
-            ) : Padding(
-              padding: EdgeInsets.only(
-                bottom: DimensionConstant.defaultPadding
-              ),
-              child: LoadingImage(size: _theme.sizeLoadingImage),
-            );
+            ) : Center(child: LoadingImage(size: _theme.sizeLoadingImage));
         },
       ),
     );

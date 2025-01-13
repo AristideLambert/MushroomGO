@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/models/firestore_pagination.dart';
 import 'package:mushroom_go/models/mushroom_scan.dart';
-import 'package:mushroom_go/screen/widget/listview/profile/profile_history_list.dart';
+import 'package:mushroom_go/screen/widget/listview/profile/history/profile_history_list.dart';
 import 'package:mushroom_go/screen/widget/popup/loading_container.dart';
 import 'package:mushroom_go/screen/widget/popup/loading_error_container.dart';
 import 'package:mushroom_go/screen/widget/popup/loading_no_data_container.dart';
@@ -97,11 +97,12 @@ class _ProfileHistoryTabState extends State<ProfileHistoryTab> {
             onReload: _onRefresh
           );
         } else {
-          return ProfileHistoryList(mushroomScans: _mushroomScans,
+          return ProfileHistoryList(
+            mushroomScans: _mushroomScans,
             loadIcon: _hasMore,
             onRefresh: _onRefresh,
             onNotification: (scrollInfo) {
-              if (scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent && !_isLoading) {
+              if (scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent && !_isLoading && _hasMore) {
                 _loadHistory();
               }
               return false;

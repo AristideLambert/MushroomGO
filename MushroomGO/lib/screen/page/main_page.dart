@@ -1,11 +1,8 @@
 import 'dart:async';
-
 import 'package:app_links/app_links.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:mushroom_go/constant/navigation_constant.dart';
-import 'package:mushroom_go/provider/locale_provider.dart';
-import 'package:mushroom_go/provider/theme_provider.dart';
 import 'package:mushroom_go/screen/tab/challenge_tab.dart';
 import 'package:mushroom_go/screen/tab/home_tab.dart';
 import 'package:mushroom_go/screen/tab/map_tab.dart';
@@ -13,9 +10,6 @@ import 'package:mushroom_go/screen/tab/navigation/bottom/navigation_bar_tab_bott
 import 'package:mushroom_go/screen/tab/navigation/bottom/navigation_item_camera_tab_bottom.dart';
 import 'package:mushroom_go/screen/tab/navigation/bottom/navigation_model.dart';
 import 'package:mushroom_go/screen/tab/profile_tab.dart';
-import 'package:mushroom_go/utils/dialog/dialog_utils.dart';
-import 'package:mushroom_go/utils/map/location_utils.dart';
-import 'package:provider/provider.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -42,22 +36,19 @@ class _MainPageState extends State<MainPage> {
 
   Future<void> _setupAppLinks() async {
     try {
-      // Écouter les liens entrants en temps réel
       _appLinks.uriLinkStream.listen((uri) {
-        if (uri != null) {
-          _handleLink(uri);
-        }
+        _resetPasswordLink(uri);
       });
     } catch (e) {
-      print('Erreur lors de l’écoute des liens : $e');
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 
-  void _handleLink(Uri uri) {
-    print('Lien détecté : $uri');
+  void _resetPasswordLink(Uri uri) {
     final mode = uri.queryParameters['mode'];
     final oobCode = uri.queryParameters['oobCode'];
-
     if (mode == 'resetPassword' && oobCode != null) {
       Navigator.of(context).pushNamed(NavigationConstant.accountUpdatePasswordSettingPage, arguments: oobCode);
     }

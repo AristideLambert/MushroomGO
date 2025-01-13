@@ -104,7 +104,9 @@ class _BenefitAccountPageState extends State<BenefitAccountPage> {
                 await Navigator.of(widget.mainContext).pushNamed(NavigationConstant.loginPage, arguments: true);
                 if(!context.mounted) return;
                 if(FirebaseAuth.instance.currentUser != null){
-                  Navigator.of(context).pop();
+                  if(_isBack) {
+                    Navigator.of(context).pop();
+                  }
                 }
               },
               theme: Theme.of(context).extension<ButtonStandardTheme>()!.copyWith(

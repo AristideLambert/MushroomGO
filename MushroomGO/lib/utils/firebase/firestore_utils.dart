@@ -123,10 +123,10 @@ class FirestoreUtils{
       List<MushroomScan> result = [];
       final user = FirebaseAuth.instance.currentUser;
       Query queryHistory = FirebaseFirestore.instance
-          .collection("scan_mushroom")
-          .where("user", isEqualTo: user!.uid)
-          .orderBy("date", descending: true)
-          .limit(limit);
+        .collection("scan_mushroom")
+        .where("user", isEqualTo: user!.uid)
+        .orderBy("date", descending: true)
+        .limit(limit);
       if (lastResultDateTime != null) {
         queryHistory = queryHistory.startAfter(lastResultDateTime);
       }
@@ -153,6 +153,54 @@ class FirestoreUtils{
       }
     }
     return FirestorePagination<MushroomScan>(limit: limit, result: [], lastResult: []);
+  }
+
+  static Future<FirestorePagination<Mission>> getMissionComplete(BuildContext context, int limit, List<DateTime>? lastResultDateTime) async {
+    try {
+      List<DateTime>? lastDateTime;
+      List<Mission> result = [];
+      final user = FirebaseAuth.instance.currentUser;
+      Query queryMissionUser = FirebaseFirestore.instance
+        .collection("mission_user")
+        .where("user_id", isEqualTo: user!.uid)
+        .where("earned_date", isNull: false)
+        .orderBy("earned_date", descending: true)
+        .limit(limit);
+      if (lastResultDateTime != null) {
+        queryMissionUser = queryMissionUser.startAfter(lastResultDateTime);
+      }
+      QuerySnapshot snapshotMissionUser = await queryMissionUser.get();
+      if (snapshotMissionUser.docs.isNotEmpty) {
+        if(context.mounted){
+          for(var doc in snapshotMissionUser.docs){
+            Map<String, Object?> dataMissionUser = doc.data() as Map<String, Object?>;
+            final dataMission = await FirebaseFirestore.instance
+              .collection("mission")
+              .doc(dataMissionUser["mission_id"] as String?)
+              .get();
+            Mission mission = Mission.fromMap(dataMission.data() as Map<String, Object?>, id: dataMission.id);
+            result.add(mission.copyWith(
+              currentProgress: dataMissionUser['progress'] as int? ?? 0,
+              isEarned: true,
+              earnedDate: (dataMissionUser['earned_date'] as Timestamp).toDate(),
+            ));
+          }
+          lastDateTime = [result.last.earnedDate!.toUtc()];
+        }
+      } else {
+        lastDateTime = lastResultDateTime;
+      }
+      List<Map<String, List<DateTime>?>> lastResult = [
+        {"lastDateTime": lastDateTime}
+      ];
+      return FirestorePagination<Mission>(limit: limit, result: result, lastResultDateTime: lastResult);
+    } catch (e) {
+      // TODO: change string (LoadingException)
+      if(context.mounted){
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle, AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError);
+      }
+    }
+    return FirestorePagination<Mission>(limit: limit, result: [], lastResult: []);
   }
 
   static Future<List<Mushroom>> fetchChallengeMushrooms(BuildContext context) async {

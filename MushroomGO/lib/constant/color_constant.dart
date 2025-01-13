@@ -8,6 +8,12 @@ class ColorConstant{
   static const Color textPrimaryColor = CupertinoColors.white;
   static const Color textScaffoldBackgroundColor = primaryColor;
 
+  // ProfileTab
+  static const Color darkIconProfileTab = CupertinoColors.white;
+  static const Color lightIconProfileTab = CupertinoColors.black;
+  static const Color darkUnselectedItemProfileTab = CupertinoColors.white;
+  static const Color lightUnselectedItemProfileTab = CupertinoColors.black;
+
   // BenefitAccount
   static const Color buttonBackgroundBenefitAccount = CupertinoColors.white;
   static const Color buttonTitleBackgroundBenefitAccount = CupertinoColors.black;
@@ -111,6 +117,10 @@ class ColorConstant{
   static const Color lightTextProfileHistoryList = CupertinoColors.label;
   static const Color darkTextProfileHistoryList = CupertinoColors.white;
 
+  // ProfileBadgeGrid
+  static const Color lightTextProfileBadgeGrid = CupertinoColors.label;
+  static const Color darkTextProfileBadgeGrid = CupertinoColors.white;
+
   // HomeForYou
   static const Color lightBackgroundHomeForYou = CupertinoColors.systemBackground;
   static const Color darkBackgroundHomeForYou = CupertinoColors.darkBackgroundGray;
@@ -123,10 +133,6 @@ class ColorConstant{
   // MushroomDetail
   static const Color lightNameMushroomDetail = CupertinoColors.label;
   static const Color darkNameMushroomDetail = CupertinoColors.white;
-
-  // BadgeTab
-  static const Color lightTextBadgeTab = CupertinoColors.label;
-  static const Color darkTextBadgeTab = CupertinoColors.white;
 
   // TextInput
   static const Color lightTitleTextInput = CupertinoColors.black;

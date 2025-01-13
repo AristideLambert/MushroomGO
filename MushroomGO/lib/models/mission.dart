@@ -62,7 +62,7 @@ class Mission {
       currentProgress: currentProgress ?? this.currentProgress,
       goal: goal ?? this.goal,
       isEarned: isEarned ?? this.isEarned,
-      earnedDate: earnedDate ?? this.earnedDate,
+      earnedDate: earnedDate ?? this.earnedDate?.toUtc(),
     );
   }
 }

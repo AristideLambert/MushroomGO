@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/models/mission.dart';
-import 'package:mushroom_go/theme/badge_tab_theme.dart';
+import 'package:mushroom_go/theme/profile_badge_grid_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BadgeDetailPage extends StatefulWidget {
   final Mission mission;
-  final BadgeTabTheme? theme;
+  final ProfileBadgeGridTheme? theme;
 
   const BadgeDetailPage({super.key, required this.mission, this.theme});
 
@@ -16,12 +15,12 @@ class BadgeDetailPage extends StatefulWidget {
 }
 
 class _BadgeDetailPageState extends State<BadgeDetailPage> {
-  late BadgeTabTheme theme;
+  late ProfileBadgeGridTheme theme;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    theme = widget.theme ?? Theme.of(context).extension<BadgeTabTheme>()!;
+    theme = widget.theme ?? Theme.of(context).extension<ProfileBadgeGridTheme>()!;
   }
   @override
   Widget build(BuildContext context) {
@@ -42,7 +41,7 @@ class _BadgeDetailPageState extends State<BadgeDetailPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
-                    widget.mission.badgeFile,
+                    "assets/images/${widget.mission.badgeFile}",
                     fit: BoxFit.contain,
                     height: theme.heightImageDetail,
                   ),
@@ -60,7 +59,8 @@ class _BadgeDetailPageState extends State<BadgeDetailPage> {
                   ),
                   SizedBox(height: theme.spaceBetweenText),
                   Text(
-                    "${AppLocalizations.of(context)!.earnedBadge} ${DateFormat('dd MMM yyyy').format(widget.mission.earnedDate!)}.",
+                    "${AppLocalizations.of(context)!.earnedBadge} ${widget.mission.earnedDate!.day}/${widget.mission.earnedDate!.month}/${widget.mission.earnedDate!.year} "
+                  "${widget.mission.earnedDate!.hour}:${widget.mission.earnedDate!.minute.toString().padLeft(2, '0')}.",
                     style: theme.textDateStyle,
                     textAlign: TextAlign.center,
                   ),

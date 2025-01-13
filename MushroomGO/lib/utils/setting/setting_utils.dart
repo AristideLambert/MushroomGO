@@ -74,7 +74,6 @@ class SettingUtils{
       case ThemeMode.system: return "system";
       case ThemeMode.light: return "light";
       case ThemeMode.dark: return "dark";
-      default: return "system";
     }
   }
 

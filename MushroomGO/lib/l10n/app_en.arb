@@ -471,6 +471,22 @@
   "@profileHistoryErrorTitle": {
     "description": "Title error (ProfileHistory)"
   },
+  "profileBadgeInProgressTitle": "Loading badges...",
+  "@profileBadgeInProgressTitle": {
+    "description": "Title in progress (ProfileBadge)"
+  },
+  "profileBadgeNoBadgeTitle": "No badge",
+  "@profileBadgeNoBadgeTitle": {
+    "description": "Title no badge (ProfileBadge)"
+  },
+  "profileBadgeErrorTitle": "Unable to load the badges",
+  "@profileBadgeErrorTitle": {
+    "description": "Title error (ProfileBadge)"
+  },
+  "profileInProgressTitle": "Loading profile...",
+  "@profileInProgressTitle": {
+    "description": "Title in progress (Profile)"
+  },
   "popupOK": "OK",
   "@popupOK": {
     "description": "OK option (Popup)"

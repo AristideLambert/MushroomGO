@@ -75,7 +75,6 @@ class _TextOutputState extends State<TextOutput> {
       case Type.smallTitle: return _theme.smallTitleStyle;
       case Type.mediumTitle: return _theme.mediumTitleStyle;
       case Type.largeTitle: return _theme.largeTitleStyle;
-      default: return _theme.bodyStyle;
-    }
+      }
   }
 }

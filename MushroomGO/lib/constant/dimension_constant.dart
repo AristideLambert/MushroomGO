@@ -19,6 +19,11 @@ class DimensionConstant {
   // Home
   static const double appBarTitleSpacingHome = 40.0;
 
+  // ProfileTab
+  static const double radiusProfileTab = 70.0;
+  static const double widthIndicatorProfileTab = 60.0;
+  static const double marginIndicatorProfileTab = 16.0;
+
   // Setting
   static const double spaceSetting = 16.0;
 
@@ -177,7 +182,7 @@ class DimensionConstant {
   static const double imageWidthHeightSearchResultList = 60.0;
   static const double spaceBetweenItemSearchResultList = 16.0;
   static const double heightBetweenNameScientificNameSearchResultList = 4.0;
-  static const double sizeLoadingImageSearchResultList = 50.0;
+  static const double sizeLoadingImageSearchResultList = 60.0;
 
   //SearchHistoryList
   static const double paddingSearchHistoryList = 8.0;
@@ -189,6 +194,19 @@ class DimensionConstant {
   static const double spaceBetweenImageProfileHistoryList = 16.0;
   static const double imageWidthHeightProfileHistoryList = 80.0;
   static const double spaceBetweenTextProfileHistoryList = 4.0;
+
+  // ProfileBadgeGrid
+  static const int gridDelegateCrossAxisCountProfileBadgeGrid = 3;
+  static const double gridDelegateCrossAxisSpacingProfileBadgeGrid = 10.0;
+  static const double gridDelegateMainAxisSpacingProfileBadgeGrid = 0.0;
+  static const double gridDelegateChildAspectRatioProfileBadgeGrid = 0.70;
+  static const double heightImageProfileBadgeGrid = 100;
+  static const double spaceBetweenTextImageProfileBadgeGrid = 8.0;
+  static const double textHeightProfileBadgeGrid = 36.0;
+  static const int textMaxLinesProfileBadgeGrid = 2;
+  static const double heightImageDetailProfileBadgeGrid = 200.0;
+  static const double spaceBetweenTextProfileBadgeGrid = 20.0;
+  static const double sizeImageLoadingProfileBadgeGrid = 50.0;
 
   // MushroomDetail
   static const double radiusItemMushroomDetail = 8.0;
@@ -204,18 +222,6 @@ class DimensionConstant {
   static const double mapInitialZoomMushroomDetail = 16.0;
   static const double heightMapMushroomDetail = 200.0;
   static const double sizeMarkerMapMushroomDetail = 40.0;
-
-  // BadgeTab
-  static const int gridDelegateCrossAxisCountBadgeTab = 3;
-  static const double gridDelegateSpacingBadgeTab = 3.0;
-  static const double gridDelegateChildAspectRatioBadgeTab = 0.75;
-  static const double heightImageBadgeTab = 100;
-  static const double spaceBetweenTextImageBadgeTab = 8.0;
-  static const double textHeightBadgeTab = 36.0;
-  static const int textMaxLinesBadgeTab = 2;
-  static const double defaultPaddingBadgeTab = 16.0;
-  static const double heightImageBadgeDetail = 200.0;
-  static const double spaceBetweenTextBadgeDetail = 20.0;
 
   // TextInput
   static const double leftPaddingTitleTextInput = 10.0;

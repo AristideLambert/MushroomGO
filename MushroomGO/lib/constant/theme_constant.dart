@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mushroom_go/constant/text_style_constant.dart';
-import 'package:mushroom_go/theme/badge_tab_theme.dart';
+import 'package:mushroom_go/theme/profile_badge_grid_theme.dart';
 import 'package:mushroom_go/theme/challenge_missions_list_theme.dart';
 import 'package:mushroom_go/theme/button_setting_container_theme.dart';
 import 'package:mushroom_go/theme/button_setting_theme.dart';
@@ -14,6 +14,7 @@ import 'package:mushroom_go/theme/navigation_tab_bottom_theme.dart';
 import 'package:mushroom_go/theme/navigation_tab_top_theme.dart';
 import 'package:mushroom_go/theme/profile_container_theme.dart';
 import 'package:mushroom_go/theme/profile_history_list_theme.dart';
+import 'package:mushroom_go/theme/profile_tab_theme.dart';
 import 'package:mushroom_go/theme/search_history_list_theme.dart';
 import 'package:mushroom_go/theme/search_result_list_theme.dart';
 import 'package:mushroom_go/theme/loading_container_theme.dart';
@@ -46,6 +47,11 @@ class ThemeConstant{
     )
   ).copyWith(
     extensions: [
+      const ProfileTabTheme(
+        iconColor: ColorConstant.lightIconProfileTab,
+        selectedItemStyle: TextStyleConstant.lightSelectedItemProfileTab,
+        unSelectedItemStyle: TextStyleConstant.lightUnselectedItemProfileTab
+      ),
       const LoadingContainerTheme(),
       const ButtonStandardTheme(
         titleStyle: TextStyleConstant.lightTitleButtonStandard
@@ -109,10 +115,10 @@ class ThemeConstant{
         nameStyle: TextStyleConstant.lightNameMushroomDetail,
         scientificName: TextStyleConstant.lightScientificNameMushroomDetail
       ),
-      const BadgeTabTheme(
-        textStyle: TextStyleConstant.lightTextBadgeTab,
-        titleStyle: TextStyleConstant.lightTitleBadgeTab,
-        descriptionStyle: TextStyleConstant.lightDescriptionBadgeTab,
+      const ProfileBadgeGridTheme(
+        textStyle: TextStyleConstant.lightTextProfileBadgeGrid,
+        titleStyle: TextStyleConstant.lightTitleProfileBadgeGrid,
+        descriptionStyle: TextStyleConstant.lightDescriptionProfileBadgeGrid,
       ),
       const TextInputTheme(
         titleStyle: TextStyleConstant.lightTitleTextInput,
@@ -153,6 +159,11 @@ class ThemeConstant{
     )
   ).copyWith(
     extensions: [
+      const ProfileTabTheme(
+        iconColor: ColorConstant.darkIconProfileTab,
+        selectedItemStyle: TextStyleConstant.darkSelectedItemProfileTab,
+        unSelectedItemStyle: TextStyleConstant.darkUnselectedItemProfileTab
+      ),
       const LoadingContainerTheme(),
       const ButtonStandardTheme(
         titleStyle: TextStyleConstant.darkTitleButtonStandard
@@ -216,10 +227,10 @@ class ThemeConstant{
         nameStyle: TextStyleConstant.darkNameMushroomDetail,
         scientificName: TextStyleConstant.darkScientificNameMushroomDetail
       ),
-      const BadgeTabTheme(
-        textStyle: TextStyleConstant.darkTextBadgeTab,
-        titleStyle: TextStyleConstant.darkTitleBadgeTab,
-        descriptionStyle: TextStyleConstant.darkDescriptionBadgeTab,
+      const ProfileBadgeGridTheme(
+        textStyle: TextStyleConstant.darkTextProfileBadgeGrid,
+        titleStyle: TextStyleConstant.darkTitleProfileBadgeGrid,
+        descriptionStyle: TextStyleConstant.darkDescriptionProfileBadgeGrid,
       ),
       const TextInputTheme(
         titleStyle: TextStyleConstant.darkTitleTextInput,

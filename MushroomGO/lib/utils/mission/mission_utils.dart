@@ -9,17 +9,13 @@ class MissionUtils {
       final missions = await FirestoreUtils.fetchMissionsWithUserProgress(context);
       if(!context.mounted) return;
       final mushroom = await FirestoreUtils.getMushroomNameScientific(context, scientificName);
-
       if (mushroom == null || mushroom.id == null) {
         return;
       }
       final userId = FirebaseAuth.instance.currentUser!.uid;
-
       for (final mission in missions) {
         if (mission.isEarned ?? false) continue;
-
         bool matchesCondition = false;
-
         if (mission.type == 'rarity') {
           if(!context.mounted) return;
           final rarity = await FirestoreUtils.getRarityForMushroom(context, mushroom.id!);
@@ -29,20 +25,18 @@ class MissionUtils {
         } else if (mission.type == 'family' && mushroom.family == mission.condition) {
           matchesCondition = true;
         }
-
         if (matchesCondition) {
           final newProgress = (mission.currentProgress ?? 0) + 1;
-
           final missionUserData = {
             'user_id': userId,
             'mission_id': mission.id,
             'progress': newProgress,
           };
-
           if (newProgress >= mission.goal) {
-            missionUserData['earned_date'] = Timestamp.now();
+            missionUserData['earned_date'] = DateTime.now().toUtc();
+          } else {
+            missionUserData['earned_date'] = null;
           }
-
           await FirebaseFirestore.instance
               .collection('mission_user')
               .doc('${userId}_${mission.id}')

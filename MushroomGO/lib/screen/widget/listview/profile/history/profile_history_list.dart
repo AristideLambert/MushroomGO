@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/models/mushroom_scan.dart';
 import 'package:mushroom_go/screen/widget/image/loading_image.dart';
-import 'package:mushroom_go/screen/widget/listview/profile/profile_history_item.dart';
+import 'package:mushroom_go/screen/widget/listview/profile/history/profile_history_item.dart';
 import 'package:mushroom_go/theme/profile_history_list_theme.dart';
 
 class ProfileHistoryList extends StatefulWidget {
@@ -47,12 +47,12 @@ class _ProfileHistoryListState extends State<ProfileHistoryList> {
                 mushroomScan: widget.mushroomScans[index],
                 mainContext: widget.mainContext,
                 theme: _theme
-              ) : Padding(
-              padding: EdgeInsets.only(
-                  bottom: DimensionConstant.defaultPadding * 1.1
-              ),
-              child: LoadingImage(size: _theme.imageWidthHeight),
-            );
+              ) : Center(
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: DimensionConstant.defaultPadding * 1.1),
+                  child: LoadingImage(size: _theme.imageWidthHeight),
+                ),
+              );
           },
         ),
       ),

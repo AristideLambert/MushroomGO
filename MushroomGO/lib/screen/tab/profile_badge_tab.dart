@@ -1,114 +1,117 @@
 import 'package:flutter/material.dart';
+import 'package:mushroom_go/models/firestore_pagination.dart';
 import 'package:mushroom_go/models/mission.dart';
-import 'package:mushroom_go/theme/badge_tab_theme.dart';
+import 'package:mushroom_go/screen/widget/gridview/badge/profile_badge_grid.dart';
+import 'package:mushroom_go/screen/widget/popup/loading_container.dart';
+import 'package:mushroom_go/screen/widget/popup/loading_error_container.dart';
+import 'package:mushroom_go/screen/widget/popup/loading_no_data_container.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mushroom_go/utils/firebase/firestore_utils.dart';
 
 class ProfileBadgeTab extends StatefulWidget {
   final BuildContext mainContext;
-  final BadgeTabTheme? theme;
 
-  const ProfileBadgeTab({super.key, required this.mainContext, this.theme});
+  const ProfileBadgeTab({super.key, required this.mainContext});
 
   @override
   State<ProfileBadgeTab> createState() => _ProfileBadgeTabState();
 }
 
 class _ProfileBadgeTabState extends State<ProfileBadgeTab> {
-  late BadgeTabTheme theme;
+  late final int _limit;
+  late bool _isLoading;
+  late bool _hasMore;
+  late List<Mission> _missions;
+  late FirestorePagination<Mission> _lastMissionResult;
+  late Future<FirestorePagination<Mission>>? _missionResult;
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    theme = (widget.theme ?? Theme.of(context).extension<BadgeTabTheme>())!;
+  void _clearMission(){
+    _lastMissionResult = FirestorePagination(limit: _limit, result: [], lastResultDateTime: []);
+    _missions = [];
+    _isLoading = false;
+    _hasMore = false;
   }
 
-  final List<Mission> missions = [
-    Mission(
-      title: "Mushroom Hunter",
-      description: "Find and collect 50 mushrooms.",
-      currentProgress: 50,
-      goal: 50,
-      badgeFile: 'assets/images/mushroom_hunter.png',
-      isEarned: true,
-      earnedDate: DateTime(2024, 10, 1), condition: '', type: '', frequency: '',
-    ),
-    Mission(
-      title: "Epic Mushroom Collector",
-      description: "Collect 10 epic mushrooms in rare locations.",
-      currentProgress: 7,
-      goal: 10,
-      badgeFile: 'assets/images/epic_mushroom_collector.png',
-      isEarned: true,
-      earnedDate: DateTime(2024, 9, 15), condition: '', type: '', frequency: '',
-    ),
-    Mission(
-      title: "Mycology Expert",
-      description: "Identify 20 different types of mushrooms.",
-      currentProgress: 20,
-      goal: 20,
-      badgeFile: 'assets/images/mycology_expert.png',
-      isEarned: true,
-      earnedDate: DateTime(2024, 9, 15), type: '', frequency: '', condition: '',
-    ),
-    Mission(
-      title: "Rare Mushroom Collector",
-      description: "Find 5 rare mushrooms.",
-      currentProgress: 5,
-      goal: 5,
-      badgeFile: 'assets/images/rare_mushroom_collector.png',
-      isEarned: true,
-      earnedDate: DateTime(2024, 8, 20), condition: '', type: '', frequency: '',
-    ),
-  ];
+  void _loadMission(){
+    if (!mounted) return;
+    if (_isLoading) return;
+    setState(() {
+      _isLoading = true;
+      _missionResult = FirestoreUtils.getMissionComplete(
+        context,
+        _limit,
+        _lastMissionResult.lastResultDateTime!.firstWhere((map) => map.containsKey('lastDateTime'), orElse: () => {})["lastDateTime"],
+      );
+    });
+    _missionResult!.then((result) {
+      if (!mounted) return;
+      setState(() {
+        _isLoading = false;
+        _hasMore = result.result.isNotEmpty && result.result.length > _limit / 2;
+        if (result.result.isNotEmpty) {
+          _missions.addAll(result.result);
+          _lastMissionResult = result;
+        }
+      });
+    }).catchError((error) {
+      if (!mounted) return;
+      setState(() {
+        _isLoading = false;
+      });
+    });
+  }
+
+  Future<void> _onRefresh() async {
+    _clearMission();
+    _loadMission();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _limit = 8;
+    _clearMission();
+    _loadMission();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: theme.gridDelegateCrossAxisCount,
-          crossAxisSpacing: theme.gridDelegateSpacing,
-          mainAxisSpacing: theme.gridDelegateSpacing,
-          childAspectRatio: theme.gridDelegateChildAspectRatio,
-        ),
-        itemCount: missions.length,
-        itemBuilder: (context, index) {
-          final mission = missions[index];
-          return Padding(
-            padding: EdgeInsets.all(theme.defaultPadding),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(
-                      widget.mainContext,
-                      '/BadgeDetailPage',
-                      arguments: mission,
-                    );
-                  },
-                  child: Image.asset(
-                    mission.badgeFile,
-                    fit: BoxFit.contain,
-                    height: theme.heightImage,
-                  ),
-                ),
-                SizedBox(height: theme.spaceBetweenTextImage),
-                SizedBox(
-                  height: theme.textHeight,
-                  child: Text(
-                    mission.title,
-                    textAlign: TextAlign.center,
-                    style: theme.textStyle,
-                    maxLines: theme.textMaxLines,
-                    overflow: TextOverflow.ellipsis,
-                    softWrap: true,
-                  ),
-                ),
-              ],
-            ),
+    return FutureBuilder<FirestorePagination<Mission>>(
+      future: _missionResult,
+      builder: (BuildContext context, AsyncSnapshot<FirestorePagination<Mission>> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting && _missions.isEmpty) {
+          return Center(
+              child: LoadingContainer(
+                  message: AppLocalizations.of(context)!.profileBadgeInProgressTitle
+              )
           );
-        },
-      ),
+        } else if (snapshot.hasError) {
+          return Center(
+              child: LoadingErrorContainer(
+                  message: AppLocalizations.of(context)!.profileBadgeErrorTitle,
+                  onReload: _onRefresh
+              )
+          );
+        } else if (!snapshot.hasData || (snapshot.data!.result.isEmpty && _missions.isEmpty)) {
+          return LoadingNoDataContainer(
+              title: AppLocalizations.of(context)!.profileBadgeNoBadgeTitle,
+              onReload: _onRefresh
+          );
+        } else {
+          return ProfileBadgeGrid(
+            missions: _missions,
+            loadIcon: _hasMore,
+            onRefresh: _onRefresh,
+            onNotification: (scrollInfo) {
+              if (scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent && !_isLoading && _hasMore) {
+                _loadMission();
+              }
+              return false;
+            },
+            mainContext: widget.mainContext
+          );
+        }
+      },
     );
   }
 }
