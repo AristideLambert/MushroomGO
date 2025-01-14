@@ -39,10 +39,10 @@ MushroomGO a été développé avec l'objectif de rendre la mycologie accessible
 
 ## 🔍 Étude de l’existant
 
-| Application              | Points forts                                                                                 | Points faibles                                                                                                                                                  |
-|--------------------------|----------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **PictureMushrroms**     | - Interface moderne et épurée, cette application remplit toutes les fonctionnalités de base. | - Malgré que les fonctionnalités des bases soient remplies, on a tendance à se lasser vite, il manque une dose de gamification pour fidéliser les utilisateurs. |
-| **MushroomsIdenticator** | - Se démarque par ses quizzs et les questions que l'on peut adresser à la communauté.        | - Interface vieillissante et peu intuitive.                                                                                                                     | |
+| Application              | Points forts                                                                                 | Points faibles                                                                                                                                                 |
+|--------------------------|----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **PictureMushrroms**     | - Interface moderne et épurée, cette application remplit toutes les fonctionnalités de base. | - Malgré que les fonctionnalités de bases soient remplies, on a tendance à se lasser vite, il manque une dose de gamification pour fidéliser les utilisateurs. |
+| **MushroomsIdenticator** | - Se démarque par ses quizzs et les questions que l'on peut adresser à la communauté.        | - Interface vieillissante et peu intuitive.                                                                                                                    | |
 
 Ces applications couvrent certains besoins d’identification, mais MushroomGO se démarque par sa carte collaborative, ses sources de données diverses avec ses suggestions d'articles et de recettes ainsi que sa gamification avancée notamment grâce aux missions/badges et aux champignons challenges.
 
@@ -62,7 +62,7 @@ Pour répondre aux besoins variés de notre public cible, nous avons intégré p
 - Accessibilité pour tous les niveaux : MushroomGO est pensée pour les débutants comme pour les experts en mycologie. L'identification intuitive et les informations détaillées permettent à chacun d'y trouver son compte.
 - Personnalisation de l'expérience : Les missions, challenges et suggestions de contenu sont adaptés en fonction des intérêts de l'utilisateur (abandonné par manque de temps).
 - Apprentissage ludique et challengeant : La gamification avec des badges, missions et champignons à débloquer motive les utilisateurs à explorer davantage tout en apprenant.
-- Approche éducative pour les familles : Des fonctionnalités comme l'identification et les articles éducatifs permettent de transformer une balade en forêt en une activité enrichissante.
+- Approche éducative: Des fonctionnalités comme l'identification et les articles éducatifs permettent de transformer une balade en forêt en une activité enrichissante.
 - Inspiration culinaire : Une section dédiée aux recettes apporte une valeur ajoutée pour les amateurs de cuisine, en associant directement leurs découvertes à des idées pratiques.
 - Communauté et collaboration : L'intégration de fonctions communautaires favorise le partage de découvertes, renforçant l'aspect social et motivant les utilisateurs à contribuer activement.
 
@@ -81,26 +81,26 @@ Pour répondre aux besoins variés de notre public cible, nous avons intégré p
 
 ## 🚧 État d’avancement
 
-| Fonctionnalités                                 | État       | Illustration          |
-|-------------------------------------------------|------------|------------------------|
-| Navigation                                      | Terminé    | GIF à ajouter          |
-| Setting page                                    | Terminé    | GIF à ajouter          |
-| Theme + internalisation                         | Terminé    | GIF à ajouter          |
-| Profil page                                     | Terminé    | Image à ajouter        |
-| Challenge mushrooms page                        | Terminé    | Image à ajouter        |
-| Missions page                                   | Terminé    | Image à ajouter        |
-| Account page                                    | Terminé    | Image à ajouter        |
-| Home for you page                               | Terminé    | Image à ajouter        |
-| Firebase setup                                  | Terminé    | Image à ajouter        |
-| Authentification                                | Terminé    | Image à ajouter        |
-| Mushroom detail page                            | Terminé    | Image à ajouter        |
-| Web view page pour les articles et les recettes | Terminé    | Image à ajouter        |
-| Badge page + bade detail page                   | Terminé    | Image à ajouter        |
-| History page                                    | Terminé    | Image à ajouter        |
-| Search page + logique recherche                 | Terminé    | Image à ajouter        |
-| Benefit account page                            | Terminé    | Image à ajouter        |
-| privacy/terms_conditions page                   | Terminé    | Image à ajouter        |
-| Carte interactive                               | En cours   | Capture à ajouter      |
+| Fonctionnalités                                 | État       | Illustration                      |
+|-------------------------------------------------|------------|-----------------------------------|
+| Navigation                                      | Terminé    | Image/GIF à ajouter               |
+| Setting page                                    | Terminé    | Image/GIF à ajouter               |
+| Theme + internalisation                         | Terminé    | Image/GIF à ajouter               |
+| Profil page                                     | Terminé    | Image/GIF à ajouter               |
+| Challenge mushrooms page                        | Terminé    | Image/GIF à ajouter               |
+| Missions page                                   | Terminé    | Image/GIF à ajouter               |
+| Account page                                    | Terminé    | Image/GIF à ajouter               |
+| Home for you page                               | Terminé    | Image/GIF à ajouter               |
+| Firebase setup                                  | Terminé    | Image/GIF à ajouter               |
+| Authentification                                | Terminé    | Image/GIF à ajouter               |
+| Mushroom detail page                            | Terminé    | Image/GIF à ajouter               |
+| Web view page pour les articles et les recettes | Terminé    | Image/GIF à ajouter               |
+| Badge page + bade detail page                   | Terminé    | Image/GIF à ajouter               |
+| History page                                    | Terminé    | Image/GIF à ajouter               |
+| Search page + logique recherche                 | Terminé    | Image/GIF à ajouter               |
+| Benefit account page                            | Terminé    | Image/GIF à ajouter               |
+| privacy/terms_conditions page                   | Terminé    | Image/GIF à ajouter               |
+| Carte interactive                               | En cours   | Image/GIF à ajouter une fois fini |
 
 ---
 
