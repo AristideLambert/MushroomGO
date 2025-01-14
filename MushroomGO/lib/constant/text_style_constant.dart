@@ -460,4 +460,44 @@ class TextStyleConstant {
     fontSize: DimensionConstant.titleLarge,
     fontWeight: FontWeight.bold,
   );
+
+  // AboutUs
+  static const TextStyle lightTitleAboutUs = TextStyle(
+    color: ColorConstant.lightTitleAboutUs,
+    fontSize: DimensionConstant.titleLarge,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle darkTitleAboutUs = TextStyle(
+    color: ColorConstant.darkTitleAboutUs,
+    fontSize: DimensionConstant.titleLarge,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle lightLastUpdateAboutUs = TextStyle(
+    color: ColorConstant.lightTitleAboutUs,
+    fontSize: DimensionConstant.bodyText,
+    fontStyle: FontStyle.italic
+  );
+  static const TextStyle darkLastUpdateAboutUs = TextStyle(
+    color: ColorConstant.darkTitleAboutUs,
+    fontSize: DimensionConstant.bodyText,
+      fontStyle: FontStyle.italic
+  );
+  static const TextStyle lightSectionTitleAboutUs = TextStyle(
+    color: ColorConstant.lightTitleAboutUs,
+    fontSize: DimensionConstant.titleMedium,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle darkSectionTitleAboutUs = TextStyle(
+    color: ColorConstant.darkTitleAboutUs,
+    fontSize: DimensionConstant.titleMedium,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle lightSectionTextAboutUs = TextStyle(
+    color: ColorConstant.lightTitleAboutUs,
+    fontSize: DimensionConstant.bodyText
+  );
+  static const TextStyle darkSectionTextAboutUs = TextStyle(
+    color: ColorConstant.darkTitleAboutUs,
+    fontSize: DimensionConstant.bodyText
+  );
 }

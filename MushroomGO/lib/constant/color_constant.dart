@@ -164,4 +164,10 @@ class ColorConstant{
   // AndroidPopup
   static const Color buttonAndroidPopup = CupertinoColors.activeBlue;
   static const Color destructiveButtonAndroidPopup = CupertinoColors.destructiveRed;
+
+  // AboutUs
+  static const Color lightBackgroundAboutUs = CupertinoColors.systemBackground;
+  static const Color darkBackgroundAboutUs = CupertinoColors.darkBackgroundGray;
+  static const Color lightTitleAboutUs = CupertinoColors.black;
+  static const Color darkTitleAboutUs = CupertinoColors.white;
 }

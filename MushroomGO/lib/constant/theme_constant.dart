@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mushroom_go/constant/text_style_constant.dart';
+import 'package:mushroom_go/theme/about_us_theme.dart';
 import 'package:mushroom_go/theme/profile_badge_grid_theme.dart';
 import 'package:mushroom_go/theme/challenge_missions_list_theme.dart';
 import 'package:mushroom_go/theme/button_setting_container_theme.dart';
@@ -134,6 +135,13 @@ class ThemeConstant{
         smallTitleStyle: TextStyleConstant.lightSmallTitleTextOutput,
         mediumTitleStyle: TextStyleConstant.lightMediumTitleTextOutput,
         largeTitleStyle: TextStyleConstant.lightLargeTitleTextOutput,
+      ),
+      const AboutUsTheme(
+        backgroundColor: ColorConstant.lightBackgroundAboutUs,
+        titleStyle: TextStyleConstant.lightTitleAboutUs,
+        lastUpdateStyle: TextStyleConstant.lightLastUpdateAboutUs,
+        sectionTextStyle: TextStyleConstant.lightSectionTextAboutUs,
+        titleSectionStyle: TextStyleConstant.lightSectionTitleAboutUs
       )
     ]
   );
@@ -246,6 +254,13 @@ class ThemeConstant{
         smallTitleStyle: TextStyleConstant.darkSmallTitleTextOutput,
         mediumTitleStyle: TextStyleConstant.darkMediumTitleTextOutput,
         largeTitleStyle: TextStyleConstant.darkLargeTitleTextOutput,
+      ),
+      const AboutUsTheme(
+          backgroundColor: ColorConstant.darkBackgroundAboutUs,
+          titleStyle: TextStyleConstant.darkTitleAboutUs,
+          lastUpdateStyle: TextStyleConstant.darkLastUpdateAboutUs,
+          sectionTextStyle: TextStyleConstant.darkSectionTextAboutUs,
+          titleSectionStyle: TextStyleConstant.darkSectionTitleAboutUs
       )
     ]
   );

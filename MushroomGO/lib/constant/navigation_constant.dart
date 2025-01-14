@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/models/mission.dart';
+import 'package:mushroom_go/screen/about_us/privacy_policy_page.dart';
+import 'package:mushroom_go/screen/about_us/terms_conditions_page.dart';
 import 'package:mushroom_go/screen/page/camera/camera_check_image_page.dart';
 import 'package:mushroom_go/screen/page/camera/camera_page.dart';
 import 'package:mushroom_go/screen/page/detail/badge_detail_page.dart';
@@ -41,6 +43,8 @@ class NavigationConstant {
   static const String cameraPage = "/CameraPage";
   static const String cameraCheckImagePage = "/CameraCheckImagePage";
   static const String searchPage = "/SearchPage";
+  static const String privacyPolicyPage = "/PrivacyPolicyPage";
+  static const String termsConditionsPage = "/TermsConditionsPage";
 
 
   // Route
@@ -88,6 +92,10 @@ class NavigationConstant {
         return MaterialPageRoute(builder: (context) => CameraCheckImagePage(), settings: settings);
       case searchPage:
         return MaterialPageRoute(builder: (context) => SearchPage(), settings: settings);
+      case privacyPolicyPage:
+        return MaterialPageRoute(builder: (context) => PrivacyPolicyPage(), settings: settings);
+      case termsConditionsPage:
+        return MaterialPageRoute(builder: (context) => TermsAndConditionsPage(), settings: settings);
       default:
         return MaterialPageRoute(builder: (context) => const MainPage(), settings: settings);
     }

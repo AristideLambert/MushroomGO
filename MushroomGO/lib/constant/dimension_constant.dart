@@ -246,4 +246,8 @@ class DimensionConstant {
 
   // LoadingImage
   static const double radiusLoadingImage = 5.0;
+
+  // AboutUs
+  static const double defaultSpaceAboutUs = 16.0;
+  static const double smallSpaceAboutUs = 8.0;
 }

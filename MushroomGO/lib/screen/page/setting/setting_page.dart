@@ -92,11 +92,21 @@ class _SettingPageState extends State<SettingPage> {
                         type: Type.standard,
                         title: AppLocalizations.of(context)!.settingAboutPrivacyPolicy,
                         leftIcon: CupertinoIcons.shield_fill,
+                        onTap: (){
+                          Navigator.of(widget.mainContext).pushNamed(
+                              NavigationConstant.privacyPolicyPage
+                          );
+                        },
                       ),
                       ButtonSetting(
                         type: Type.standard,
                         title: AppLocalizations.of(context)!.settingAboutTermsAndConditions,
                         leftIcon: CupertinoIcons.doc_fill,
+                        onTap: (){
+                          Navigator.of(widget.mainContext).pushNamed(
+                              NavigationConstant.termsConditionsPage
+                          );
+                        },
                       ),
                     ]
                 ),
