@@ -487,6 +487,10 @@
   "@profileInProgressTitle": {
     "description": "Title in progress (Profile)"
   },
+  "challengeInProgressTitle": "Loading challenges...",
+  "@challengeInProgressTitle": {
+    "description": "Title in progress (Challenge)"
+  },
   "popupOK": "OK",
   "@popupOK": {
     "description": "OK option (Popup)"

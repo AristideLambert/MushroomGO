@@ -12,9 +12,11 @@ class ChallengeMissionListTheme extends ThemeExtension<ChallengeMissionListTheme
   final double radiusItem;
   final double progressMin;
   final double progressMax;
+  final double sizeIcon;
   final Color cardBackgroundColor;
   final Color progressBarBackgroundColor;
   final Color progressBarForegroundColor;
+  final Color iconColor;
   final TextStyle titleStyle;
   final TextStyle descriptionStyle;
   final TextStyle progressTextStyle;
@@ -28,9 +30,11 @@ class ChallengeMissionListTheme extends ThemeExtension<ChallengeMissionListTheme
     this.radiusItem = DimensionConstant.radiusItemChallengeMissionsList,
     this.progressMin = DimensionConstant.progressMinChallengeMissionsList,
     this.progressMax = DimensionConstant.progressMaxChallengeMissionsList,
+    this.sizeIcon = DimensionConstant.sizeIconChallengeMissionsList,
     this.cardBackgroundColor = ColorConstant.lightBackgroundChallengeMissionsList,
     this.progressBarBackgroundColor = ColorConstant.lightProgressBarBackgroundChallengeMissionsList,
     this.progressBarForegroundColor = ColorConstant.lightProgressBarForegroundChallengeMissionsList,
+    this.iconColor = ColorConstant.iconChallengeMissionsList,
     this.titleStyle = TextStyleConstant.lightTitleChallengeMissionsList,
     this.descriptionStyle = TextStyleConstant.lightDescriptionChallengeMissionsList,
     this.progressTextStyle = TextStyleConstant.lightProgressTextChallengeMissionsList,
@@ -46,9 +50,11 @@ class ChallengeMissionListTheme extends ThemeExtension<ChallengeMissionListTheme
     double? radiusItem,
     double? progressMin,
     double? progressMax,
+    double? sizeIcon,
     Color? cardBackgroundColor,
     Color? progressBarBackgroundColor,
     Color? progressBarForegroundColor,
+    Color? iconColor,
     TextStyle? titleStyle,
     TextStyle? descriptionStyle,
     TextStyle? progressTextStyle,
@@ -62,9 +68,11 @@ class ChallengeMissionListTheme extends ThemeExtension<ChallengeMissionListTheme
       radiusItem: radiusItem ?? this.radiusItem,
       progressMin: progressMin ?? this.progressMin,
       progressMax: progressMax ?? this.progressMax,
+      sizeIcon: sizeIcon ?? this.sizeIcon,
       cardBackgroundColor: cardBackgroundColor ?? this.cardBackgroundColor,
       progressBarBackgroundColor: progressBarBackgroundColor ?? this.progressBarBackgroundColor,
       progressBarForegroundColor: progressBarForegroundColor ?? this.progressBarForegroundColor,
+      iconColor: iconColor ?? this.iconColor,
       titleStyle: titleStyle ?? this.titleStyle,
       descriptionStyle: descriptionStyle ?? this.descriptionStyle,
       progressTextStyle: progressTextStyle ?? this.progressTextStyle,
@@ -83,9 +91,11 @@ class ChallengeMissionListTheme extends ThemeExtension<ChallengeMissionListTheme
       radiusItem: radiusItem + (other.radiusItem - radiusItem) * t,
       progressMin: progressMin + (other.progressMin - progressMin) * t,
       progressMax: progressMax + (other.progressMax - progressMax) * t,
+      sizeIcon: sizeIcon + (other.sizeIcon - sizeIcon) * t,
       cardBackgroundColor: Color.lerp(cardBackgroundColor, other.cardBackgroundColor, t)!,
       progressBarBackgroundColor: Color.lerp(progressBarBackgroundColor, other.progressBarBackgroundColor, t)!,
       progressBarForegroundColor: Color.lerp(progressBarForegroundColor, other.progressBarForegroundColor, t)!,
+      iconColor: Color.lerp(iconColor, other.iconColor, t)!,
       titleStyle: TextStyle.lerp(titleStyle, other.titleStyle, t)!,
       descriptionStyle: TextStyle.lerp(descriptionStyle, other.descriptionStyle, t)!,
       progressTextStyle: TextStyle.lerp(progressTextStyle, other.progressTextStyle, t)!,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/models/mission.dart';
-import 'package:mushroom_go/screen/widget/gridview/badge/profile_badge_item.dart';
+import 'package:mushroom_go/screen/widget/gridview/badge/profile_badge_grid_item.dart';
 import 'package:mushroom_go/screen/widget/image/loading_image.dart';
 import 'package:mushroom_go/theme/profile_badge_grid_theme.dart';
 
@@ -68,7 +68,7 @@ class _ProfileBadgeGridState extends State<ProfileBadgeGrid> {
           ),
           itemBuilder: (context, index) {
             if(index < widget.missions.length){
-              return ProfileBadgeItem(
+              return ProfileBadgeGridItem(
                 index: index,
                 indexEnd: widget.missions.length,
                 mission: widget.missions[index],

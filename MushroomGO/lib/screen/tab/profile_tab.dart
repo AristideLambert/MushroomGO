@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mushroom_go/constant/color_constant.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/screen/page/account/benefit_account_page.dart';
@@ -132,14 +133,14 @@ class _ProfileTabState extends State<ProfileTab> with TickerProviderStateMixin {
           }
         ),
         SafeArea(
-            child: Padding(
-                padding: EdgeInsets.all(_user == null ? DimensionConstant.defaultPadding : DimensionConstant.defaultPadding * 2),
-                // TODO: Update icon
-                child: GestureDetector(
-                  child: Icon(Icons.settings, color: _theme.iconColor),
-                  onTap: () => _navigate(NavigationConstant.settingPage),
-                )
+          child: Padding(
+            padding: EdgeInsets.all(_user == null ? DimensionConstant.defaultPadding : DimensionConstant.defaultPadding * 2),
+            // TODO: Update icon
+            child: GestureDetector(
+              child: Icon(Icons.settings, color: _user == null ? ColorConstant.textPrimaryColor : _theme.iconColor),
+              onTap: () => _navigate(NavigationConstant.settingPage),
             )
+          )
         )
       ],
     );

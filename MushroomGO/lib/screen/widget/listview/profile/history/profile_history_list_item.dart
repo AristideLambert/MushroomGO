@@ -9,20 +9,20 @@ import 'package:mushroom_go/theme/profile_history_list_theme.dart';
 import 'package:mushroom_go/utils/map/location_utils.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
-class ProfileHistoryItem extends StatefulWidget {
+class ProfileHistoryListItem extends StatefulWidget {
   final int index;
   final int indexEnd;
   final MushroomScan mushroomScan;
   final BuildContext mainContext;
   final ProfileHistoryListTheme theme;
 
-  const ProfileHistoryItem({super.key, required this.index, required this.indexEnd, required this.mushroomScan, required this.mainContext, required this.theme});
+  const ProfileHistoryListItem({super.key, required this.index, required this.indexEnd, required this.mushroomScan, required this.mainContext, required this.theme});
 
   @override
-  State<ProfileHistoryItem> createState() => _ProfileHistoryItemState();
+  State<ProfileHistoryListItem> createState() => _ProfileHistoryListItemState();
 }
 
-class _ProfileHistoryItemState extends State<ProfileHistoryItem> {
+class _ProfileHistoryListItemState extends State<ProfileHistoryListItem> {
   late Timer? _timer;
   late String? _distance;
 

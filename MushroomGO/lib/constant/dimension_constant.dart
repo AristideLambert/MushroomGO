@@ -145,7 +145,7 @@ class DimensionConstant {
   static const double sizeImageItemChallengeMushroomsList = 120.0;
   static const double heightTitleItemChallengeMushroomsList = 35.0;
   static const double radiusItemChallengeMushroomsList = 16.0;
-  static const double spaceChallengeMushroomsList = 5.0;
+  static const double spaceChallengeMushroomsList = 10.0;
   static const double lockerSizeChallengeMushroomsList = 50.0;
   static const double alphaColorChallengeMushroomsList = 0.7;
 
@@ -155,6 +155,7 @@ class DimensionConstant {
   static const double radiusItemChallengeMissionsList = 16.0;
   static const double progressMinChallengeMissionsList = 0.0;
   static const double progressMaxChallengeMissionsList = 1.0;
+  static const double sizeIconChallengeMissionsList = 40.0;
   static const double cardMarginChallengeMissionsList = 8.0;
   static const double progressBarHeightChallengeMissionsList = 8.0;
 
@@ -170,9 +171,8 @@ class DimensionConstant {
   static const double paddingBetweenItemHomeForYouList = 8.0;
   static const double widthItemHomeForYouList = 180.0;
   static const double sizeImageItemHomeForYouList = 180.0;
-  static const double heightTitleItemHomeForYouList = 35.0;
   static const double radiusItemHomeForYouList = 16.0;
-  static const double spaceHomeForYouList = 5.0;
+  static const double spaceHomeForYouList = 10.0;
   static const double textPaddingHomeForYouList = 8.0;
   static const double textOpacityHomeForYouList = 0.9;
 

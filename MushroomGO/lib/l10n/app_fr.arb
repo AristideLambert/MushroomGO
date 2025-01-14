@@ -121,6 +121,7 @@
   "profileBadgeNoBadgeTitle": "Aucun badge",
   "profileBadgeErrorTitle": "Impossible de charger les badges",
   "profileInProgressTitle": "Chargement du profil en cours...",
+  "challengeInProgressTitle": "Chargement des défis en cours...",
   "popupOK": "OK",
   "popupCancel": "Annuler",
   "popupDelete": "Supprimer",

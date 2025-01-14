@@ -1,0 +1,91 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:mushroom_go/constant/dimension_constant.dart';
+import 'package:mushroom_go/theme/challenge_missions_list_theme.dart';
+
+class ChallengeMissionItem extends StatefulWidget {
+  final String title;
+  final String description;
+  final int currentProgress;
+  final int goal;
+  final ChallengeMissionListTheme? theme;
+
+  const ChallengeMissionItem({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.currentProgress,
+    required this.goal,
+    this.theme,
+  });
+
+  @override
+  State<ChallengeMissionItem> createState() => _ChallengeMissionItemState();
+}
+
+class _ChallengeMissionItemState extends State<ChallengeMissionItem> {
+  late ChallengeMissionListTheme theme;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    theme = (widget.theme ?? Theme.of(context).extension<ChallengeMissionListTheme>())!;
+  }
+
+  @override
+  void didUpdateWidget(ChallengeMissionItem oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    theme = (widget.theme ?? Theme.of(context).extension<ChallengeMissionListTheme>())!;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final double progress = (widget.currentProgress / widget.goal).clamp(theme.progressMin, theme.progressMax);
+    return Stack(
+      alignment: Alignment.topRight,
+      children: [
+        Card(
+          margin: EdgeInsets.symmetric(vertical: theme.cardMargin),
+          color: theme.cardBackgroundColor,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(theme.radiusItem)),
+          child: Padding(
+            padding: EdgeInsets.all(theme.cardPadding),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(widget.title, style: theme.titleStyle),
+                SizedBox(height: theme.spacingBetweenTitleAndList),
+                Text(widget.description, style: theme.descriptionStyle),
+                SizedBox(height: theme.spacingBetweenTitleAndList),
+                LinearProgressIndicator(
+                  value: progress,
+                  minHeight: theme.progressBarHeight,
+                  backgroundColor: theme.progressBarBackgroundColor,
+                  valueColor: AlwaysStoppedAnimation<Color>(theme.progressBarForegroundColor),
+                ),
+                SizedBox(height: theme.spacingBetweenTitleAndList),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    '${widget.currentProgress >= widget.goal ? widget.goal : widget.currentProgress} / ${widget.goal}',
+                    style: theme.progressTextStyle,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        if(widget.currentProgress >= widget.goal) ... [
+          // TODO: Update icon
+          Padding(
+            padding: const EdgeInsets.symmetric(
+                horizontal: DimensionConstant.defaultPadding / 2,
+                vertical: DimensionConstant.defaultPadding
+            ),
+            child: Icon(CupertinoIcons.checkmark_circle_fill, size: theme.sizeIcon, color: theme.iconColor),
+          )
+        ]
+      ]
+    );
+  }
+}

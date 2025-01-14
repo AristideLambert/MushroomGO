@@ -8,7 +8,6 @@ class HomeForYouListTheme extends ThemeExtension<HomeForYouListTheme> {
   final double paddingBetweenItem;
   final double widthItem;
   final double sizeImageItem;
-  final double heightTitleItem;
   final double textPadding;
   final double radiusItem;
   final double space;
@@ -25,7 +24,6 @@ class HomeForYouListTheme extends ThemeExtension<HomeForYouListTheme> {
     this.paddingBetweenItem = DimensionConstant.paddingBetweenItemHomeForYouList,
     this.widthItem = DimensionConstant.widthItemHomeForYouList,
     this.sizeImageItem = DimensionConstant.sizeImageItemHomeForYouList,
-    this.heightTitleItem = DimensionConstant.heightTitleItemHomeForYouList,
     this.radiusItem = DimensionConstant.radiusItemHomeNewsList,
     this.titleItemStyle = TextStyleConstant.lightTitleItemHomeForYouList,
     this.titleStyle = TextStyleConstant.lightTitleHomeNewsList,
@@ -40,7 +38,6 @@ class HomeForYouListTheme extends ThemeExtension<HomeForYouListTheme> {
     double? paddingBetweenItem,
     double? widthItem,
     double? sizeImageItem,
-    double? heightTitleItem,
     double? textPadding,
     double? radiusItem,
     double? space,
@@ -55,7 +52,6 @@ class HomeForYouListTheme extends ThemeExtension<HomeForYouListTheme> {
       paddingBetweenItem: paddingBetweenItem ?? this.paddingBetweenItem,
       widthItem: widthItem ?? this.widthItem,
       sizeImageItem: sizeImageItem ?? this.sizeImageItem,
-      heightTitleItem: heightTitleItem ?? this.heightTitleItem,
       textPadding: textPadding ?? this.textPadding,
       radiusItem: radiusItem ?? this.radiusItem,
       space: space ?? this.space,
@@ -76,7 +72,6 @@ class HomeForYouListTheme extends ThemeExtension<HomeForYouListTheme> {
       paddingBetweenItem: paddingBetweenItem + (other.paddingBetweenItem - paddingBetweenItem) * t,
       widthItem: widthItem + (other.widthItem - widthItem) * t,
       sizeImageItem: sizeImageItem + (other.sizeImageItem - sizeImageItem) * t,
-      heightTitleItem: heightTitleItem + (other.heightTitleItem - heightTitleItem) * t,
       textPadding: textPadding + (other.textPadding - textPadding) * t,
       radiusItem: radiusItem + (other.radiusItem - radiusItem) * t,
       space: space + (other.space - space) * t,

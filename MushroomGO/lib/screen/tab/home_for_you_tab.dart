@@ -10,9 +10,9 @@ import 'package:mushroom_go/utils/firebase/firestore_utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeForYouTab extends StatefulWidget {
-  final BuildContext buildContext;
+  final BuildContext mainContext;
 
-  const HomeForYouTab({super.key, required this.buildContext});
+  const HomeForYouTab({super.key, required this.mainContext});
 
   @override
   State<HomeForYouTab> createState() => _HomeForYouTabState();
@@ -27,7 +27,7 @@ class _HomeForYouTabState extends State<HomeForYouTab> {
     _reloadData();
   }
 
-  void _reloadData() {
+  Future<void> _reloadData() async {
     setState(() {
       _dataFuture = Future.wait([
         FirestoreUtils.fetchRecipes(context),
@@ -42,66 +42,61 @@ class _HomeForYouTabState extends State<HomeForYouTab> {
 
   @override
   Widget build(BuildContext context) {
-    final appBarHeight = Scaffold
-        .of(context)
-        .appBarMaxHeight ?? kToolbarHeight;
-
-    return Padding(
-      padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-      child: FutureBuilder<Map<String, dynamic>>(
+    return Scaffold(
+      body: FutureBuilder<Map<String, dynamic>>(
         future: _dataFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Transform.translate(
-              offset: Offset(0, -appBarHeight),
-              child: LoadingContainer(
-                message: AppLocalizations.of(context)!
-                    .homeForYouLoadingData,
-              ),
+            return LoadingContainer(
+              message: AppLocalizations.of(context)!.homeForYouLoadingData,
             );
           } else if (snapshot.hasError) {
             return LoadingErrorContainer(
-              message: AppLocalizations.of(context)!
-                  .homeForYouErrorLoadingData,
+              message: AppLocalizations.of(context)!.homeForYouErrorLoadingData,
               onReload: _reloadData,
             );
           }
-
           final recipes = snapshot.data!["recipes"] as List<Recipe>;
           final mushrooms = snapshot.data!["mushrooms"] as List<Mushroom>;
-
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                HomeForYouList<Recipe>(
-                  title: AppLocalizations.of(context)!
-                      .homeForYouRecipes,
-                  items: recipes,
-                  itemBuilder: (context, Recipe recipe, index, theme) {
-                    return HomeForYouItem<Recipe>(
-                      item: recipe,
-                      buildContext: widget.buildContext,
-                      index: index,
-                      getTitle: (Recipe item) => item.title,
-                      getImageUrl: (Recipe item) => item.imageUrl,
-                    );
-                  },
+          return RefreshIndicator(
+            color: Theme.of(context).primaryColor,
+            elevation: DimensionConstant.defaultElevation,
+            onRefresh: _reloadData,
+            child: SizedBox(
+              height: double.infinity,
+              child: SingleChildScrollView(
+                physics: AlwaysScrollableScrollPhysics(),
+                child: Column(
+                  children: [
+                    HomeForYouList<Recipe>(
+                      title: AppLocalizations.of(context)!.homeForYouRecipes,
+                      items: recipes,
+                      itemBuilder: (context, Recipe recipe, index, theme) {
+                        return HomeForYouItem<Recipe>(
+                          item: recipe,
+                          buildContext: widget.mainContext,
+                          index: index,
+                          getTitle: (Recipe item) => item.title,
+                          getImageUrl: (Recipe item) => item.imageUrl,
+                        );
+                      },
+                    ),
+                    HomeForYouList<Mushroom>(
+                      title: AppLocalizations.of(context)!.homeForYouMonthMushrooms,
+                      items: mushrooms,
+                      itemBuilder: (context, Mushroom mushroom, index, theme) {
+                        return HomeForYouItem<Mushroom>(
+                          item: mushroom,
+                          buildContext: widget.mainContext,
+                          index: index,
+                          getTitle: (Mushroom item) => item.name,
+                          getImageUrl: (Mushroom item) => item.imageUrl,
+                        );
+                      },
+                    ),
+                  ],
                 ),
-                HomeForYouList<Mushroom>(
-                  title: AppLocalizations.of(context)!
-                      .homeForYouMonthMushrooms,
-                  items: mushrooms,
-                  itemBuilder: (context, Mushroom mushroom, index, theme) {
-                    return HomeForYouItem<Mushroom>(
-                      item: mushroom,
-                      buildContext: widget.buildContext,
-                      index: index,
-                      getTitle: (Mushroom item) => item.name,
-                      getImageUrl: (Mushroom item) => item.imageUrl,
-                    );
-                  },
-                ),
-              ],
+              ),
             ),
           );
         },

@@ -3,14 +3,14 @@ import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/models/mission.dart';
 import 'package:mushroom_go/theme/profile_badge_grid_theme.dart';
 
-class ProfileBadgeItem extends StatelessWidget {
+class ProfileBadgeGridItem extends StatelessWidget {
   final int index;
   final int indexEnd;
   final Mission mission;
   final BuildContext mainContext;
   final ProfileBadgeGridTheme theme;
 
-  const ProfileBadgeItem({super.key, required this.index, required this.indexEnd, required this.mission, required this.mainContext, required this.theme});
+  const ProfileBadgeGridItem({super.key, required this.index, required this.indexEnd, required this.mission, required this.mainContext, required this.theme});
 
   @override
   Widget build(BuildContext context) {

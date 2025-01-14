@@ -97,6 +97,7 @@ class ColorConstant{
   static const Color darkProgressBarForegroundChallengeMissionsList = primaryColor;
   static const Color lightProgressBarBackgroundChallengeMissionsList = CupertinoColors.quaternarySystemFill;
   static const Color darkProgressBarBackgroundChallengeMissionsList = CupertinoColors.systemFill;
+  static const Color iconChallengeMissionsList = CupertinoColors.systemGreen;
 
   // HomeNewsList
   static const Color lightBackgroundHomeNewsList = CupertinoColors.systemGroupedBackground;

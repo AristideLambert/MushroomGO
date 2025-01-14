@@ -8,8 +8,8 @@ import 'package:mushroom_go/utils/firebase/firestore_utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeNewsTab extends StatefulWidget {
-  final BuildContext buildContext;
-  const HomeNewsTab({super.key, required this.buildContext});
+  final BuildContext mainContext;
+  const HomeNewsTab({super.key, required this.mainContext});
 
   @override
   State<HomeNewsTab> createState() => _HomeNewsTabState();
@@ -18,51 +18,52 @@ class HomeNewsTab extends StatefulWidget {
 class _HomeNewsTabState extends State<HomeNewsTab> {
   late Future<List<Article>> _articlesFuture;
 
-  @override
-  void initState() {
-    super.initState();
-    _reloadData();
-  }
-
-  void _reloadData() {
+  Future<void> _reloadData() async {
     setState(() {
       _articlesFuture = FirestoreUtils.fetchArticles(context);
     });
   }
 
   @override
-  Widget build(BuildContext context) {
-    final appBarHeight = Scaffold.of(context).appBarMaxHeight ?? kToolbarHeight;
+  void initState() {
+    super.initState();
+    _reloadData();
+  }
 
-    return Padding(
-      padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-      child: FutureBuilder<List<Article>>(
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: FutureBuilder<List<Article>>(
         future: _articlesFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Transform.translate(
-              offset: Offset(0, -appBarHeight),
-              child: LoadingContainer(
-                message: AppLocalizations.of(context)!
-                    .homeNewsLoadingData,
-              ),
+            return LoadingContainer(
+              message: AppLocalizations.of(context)!.homeNewsLoadingData,
             );
           } else if (snapshot.hasError) {
             return LoadingErrorContainer(
-              message: AppLocalizations.of(context)!
-                  .homeNewsErrorLoadingData,
+              message: AppLocalizations.of(context)!.homeNewsErrorLoadingData,
               onReload: _reloadData,
             );
           }
           final articles = snapshot.data ?? [];
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                HomeNewsList(
-                  articles: articles,
-                  buildContext: widget.buildContext,
+          return RefreshIndicator(
+            color: Theme.of(context).primaryColor,
+            elevation: DimensionConstant.defaultElevation,
+            onRefresh: _reloadData,
+            child: SizedBox(
+              height: double.infinity,
+              child: SingleChildScrollView(
+                physics: AlwaysScrollableScrollPhysics(),
+                child: Column(
+                  children: [
+                    HomeNewsList(
+                      articles: articles,
+                      mainContext: widget.mainContext,
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           );
         },

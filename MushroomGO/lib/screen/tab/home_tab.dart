@@ -29,8 +29,8 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
       Text(AppLocalizations.of(context)!.homeNews)
     ];
     _tabChildren = [
-      HomeForYouTab(buildContext: widget.mainPageContext),
-      HomeNewsTab(buildContext: widget.mainPageContext)
+      HomeForYouTab(mainContext: widget.mainPageContext),
+      HomeNewsTab(mainContext: widget.mainPageContext)
     ];
     _tabController = TabController(length: _tabChildren.length, vsync: this);
   }
@@ -56,6 +56,10 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
             ),
           )
         ],
+        leading: Padding(
+          padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
+          child: SizedBox(width: DimensionConstant.titleMedium),
+        ),
       ),
       body: NavigationViewTabTop(
         tabController: _tabController,

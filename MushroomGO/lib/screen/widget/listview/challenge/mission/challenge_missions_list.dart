@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/models/mission.dart';
-import 'package:mushroom_go/screen/widget/listview/challenge_missions_list_item.dart';
+import 'package:mushroom_go/screen/widget/listview/challenge/mission/challenge_missions_list_item.dart';
 import 'package:mushroom_go/theme/challenge_missions_list_theme.dart';
 
 class ChallengeMissionListTab extends StatefulWidget {
@@ -23,12 +23,12 @@ class ChallengeMissionListTab extends StatefulWidget {
 }
 
 class _ChallengeMissionListTabState extends State<ChallengeMissionListTab> {
-  late ChallengeMissionListTheme theme;
+  late ChallengeMissionListTheme _theme;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    theme = (widget.theme ?? Theme.of(context).extension<ChallengeMissionListTheme>())!;
+    _theme = (widget.theme ?? Theme.of(context).extension<ChallengeMissionListTheme>())!;
   }
 
   @override
@@ -44,13 +44,13 @@ class _ChallengeMissionListTabState extends State<ChallengeMissionListTab> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            margin: EdgeInsets.only(left: theme.marginTitle),
+            margin: EdgeInsets.only(left: _theme.marginTitle),
             child: Text(
               widget.category,
-              style: theme.titleStyle,
+              style: _theme.titleStyle,
             ),
           ),
-          SizedBox(height: theme.spacingBetweenTitleAndList),
+          SizedBox(height: _theme.spacingBetweenTitleAndList),
           ListView.builder(
             itemCount: widget.missions.length,
             shrinkWrap: true,
@@ -62,7 +62,7 @@ class _ChallengeMissionListTabState extends State<ChallengeMissionListTab> {
                 description: mission.description,
                 currentProgress: mission.currentProgress ?? 0,
                 goal: mission.goal,
-                theme: theme,
+                theme: _theme,
               );
             },
           ),
