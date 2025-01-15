@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/screen/tab/challenge_tab.dart';
 import 'package:mushroom_go/screen/tab/home_tab.dart';
-import 'package:mushroom_go/screen/tab/map_tab.dart';
+import 'package:mushroom_go/screen/tab/map/map_tab.dart';
 import 'package:mushroom_go/screen/tab/navigation/bottom/navigation_bar_tab_bottom.dart';
 import 'package:mushroom_go/screen/tab/navigation/bottom/navigation_item_camera_tab_bottom.dart';
 import 'package:mushroom_go/screen/tab/navigation/bottom/navigation_model.dart';

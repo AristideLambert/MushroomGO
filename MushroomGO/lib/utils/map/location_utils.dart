@@ -45,11 +45,7 @@ class LocationUtils {
     return R * c;
   }
 
-  static Future<String> getDistanceFromCurrent(BuildContext context, double latitudeTo, double longitudeTo) async {
-    Position? currentPosition = await getCurrentLocation();
-    if(!context.mounted){
-      return "";
-    }
+  static String getDistanceDisplay(BuildContext context, Position? currentPosition, double latitudeTo, double longitudeTo) {
     if(currentPosition == null){
       return "";
     }

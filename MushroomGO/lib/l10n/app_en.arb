@@ -491,6 +491,18 @@
   "@challengeInProgressTitle": {
     "description": "Title in progress (Challenge)"
   },
+  "mapInProgressTitle": "Loading map...",
+  "@mapInProgressTitle": {
+    "description": "Title in progress (Map)"
+  },
+  "mapCollaborativeTitle": "Collaborative",
+  "@mapCollaborativeTitle": {
+    "description": "Title collaborative (Map)"
+  },
+  "mapPersonalTitle": "Personal",
+  "@mapPersonalTitle": {
+    "description": "Title personal (Map)"
+  },
   "popupOK": "OK",
   "@popupOK": {
     "description": "OK option (Popup)"

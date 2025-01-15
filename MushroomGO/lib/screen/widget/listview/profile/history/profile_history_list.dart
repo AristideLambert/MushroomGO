@@ -23,6 +23,11 @@ class _ProfileHistoryListState extends State<ProfileHistoryList> {
   late ProfileHistoryListTheme _theme;
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     _theme = widget.theme ?? Theme.of(context).extension<ProfileHistoryListTheme>()!;

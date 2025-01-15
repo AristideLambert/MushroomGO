@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:mushroom_go/exception/loading_exception.dart';
 import 'package:mushroom_go/models/article.dart';
 import 'package:mushroom_go/models/firestore_pagination.dart';
@@ -153,6 +154,44 @@ class FirestoreUtils{
       }
     }
     return FirestorePagination<MushroomScan>(limit: limit, result: [], lastResult: []);
+  }
+
+  static Future<List<MushroomScan>> getMushroomHistoryPosition(BuildContext context, LatLng northWest, LatLng southEast, bool userData) async {
+    List<MushroomScan> result = [];
+    final latMin = southEast.latitude;
+    final latMax = northWest.latitude;
+    final lngMin = northWest.longitude;
+    final lngMax = southEast.longitude;
+    try {
+      Query queryHistory = FirebaseFirestore.instance
+          .collection("scan_mushroom")
+          .where('latitude', isGreaterThanOrEqualTo: latMin)
+          .where('latitude', isLessThanOrEqualTo: latMax);
+      if (userData) {
+        final user = FirebaseAuth.instance.currentUser;
+        queryHistory = queryHistory.where("user", isEqualTo: user!.uid);
+      }
+      QuerySnapshot snapshotHistory = await queryHistory.get();
+      if(!context.mounted) return result;
+      if (snapshotHistory.docs.isNotEmpty) {
+        List<DocumentSnapshot> snapshotHistoryFiltered = snapshotHistory.docs.where((doc) {
+          double longitude = doc['longitude'];
+          return longitude >= lngMin && longitude <= lngMax;
+        }).toList();
+        if (snapshotHistoryFiltered.isNotEmpty) {
+          for(var doc in snapshotHistoryFiltered){
+            Map<String, Object?> data = doc.data() as Map<String, Object?>;
+            result.add(MushroomScan.fromMap(data, await getMushroomId(context, data["mushroom_id"] as String?)));
+          }
+        }
+      }
+      return result;
+    } catch (e) {
+      if(context.mounted){
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle, AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError);
+      }
+    }
+    return result;
   }
 
   static Future<FirestorePagination<Mission>> getMissionComplete(BuildContext context, int limit, List<DateTime>? lastResultDateTime) async {

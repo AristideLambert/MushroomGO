@@ -52,21 +52,21 @@ class _ProfileTabState extends State<ProfileTab> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.topRight,
-      children: [
-        StreamBuilder<User?>(
-          stream: FirebaseAuth.instance.authStateChanges(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(
-                  child: LoadingContainer(message: AppLocalizations.of(context)!.profileInProgressTitle)
-              );
-            }
-            if (snapshot.hasData && snapshot.data != null) {
-              _user = snapshot.data;
-              return SafeArea(
-                child: Column(
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(
+            child: LoadingContainer(message: AppLocalizations.of(context)!.profileInProgressTitle)
+          );
+        }
+        if (snapshot.hasData && snapshot.data != null) {
+          _user = snapshot.data;
+          return SafeArea(
+            child: Stack(
+              alignment: Alignment.topRight,
+              children: [
+                Column(
                   children: [
                     Card(
                       color: Theme.of(context).appBarTheme.backgroundColor,
@@ -78,8 +78,8 @@ class _ProfileTabState extends State<ProfileTab> with TickerProviderStateMixin {
                         child: Column(
                           children: [
                             CircleAvatar(
-                                radius: DimensionConstant.radiusProfileTab,
-                                backgroundImage: AssetImage(_user!.photoURL ?? "assets/images/profile.jpg")
+                              radius: DimensionConstant.radiusProfileTab,
+                              backgroundImage: AssetImage(_user!.photoURL ?? "assets/images/profile.jpg")
                             ),
                             Container(
                               margin: const EdgeInsets.all(DimensionConstant.defaultPadding),
@@ -124,25 +124,38 @@ class _ProfileTabState extends State<ProfileTab> with TickerProviderStateMixin {
                       )
                     )
                   ]),
-              );
-            } else {
-              return BenefitAccountPage(
-                  mainContext: widget.mainContext
-              );
-            }
-          }
-        ),
-        SafeArea(
-          child: Padding(
-            padding: EdgeInsets.all(_user == null ? DimensionConstant.defaultPadding : DimensionConstant.defaultPadding * 2),
-            // TODO: Update icon
-            child: GestureDetector(
-              child: Icon(Icons.settings, color: _user == null ? ColorConstant.textPrimaryColor : _theme.iconColor),
-              onTap: () => _navigate(NavigationConstant.settingPage),
-            )
-          )
-        )
-      ],
+                Padding(
+                  padding: EdgeInsets.all(DimensionConstant.defaultPadding * 2),
+                  // TODO: Update icon
+                  child: GestureDetector(
+                    child: Icon(Icons.settings, color: _theme.iconColor),
+                    onTap: () => _navigate(NavigationConstant.settingPage),
+                  )
+                )
+              ]
+            ),
+          );
+        } else {
+          return Stack(
+            alignment: Alignment.topRight,
+            children: [
+              BenefitAccountPage(
+                mainContext: widget.mainContext
+              ),
+              SafeArea(
+                child: Padding(
+                  padding: EdgeInsets.all(DimensionConstant.defaultPadding),
+                  // TODO: Update icon
+                  child: GestureDetector(
+                    child: Icon(Icons.settings, color: ColorConstant.textPrimaryColor),
+                    onTap: () => _navigate(NavigationConstant.settingPage),
+                  )
+                )
+              )
+            ]
+          );
+        }
+      }
     );
   }
 }

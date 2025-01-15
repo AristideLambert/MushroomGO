@@ -80,6 +80,11 @@ class DimensionConstant {
   static const double iconSizeCamera = 100.0;
   static const double iconPaddingCamera = 20.0;
 
+  // Map
+  static const double initialZoomMap = 15.0;
+  static const double minZoomMap = 7.0;
+  static const double maxZoomMap = 17.0;
+
   // NavigationTabBottom
   static const double heightNavigationTabBottom = 56.0;
   static const double iconSizeNavigationTabBottom = 24.0;
@@ -122,6 +127,10 @@ class DimensionConstant {
   static const double indentDividerButtonSettingContainer = 55.0;
   static const double indentTitleButtonSettingContainer = 16.0;
   static const double spaceButtonSettingContainer = 5.0;
+
+  // ButtonLocationMap
+  static const double sizeButtonLocationMap = 70.0;
+  static const double iconSizeButtonLocationMap = 30.0;
 
   // ProfileContainer
   static const double paddingProfileContainer = 16.0;
@@ -184,7 +193,7 @@ class DimensionConstant {
   static const double heightBetweenNameScientificNameSearchResultList = 4.0;
   static const double sizeLoadingImageSearchResultList = 60.0;
 
-  //SearchHistoryList
+  // SearchHistoryList
   static const double paddingSearchHistoryList = 8.0;
   static const double sizeLeftIconSearchHistoryList = 12.0;
   static const double sizeRightIconSearchHistoryList = 12.0;
