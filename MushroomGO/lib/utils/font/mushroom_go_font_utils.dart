@@ -33,4 +33,5 @@ class MushroomGOFontUtils {
   static const IconData document = IconData(0xe010, fontFamily: _mushroomGOFont);
   static const IconData checkCircle = IconData(0xe005, fontFamily: _mushroomGOFont);
   static const IconData check = IconData(0xe002, fontFamily: _mushroomGOFont);
+  static const IconData warning = IconData(0xe01b, fontFamily: _mushroomGOFont);
 }

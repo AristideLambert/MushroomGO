@@ -42,6 +42,8 @@
   "scientificName" : "Nom scientifique",
   "earnedBadge" : "Vous avez gagné ce badge le",
   "culinaryInformation" : "Informations cullinaires",
+  "warningInformationTitle" : "Attention",
+  "warningInformationDescription" : "Certains champignons vénéneux peuvent facilement être confondus avec des champignons comestibles.\nNe mangez JAMAIS de champignons que vous ne connaissez pas. Ne vous fiez pas à une seule source pour déterminer la comestibilité d'un champignon et ne mangez jamais rien sans être sûr à 100 % qu'il est comestible.",
   "recipes" : "Recette(s)",
   "benefitAccountTitle": "Pourquoi créer un compte ?",
   "benefitAccountMapTitle": "Carte",

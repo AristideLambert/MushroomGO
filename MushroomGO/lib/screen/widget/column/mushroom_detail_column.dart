@@ -3,7 +3,7 @@ import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/theme/mushroom_detail_theme.dart';
 import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 
-enum SectionType {description, culinaryInfo, habitat, other}
+enum SectionType {description, culinaryInfo, habitat, warning, other}
 
 class MushroomDetailColumn extends StatefulWidget {
   final SectionType sectionType;
@@ -40,6 +40,8 @@ class _MushroomDetailColumnState extends State<MushroomDetailColumn> {
         return Icon(MushroomGOFontUtils.food, color: Theme.of(context).primaryColor, size: theme.sizeIcon);
       case SectionType.habitat:
         return Icon(MushroomGOFontUtils.tree, color: Theme.of(context).primaryColor, size: theme.sizeIcon);
+      case SectionType.warning:
+        return Icon(MushroomGOFontUtils.warning, color: Theme.of(context).primaryColor, size: theme.sizeIcon);
       default:
         return Icon(MushroomGOFontUtils.info, color: Theme.of(context).primaryColor, size: theme.sizeIcon);
     }

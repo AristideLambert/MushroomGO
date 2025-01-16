@@ -171,6 +171,14 @@
   "@culinaryInformation": {
     "description": "culinary Information"
   },
+  "warningInformationTitle": "Warning",
+  "@warningInformationTitle": {
+    "description": "Warning Information title"
+  },
+  "warningInformationDescription": "Some poisonous mushrooms can easily be mistaken for edible mushrooms. NEVER eat mushrooms you don't know. Do not rely on one source for mushroom edibility, and never eat anything unless you are 100% sure it is edible.",
+  "@warningInformationDescription": {
+    "description": "Warning Information description"
+  },
   "recipes": "Recipe(s)",
   "@recipes": {
     "description": "recipes"
@@ -823,36 +831,36 @@
   "@locationUtilsHere": {
     "description": "Here (LocationUtils)"
   },
-     "challengeMissionsLoadingData": "Loading data...",
-     "@challengeMissionsLoadingData": {
-       "description": "Loading Data"
+  "challengeMissionsLoadingData": "Loading data...",
+  "@challengeMissionsLoadingData": {
+    "description": "Loading Data"
   },
-     "challengeMissionsErrorLoadingData": "Error loading data",
-     "@challengeMissionsErrorLoadingData": {
-       "description": "Error Loading Data"
+  "challengeMissionsErrorLoadingData": "Error loading data",
+  "@challengeMissionsErrorLoadingData": {
+    "description": "Error Loading Data"
   },
-        "homeForYouErrorLoadingData": "Error loading data",
-        "@homeForYouErrorLoadingData": {
-          "description": "Error Loading Data"
+  "homeForYouErrorLoadingData": "Error loading data",
+  "@homeForYouErrorLoadingData": {
+    "description": "Error Loading Data"
   },
-        "homeForYouLoadingData": "Loading data...",
-        "@homeForYouLoadingData": {
-          "description": "Loading Data"
+  "homeForYouLoadingData": "Loading data...",
+  "@homeForYouLoadingData": {
+    "description": "Loading Data"
   },
-       "homeForYouMonthMushrooms": "Mushrooms of the month",
-       "@homeForYouMonthMushrooms": {
-         "description": "Mushrooms of the month"
+  "homeForYouMonthMushrooms": "Mushrooms of the month",
+  "@homeForYouMonthMushrooms": {
+    "description": "Mushrooms of the month"
   },
-      "homeForYouRecipes": "Recipes",
-      "@homeForYouRecipes": {
-        "description": "Recipes"
+  "homeForYouRecipes": "Recipes",
+  "@homeForYouRecipes": {
+    "description": "Recipes"
   },
-     "homeNewsErrorLoadingData": "Error loading data",
-     "@homeNewsErrorLoadingData": {
-       "description": "Error Loading Data"
+  "homeNewsErrorLoadingData": "Error loading data",
+  "@homeNewsErrorLoadingData": {
+    "description": "Error Loading Data"
   },
-    "homeNewsLoadingData": "Loading data...",
-    "@homeNewsLoadingData": {
-      "description": "Loading Data"
+  "homeNewsLoadingData": "Loading data...",
+  "@homeNewsLoadingData": {
+    "description": "Loading Data"
   }
 }
