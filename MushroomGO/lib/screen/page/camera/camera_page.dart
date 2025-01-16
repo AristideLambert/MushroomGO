@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:camera/camera.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
@@ -198,11 +197,10 @@ class _CameraPageState extends State<CameraPage> {
                             onTap: (){
                               _setupLocation();
                             },
-                              // TODO: Update icon
                             child: Icon(
                               _isLocation ?
-                              CupertinoIcons.location_fill :
-                              CupertinoIcons.location_slash_fill,
+                              MushroomGOFontUtils.locationOn :
+                              MushroomGOFontUtils.locationOff,
                               color: ColorConstant.iconCamera,
                             )
                           ),
@@ -211,13 +209,12 @@ class _CameraPageState extends State<CameraPage> {
                             onTap: (){
                               _setupFlashMode();
                             },
-                              // TODO: Update icon
                             child: Icon(
                               _flashMode == FlashMode.auto ?
-                              CupertinoIcons.lightbulb :
+                              MushroomGOFontUtils.flashAutomatic :
                               _flashMode == FlashMode.always ?
-                              CupertinoIcons.lightbulb_fill :
-                              CupertinoIcons.lightbulb_slash_fill,
+                              MushroomGOFontUtils.flashOn :
+                              MushroomGOFontUtils.flashOff,
                               color: ColorConstant.iconCamera,
                             )
                           ),
@@ -244,13 +241,12 @@ class _CameraPageState extends State<CameraPage> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: _isInitialize ? Padding(
           padding: const EdgeInsets.all(DimensionConstant.iconPaddingCamera),
-          // TODO: Update icon
           child: GestureDetector(
             onTap: () async {
               _takePicture();
             },
             child: Icon(
-              Icons.camera,
+              MushroomGOFontUtils.cameraTake,
               size: DimensionConstant.iconSizeCamera,
               color: ColorConstant.iconCamera,
             )

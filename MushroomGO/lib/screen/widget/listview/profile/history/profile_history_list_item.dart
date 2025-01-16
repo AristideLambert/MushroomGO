@@ -7,6 +7,7 @@ import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/models/mushroom_scan.dart';
 import 'package:mushroom_go/screen/widget/image/loading_image.dart';
 import 'package:mushroom_go/theme/profile_history_list_theme.dart';
+import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 import 'package:mushroom_go/utils/map/location_utils.dart';
 
 class ProfileHistoryListItem extends StatefulWidget {
@@ -27,11 +28,13 @@ class _ProfileHistoryListItemState extends State<ProfileHistoryListItem> {
 
   Future<void> _togglePositionStream(bool activate) async {
     if (!activate) {
+      if(!context.mounted) return;
       setState(() {
         _positionStream = null;
       });
     } else {
       if(_positionStream == null){
+        if(!context.mounted) return;
         setState(() {
           _positionStream = Geolocator.getPositionStream(
             locationSettings: const LocationSettings(
@@ -131,8 +134,7 @@ class _ProfileHistoryListItemState extends State<ProfileHistoryListItem> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // TODO: Update icon
-                  Icon(widget.mushroomScan.position == null ? CupertinoIcons.location_slash_fill : CupertinoIcons.location_fill, color: Theme.of(context).primaryColor),
+                  Icon(widget.mushroomScan.position == null ? MushroomGOFontUtils.locationOff : MushroomGOFontUtils.locationOn, color: Theme.of(context).primaryColor),
                   SizedBox(
                       width: widget.theme.imageWidthHeight,
                       height: widget.theme.spaceBetweenText

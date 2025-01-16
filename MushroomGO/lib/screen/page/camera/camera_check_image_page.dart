@@ -103,10 +103,9 @@ class _CameraCheckImagePageState extends State<CameraCheckImagePage> {
                 child: Row(
                   children: [
                     Expanded(
-                      // TODO: Update icon
                       child: ButtonStandard(
                         title: AppLocalizations.of(context)!.cameraCheckImageButtonRetry,
-                        icon: Icons.refresh_sharp,
+                        icon: MushroomGOFontUtils.refresh,
                         onTap: (){
                           Navigator.of(context).pop();
                         }

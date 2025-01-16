@@ -195,6 +195,8 @@
   "firebaseAuthUtilsUpdateImageProfileAccountDescription": "Image de profil mise à jour avec succès",
   "firestoreUtilsSearchMushroomTitle": "Recherche de champignons",
   "firestoreUtilsSearchMushroomError": "Impossible de charger les résultats.\nVeuillez réessayer plus tard",
+  "firestoreUtilsTitle": "Base de données Firestore",
+  "firestoreUtilsError": "Erreur d'exécution",
   "challengeMushroomsLoadingData": "Chargement des données...",
   "challengeMushroomsErrorLoadingData": "Erreur lors du chargement des données",
   "challengeMissionsLoadingData": "Chargement des données...",

@@ -92,7 +92,6 @@ class _MushroomScanColumnState extends State<MushroomScanColumn> {
                                   width: theme.sizeMarkerMap,
                                   height: theme.sizeMarkerMap,
                                   child: Icon(
-                                    // TODO: Update icon
                                     CupertinoIcons.location_solid,
                                     color: Theme.of(context).primaryColor,
                                     size: theme.sizeMarkerMap / 2,

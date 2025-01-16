@@ -77,13 +77,24 @@ class DimensionConstant {
   static const double radiusForgotPassword = 10.0;
 
   // Camera
-  static const double iconSizeCamera = 100.0;
+  static const double iconSizeCamera = 80.0;
   static const double iconPaddingCamera = 20.0;
 
   // Map
   static const double initialZoomMap = 15.0;
   static const double minZoomMap = 7.0;
   static const double maxZoomMap = 17.0;
+  static const double sizeBaseMakerMap = 20.0;
+  static const double zoomChangeMakerMap = 15.0;
+  static const double scaleFactorBeforeZoomMakerMap = 2.0;
+  static const double scaleFactorAfterZoomMakerMap = 4.0;
+  static const double paddingMakerMap = 2.0;
+  static const double radiusMakerMap = 10.0;
+  static const double heightIndicatorMakerMap = 4.0;
+  static const double positionIndicatorMakerMap = 8.0;
+  static const double radiusIndicatorMakerMap = 2.0;
+  static const double widthTrianglePainterMakerMap = 20.0;
+  static const double heightTrianglePainterMakerMap = 10.0;
 
   // NavigationTabBottom
   static const double heightNavigationTabBottom = 56.0;
@@ -145,7 +156,7 @@ class DimensionConstant {
   static const double borderProfileImageSelection = 2.0;
   static const double selectionWidthProfileImageSelection = 35.0;
   static const double selectionHeightProfileImageSelection = 20.0;
-  static const double iconSizeProfileImageSelection = 15.0;
+  static const double iconSizeProfileImageSelection = 12.0;
 
   // ChallengeMushroomsList
   static const double identTitleChallengeMushroomsList = 16.0;

@@ -76,7 +76,6 @@ class _BenefitAccountPageState extends State<BenefitAccountPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // TODO: update icon
                             BenefitContainer(icon: MushroomGOFontUtils.map, title: AppLocalizations.of(context)!.benefitAccountMapTitle, description: AppLocalizations.of(context)!.benefitAccountMapDescription,),
                             BenefitContainer(icon: MushroomGOFontUtils.history, title: AppLocalizations.of(context)!.benefitAccountHistoryTitle, description: AppLocalizations.of(context)!.benefitAccountHistoryDescription,),
                             BenefitContainer(icon: MushroomGOFontUtils.trophy, title: AppLocalizations.of(context)!.benefitAccountChallengeTitle, description: AppLocalizations.of(context)!.benefitAccountChallengeDescription,)

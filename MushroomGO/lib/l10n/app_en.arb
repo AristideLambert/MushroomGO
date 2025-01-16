@@ -783,6 +783,14 @@
   "@firestoreUtilsSearchMushroomError": {
     "description": "Search mushroom error - unable to load results (FirestoreUtils)"
   },
+  "firestoreUtilsTitle": "Firestore database",
+  "@firestoreUtilsTitle": {
+    "description": "Title (FirestoreUtils)"
+  },
+  "firestoreUtilsError": "Runtime error",
+  "@firestoreUtilsError": {
+    "description": "Error - runtime error (FirestoreUtils)"
+  },
   "challengeMushroomsLoadingData": "Loading data...",
   "@challengeMushroomsLoadingData": {
     "description": "Loading Data"

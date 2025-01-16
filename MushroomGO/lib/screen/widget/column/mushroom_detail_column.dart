@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/theme/mushroom_detail_theme.dart';
+import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 
 enum SectionType {description, culinaryInfo, habitat, other}
 
@@ -33,16 +33,15 @@ class _MushroomDetailColumnState extends State<MushroomDetailColumn> {
   }
 
   Icon _getIcon(SectionType sectionType) {
-    // TODO: Update icon
     switch (sectionType) {
       case SectionType.description:
-        return Icon(CupertinoIcons.doc_text_fill, color: Theme.of(context).primaryColor, size: theme.sizeIcon);
+        return Icon(MushroomGOFontUtils.document, color: Theme.of(context).primaryColor, size: theme.sizeIcon);
       case SectionType.culinaryInfo:
-        return Icon(Icons.dining, color: Theme.of(context).primaryColor, size: theme.sizeIcon);
+        return Icon(MushroomGOFontUtils.food, color: Theme.of(context).primaryColor, size: theme.sizeIcon);
       case SectionType.habitat:
-        return Icon(CupertinoIcons.tree, color: Theme.of(context).primaryColor, size: theme.sizeIcon);
+        return Icon(MushroomGOFontUtils.tree, color: Theme.of(context).primaryColor, size: theme.sizeIcon);
       default:
-        return Icon(CupertinoIcons.info_circle, color: Theme.of(context).primaryColor, size: theme.sizeIcon);
+        return Icon(MushroomGOFontUtils.info, color: Theme.of(context).primaryColor, size: theme.sizeIcon);
     }
   }
 

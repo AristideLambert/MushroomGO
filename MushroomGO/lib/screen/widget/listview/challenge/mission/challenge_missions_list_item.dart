@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/theme/challenge_missions_list_theme.dart';
+import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 
 class ChallengeMissionItem extends StatefulWidget {
   final String title;
@@ -76,13 +76,12 @@ class _ChallengeMissionItemState extends State<ChallengeMissionItem> {
           ),
         ),
         if(widget.currentProgress >= widget.goal) ... [
-          // TODO: Update icon
           Padding(
             padding: const EdgeInsets.symmetric(
                 horizontal: DimensionConstant.defaultPadding / 2,
                 vertical: DimensionConstant.defaultPadding
             ),
-            child: Icon(CupertinoIcons.checkmark_circle_fill, size: theme.sizeIcon, color: theme.iconColor),
+            child: Icon(MushroomGOFontUtils.checkCircle, size: theme.sizeIcon, color: theme.iconColor),
           )
         ]
       ]

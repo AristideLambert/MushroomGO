@@ -26,9 +26,8 @@ class _TextInputPolicyState extends State<TextInputPolicy> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        //TODO: Update icon
         Icon(
-          widget.respect ? Icons.check_circle : MushroomGOFontUtils.clear,
+          widget.respect ? MushroomGOFontUtils.checkCircle : MushroomGOFontUtils.clear,
           color: widget.respect ? _theme.respectColor : _theme.notRespectColor,
           size: _theme.sizeIcon
         ),

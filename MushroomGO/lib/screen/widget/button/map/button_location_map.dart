@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
+import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 
 class ButtonLocationMap extends StatelessWidget {
   final Function()? onTap;
@@ -19,9 +19,8 @@ class ButtonLocationMap extends StatelessWidget {
           shape: BoxShape.circle,
         ),
         child: Center(
-          // TODO: Update icon
           child: Icon(
-            CupertinoIcons.location_fill,
+            MushroomGOFontUtils.locationOn,
             color: Theme.of(context).primaryColor,
             size: DimensionConstant.iconSizeButtonLocationMap,
           ),

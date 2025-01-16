@@ -169,8 +169,7 @@ class _TextInputState extends State<TextInput> {
                     });
                   },
                   child: Icon(
-                    // TODO: Update icon
-                    _passwordVisible ? MushroomGOFontUtils.history : MushroomGOFontUtils.mushroomScan,
+                    _passwordVisible ? MushroomGOFontUtils.eyeSlash : MushroomGOFontUtils.eye,
                     color: _theme.rightIconColor,
                     size: _theme.sizeRightIcon,
                   )

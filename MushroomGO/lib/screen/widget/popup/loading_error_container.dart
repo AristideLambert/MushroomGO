@@ -3,6 +3,7 @@ import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/screen/widget/button/standard/button_standard.dart';
 import 'package:mushroom_go/screen/widget/text/text_output.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 
 class LoadingErrorContainer extends StatelessWidget {
   final String message;
@@ -25,11 +26,10 @@ class LoadingErrorContainer extends StatelessWidget {
             type: Type.smallTitle,
           ),
           const SizedBox(height: DimensionConstant.defaultPadding),
-          // TODO: Update icon
           ButtonStandard(
             title: AppLocalizations.of(context)!.loadingErrorContainerReload,
             widthContent: true,
-            icon: CupertinoIcons.refresh,
+            icon: MushroomGOFontUtils.refresh,
             onTap: onReload,
           ),
         ],

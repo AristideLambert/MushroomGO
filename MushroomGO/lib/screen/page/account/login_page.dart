@@ -193,9 +193,8 @@ class _LoginPageState extends State<LoginPage> {
                   left: DimensionConstant.marginLogin,
                   top: DimensionConstant.marginLogin
               ),
-              // TODO: Update icon
               child: GestureDetector(
-                child: const Icon(Icons.arrow_back_outlined, color: ColorConstant.textPrimaryColor,),
+                child: const Icon(MushroomGOFontUtils.chevronLeft, color: ColorConstant.textPrimaryColor,),
                 onTap: (){
                   Navigator.of(context).pop();
                 },

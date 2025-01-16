@@ -116,10 +116,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               left: DimensionConstant.marginForgotPassword,
               top: DimensionConstant.marginForgotPassword
             ),
-            // TODO: Update icon
             child: GestureDetector(
               child: const Icon(
-                Icons.arrow_back_outlined,
+                MushroomGOFontUtils.chevronLeft,
                 color: ColorConstant.textPrimaryColor,
               ),
               onTap: (){

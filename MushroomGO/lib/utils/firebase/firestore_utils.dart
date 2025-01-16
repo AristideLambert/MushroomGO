@@ -78,7 +78,7 @@ class FirestoreUtils{
       }
     } catch (e) {
       if(context.mounted && isThrow){
-        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle, AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError);
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsTitle, AppLocalizations.of(context)!.firestoreUtilsError);
       }
     }
     return null;
@@ -94,8 +94,7 @@ class FirestoreUtils{
       return Mushroom.fromMap(querySnapshot.data() as Map<String, Object?>, id: querySnapshot.id);
     } catch (e) {
       if(context.mounted && isThrow){
-        // TODO: change string (LoadingException)
-        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle, AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError);
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsTitle, AppLocalizations.of(context)!.firestoreUtilsError);
       }
     }
     return null;
@@ -110,9 +109,8 @@ class FirestoreUtils{
         .set(mushroomScan.toMap());
       return mushroomScan;
     } catch (e) {
-      // TODO: change string (LoadingException)
       if(context.mounted){
-        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle, AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError);
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsTitle, AppLocalizations.of(context)!.firestoreUtilsError);
       }
     }
     return null;
@@ -148,9 +146,8 @@ class FirestoreUtils{
       ];
       return FirestorePagination<MushroomScan>(limit: limit, result: result, lastResultDateTime: lastResult);
     } catch (e) {
-      // TODO: change string (LoadingException)
       if(context.mounted){
-        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle, AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError);
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsTitle, AppLocalizations.of(context)!.firestoreUtilsError);
       }
     }
     return FirestorePagination<MushroomScan>(limit: limit, result: [], lastResult: []);
@@ -188,7 +185,7 @@ class FirestoreUtils{
       return result;
     } catch (e) {
       if(context.mounted){
-        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle, AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError);
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsTitle, AppLocalizations.of(context)!.firestoreUtilsError);
       }
     }
     return result;
@@ -234,9 +231,8 @@ class FirestoreUtils{
       ];
       return FirestorePagination<Mission>(limit: limit, result: result, lastResultDateTime: lastResult);
     } catch (e) {
-      // TODO: change string (LoadingException)
       if(context.mounted){
-        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle, AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError);
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsTitle, AppLocalizations.of(context)!.firestoreUtilsError);
       }
     }
     return FirestorePagination<Mission>(limit: limit, result: [], lastResult: []);
@@ -245,7 +241,6 @@ class FirestoreUtils{
   static Future<List<Mushroom>> fetchChallengeMushrooms(BuildContext context) async {
     try {
       final querySnapshot = await FirebaseFirestore.instance.collection("challenge_mushroom").get();
-
       List<Mushroom> challengeMushrooms = [];
       for (var doc in querySnapshot.docs) {
         final challengeData = doc.data();
@@ -255,7 +250,6 @@ class FirestoreUtils{
               .collection("mushroom")
               .doc(mushroomId)
               .get();
-
           if (mushroomSnapshot.exists) {
             final String rarityString = challengeData["rarity"];
             final Rarity rarity;
@@ -281,11 +275,7 @@ class FirestoreUtils{
       return challengeMushrooms;
     } catch (e) {
       if (context.mounted) {
-        // TODO: change string (LoadingException)
-        throw LoadingException(
-          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle,
-          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError,
-        );
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsTitle, AppLocalizations.of(context)!.firestoreUtilsError);
       }
       return [];
     }
@@ -293,13 +283,11 @@ class FirestoreUtils{
   static Future<List<Mushroom>> fetchChallengeMushroomsWithUnlockState(BuildContext context) async {
     try {
       final List<Mushroom> challengeMushrooms = await fetchChallengeMushrooms(context);
-
       final userId = FirebaseAuth.instance.currentUser!.uid;
       final scanMushroomsSnapshot = await FirebaseFirestore.instance
           .collection("scan_mushroom")
           .where("user", isEqualTo: userId)
           .get();
-
       final scannedMushroomIds = scanMushroomsSnapshot.docs
           .map((doc) => doc.data()["mushroom_id"] as String?)
           .toSet();
@@ -313,15 +301,12 @@ class FirestoreUtils{
       return challengeMushroomsUnlockState;
     } catch (e) {
       if (context.mounted) {
-        // TODO: change string (LoadingException)
-        throw LoadingException(
-          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle,
-          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError,
-        );
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsTitle, AppLocalizations.of(context)!.firestoreUtilsError);
       }
       return [];
     }
   }
+
   static Future<List<Mission>> fetchMissionsWithUserProgress(BuildContext context) async {
     try {
       final userId = FirebaseAuth.instance.currentUser!.uid;
@@ -357,16 +342,13 @@ class FirestoreUtils{
       }
       return missions;
     } catch (e) {
-      // TODO: change string (LoadingException)
       if (context.mounted) {
-        throw LoadingException(
-          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle,
-          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError,
-        );
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsTitle, AppLocalizations.of(context)!.firestoreUtilsError);
       }
       return [];
     }
   }
+
   static Future<String?> getRarityForMushroom(BuildContext context, String mushroomId) async {
     try {
       final querySnapshot = await FirebaseFirestore.instance
@@ -379,8 +361,9 @@ class FirestoreUtils{
       }
       return null;
     } catch (e) {
-      // TODO: change string (LoadingException)
-      debugPrint('Error fetching rarity for mushroom: $e');
+      if (context.mounted) {
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsTitle, AppLocalizations.of(context)!.firestoreUtilsError);
+      }
       return null;
     }
   }
@@ -394,11 +377,7 @@ class FirestoreUtils{
       return recipes;
     } catch (e) {
       if (context.mounted) {
-        // TODO: change string (LoadingException)
-        throw LoadingException(
-          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle,
-          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError,
-        );
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsTitle, AppLocalizations.of(context)!.firestoreUtilsError);
       }
       return [];
     }
@@ -413,11 +392,7 @@ class FirestoreUtils{
       return articles;
     } catch (e) {
       if (context.mounted) {
-        // TODO: change string (LoadingException)
-        throw LoadingException(
-          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle,
-          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError,
-        );
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsTitle, AppLocalizations.of(context)!.firestoreUtilsError);
       }
       return [];
     }
@@ -426,33 +401,22 @@ class FirestoreUtils{
   static Future<List<Mushroom>> fetchMonthMushrooms(BuildContext context) async {
     try {
       final monthMushroomSnapshot = await FirebaseFirestore.instance.collection("month_mushroom").get();
-
       final List<Mushroom> monthMushrooms = [];
-
       for (var doc in monthMushroomSnapshot.docs) {
         final data = doc.data();
         final mushroomId = data['mushroom_id'] as String;
-
         final mushroomSnapshot = await FirebaseFirestore.instance.collection("mushroom").doc(mushroomId).get();
-
         if (mushroomSnapshot.exists) {
           final mushroom = Mushroom.fromMap(mushroomSnapshot.data() as Map<String, Object?>, id: mushroomSnapshot.id);
           monthMushrooms.add(mushroom);
         }
       }
-
       return monthMushrooms;
     } catch (e) {
       if (context.mounted) {
-        // TODO: change string (LoadingException)
-        throw LoadingException(
-          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomTitle,
-          AppLocalizations.of(context)!.firestoreUtilsSearchMushroomError,
-        );
+        throw LoadingException(AppLocalizations.of(context)!.firestoreUtilsTitle, AppLocalizations.of(context)!.firestoreUtilsError);
       }
       return [];
     }
   }
-
-
 }

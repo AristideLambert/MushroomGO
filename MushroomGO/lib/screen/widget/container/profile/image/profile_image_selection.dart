@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mushroom_go/constant/color_constant.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
+import 'package:mushroom_go/utils/font/mushroom_go_font_utils.dart';
 
 class ProfileImageSelection extends StatelessWidget {
   final String path;
@@ -41,8 +42,7 @@ class ProfileImageSelection extends StatelessWidget {
                 ),
                 width: DimensionConstant.selectionWidthProfileImageSelection,
                 height: DimensionConstant.selectionHeightProfileImageSelection,
-                // TODO: Update icon
-                child: const Icon(Icons.check, color: ColorConstant.textPrimaryColor, size: DimensionConstant.iconSizeProfileImageSelection,),
+                child: const Icon(MushroomGOFontUtils.check, color: ColorConstant.textPrimaryColor, size: DimensionConstant.iconSizeProfileImageSelection,),
               ),
             ),
           )

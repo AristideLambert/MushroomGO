@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mushroom_go/constant/dimension_constant.dart';
 import 'package:mushroom_go/constant/navigation_constant.dart';
 import 'package:mushroom_go/models/mushroom_scan_map.dart';
 import 'package:mushroom_go/screen/widget/image/loading_image.dart';
@@ -29,23 +31,23 @@ class _ButtonMarkerMapState extends State<ButtonMarkerMap> {
   @override
   Widget build(BuildContext context) {
     return Transform.translate(
-      offset: Offset(0, widget.zoom > 15 ? -widget.size / 2 : 0),
+      offset: Offset(0, widget.zoom > DimensionConstant.zoomChangeMakerMap ? -widget.size / 2 : 0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           GestureDetector(
-            onTap: widget.zoom > 15 ? null : widget.onTap,
+            onTap: widget.zoom > DimensionConstant.zoomChangeMakerMap ? null : widget.onTap,
             child: Stack(
               children: [
                 Container(
-                  width: widget.size - (widget.zoom > 15 ? 10 : 0),
-                  height: widget.size - (widget.zoom > 15 ? 10 : 0),
-                  padding: EdgeInsets.all(2),
+                  width: widget.size - (widget.zoom > DimensionConstant.zoomChangeMakerMap ? DimensionConstant.heightTrianglePainterMakerMap : 0),
+                  height: widget.size - (widget.zoom > DimensionConstant.zoomChangeMakerMap ? DimensionConstant.heightTrianglePainterMakerMap : 0),
+                  padding: EdgeInsets.all(DimensionConstant.paddingMakerMap),
                   decoration: BoxDecoration(
                     color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(DimensionConstant.radiusMakerMap),
                   ),
-                  child: widget.zoom > 15 ? PageView.builder(
+                  child: widget.zoom > DimensionConstant.zoomChangeMakerMap ? PageView.builder(
                     physics: const BouncingScrollPhysics(),
                     itemCount: widget.mushroomScanMap.mushroomScan.length,
                     onPageChanged: (index) {
@@ -54,55 +56,54 @@ class _ButtonMarkerMapState extends State<ButtonMarkerMap> {
                       });
                     },
                     itemBuilder: (context, index) {
-                      final mushroom =
-                      widget.mushroomScanMap.mushroomScan[index];
+                      final mushroom = widget.mushroomScanMap.mushroomScan[index];
                       return GestureDetector(
                         onTap: (){
                           Navigator.of(widget.mainContext).pushNamed(NavigationConstant.mushroomDetailPage, arguments: mushroom);
                         },
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(DimensionConstant.radiusMakerMap),
                           child: Image.network(
                             mushroom.mushroom?.imageUrl ?? '',
-                            width: widget.size - (widget.zoom > 15 ? 12.5 : 0),
-                            height: widget.size - (widget.zoom > 15 ? 12.5 : 0),
+                            width: widget.size - DimensionConstant.heightTrianglePainterMakerMap,
+                            height: widget.size - DimensionConstant.heightTrianglePainterMakerMap,
                             fit: BoxFit.cover,
                             loadingBuilder: ((context, image, event){
                               if (event == null) {
                                 return image;
                               }
-                              return LoadingImage(size: widget.size - (widget.zoom > 15 ? 12.5 : 0));
+                              return LoadingImage(size: widget.size - DimensionConstant.heightTrianglePainterMakerMap);
                             }),
                             errorBuilder: (context, error, stackTrace) {
-                              return LoadingImage(size: widget.size - (widget.zoom > 15 ? 12.5 : 0));
+                              return LoadingImage(size: widget.size - DimensionConstant.heightTrianglePainterMakerMap);
                             },
                           ),
                         ),
                       );
                     },
                   ) : ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(DimensionConstant.radiusMakerMap),
                     child: Image.asset(
                       "assets/images/logo.png",
-                      width: widget.size - (widget.zoom > 15 ? 12.5 : 0),
-                      height: widget.size - (widget.zoom > 15 ? 12.5 : 0),
+                      width: widget.size,
+                      height: widget.size,
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) {
-                        return LoadingImage(size: widget.size - (widget.zoom > 15 ? 12.5 : 0));
+                        return LoadingImage(size: widget.size);
                       },
                     ),
                   ),
                 ),
-                if(widget.zoom > 15 && widget.mushroomScanMap.mushroomScan.length > 1) ... [
+                if(widget.zoom > DimensionConstant.zoomChangeMakerMap && widget.mushroomScanMap.mushroomScan.length > 1) ... [
                   Positioned(
-                    bottom: 8,
-                    left: 8,
-                    right: 8,
+                    bottom: DimensionConstant.positionIndicatorMakerMap,
+                    left: DimensionConstant.positionIndicatorMakerMap,
+                    right: DimensionConstant.positionIndicatorMakerMap,
                     child: Container(
-                      height: 4,
+                      height: DimensionConstant.heightIndicatorMakerMap,
                       decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(2),
+                        color: CupertinoColors.systemGrey,
+                        borderRadius: BorderRadius.circular(DimensionConstant.radiusIndicatorMakerMap),
                       ),
                       child: Stack(
                         children: [
@@ -123,9 +124,9 @@ class _ButtonMarkerMapState extends State<ButtonMarkerMap> {
               ],
             ),
           ),
-          if (widget.zoom > 15) ...[
+          if (widget.zoom > DimensionConstant.zoomChangeMakerMap) ...[
             CustomPaint(
-              size: const Size(20, 10),
+              size: const Size(DimensionConstant.widthTrianglePainterMakerMap, DimensionConstant.heightTrianglePainterMakerMap),
               painter: TrianglePainter(color: Theme.of(context).primaryColor),
             ),
           ],
@@ -147,11 +148,10 @@ class TrianglePainter extends CustomPainter {
       ..style = PaintingStyle.fill;
 
     final path = Path()
-      ..moveTo(0, 0) // Point haut gauche
-      ..lineTo(size.width / 2, size.height) // Bas milieu
-      ..lineTo(size.width, 0) // Haut droite
+      ..moveTo(0, 0)
+      ..lineTo(size.width / 2, size.height)
+      ..lineTo(size.width, 0)
       ..close();
-
     canvas.drawPath(path, paint);
   }
 

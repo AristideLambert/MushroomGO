@@ -10,6 +10,8 @@ import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
@@ -45,7 +47,8 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: localeProvider.locale,
-      navigatorObservers: [NavigatorObserverPage()],
+      navigatorKey: navigatorKey,
+      navigatorObservers: [NavigatorObserverPage(navigatorKey: navigatorKey)],
       onGenerateRoute: NavigationConstant.onGenerateRoute,
     );
   }

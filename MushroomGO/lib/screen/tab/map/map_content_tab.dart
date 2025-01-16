@@ -11,7 +11,6 @@ import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:mushroom_go/constant/dimension_constant.dart';
-import 'package:mushroom_go/models/mushroom_scan.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mushroom_go/utils/map/mushroom_scan_map_utils.dart';
 
@@ -33,6 +32,12 @@ class _MapContentTabState extends State<MapContentTab> {
   late List<MushroomScanMap> _mushroomScanMaps;
 
   @override
+  void dispose() {
+    _mapController.dispose();
+    super.dispose();
+  }
+
+  @override
   void initState() {
     super.initState();
     _mapController = MapController();
@@ -51,13 +56,14 @@ class _MapContentTabState extends State<MapContentTab> {
   }
 
   double _getMarkerSize() {
-    const double baseSize = 20.0; // Taille de base
-    double scaleFactor = _currentZoom > 15 ? 4.0 : 2; // Facteur de croissance
+    const double baseSize = DimensionConstant.sizeBaseMakerMap;
+    double scaleFactor = _currentZoom > DimensionConstant.zoomChangeMakerMap ? DimensionConstant.scaleFactorAfterZoomMakerMap : DimensionConstant.scaleFactorBeforeZoomMakerMap;
     return baseSize + (_currentZoom * scaleFactor);
   }
 
   void _updateDisplay(){
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (!mounted) return;
       setState(() {
         _marker.clear();
         _marker = _mushroomScanMaps.map((mushroomScanMap) {
@@ -84,8 +90,12 @@ class _MapContentTabState extends State<MapContentTab> {
     final bounds = mapCamera.visibleBounds;
     final northWest = bounds.northWest;
     final southEast = bounds.southEast;
-    _mushroomScanMaps = MushroomScanMapUtils.groupMushroomsSamePosition(await FirestoreUtils.getMushroomHistoryPosition(context, northWest, southEast, !(_isCollaborative ?? true)), 10);
-    _updateDisplay();
+    final data = await FirestoreUtils.getMushroomHistoryPosition(context, northWest, southEast, !(_isCollaborative ?? true));
+    if (!mounted) return;
+    setState(() {
+      _mushroomScanMaps = MushroomScanMapUtils.groupMushroomsSamePosition(data, 10);
+      _updateDisplay();
+    });
   }
 
   void _getUserPosition() async {
@@ -102,60 +112,62 @@ class _MapContentTabState extends State<MapContentTab> {
         alignment: Alignment.topCenter,
         children: [
           FlutterMap(
-              mapController: _mapController,
-              options: MapOptions(
-                initialCenter: LatLng(50.620023, 5.582417),
-                initialZoom: _currentZoom,
-                minZoom: DimensionConstant.minZoomMap,
-                maxZoom: DimensionConstant.maxZoomMap,
-                interactionOptions: InteractionOptions(
-                  flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
-                ),
-                onPositionChanged: (camera, isChanged) {
-                  if(!isChanged){
-                    _loadData(camera);
-                  }
+            mapController: _mapController,
+            options: MapOptions(
+              initialCenter: LatLng(50.620023, 5.582417),
+              initialZoom: _currentZoom,
+              minZoom: DimensionConstant.minZoomMap,
+              maxZoom: DimensionConstant.maxZoomMap,
+              interactionOptions: InteractionOptions(
+                flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+              ),
+              onPositionChanged: (camera, isChanged) {
+                if (!isChanged) {
+                  _loadData(camera);
+                }
+                if (mounted) {
                   setState(() {
                     _currentZoom = camera.zoom;
                     _updateDisplay();
                   });
-                },
-                onMapEvent: (event) {
-                  if (event is MapEventMoveEnd) {
-                    _loadData(event.camera);
-                  }
-                },
+                }
+              },
+              onMapEvent: (event) {
+                if (event is MapEventMoveEnd) {
+                  _loadData(event.camera);
+                }
+              },
+            ),
+            children: [
+              TileLayer(
+                urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
               ),
-              children: [
-                TileLayer(
-                  urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-                ),
-                CurrentLocationLayer(
+              CurrentLocationLayer(
 
-                ),
-                MarkerLayer(
-                  markers: _marker,
-                )
-              ]
+              ),
+              MarkerLayer(
+                markers: _marker,
+              )
+            ]
           ),
           SafeArea(
-              child: Padding(
-                padding: EdgeInsets.all(DimensionConstant.defaultPadding),
-                child: CupertinoSlidingSegmentedControl<bool>(
-                    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                    groupValue: _isCollaborative,
-                    children: {
-                      true: TextOutput(text: AppLocalizations.of(context)!.mapCollaborativeTitle, type: Type.mediumTitle),
-                      false: TextOutput(text: AppLocalizations.of(context)!.mapPersonalTitle, type: Type.mediumTitle),
-                    },
-                    onValueChanged: (newValue) {
-                      setState(() {
-                        _isCollaborative = newValue;
-                        _loadData(_mapController.camera);
-                      });
-                    }
-                ),
-              )
+            child: Padding(
+              padding: EdgeInsets.all(DimensionConstant.defaultPadding),
+              child: CupertinoSlidingSegmentedControl<bool>(
+                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                groupValue: _isCollaborative,
+                children: {
+                  true: TextOutput(text: AppLocalizations.of(context)!.mapCollaborativeTitle, type: Type.mediumTitle),
+                  false: TextOutput(text: AppLocalizations.of(context)!.mapPersonalTitle, type: Type.mediumTitle),
+                },
+                onValueChanged: (newValue) {
+                  setState(() {
+                    _isCollaborative = newValue;
+                    _loadData(_mapController.camera);
+                  });
+                }
+              ),
+            )
           )
         ],
       ),
@@ -165,8 +177,8 @@ class _MapContentTabState extends State<MapContentTab> {
           _getUserPosition();
           if(_userPosition != null){
             _mapController.move(
-                _userPosition!,
-                DimensionConstant.initialZoomMap
+              _userPosition!,
+              DimensionConstant.initialZoomMap
             );
           }
         },

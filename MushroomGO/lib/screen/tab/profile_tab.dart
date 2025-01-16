@@ -126,9 +126,8 @@ class _ProfileTabState extends State<ProfileTab> with TickerProviderStateMixin {
                   ]),
                 Padding(
                   padding: EdgeInsets.all(DimensionConstant.defaultPadding * 2),
-                  // TODO: Update icon
                   child: GestureDetector(
-                    child: Icon(Icons.settings, color: _theme.iconColor),
+                    child: Icon(MushroomGOFontUtils.settings, color: _theme.iconColor),
                     onTap: () => _navigate(NavigationConstant.settingPage),
                   )
                 )
@@ -145,9 +144,8 @@ class _ProfileTabState extends State<ProfileTab> with TickerProviderStateMixin {
               SafeArea(
                 child: Padding(
                   padding: EdgeInsets.all(DimensionConstant.defaultPadding),
-                  // TODO: Update icon
                   child: GestureDetector(
-                    child: Icon(Icons.settings, color: ColorConstant.textPrimaryColor),
+                    child: Icon(MushroomGOFontUtils.settings, color: ColorConstant.textPrimaryColor),
                     onTap: () => _navigate(NavigationConstant.settingPage),
                   )
                 )

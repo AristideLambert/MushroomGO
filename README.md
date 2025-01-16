@@ -83,24 +83,19 @@ Pour répondre aux besoins variés de notre public cible, nous avons intégré p
 
 | Fonctionnalités                                 | État       | Illustration                      |
 |-------------------------------------------------|------------|-----------------------------------|
-| Navigation                                      | Terminé    | Image/GIF à ajouter               |
-| Setting page                                    | Terminé    | Image/GIF à ajouter               |
-| Theme + internalisation                         | Terminé    | Image/GIF à ajouter               |
-| Profil page                                     | Terminé    | Image/GIF à ajouter               |
-| Challenge mushrooms page                        | Terminé    | Image/GIF à ajouter               |
-| Missions page                                   | Terminé    | Image/GIF à ajouter               |
-| Account page                                    | Terminé    | Image/GIF à ajouter               |
-| Home for you page                               | Terminé    | Image/GIF à ajouter               |
-| Firebase setup                                  | Terminé    | Image/GIF à ajouter               |
-| Authentification                                | Terminé    | Image/GIF à ajouter               |
-| Mushroom detail page                            | Terminé    | Image/GIF à ajouter               |
-| Web view page pour les articles et les recettes | Terminé    | Image/GIF à ajouter               |
-| Badge page + bade detail page                   | Terminé    | Image/GIF à ajouter               |
-| History page                                    | Terminé    | Image/GIF à ajouter               |
-| Search page + logique recherche                 | Terminé    | Image/GIF à ajouter               |
-| Benefit account page                            | Terminé    | Image/GIF à ajouter               |
-| privacy/terms_conditions page                   | Terminé    | Image/GIF à ajouter               |
-| Carte interactive                               | En cours   | Image/GIF à ajouter une fois fini |
+| Navigation                                      | Terminé    | ![Navigation](./Assets/navigation.gif) |
+| Settings page (theme, internalisation & privacy/terms_conditions page) | Terminé    | ![Settings](./Assets/settings.gif) |
+| Profil page (history)                          | Terminé    | ![Profile](./Assets/profile.gif) |
+| Challenge page (mushrooms & missions) | Terminé    | ![Challenge](./Assets/challenge.gif) |
+| Home for you page                               | Terminé    | <img src="./Assets/for_you.png" alt="Home for you" width="300"> |
+| Authentification (account page, registration & login) | Terminé    | ![Account](./Assets/account.gif) |
+| Mushroom detail page                            | Terminé    | ![Mushroom](./Assets/mushroom_details.gif) |
+| Web view page pour les articles et les recettes | Terminé    | ![Recipe & news](./Assets/recipe_news.gif) |
+| Camera page |  | <img src="./Assets/camera.gif" alt="Camera" width="300"> |
+| Badge detail page                  | Terminé    | <img src="./Assets/badge_details.png" alt="Badge details" width="300"> |
+| Search page                 | Terminé    | ![Search](./Assets/search.gif) |
+| Benefit account page                            | Terminé    | <img src="./Assets/benefit_account.png" alt="Benefit account" width="300"> |
+| Carte interactive                               | Terminé | ![Map](./Assets/map.gif) |
 
 ---
 

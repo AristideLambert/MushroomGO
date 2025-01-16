@@ -56,10 +56,6 @@ class _HomeTabState extends State<HomeTab> with TickerProviderStateMixin {
             ),
           )
         ],
-        leading: Padding(
-          padding: const EdgeInsets.all(DimensionConstant.defaultPadding),
-          child: SizedBox(width: DimensionConstant.titleMedium),
-        ),
       ),
       body: NavigationViewTabTop(
         tabController: _tabController,
