@@ -81,21 +81,21 @@ Pour répondre aux besoins variés de notre public cible, nous avons intégré p
 
 ## 🚧 État d’avancement
 
-| Fonctionnalités                                 | État       | Illustration                      |
-|-------------------------------------------------|------------|-----------------------------------|
-| Navigation                                      | Terminé    | ![Navigation](./Assets/navigation.gif) |
-| Settings page (theme, internalisation & privacy/terms_conditions page) | Terminé    | ![Settings](./Assets/settings.gif) |
-| Profil page (history)                          | Terminé    | ![Profile](./Assets/profile.gif) |
-| Challenge page (mushrooms & missions) | Terminé    | ![Challenge](./Assets/challenge.gif) |
-| Home for you page                               | Terminé    | <img src="./Assets/for_you.png" alt="Home for you" width="300"> |
-| Authentification (account page, registration & login) | Terminé    | ![Account](./Assets/account.gif) |
-| Mushroom detail page                            | Terminé    | ![Mushroom](./Assets/mushroom_details.gif) |
-| Web view page pour les articles et les recettes | Terminé    | ![Recipe & news](./Assets/recipe_news.gif) |
-| Camera page |  | <img src="./Assets/camera.gif" alt="Camera" width="300"> |
-| Badge detail page                  | Terminé    | <img src="./Assets/badge_details.png" alt="Badge details" width="300"> |
-| Search page                 | Terminé    | ![Search](./Assets/search.gif) |
+| Fonctionnalités                                 | État       | Illustration                                                              |
+|-------------------------------------------------|------------|---------------------------------------------------------------------------|
+| Navigation                                      | Terminé    | ![Navigation](docs/navigation.gif)                                        |
+| Settings page (theme, internalisation & privacy/terms_conditions page) | Terminé    | ![Settings](docs/settings.gif)                                            |
+| Profil page (history)                          | Terminé    | ![Profile](docs/profile.gif)                                              |
+| Challenge page (mushrooms & missions) | Terminé    | ![Challenge](docs/challenge.gif)                                          |
+| Home for you page                               | Terminé    | <img src="./Assets/for_you.png" alt="Home for you" width="300">           |
+| Authentification (account page, registration & login) | Terminé    | ![Account](docs/account.gif)                                              |
+| Mushroom detail page                            | Terminé    | ![Mushroom](./docs/mushroom_details.gif)                                  |
+| Web view page pour les articles et les recettes | Terminé    | ![Recipe & news](docs/recipe_news.gif)                                    |
+| Camera page |  | <img src="./Assets/camera.gif" alt="Camera" width="300">                  |
+| Badge detail page                  | Terminé    | <img src="./Assets/badge_details.png" alt="Badge details" width="300">    |
+| Search page                 | Terminé    | ![Search](docs/search.gif)                                                |
 | Benefit account page                            | Terminé    | <img src="./Assets/benefit_account.png" alt="Benefit account" width="300"> |
-| Carte interactive                               | Terminé | ![Map](./Assets/map.gif) |
+| Carte interactive                               | Terminé | ![Map](docs/map.gif)                                                      |
 
 ---
 
